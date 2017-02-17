@@ -5,9 +5,19 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\tileDefault</sprite>
+    <sprite>sprites\sprite1</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\Tile</object>
+    <object>objects\CurrentLevel</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\Stronghold</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
