@@ -30,7 +30,38 @@ for(i = 0; i &lt;instance_number(Tile); i += 1){
     tile = instance_find(Tile,i);
     roomTiles[tile.x/16,tile.y/16] = tile;
 }
+selectedChar = noone; //noone = null?
 
+curX = selectedChar.xCord;
+curY = selectedChar.yCord;
+totMove = selectedChar.movement;
+maxSize = room.width/16;
+toLook = ds_queue_create();
+ds_queue_enqueue(toLook, roomTiles[curX, curY]);
+
+
+while(ds_queue_empty(toLook)){
+curTile = ds_queue_dequeue(toLook)
+if(curTile.color !=  2){
+    if(curTile.currentCost &lt;= totMove){
+        curTile.canMove = true;
+        if(curX + 1 &lt; maxSize){
+            roomTiles[curX + 1, curY].currentCost = roomTiles[curX + 1, curY].cost + curTile.currentCost;
+            ds_queue_enqueue(toLook, roomTiles[curX + 1, curY]);
+        }if(curX - 1 &gt;= 0){
+            roomTiles[curX - 1, curY].currentCost = roomTiles[curX - 1, curY].cost + curTile.currentCost;
+            ds_queue_enqueue(toLook, roomTiles[curX - 1, curY]);
+        }if(curY + 1 &lt; maxSize){
+            roomTiles[curX, curY + 1].currentCost = roomTiles[curX, curY + 1].cost + curTile.currentCost;
+            ds_queue_enqueue(toLook, roomTiles[curX, curY + 1]);
+        }if(curY - 1 &gt;= 0){
+            roomTiles[curX, curY - 1].currentCost = roomTiles[curX, curY - 1].cost + curTile.currentCost;
+            ds_queue_enqueue(toLook, roomTiles[curX, curY - 1]);
+            }
+        }
+        curTile.color = 2;
+    }
+}
 
 </string>
           </argument>
