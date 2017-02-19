@@ -30,6 +30,8 @@ for(i = 0; i &lt;instance_number(Tile); i += 1){
     tile = instance_find(Tile,i);
     roomTiles[tile.x/16,tile.y/16] = tile;
 }
+
+
 </string>
           </argument>
         </arguments>

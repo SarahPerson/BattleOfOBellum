@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>cost = 1;
+CurrentCost = 1;
+color = 0;
+canMove = false;
 </string>
           </argument>
         </arguments>
