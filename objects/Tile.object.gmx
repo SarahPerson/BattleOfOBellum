@@ -29,6 +29,7 @@
 currentCost = 1;
 color = 0;
 canMove = false;
+depth = 1000;
 </string>
           </argument>
         </arguments>

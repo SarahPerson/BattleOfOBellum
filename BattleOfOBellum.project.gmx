@@ -9,6 +9,7 @@
     <sprite>sprites\tileDefault</sprite>
     <sprite>sprites\HLTile</sprite>
     <sprite>sprites\sprite1</sprite>
+    <sprite>sprites\characterOneSprite</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,6 +17,7 @@
     <object>objects\Tile</object>
     <object>objects\CurrentLevel</object>
     <object>objects\PlayerOne</object>
+    <object>objects\characterOne</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
