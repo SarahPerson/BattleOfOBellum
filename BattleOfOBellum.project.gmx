@@ -15,8 +15,8 @@
   <objects name="objects">
     <object>objects\Tile</object>
     <object>objects\CurrentLevel</object>
+    <object>objects\PlayerOne</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
   </rooms>
