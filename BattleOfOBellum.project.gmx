@@ -7,6 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\tileDefault</sprite>
+    <sprite>sprites\HLTile</sprite>
     <sprite>sprites\sprite1</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -15,6 +16,7 @@
     <object>objects\Tile</object>
     <object>objects\CurrentLevel</object>
   </objects>
+  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
   </rooms>

@@ -25,16 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>roomTiles = ds_grid_create(room.width/16, room.height/16);
-for(i = 0; i &lt;instance_number(Tile); i += 1){
-    tile = instance_find(Tile,i);
-    roomTiles[tile.x/16,tile.y/16] = tile;
-}
-selectedChar = noone; //noone = null?
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//selectedChar = noone; //noone = null?
+show_message("DFHJDJHDJFJHDJHF");
+var i;
+var temptile;
 
-curX = selectedChar.xCord;
-curY = selectedChar.yCord;
-totMove = selectedChar.movement;
+roomTiles = ds_grid_create(room.width/16, room.hieght/16);
+
+for(i = 0; i &lt;instance_number(Tile); i += 1){
+    temptile = instance_find(Tile,i);
+    roomTiles[tile.x/16,tile.y/16] = temptile;
+    temptile.sprite_index = HLTile;
+}
+
+curX = 5//selectedChar.xCord;
+curY = 5//selectedChar.yCord;
+totMove = 4//selectedChar.movement;
 maxSize = room.width/16;
 toLook = ds_queue_create();
 ds_queue_enqueue(toLook, roomTiles[curX, curY]);
@@ -62,6 +90,7 @@ if(curTile.color !=  2){
         curTile.color = 2;
     }
 }
+
 
 </string>
           </argument>
