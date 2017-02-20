@@ -33,8 +33,11 @@ key_select = vk_shift; //for select key
  key_enter = vk_enter; //for enter key 
  
  //set starting position
-self.x =0;
-self.y =0;
+curRow = 0;
+curCol = 0;
+
+CurrentLevel.roomTiles[curRow,curCol].sprite_index=HLTile;
+
 </string>
           </argument>
         </arguments>

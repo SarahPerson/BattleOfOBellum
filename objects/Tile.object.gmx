@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>cost = 1;
-CurrentCost = 1;
+currentCost = 1;
 color = 0;
 canMove = false;
 </string>
@@ -54,7 +54,7 @@ canMove = false;
             <string>if(keyboard_check(ord('W'))){
     event_perform_object(CurrentLevel,ev_user0,0);
 }
-if(canMove = true){
+if(canMove){
     sprite_index = HLTile;
 }
 
