@@ -176,6 +176,7 @@ if(keyboard_check(key_select))
     if(canSelect)
     {
     if(isHighlighted==false &amp;&amp; self.curCol == characterOne.x/16 &amp;&amp; self.curRow == characterOne.y/16){
+        show_message("Entered highlight selection");
         curX = self.curCol//selectedChar.xCord;
         curY = self.curRow//selectedChar.yCord;
         totMove = 4//selectedChar.movement;
@@ -209,20 +210,22 @@ if(keyboard_check(key_select))
                 }
             }
 
+            isHighlighted=true;
         }
         else if(isHighlighted==true)
         {
+            show_message("Dehighlight selected");
             var i;
-            var j
+            var j;
             for (i = 0; i &lt; maxSize; i += 1){
                 for(j=0; j&lt;maxSize; j+=1){
-                    //TODO reset the entire board
+                    CurrentLevel.roomTiles[i,j].canMove=false;
                 }
             }
             isHighlighted=false;
         }
         
-        isHighlighted=true;
+        
         canSelect=false;
         
         
@@ -254,7 +257,7 @@ if(keyboard_check(key_select))
             <kind>1</kind>
             <string>///Move Character 
 if(keyboard_check(key_enter)){
-    if(isHighlighted==true ){
+    if(isHighlighted==true  &amp;&amp; true ){
     //it doesn't seem the tiles canMove property is being set 
     //This code in the if caused this to never happen &amp;&amp; CurrentLevel.roomTiles[curRow, curCol].canMove==true
         characterOne.x =curCol*16;
