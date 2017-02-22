@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>cost = 1;
-currentCost = 1;
+currentCost = 0;
 color = 0;
 canMove = false;
 depth = 1000;
+isSelected = false;
 </string>
           </argument>
         </arguments>
@@ -52,7 +53,7 @@ depth = 1000;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(canMove){
+            <string>if(canMove || isSelected){
     sprite_index = HLTile;
 } else {
     sprite_index = tileDefault;

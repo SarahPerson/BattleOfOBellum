@@ -220,6 +220,8 @@ if(keyboard_check(key_select))
             for (i = 0; i &lt; maxSize; i += 1){
                 for(j=0; j&lt;maxSize; j+=1){
                     CurrentLevel.roomTiles[i,j].canMove=false;
+                    CurrentLevel.roomTiles[i,j].color=0;
+                    CurrentLevel.roomTiles[i,j].currentCost = 0;
                 }
             }
             isHighlighted=false;
