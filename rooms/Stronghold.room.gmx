@@ -277,7 +277,7 @@
     <instance objName="Tile" x="0" y="208" name="inst_03BD121D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Tile" x="0" y="224" name="inst_16B0BDBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="CurrentLevel" x="144" y="112" name="inst_FC379B7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Tile" x="0" y="0" name="inst_D2A6AEF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Tile" x="0" y="0" name="inst_1188AB8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
