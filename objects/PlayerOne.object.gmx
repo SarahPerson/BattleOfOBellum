@@ -259,9 +259,7 @@ if(keyboard_check(key_select))
             <kind>1</kind>
             <string>///Move Character 
 if(keyboard_check(key_enter)){
-    if(isHighlighted==true  &amp;&amp; true ){
-    //it doesn't seem the tiles canMove property is being set 
-    //This code in the if caused this to never happen &amp;&amp; CurrentLevel.roomTiles[curRow, curCol].canMove==true
+    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true ){    
         characterOne.x =curCol*16;
         characterOne.y = curRow*16;
 

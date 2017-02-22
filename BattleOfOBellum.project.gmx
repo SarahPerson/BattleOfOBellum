@@ -19,6 +19,7 @@
     <sprite>sprites\brushTile</sprite>
     <sprite>sprites\HLBrushTile</sprite>
     <sprite>sprites\waterTile</sprite>
+    <sprite>sprites\playerOneSelect</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
