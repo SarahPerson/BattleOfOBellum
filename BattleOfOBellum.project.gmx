@@ -20,6 +20,8 @@
     <sprite>sprites\HLBrushTile</sprite>
     <sprite>sprites\waterTile</sprite>
     <sprite>sprites\playerOneSelect</sprite>
+    <sprite>sprites\playerOneGoal</sprite>
+    <sprite>sprites\playerTwoGoal</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -30,6 +32,7 @@
     <object>objects\characterOne</object>
     <object>objects\TestTile</object>
     <object>objects\GameMaster</object>
+    <object>objects\Objective</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
