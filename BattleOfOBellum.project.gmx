@@ -10,6 +10,15 @@
     <sprite>sprites\HLTile</sprite>
     <sprite>sprites\sprite1</sprite>
     <sprite>sprites\characterOneSprite</sprite>
+    <sprite>sprites\HLGrassTile</sprite>
+    <sprite>sprites\grassTile</sprite>
+    <sprite>sprites\treeTile</sprite>
+    <sprite>sprites\HLTreeTile</sprite>
+    <sprite>sprites\wallTile</sprite>
+    <sprite>sprites\HLWallTile</sprite>
+    <sprite>sprites\brushTile</sprite>
+    <sprite>sprites\HLBrushTile</sprite>
+    <sprite>sprites\waterTile</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -18,9 +27,11 @@
     <object>objects\CurrentLevel</object>
     <object>objects\PlayerOne</object>
     <object>objects\characterOne</object>
+    <object>objects\TestTile</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
