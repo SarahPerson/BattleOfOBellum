@@ -262,7 +262,6 @@ if(keyboard_check(key_enter)){
     if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true ){    
         characterOne.x =curCol*16;
         characterOne.y = curRow*16;
-
     }
 }
 </string>
