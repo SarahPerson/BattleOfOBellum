@@ -30,7 +30,7 @@ show_message("Move with arrow keys# select character with shift#move character w
 var i;
 var temptile;
 
-roomTiles = ds_grid_create(room_width/16, room_height/16);
+roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
 
 for(i = 0; i &lt;instance_number(Tile); i += 1){
     temptile = instance_find(Tile,i);
