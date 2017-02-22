@@ -52,11 +52,10 @@ depth = 1000;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check(ord('W'))){
-    event_perform_object(CurrentLevel,ev_user0,0);
-}
-if(canMove){
+            <string>if(canMove){
     sprite_index = HLTile;
+} else {
+    sprite_index = tileDefault;
 }
 
 </string>
