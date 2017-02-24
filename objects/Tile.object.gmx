@@ -31,6 +31,8 @@ currentCost = 0;
 color = 0;
 canMove = false;
 depth = 1000;
+playerOneSelected=false;
+playerTwoSelected = false;
 </string>
           </argument>
         </arguments>
@@ -53,11 +55,22 @@ depth = 1000;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(canMove){
-    sprite_index = HLTile;
-} else if (!canMove) {
-    sprite_index = tileDefault;
+            <string>if(!playerOneSelected &amp;&amp; !playerOneSelected){
+    if(canMove){
+        sprite_index = HLTile;
+    } else if (!canMove) {
+        sprite_index = tileDefault;
+    }
 }
+else if(playerOneSelected)
+{
+    sprite_index =  playerOneSelect 
+}
+else if(playerTwoSelected)
+{
+    sprite_index = playerTwoSelect
+}
+
 
 
 </string>

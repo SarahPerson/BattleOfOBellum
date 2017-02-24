@@ -40,7 +40,7 @@ canMove=true;
 canSelect=true;
 isHighlighted=false;
 
-CurrentLevel.roomTiles[curRow,curCol].sprite_index=HLTile;
+CurrentLevel.roomTiles[curRow,curCol].playerOneSelected=true;
 
 </string>
           </argument>
@@ -95,38 +95,50 @@ canSelect = true;
 if(keyboard_check(key_down))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=tileDefault;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
     if(curRow&lt;14)
         curRow++;
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=HLTile;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
     canMove=false;
+    }
+    if(alarm[0]==-1)
+    {
+       alarm[0]= room_speed*(0.1);
     }
 }
 
 if(keyboard_check(key_right))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=tileDefault;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
     if(curCol&lt;14)    
         curCol++;
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=HLTile;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
     canMove=false;
 
+    }
+    if(alarm[0]==-1)
+    {
+       alarm[0]= room_speed*(0.1);
     }
 
 }
 if(keyboard_check(key_left))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=tileDefault;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
     if (curCol&gt;0)
         curCol--;
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=HLTile;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
     canMove=false;
 
+    }
+    if(alarm[0]==-1)
+    {
+       alarm[0]= room_speed*(0.1);
     }
 }
 
@@ -134,20 +146,21 @@ if(keyboard_check(key_up))
 {
 
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=tileDefault;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
     if(curRow&gt;0)
         curRow--;
-    CurrentLevel.roomTiles[curCol,curRow].sprite_index=HLTile;
+    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
     canMove=false;
+    }
+    if(alarm[0]==-1)
+    {
+       alarm[0]= room_speed*(0.1);
     }
 
 }
 
-if(alarm[0]==-1)
-{
-   alarm[0]= room_speed*(0.25);
-}
+
     
 
 </string>
@@ -176,7 +189,7 @@ if(keyboard_check(key_select))
     if(canSelect)
     {
     if(isHighlighted==false &amp;&amp; self.curCol == characterOne.x/16 &amp;&amp; self.curRow == characterOne.y/16){
-        show_message("Entered highlight selection");
+        
         curX = self.curCol//selectedChar.xCord;
         curY = self.curRow//selectedChar.yCord;
         totMove = 4//selectedChar.movement;
@@ -214,7 +227,7 @@ if(keyboard_check(key_select))
         }
         else if(isHighlighted==true)
         {
-            show_message("Dehighlight selected");
+
             var i;
             var j;
             for (i = 0; i &lt; maxSize; i += 1){
@@ -260,8 +273,19 @@ if(keyboard_check(key_select))
             <string>///Move Character 
 if(keyboard_check(key_enter)){
     if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true ){    
-        characterOne.x =curCol*16;
-        characterOne.y = curRow*16;
+        characterOne.x =curCol*sprite_get_width(characterOne.sprite_index);
+        characterOne.y = curRow*sprite_get_height(characterOne.sprite_index);
+        
+        var i;
+        var j;
+        for (i = 0; i &lt; maxSize; i += 1){
+            for(j=0; j&lt;maxSize; j+=1){
+                CurrentLevel.roomTiles[i,j].canMove=false;
+                CurrentLevel.roomTiles[i,j].color=0;
+                CurrentLevel.roomTiles[i,j].currentCost = 0;
+            }
+        }
+        isHighlighted=false;
     }
 }
 </string>

@@ -23,6 +23,7 @@
     <sprite>sprites\playerOneGoal</sprite>
     <sprite>sprites\playerTwoGoal</sprite>
     <sprite>sprites\Wizard</sprite>
+    <sprite>sprites\playerTwoSelect</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
