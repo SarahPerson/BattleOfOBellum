@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//selectedChar = noone; //noone = null?
-show_message("Move with arrow keys# select character with shift#move character with enter");
+show_message("Move with arrow keys#select character with shift#move character with enter");
 var i;
 var temptile;
 
@@ -38,7 +38,7 @@ for(i = 0; i &lt;instance_number(Tile); i += 1){
     //temptile.sprite_index = HLTile;
 }
 
-instance_create(0,0, PlayerOne);
+//instance_create(0,0, PlayerOne);
 
     //if(alarm[0]==-1)
     //{

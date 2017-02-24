@@ -40,7 +40,7 @@ canMove=true;
 canSelect=true;
 isHighlighted=false;
 
-CurrentLevel.roomTiles[curRow,curCol].playerOneSelected=true;
+CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
 </string>
           </argument>

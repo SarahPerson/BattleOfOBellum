@@ -55,7 +55,7 @@ playerTwoSelected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!playerOneSelected &amp;&amp; !playerOneSelected){
+            <string>if(!playerOneSelected &amp;&amp; !playerTwoSelected){
     if(canMove){
         sprite_index = HLTile;
     } else if (!canMove) {
@@ -64,7 +64,7 @@ playerTwoSelected = false;
 }
 else if(playerOneSelected)
 {
-    sprite_index =  playerOneSelect 
+    sprite_index = playerOneSelect 
 }
 else if(playerTwoSelected)
 {
