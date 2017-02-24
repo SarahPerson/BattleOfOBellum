@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>show_message("YOU WON!!!");
+instance_destroy();
 </string>
           </argument>
         </arguments>
