@@ -195,7 +195,7 @@ if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect))
 {
     if(canSelect)
     {
-    if(isHighlighted==false &amp;&amp; self.curCol == characterOne.x/16 &amp;&amp; self.curRow == characterOne.y/16){
+    if(isHighlighted==false &amp;&amp; self.curCol == characterTwo.x/16 &amp;&amp; self.curRow == characterTwo.y/16){
         
         curX = self.curCol//selectedChar.xCord;
         curY = self.curRow//selectedChar.yCord;
@@ -280,8 +280,8 @@ if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect))
             <string>///Move Character 
 if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
     if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true ){    
-        characterOne.x =curCol*sprite_get_width(characterOne.sprite_index);
-        characterOne.y = curRow*sprite_get_height(characterOne.sprite_index);
+        characterTwo.x =curCol*sprite_get_width(characterTwo.sprite_index);
+        characterTwo.y = curRow*sprite_get_height(characterTwo.sprite_index);
         
         var i;
         var j;

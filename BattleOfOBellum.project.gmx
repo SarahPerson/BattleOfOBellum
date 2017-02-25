@@ -36,6 +36,7 @@
     <object>objects\TestTile</object>
     <object>objects\GameMaster</object>
     <object>objects\Objective</object>
+    <object>objects\characterTwo</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Stronghold</room>
