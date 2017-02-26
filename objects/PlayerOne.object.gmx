@@ -42,6 +42,13 @@ isHighlighted=false;
 
 CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
+//Setting the team
+teamSize = 2
+team = array(teamSize)
+team[0] = characterOne;
+team[1] = characterTwo;
+
+
 </string>
           </argument>
         </arguments>
@@ -95,68 +102,73 @@ canSelect = true;
 if(keyboard_check(key_down))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-    if(curRow&lt;14)
-        curRow++;
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
-
-    canMove=false;
-    }
-    if(alarm[0]==-1)
-    {
-       alarm[0]= room_speed*(0.1);
-    }
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
+        if(curRow&lt;14)
+            curRow++;
+            
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
+    
+        canMove=false;
+    }    
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
 }
 
 if(keyboard_check(key_right))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-    if(curCol&lt;14)    
-        curCol++;
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
-
-    canMove=false;
-
-    }
-    if(alarm[0]==-1)
-    {
-       alarm[0]= room_speed*(0.1);
-    }
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
+        if(curCol&lt;14)    
+            curCol++;
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
+    
+        canMove=false;
+    
+    }    
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
 
 }
 if(keyboard_check(key_left))
 {
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-    if (curCol&gt;0)
-        curCol--;
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
-
-    canMove=false;
-
-    }
-    if(alarm[0]==-1)
-    {
-       alarm[0]= room_speed*(0.1);
-    }
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
+        if (curCol&gt;0)
+            curCol--;
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
+    
+        canMove=false;
+    
+    }    
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
 }
 
 if(keyboard_check(key_up))
 {
 
     if(canMove){
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-    if(curRow&gt;0)
-        curRow--;
-    CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
-
-    canMove=false;
-    }
-    if(alarm[0]==-1)
-    {
-       alarm[0]= room_speed*(0.1);
-    }
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
+        if(curRow&gt;0)
+            curRow--;
+        CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
+    
+        canMove=false;
+    }    
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
 
 }
 
@@ -188,65 +200,70 @@ if(keyboard_check(key_select))
 {
     if(canSelect)
     {
-    if(isHighlighted==false &amp;&amp; self.curCol == characterOne.x/16 &amp;&amp; self.curRow == characterOne.y/16){
-        
-        curX = self.curCol//selectedChar.xCord;
-        curY = self.curRow//selectedChar.yCord;
-        totMove = 4//selectedChar.movement;
-        maxSize = room_width/16;
-        toLook = ds_queue_create();
-        ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY]);
-        
-        while(!ds_queue_empty(toLook)){
-            curTile = ds_queue_dequeue(toLook)
-            curX = curTile.x/16;
-            curY = curTile.y/16;
-        
-            if(curTile.color !=  2){
-                if(curTile.currentCost &lt;= totMove){
-                    curTile.canMove = true;
-                    if(curX + 1 &lt; maxSize){ 
-                        CurrentLevel.roomTiles[curX + 1, curY].currentCost = CurrentLevel.roomTiles[curX + 1, curY].cost + curTile.currentCost;
-                        ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX + 1, curY]);
-                    }if(curX - 1 &gt;= 0){
-                        CurrentLevel.roomTiles[curX - 1, curY].currentCost = CurrentLevel.roomTiles[curX - 1, curY].cost + curTile.currentCost;
-                        ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX - 1, curY]);
-                    }if(curY + 1 &lt; maxSize){
-                        CurrentLevel.roomTiles[curX, curY + 1].currentCost = CurrentLevel.roomTiles[curX, curY + 1].cost + curTile.currentCost;
-                        ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY + 1]);
-                    }if(curY - 1 &gt;= 0){
-                        CurrentLevel.roomTiles[curX, curY - 1].currentCost = CurrentLevel.roomTiles[curX, curY - 1].cost + curTile.currentCost;
-                        ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY - 1]);
+    for(i = 0; i&lt;self.teamSize;i++){
+        if(isHighlighted==false &amp;&amp; self.curCol == self.team[i].x/16 &amp;&amp; self.curRow == self.team[i].y/16){
+        show_message("selected character");
+        show_message( self.team[i].x/16);
+            team[i].isSelected = true; //variable to hold if this is the current character being moved
+            curX = self.curCol//selectedChar.xCord;
+            curY = self.curRow//selectedChar.yCord;
+            totMove = 4//selectedChar.movement;
+            maxSize = room_width/16;
+            toLook = ds_queue_create();
+            ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY]);
+            
+            while(!ds_queue_empty(toLook)){
+                curTile = ds_queue_dequeue(toLook)
+                curX = curTile.x/16;
+                curY = curTile.y/16;
+            
+                if(curTile.color !=  2){
+                    if(curTile.currentCost &lt;= totMove){
+                        curTile.canMove = true;
+                        if(curX + 1 &lt; maxSize){ 
+                            CurrentLevel.roomTiles[curX + 1, curY].currentCost = CurrentLevel.roomTiles[curX + 1, curY].cost + curTile.currentCost;
+                            ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX + 1, curY]);
+                        }if(curX - 1 &gt;= 0){
+                            CurrentLevel.roomTiles[curX - 1, curY].currentCost = CurrentLevel.roomTiles[curX - 1, curY].cost + curTile.currentCost;
+                            ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX - 1, curY]);
+                        }if(curY + 1 &lt; maxSize){
+                            CurrentLevel.roomTiles[curX, curY + 1].currentCost = CurrentLevel.roomTiles[curX, curY + 1].cost + curTile.currentCost;
+                            ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY + 1]);
+                        }if(curY - 1 &gt;= 0){
+                            CurrentLevel.roomTiles[curX, curY - 1].currentCost = CurrentLevel.roomTiles[curX, curY - 1].cost + curTile.currentCost;
+                            ds_queue_enqueue(toLook, CurrentLevel.roomTiles[curX, curY - 1]);
+                            }
                         }
+                        curTile.color = 2;
                     }
-                    curTile.color = 2;
                 }
+    
+                isHighlighted=true;
             }
-
-            isHighlighted=true;
-        }
-        else if(isHighlighted==true)
-        {
-
-            var i;
-            var j;
-            for (i = 0; i &lt; maxSize; i += 1){
-                for(j=0; j&lt;maxSize; j+=1){
-                    CurrentLevel.roomTiles[i,j].canMove=false;
-                    CurrentLevel.roomTiles[i,j].color=0;
-                    CurrentLevel.roomTiles[i,j].currentCost = 0;
+            else if(isHighlighted==true)
+            {
+                team[i].isSelected=false;
+                var i;
+                var j;
+                for (i = 0; i &lt; maxSize; i += 1){
+                    for(j=0; j&lt;maxSize; j+=1){
+                        CurrentLevel.roomTiles[i,j].canMove=false;
+                        CurrentLevel.roomTiles[i,j].color=0;
+                        CurrentLevel.roomTiles[i,j].currentCost = 0;
+                    }
                 }
+                isHighlighted=false;
             }
-            isHighlighted=false;
-        }
-        
-        
-        canSelect=false;
-        
-        
-        if(alarm[0]==-1)
-        {
-            alarm[0]= room_speed*(0.25);
+            
+            
+            canSelect=false;
+            
+            
+            if(alarm[0]==-1)
+            {
+                alarm[0]= room_speed*(0.25);
+            }
+            
         }
     }
 }
@@ -272,20 +289,23 @@ if(keyboard_check(key_select))
             <kind>1</kind>
             <string>///Move Character 
 if(keyboard_check(key_enter)){
-    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true ){    
-        characterOne.x =curCol*sprite_get_width(characterOne.sprite_index);
-        characterOne.y = curRow*sprite_get_height(characterOne.sprite_index);
-        
-        var i;
-        var j;
-        for (i = 0; i &lt; maxSize; i += 1){
-            for(j=0; j&lt;maxSize; j+=1){
-                CurrentLevel.roomTiles[i,j].canMove=false;
-                CurrentLevel.roomTiles[i,j].color=0;
-                CurrentLevel.roomTiles[i,j].currentCost = 0;
+    for(k=0; k&lt;teamSize; k++){
+        if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true &amp;&amp; team[k].isSelected ){    
+            team[k].x =curCol*sprite_get_width(team[k].sprite_index);
+            team[k].y = curRow*sprite_get_height(team[k].sprite_index);
+            
+            var i;
+            var j;
+            for (i = 0; i &lt; maxSize; i += 1){
+                for(j=0; j&lt;maxSize; j+=1){
+                    CurrentLevel.roomTiles[i,j].canMove=false;
+                    CurrentLevel.roomTiles[i,j].color=0;
+                    CurrentLevel.roomTiles[i,j].currentCost = 0;
+                }
             }
+            isHighlighted=false;
+            team[k].isSelected = false;
         }
-        isHighlighted=false;
     }
 }
 </string>
