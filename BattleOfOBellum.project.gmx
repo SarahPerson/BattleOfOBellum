@@ -27,6 +27,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\array.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\Tile</object>
     <object>objects\CurrentLevel</object>
