@@ -62,8 +62,8 @@
     <object>objects\PlayerTwoObject</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Stronghold</room>
     <room>rooms\room1</room>
+    <room>rooms\Stronghold</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

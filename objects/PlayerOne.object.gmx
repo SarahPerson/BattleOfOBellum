@@ -43,9 +43,7 @@ isHighlighted=false;
 CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
 
 //Setting the team
-teamSize = 1
-team = array(teamSize)
-team[0] = characterOne;
+global.teamOne[0] = characterOne;
 characterSelected = 0;
 
 
@@ -103,7 +101,7 @@ if(keyboard_check(key_down))
 {
     if(canMove){
         CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-        if(curRow&lt;14)
+        if(curRow&lt;global.roomSize-1)
             curRow++;
             
         CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
@@ -121,7 +119,7 @@ if(keyboard_check(key_right))
 {
     if(canMove){
         CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=false;
-        if(curCol&lt;14)    
+        if(curCol&lt;global.roomSize-1)    
             curCol++;
         CurrentLevel.roomTiles[curCol,curRow].playerOneSelected=true;
     
@@ -201,10 +199,10 @@ if(keyboard_check(key_select))
 var i = 0;
     if(canSelect)
     {
-for(i = 0; i&lt;self.teamSize;i++){
-        if(isHighlighted==false &amp;&amp; self.curCol == self.team[i].x/16 &amp;&amp; self.curRow == self.team[i].y/16){
+for(i = 0; i&lt;global.teamSize;i++){
+        if(isHighlighted==false &amp;&amp; self.curCol == global.teamOne[i].x/16 &amp;&amp; self.curRow == global.teamOne[i].y/16){
         selectedCharacter = i;
-            team[i].isSelected = true; //variable to hold if this is the current character being moved
+            global.teamOne[i].isSelected = true; //variable to hold if this is the current character being moved
             curX = self.curCol//selectedChar.xCord;
             curY = self.curRow//selectedChar.yCord;
             totMove = 4//selectedChar.movement;
@@ -247,9 +245,9 @@ for(i = 0; i&lt;self.teamSize;i++){
                 }
                 exit;
             }
-            if(isHighlighted==true &amp;&amp; team[i].isSelected==true)
+            if(isHighlighted==true &amp;&amp; global.teamOne[i].isSelected==true)
             {
-                team[i].isSelected=false;
+                global.teamOne[i].isSelected=false;
                 var i;
                 var j;
                 for (i = 0; i &lt; maxSize; i += 1){
@@ -296,9 +294,9 @@ for(i = 0; i&lt;self.teamSize;i++){
             <string>///Move Character 
 if(keyboard_check(key_enter)){
 
-    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true &amp;&amp; team[selectedCharacter].isSelected ){    
-        team[selectedCharacter].x =curCol*sprite_get_width(team[selectedCharacter].sprite_index);
-        team[selectedCharacter].y = curRow*sprite_get_height(team[selectedCharacter].sprite_index);
+    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
+        global.teamOne[selectedCharacter].x =curCol*sprite_get_width(global.teamOne[selectedCharacter].sprite_index);
+        global.teamOne[selectedCharacter].y = curRow*sprite_get_height(global.teamOne[selectedCharacter].sprite_index);
         
         var i;
         var j;
@@ -310,7 +308,7 @@ if(keyboard_check(key_enter)){
             }
         }
         isHighlighted=false;
-        team[selectedCharacter].isSelected = false;
+        global.teamOne[selectedCharacter].isSelected = false;
     }
     
 }

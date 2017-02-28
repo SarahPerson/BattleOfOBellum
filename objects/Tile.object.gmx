@@ -56,11 +56,26 @@ playerTwoSelected = false;
           <argument>
             <kind>1</kind>
             <string>if(!playerOneSelected &amp;&amp; !playerTwoSelected){
-    if(canMove){
-        sprite_index = HLTile;
-    } else if (!canMove) {
-        sprite_index = tileDefault;
+    //if(canMove){
+    //    sprite_index = HLTile;
+    //} else if (!canMove) {
+    //    sprite_index = tileDefault;
+    //}
+    switch(tileType){
+    case 1: 
+        sprite_index = grassTile;
+        cost = 1;
+        break;
+    case 2:
+        sprite_index = brushTile;
+        cost = 2;
+        break;
+    case 3: 
+        sprite_index = treeTile;
+        cost=3;
+        break;
     }
+
 }
 else if(playerOneSelected)
 {
@@ -71,16 +86,6 @@ else if(playerTwoSelected)
     sprite_index = playerTwoSelect
 }
 
-switch(tileType){
-    case 1: 
-        sprite_index = grassTile;
-        cost = 1;
-        break;
-    case 2:
-        sprite_index = brushTile;
-        cost = 2;
-        break;
-}
 
 
 

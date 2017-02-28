@@ -50,10 +50,9 @@ isHighlighted=false;
 CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=true;
 
 //Setting the team
-teamSize = 2
-team = array(teamSize)
-team[0] = characterTwo;
-team[1] = characterOne;
+
+global.teamTwo[0] = characterTwo;
+
 characterSelected = 0;
 
 </string>
@@ -110,7 +109,7 @@ if(keyboard_check(key_down)|| gamepad_button_check(0,gp_down))
 {
     if(canMove){
     CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=false;
-    if(curRow&lt;14)
+    if(curRow&lt;global.roomSize-1)
         curRow++;
     CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=true;
 
@@ -126,7 +125,7 @@ if(keyboard_check(key_right)|| gamepad_button_check(0,gp_right))
 {
     if(self.canMove){
     CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=false;
-    if(curCol&lt;14)    
+    if(curCol&lt;global.roomSize-1)    
         curCol++;
     CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=true;
 
@@ -203,10 +202,10 @@ if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect))
 var i = 0;
     if(canSelect)
     {
-for(i = 0; i&lt;self.teamSize;i++){
-        if(isHighlighted==false &amp;&amp; self.curCol == self.team[i].x/16 &amp;&amp; self.curRow == self.team[i].y/16){
+for(i = 0; i&lt;global.teamSize;i++){
+        if(isHighlighted==false &amp;&amp; self.curCol == global.teamTwo[i].x/16 &amp;&amp; self.curRow == global.teamTwo[i].y/16){
         selectedCharacter = i;
-            team[i].isSelected = true; //variable to hold if this is the current character being moved
+            global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
             curX = self.curCol//selectedChar.xCord;
             curY = self.curRow//selectedChar.yCord;
             totMove = 4//selectedChar.movement;
@@ -249,9 +248,9 @@ for(i = 0; i&lt;self.teamSize;i++){
                 }
                 exit;
             }
-            if(isHighlighted==true &amp;&amp; team[i].isSelected==true)
+            if(isHighlighted==true &amp;&amp; global.teamTwo[i].isSelected==true)
             {
-                team[i].isSelected=false;
+                global.teamTwo[i].isSelected=false;
                 var i;
                 var j;
                 for (i = 0; i &lt; maxSize; i += 1){
@@ -297,9 +296,9 @@ for(i = 0; i&lt;self.teamSize;i++){
             <kind>1</kind>
             <string>///Move Character 
 if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
-    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true &amp;&amp; team[selectedCharacter].isSelected ){    
-        team[selectedCharacter].x =curCol*sprite_get_width(team[selectedCharacter].sprite_index);
-        team[selectedCharacter].y = curRow*sprite_get_height(team[selectedCharacter].sprite_index);
+    if(isHighlighted==true  &amp;&amp; CurrentLevel.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
+        global.teamTwo[selectedCharacter].x =curCol*sprite_get_width(global.teamTwo[selectedCharacter].sprite_index);
+        global.teamTwo[selectedCharacter].y = curRow*sprite_get_height(global.teamTwo[selectedCharacter].sprite_index);
         
         var i;
         var j;
@@ -311,7 +310,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
             }
         }
         isHighlighted=false;
-        team[selectedCharacter].isSelected = false;
+        global.teamTwo[selectedCharacter].isSelected = false;
     }
 }
 </string>
