@@ -65,11 +65,23 @@ playerTwoSelected = false;
 else if(playerOneSelected)
 {
     sprite_index = playerOneSelect 
-}
+} 
 else if(playerTwoSelected)
 {
     sprite_index = playerTwoSelect
 }
+
+switch(tileType){
+    case 1: 
+        sprite_index = grassTile;
+        cost = 1;
+        break;
+    case 2:
+        sprite_index = brushTile;
+        cost = 2;
+        break;
+}
+
 
 
 

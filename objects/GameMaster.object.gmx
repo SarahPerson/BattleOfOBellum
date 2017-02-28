@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mapNum = 0;
-map1Layout = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
+            <string>mapNum = 1;
 roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
+myFile = file_text_open_read("map1.txt");
 switch(mapNum){
     case 1:
         for(i = 0; i &lt;instance_number(Tile); i += 1){
@@ -35,16 +35,17 @@ switch(mapNum){
             roomTiles[temptile.x/16,temptile.y/16] = temptile;
         }
         var i, j;
-        for (i = 0; i &lt; ds_grid_width(map1Layout); i += 1)
+        for (i = 0; i &lt; 30; i += 1)
            {
-           for (j = 0; j &lt; ds_grid_height(map1Layout); j += 1)
+           for (j = 0; j &lt; 30; j += 1)
               {
-                roomTiles[i,j].tileType = map1Layout[i,j];
+                roomTiles[i,j].tileType = file_text_read_real(myFile);
               }
            }
         break;
 
 }
+file_text_close(myFile);
 </string>
           </argument>
         </arguments>
