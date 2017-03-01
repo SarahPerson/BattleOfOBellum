@@ -27,14 +27,9 @@
             <kind>1</kind>
             <string>///set up map
 mapNum = 1;
-
 myFile = file_text_open_read("smallCity.txt");
 switch(mapNum){
     case 1:
-        /*for(i = 0; i &lt;instance_number(Tile); i += 1){
-            temptile = instance_find(Tile,i);
-            global.roomTiles[temptile.x/16,temptile.y/16] = temptile;
-        }*/
         var i, j;
         for (i = 0; i &lt; 30; i += 1)
            {
@@ -71,6 +66,7 @@ file_text_close(myFile);
           <argument>
             <kind>1</kind>
             <string>///global variable for room
+//size = ds_grid_width(global.roomTiles);
 switch(mapNum){
     case 1:
         global.roomSize = 30;

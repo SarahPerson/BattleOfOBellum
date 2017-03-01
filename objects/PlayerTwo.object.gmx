@@ -254,8 +254,8 @@ for(i = 0; i&lt;global.teamSize;i++){
             if(isHighlighted==true &amp;&amp; global.teamTwo[i].isSelected==true)
             {
                 global.teamTwo[i].isSelected=false;
-                 while(!ds_queue_empty(toLook)){
-                    curTile = ds_queue_dequeue(toLook);
+                 while(!ds_queue_empty(highlightedTiles)){
+                    curTile = ds_queue_dequeue(highlightedTiles);
                     curTile.canMove = false;
                     curTile.color=0;
                     curTile.currentCost = 0;
