@@ -92,11 +92,9 @@
   </scripts>
   <objects name="objects">
     <object>objects\Tile</object>
-    <object>objects\CurrentLevel</object>
     <object>objects\PlayerOne</object>
     <object>objects\PlayerTwo</object>
     <object>objects\characterOne</object>
-    <object>objects\TestTile</object>
     <object>objects\GameMaster</object>
     <object>objects\PlayerOneObjective</object>
     <object>objects\characterTwo</object>

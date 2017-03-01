@@ -27,22 +27,23 @@
             <kind>1</kind>
             <string>///set up map
 mapNum = 1;
-show_message(sprite_get_width(Tile));
 
 myFile = file_text_open_read("smallCity.txt");
 switch(mapNum){
     case 1:
-        for(i = 0; i &lt;instance_number(Tile); i += 1){
+        /*for(i = 0; i &lt;instance_number(Tile); i += 1){
             temptile = instance_find(Tile,i);
             global.roomTiles[temptile.x/16,temptile.y/16] = temptile;
-        }
+        }*/
         var i, j;
         for (i = 0; i &lt; 30; i += 1)
            {
            for (j = 0; j &lt; 30; j += 1)
               {
+                tempTile = instance_create(j*16, i*16, Tile);
+                global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
                 var temp = file_text_read_real(myFile);
-                global.roomTiles[i,j].tileType = temp;
+                global.roomTiles[j,i].tileType = temp;
               }
            }
         break;
@@ -70,7 +71,11 @@ file_text_close(myFile);
           <argument>
             <kind>1</kind>
             <string>///global variable for room
-global.roomSize = 30;
+switch(mapNum){
+    case 1:
+        global.roomSize = 30;
+        break;
+}
 
 
 </string>
