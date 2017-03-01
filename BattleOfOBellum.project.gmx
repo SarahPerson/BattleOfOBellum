@@ -56,7 +56,6 @@
   <scripts name="scripts">
     <script>scripts\array.gml</script>
   </scripts>
-  <fonts name="fonts"/>
   <objects name="objects">
     <object>objects\Tile</object>
     <object>objects\CurrentLevel</object>
