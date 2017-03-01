@@ -59,24 +59,29 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\tileDefault</sprite>
-    <sprite>sprites\HLTile</sprite>
     <sprite>sprites\sprite1</sprite>
     <sprite>sprites\characterOneSprite</sprite>
-    <sprite>sprites\HLGrassTile</sprite>
-    <sprite>sprites\grassTile</sprite>
-    <sprite>sprites\treeTile</sprite>
-    <sprite>sprites\HLTreeTile</sprite>
-    <sprite>sprites\wallTile</sprite>
-    <sprite>sprites\HLWallTile</sprite>
-    <sprite>sprites\brushTile</sprite>
-    <sprite>sprites\HLBrushTile</sprite>
-    <sprite>sprites\waterTile</sprite>
-    <sprite>sprites\playerOneSelect</sprite>
     <sprite>sprites\playerOneGoal</sprite>
     <sprite>sprites\playerTwoGoal</sprite>
     <sprite>sprites\Wizard</sprite>
-    <sprite>sprites\playerTwoSelect</sprite>
+    <sprites name="Tiles">
+      <sprite>sprites\treeTile</sprite>
+      <sprite>sprites\wallTile</sprite>
+      <sprite>sprites\HLTreeTile</sprite>
+      <sprite>sprites\playerTwoSelect</sprite>
+      <sprite>sprites\grassTile</sprite>
+      <sprite>sprites\tileDefault</sprite>
+      <sprite>sprites\HLGrassTile</sprite>
+      <sprite>sprites\HLTile</sprite>
+      <sprite>sprites\playerOneSelect</sprite>
+      <sprite>sprites\waterTile</sprite>
+      <sprite>sprites\HLBrushTile</sprite>
+      <sprite>sprites\brushTile</sprite>
+      <sprite>sprites\HLWallTile</sprite>
+    </sprites>
+    <sprites name="UIWidgets">
+      <sprite>sprites\buttonSprite</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
