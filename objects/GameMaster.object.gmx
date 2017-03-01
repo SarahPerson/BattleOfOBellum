@@ -28,7 +28,7 @@
             <string>///set up map
 mapNum = 1;
 global.roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
-myFile = file_text_open_read("map1.txt");
+myFile = file_text_open_read("smallCity.txt");
 switch(mapNum){
     case 1:
         for(i = 0; i &lt;instance_number(Tile); i += 1){
@@ -42,7 +42,6 @@ switch(mapNum){
               {
                 var temp = file_text_read_real(myFile);
                 global.roomTiles[i,j].tileType = temp;
-                show_message(temp);
               }
            }
         break;

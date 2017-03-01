@@ -62,6 +62,7 @@ if(!playerOneSelected &amp;&amp; !playerTwoSelected){
     case 0:
         if(canMove){sprite_index = HLTile;} else if (!canMove) {sprite_index = tileDefault;}
         cost = 1;
+        break;
     case 1: 
         if(canMove){sprite_index = HLGrassTile;} else if (!canMove) {sprite_index = grassTile;}
         cost = 1;
