@@ -50,10 +50,11 @@ isHighlighted=false;
 CurrentLevel.roomTiles[curCol,curRow].playerTwoSelected=true;
 
 //Setting the team
-
 global.teamTwo[0] = characterTwo;
-
 characterSelected = 0;
+
+//queue of highlighted tiles
+highlightedTiles = ds_queue_create();
 
 </string>
           </argument>
@@ -204,7 +205,8 @@ var i = 0;
     {
 for(i = 0; i&lt;global.teamSize;i++){
         if(isHighlighted==false &amp;&amp; self.curCol == global.teamTwo[i].x/16 &amp;&amp; self.curRow == global.teamTwo[i].y/16){
-        selectedCharacter = i;
+            ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
+            selectedCharacter = i;
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
             curX = self.curCol//selectedChar.xCord;
             curY = self.curRow//selectedChar.yCord;
@@ -236,6 +238,7 @@ for(i = 0; i&lt;global.teamSize;i++){
                             }
                         }
                         curTile.color = 2;
+                        ds_queue_enqueue(highlightedTiles, curTile);
                     }
                 }
     
@@ -251,6 +254,13 @@ for(i = 0; i&lt;global.teamSize;i++){
             if(isHighlighted==true &amp;&amp; global.teamTwo[i].isSelected==true)
             {
                 global.teamTwo[i].isSelected=false;
+                 while(!ds_queue_empty(toLook)){
+                    curTile = ds_queue_dequeue(toLook);
+                    curTile.canMove = false;
+                    curTile.color=0;
+                    curTile.currentCost = 0;
+                }
+                /*
                 var i;
                 var j;
                 for (i = 0; i &lt; maxSize; i += 1){
@@ -260,6 +270,7 @@ for(i = 0; i&lt;global.teamSize;i++){
                         CurrentLevel.roomTiles[i,j].currentCost = 0;
                     }
                 }
+                */
                 isHighlighted=false;
                 canSelect=false;
             
