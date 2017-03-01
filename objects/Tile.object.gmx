@@ -80,6 +80,11 @@ if(!playerOneSelected &amp;&amp; !playerTwoSelected){
         sprite_index = waterTile;
         cost=10;
         break;
+        
+    case 5: 
+        if(canMove){sprite_index = HLWallTile;} else if (!canMove) {sprite_index = wallTile;}
+        cost=8;
+        break;
     }
 
 }

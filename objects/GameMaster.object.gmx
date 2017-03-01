@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>///set up map
 mapNum = 1;
-global.roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
+show_message(sprite_get_width(Tile));
+
 myFile = file_text_open_read("smallCity.txt");
 switch(mapNum){
     case 1:
@@ -69,7 +70,9 @@ file_text_close(myFile);
           <argument>
             <kind>1</kind>
             <string>///global variable for room
-global.roomSize = room_width/sprite_get_width(Tile);
+global.roomSize = 30;
+
+
 </string>
           </argument>
         </arguments>
