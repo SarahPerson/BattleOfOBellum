@@ -13,6 +13,7 @@
   <code>global.teamSize = 1
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
+global.roomTiles = ds_grid_create(1,1);
 room_goto(Stronghold);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>

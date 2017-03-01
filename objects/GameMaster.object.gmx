@@ -25,21 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mapNum = 1;
-roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
+            <string>///set up map
+mapNum = 1;
+global.roomTiles = ds_grid_create(room_width/sprite_get_width(Tile), room_height/sprite_get_height(Tile));
 myFile = file_text_open_read("map1.txt");
 switch(mapNum){
     case 1:
         for(i = 0; i &lt;instance_number(Tile); i += 1){
             temptile = instance_find(Tile,i);
-            roomTiles[temptile.x/16,temptile.y/16] = temptile;
+            global.roomTiles[temptile.x/16,temptile.y/16] = temptile;
         }
         var i, j;
         for (i = 0; i &lt; 30; i += 1)
            {
            for (j = 0; j &lt; 30; j += 1)
               {
-                roomTiles[i,j].tileType = file_text_read_real(myFile);
+                var temp = file_text_read_real(myFile);
+                global.roomTiles[i,j].tileType = temp;
+                show_message(temp);
               }
            }
         break;
