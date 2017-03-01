@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="3" name="datafiles">
     <datafile>
       <name>map1.txt</name>
       <exists>-1</exists>
-      <size>1980</size>
+      <size>3658</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>

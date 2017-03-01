@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tileType = 0;
+            <string>///initilize
+tileType = 0;
 cost = 1;
 currentCost = 0;
 color = 0;
@@ -55,24 +56,28 @@ playerTwoSelected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!playerOneSelected &amp;&amp; !playerTwoSelected){
-    //if(canMove){
-    //    sprite_index = HLTile;
-    //} else if (!canMove) {
-    //    sprite_index = tileDefault;
-    //}
+            <string>///set proper sprite
+if(!playerOneSelected &amp;&amp; !playerTwoSelected){
     switch(tileType){
+    case 0:
+        if(canMove){sprite_index = HLTile;} else if (!canMove) {sprite_index = tileDefault;}
+        cost = 1;
     case 1: 
-        sprite_index = grassTile;
+        if(canMove){sprite_index = HLGrassTile;} else if (!canMove) {sprite_index = grassTile;}
         cost = 1;
         break;
     case 2:
-        sprite_index = brushTile;
+        if(canMove){sprite_index = HLBrushTile;} else if (!canMove) {sprite_index = brushTile;}
         cost = 2;
         break;
     case 3: 
-        sprite_index = treeTile;
+        if(canMove){sprite_index = HLTreeTile;} else if (!canMove) {sprite_index = treeTile;}
         cost=3;
+        break;
+    
+    case 4: 
+        sprite_index = waterTile;
+        cost=10;
         break;
     }
 
