@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.teamSize = 1
+  <code>global.teamSize = 1;
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);
