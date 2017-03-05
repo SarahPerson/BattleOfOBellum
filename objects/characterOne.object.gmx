@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>///Initialize
 isSelected = false;
+
+//moveArray
+
+movement = 4;
+attack = 4;
+defence = 4;
+hitPoints = 10;
+attackDice = 4;
 </string>
           </argument>
         </arguments>

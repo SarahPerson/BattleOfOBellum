@@ -56,6 +56,7 @@ global.roomTiles = ds_grid_create(1,1);
   </views>
   <instances>
     <instance objName="versionText" x="16" y="208" name="inst_87A0D6CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Tile" x="528" y="0" name="inst_3FF79B0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -28,8 +28,9 @@
             <string>///initilize
 tileType = 0;
 cost = 1;
-currentCost = 0;
+currentCost = 10;
 color = 0;
+TileToGo = 0;
 canMove = false;
 depth = 1000;
 playerOneSelected=false;

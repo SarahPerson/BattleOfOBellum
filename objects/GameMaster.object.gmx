@@ -99,7 +99,15 @@ switch(mapNum){
             <string>///Combat algorithm
 characters = ds_queue_create();
 
-//if 
+for(var j = 0; j &lt; 9; j++){
+    for(var i = 0; i &lt; global.teamSize; i++){
+            //set global.teamSize[i].moveArray
+        if(global.teamSize[i].moveArray[j] != 0){
+           global.teamSize[i].x =  global.teamSize[i].moveArray[j].x;
+           global.teamSize[i].y =  global.teamSize[i].moveArray[j].y;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
