@@ -316,8 +316,7 @@ for(i = 0; i&lt;global.teamSize;i++){
 if(keyboard_check(key_enter)){
 
     if(isHighlighted==true  &amp;&amp; global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
-        global.teamOne[selectedCharacter].x =curCol*sprite_get_width(global.teamOne[selectedCharacter].sprite_index);
-        global.teamOne[selectedCharacter].y = curRow*sprite_get_height(global.teamOne[selectedCharacter].sprite_index);
+        global.teamOne[selectedCharacter].destTile = global.roomTiles[curCol, curRow];
         
         var i;
         var j;
@@ -332,7 +331,9 @@ if(keyboard_check(key_enter)){
         isHighlighted=false;
         global.teamOne[selectedCharacter].isSelected = false;
     }
-    
+    if(GameMaster.alarm[2] == -1){
+        GameMaster.alarm[2] = room_speed*1;
+    }
 }
 </string>
           </argument>
