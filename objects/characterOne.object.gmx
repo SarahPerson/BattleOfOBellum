@@ -29,12 +29,13 @@
 isSelected = false;
 
 moveArray = array(9);
+attackArray = array(3);
 destTile = 0;
 
 movement = 4;
 attack = 4;
 defence = 4;
-hitPoints = 10;
+hp = 10;
 attackDice = 4;
 </string>
           </argument>

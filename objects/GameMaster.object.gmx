@@ -112,6 +112,7 @@ for(var p = 0; p &lt; global.teamSize; p++){
         while(tempTile != 0){
             ds_stack_push(moveStack, tempTile);
             tempTile = tempTile.originTile;
+            show_message(tempTile.tileType);
         }
     
         switch(global.teamOne[p].movement){
@@ -198,8 +199,8 @@ for(var p = 0; p &lt; global.teamSize; p++){
             global.teamOne[p].moveArray[nextSlot[curSpot]] = tempTile;
         }
     }
-    if(global.teamTwo[p].destTile != 0){
-        tempTile = global.teamOne[p].destTile;
+   /* if(global.teamTwo[p].destTile != 0){
+        tempTile = global.teamTwo[p].destTile;
         while(tempTile != 0){
             ds_stack_push(moveStack, tempTile);
             tempTile = tempTile.originTile;
@@ -281,17 +282,147 @@ for(var p = 0; p &lt; global.teamSize; p++){
         }
         
         while(!ds_stack_empty(moveStack)){
-            tempTile = ds_stack_pop(moveStack);
-            while(tempTile.cost != 1){
+            show_message(tempTile.tileType);
+            while(tempTile.cost &gt; 1){
                 tempTile.cost -= 1;
                 curSpot += 1;
             }
-            global.teamOne[p].moveArray[nextSlot[curSpot]] = tempTile;
+            global.teamTwo[p].moveArray[nextSlot[curSpot]] = tempTile;
         }
         
-    }
+    }*/
 }
 moveAlg = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//combat alg
+charOne = 0;
+charTwo = 0;
+
+switch(charOne.attack){
+    case 1:
+    var x = random_range(1,5);
+    charOne.attackArray[0] = x/3;
+    charOne.attackArray[1] = x/3;
+    charOne.attackArray[2] = x/3;
+    break;
+    case 2:
+    var x = random_range(1,5);
+    charOne.attackArray[0] = random_range(1,5);
+    charOne.attackArray[1] = x/2;
+    charOne.attackArray[2] = x/2;
+    break;
+    case 3:
+    charOne.attackArray[0] = random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5);
+    charOne.attackArray[2] = random_range(1,5);
+    break;
+    case 4:
+    charOne.attackArray[0] = random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[2] = random_range(1,5);
+    break;
+    case 5:
+    charOne.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5);
+    charOne.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 6:
+    charOne.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5) + 1;
+    charOne.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 7:
+    charOne.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 8:
+    charOne.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5) + random_range(1,5) + 1;
+    charOne.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 9:
+    charOne.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charOne.attackArray[1] = random_range(1,5) + random_range(1,5) + random_range(1,5);
+    charOne.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+}
+switch(charTwo.attack){
+    case 1:
+    var x = random_range(1,5);
+    charTwo.attackArray[0] = x/3;
+    charTwo.attackArray[1] = x/3;
+    charTwo.attackArray[2] = x/3;
+    break;
+    case 2:
+    var x = random_range(1,5);
+    charTwo.attackArray[0] = random_range(1,5);
+    charTwo.attackArray[1] = x/2;
+    charTwo.attackArray[2] = x/2;
+    break;
+    case 3:
+    charTwo.attackArray[0] = random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5);
+    charTwo.attackArray[2] = random_range(1,5);
+    break;
+    case 4:
+    charTwo.attackArray[0] = random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[2] = random_range(1,5);
+    break;
+    case 5:
+    charTwo.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5);
+    charTwo.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 6:
+    charTwo.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5) + 1;
+    charTwo.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 7:
+    charTwo.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 8:
+    charTwo.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5) + random_range(1,5) + 1;
+    charTwo.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+    case 9:
+    charTwo.attackArray[0] = random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[1] = random_range(1,5) + random_range(1,5) + random_range(1,5);
+    charTwo.attackArray[2] = random_range(1,5) + random_range(1,5);
+    break;
+}
+
+for(var g = 0; g &lt; 3; g++){
+    if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g];}
+    if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g];}
+}
+
 </string>
           </argument>
         </arguments>
@@ -346,7 +477,6 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             if(global.teamOne[b].moveArray[tick] != 0){
                global.teamOne[b].x =  global.teamOne[b].moveArray[tick].x;
                global.teamOne[b].y =  global.teamOne[b].moveArray[tick].y;
-               show_message(global.teamOne[b].moveArray[tick].x);
             } 
             if(global.teamTwo[b].moveArray[tick] != 0){
                global.teamTwo[b].x =  global.teamTwo[b].moveArray[tick].x;
