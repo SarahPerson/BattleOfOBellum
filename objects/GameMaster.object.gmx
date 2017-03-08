@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///set up map
+tick = 0;
+moveAlg = false;
 canRun = true;
 mapNum = 1;
 myFile = file_text_open_read("smallCity.txt");
@@ -97,7 +99,8 @@ switch(mapNum){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///simul movement algorithm
+            <string>///set move alg to true
+
 moveStack = ds_stack_create();
 curSpot = 0;
 nextSlot = 0;
@@ -285,30 +288,10 @@ for(var p = 0; p &lt; global.teamSize; p++){
             }
             global.teamOne[p].moveArray[nextSlot[curSpot]] = tempTile;
         }
+        
     }
 }
-
-while(tick &lt; 9){ //time step
-    if(canRun){
-        for(var i = 0; i &lt; global.teamSize; i++){ //going through all character at each time step
-            if(global.teamOne[i].moveArray[tick] != 0){
-               global.teamOne[i].x =  global.teamOne[i].moveArray[tick].x;
-               global.teamOne[i].y =  global.teamOne[i].moveArray[tick].y;
-            }
-            if(global.teamTwo[i].moveArray[tick] != 0){
-               global.teamTwo[i].x =  global.teamTwo[i].moveArray[tick].x;
-               global.teamTwo[i].y =  global.teamTwo[i].moveArray[tick].y;
-            }
-        }
-        //Check Colisions/Do Combat
-       // canRun = false;
-        tick += 1;
-        //if(alarm[0] &lt; 0){
-        //    alarm[0] = room_speed*1.5;
-        //}
-    }
-    
-}
+moveAlg = true;
 </string>
           </argument>
         </arguments>
@@ -332,7 +315,51 @@ while(tick &lt; 9){ //time step
           <argument>
             <kind>1</kind>
             <string>///sets can run
-canRun = true;
+if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///simul movement algorithm
+
+//time step
+    if(moveAlg){
+        for(var b = 0; b &lt; global.teamSize; b++){ //going through all character at each time step
+            if(global.teamOne[b].moveArray[tick] != 0){
+               global.teamOne[b].x =  global.teamOne[b].moveArray[tick].x;
+               global.teamOne[b].y =  global.teamOne[b].moveArray[tick].y;
+               show_message(global.teamOne[b].moveArray[tick].x);
+            } 
+            if(global.teamTwo[b].moveArray[tick] != 0){
+               global.teamTwo[b].x =  global.teamTwo[b].moveArray[tick].x;
+               global.teamTwo[b].y =  global.teamTwo[b].moveArray[tick].y;
+            }
+        }
+        //Check Colisions/Do Combat
+        moveAlg = false;
+        tick += 1;
+        alarm[0] = room_speed*1.5;
+
+    }
+
 </string>
           </argument>
         </arguments>
