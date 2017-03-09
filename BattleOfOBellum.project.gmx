@@ -48,7 +48,6 @@
     <sprites name="UIWidgets">
       <sprite>sprites\buttonSprite</sprite>
     </sprites>
-    <sprite>sprites\split_screen_gui</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
