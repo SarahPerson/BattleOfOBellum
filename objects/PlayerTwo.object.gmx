@@ -214,6 +214,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             maxSize = room_width/16;
             toLook = ds_queue_create();
             global.roomTiles[curX, curY].currentCost = 0;
+            global.roomTiles[curX, curY].originTile = 0;
             ds_queue_enqueue(toLook, global.roomTiles[curX, curY]);
             
             while(!ds_queue_empty(toLook)){
@@ -314,8 +315,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             <string>///Move Character 
 if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
     if(isHighlighted==true  &amp;&amp; global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
-        global.teamTwo[selectedCharacter].x =curCol*sprite_get_width(global.teamTwo[selectedCharacter].sprite_index);
-        global.teamTwo[selectedCharacter].y = curRow*sprite_get_height(global.teamTwo[selectedCharacter].sprite_index);
+        global.teamTwo[selectedCharacter].destTile = global.roomTiles[curCol, curRow];
         
         var i;
         var j;
@@ -324,11 +324,14 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
                 global.roomTiles[i,j].canMove=false;
                 global.roomTiles[i,j].color=0;
                 global.roomTiles[i,j].currentCost = 10;
-                global.roomTiles[i,j].originTile = 0;
+                //global.roomTiles[i,j].originTile = 0;
             }
         }
         isHighlighted=false;
         global.teamTwo[selectedCharacter].isSelected = false;
+    }
+    if(GameMaster.alarm[2] == -1){
+        GameMaster.alarm[2] = room_speed*1;
     }
 }
 </string>
