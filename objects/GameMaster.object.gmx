@@ -112,7 +112,7 @@ for(var p = 0; p &lt; global.teamSize; p++){
         while(tempTile != 0){
             ds_stack_push(moveStack, tempTile);
             tempTile = tempTile.originTile;
-            show_message(tempTile.tileType);
+            //show_message(tempTile);
         }
     
         switch(global.teamOne[p].movement){
@@ -189,15 +189,20 @@ for(var p = 0; p &lt; global.teamSize; p++){
                 nextSlot[8] = 8;
             break;
         }
-        
+        ds_stack_pop(moveStack);
+        global.teamOne[p].moveArray = array(9);
         while(!ds_stack_empty(moveStack)){
             tempTile = ds_stack_pop(moveStack);
             while(tempTile.cost != 1){
                 tempTile.cost -= 1;
                 curSpot += 1;
             }
+            
             global.teamOne[p].moveArray[nextSlot[curSpot]] = tempTile;
+            curSpot += 1;
+            //show_message("MoveArray: " + string(tempTile));
         }
+        curSpot = 0;
     }
    /* if(global.teamTwo[p].destTile != 0){
         tempTile = global.teamTwo[p].destTile;
@@ -481,12 +486,14 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             if(global.teamTwo[b].moveArray[tick] != 0){
                global.teamTwo[b].x =  global.teamTwo[b].moveArray[tick].x;
                global.teamTwo[b].y =  global.teamTwo[b].moveArray[tick].y;
-            }
+        
+                }
+            //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }
         //Check Colisions/Do Combat
         moveAlg = false;
         tick += 1;
-        alarm[0] = room_speed*1.5;
+        alarm[0] = room_speed*.25;
 
     }
 
