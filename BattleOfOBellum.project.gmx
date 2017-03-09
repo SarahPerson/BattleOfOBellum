@@ -48,6 +48,7 @@
     <sprites name="UIWidgets">
       <sprite>sprites\buttonSprite</sprite>
     </sprites>
+    <sprite>sprites\split_screen_gui</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -69,9 +70,9 @@
     <object>objects\Button</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\SplitScreen</room>
     <room>rooms\SplashScreen</room>
     <room>rooms\Stronghold</room>
-    <room>rooms\SplitScreen</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
