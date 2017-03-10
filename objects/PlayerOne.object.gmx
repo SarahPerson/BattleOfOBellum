@@ -49,6 +49,10 @@ characterSelected = 0;
 //queue of highlighted tiles
 highlightedTiles = ds_queue_create();
 
+//Setting up menu controls
+inMenu = true;
+currentIncrement = 0;
+
 
 </string>
           </argument>

@@ -46,7 +46,7 @@
       <sprite>sprites\HLWallTile</sprite>
     </sprites>
     <sprites name="UIWidgets">
-      <sprite>sprites\buttonSprite</sprite>
+      <sprite>sprites\splitScreenReadyButton</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -66,9 +66,11 @@
     <object>objects\characterTwo</object>
     <object>objects\PlayerTwoObject</object>
     <object>objects\versionText</object>
-    <object>objects\Button</object>
+    <object>objects\PlayerOneButton</object>
+    <object>objects\PlayerTwoButton</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\FullScreen</room>
     <room>rooms\SplashScreen</room>
     <room>rooms\Stronghold</room>
     <room>rooms\SplitScreen</room>
