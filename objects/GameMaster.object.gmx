@@ -79,10 +79,12 @@ mapNum = 2;
 myFile = file_text_open_read("smallCity.txt");
 startingX = 100;
 startingY = 100;
+spriteScaleFull=1.875; //1.66666667 scaling of sprites to fit full screen top to bottom
+spriteScaleSplit=700/(30*16); //1.66666667 scaling of sprites to fit full screen top to bottom
 
-switch(mapNum){
-
-    case 1:
+switch(room){
+    
+    case Stronghold:
         var i, j, z;
         for (i = 0; i &lt; 30; i += 1)
            {
@@ -97,13 +99,13 @@ switch(mapNum){
                 {
                     if(global.teamOne[z].row==i &amp;&amp; global.teamOne[z].col==j)
                     {
-                        global.teamOne[z].x=j*16;
-                        global.teamOne[z].y = i*16;
+                        global.teamOne[z].x = global.roomTiles[j,i].x;
+                        global.teamOne[z].y = global.roomTiles[j,i].y;
                     }
                      if(global.teamTwo[z].row==i &amp;&amp; global.teamTwo[z].col==j)
                     {
-                        global.teamTwo[z].x = j*16;
-                        global.teamTwo[z].y = i*16;
+                        global.teamTwo[z].x = global.roomTiles[j,i].x;
+                        global.teamTwo[z].y = global.roomTiles[j,i].y;
                     }
                 }
                 
@@ -111,26 +113,27 @@ switch(mapNum){
                 //check if objective one goes on this tile
                 if(PlayerOneObjective.row==i &amp;&amp; PlayerOneObjective.col==j)
                 {
-                    PlayerOneObjective.x = j*16;
-                    PlayerOneObjective.y = i*16;    
+                    PlayerOneObjective.x = global.roomTiles[j,i].x;
+                    PlayerOneObjective.y = global.roomTiles[j,i].y;    
                 }
                 //check if objective two goes on this tile
                 if(PlayerTwoObject.row==i &amp;&amp; PlayerTwoObject.col==j)
                 {
-                    PlayerTwoObject.x = j*16;
-                    PlayerTwoObject.y = i*16;    
+                    PlayerTwoObject.x = global.roomTiles[j,i].x;
+                    PlayerTwoObject.y = global.roomTiles[j,i].y;    
                 }
               }
            }
            
         break;
-    case 2: 
+    case FullScreen: 
         // for full screen
-
-        spriteScale=16*5/3; //1.66666667 scaling of sprites to fit full screen top to bottom
-        startingX=400;
+        
+       
+        startingX=350;
         startingY=0;
         
+        tilePosConst = 16*spriteScaleFull;
         //set initial ds grid
         var i, j, z;
         for (i = 0; i &lt; 30; i += 1)
@@ -138,7 +141,7 @@ switch(mapNum){
         for (j = 0; j &lt; 30; j += 1)
            {
              tempTile = instance_create(j*16, i*16, Tile);
-             global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
+             global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
            }
@@ -147,19 +150,83 @@ switch(mapNum){
         //rotate the grid
 
         rotatedGrid = ds_grid_create(30,30);
+        
         for (i = 0; i &lt;30; i += 1)
         {
             for (j = 0; j &lt; 30; j += 1)
             {
+                rotatedGrid[j,30-i-1]=global.roomTiles[i,j].id;
                 rotatedGrid[j,30-i-1].tileType=global.roomTiles[i,j].tileType;
-                
-              //reset the tiles in roomTiles
-               global.roomTiles[i,j].tileType = rotatedGrid[i, j].tileType; //reset the grid  
                 
             }
         }
+        
+        for (i = 0; i &lt;30; i += 1)
+        {
+            for (j = 0; j &lt; 30; j += 1)
+            {
+                rotatedGrid[i,j].image_xscale=spriteScaleFull;
+                rotatedGrid[i,j].image_yscale=spriteScaleFull;
+                rotatedGrid[i,j].x=i*tilePosConst+startingX;
+                rotatedGrid[i,j].y=j*tilePosConst+startingY;              
+            }
+        }
+        
+        //place characters and objectives
+        for(z=0; z&lt;global.teamSize; z+=1){
+            n=global.teamOne[z].col
+            global.teamOne[z].col = 30-global.teamOne[z].row-1;
+            global.teamOne[z].row = n;
+
+            n=global.teamTwo[z].col    
+            global.teamTwo[z].col = 30-global.teamTwo[z].row-1;
+            global.teamTwo[z].row= n;
+        }
+        
+        //Set the objectives
+        n=PlayerOneObjective.col;
+        PlayerOneObjective.col = 30-PlayerOneObjective.row-1;
+        PlayerOneObjective.row = n;    
+      
+        //check if objective two goes on this tile
+
+        n=PlayerTwoObject.col;
+        PlayerTwoObject.col = 30-PlayerTwoObject.row-1;
+        PlayerTwoObject.row = n;
+        
+        for(z=0; z&lt;global.teamSize; z+=1)
+        {
+            //set team one characters    
+            global.teamOne[z].image_xscale=spriteScaleFull;
+            global.teamOne[z].image_yscale=spriteScaleFull;
+            global.teamOne[z].x = global.teamOne[z].col*tilePosConst+startingX;
+            global.teamOne[z].y = global.teamOne[z].row*tilePosConst+startingY;
+            
+            //set team two characters
+            global.teamTwo[z].image_xscale=spriteScaleFull;
+            global.teamTwo[z].image_yscale=spriteScaleFull;
+            global.teamTwo[z].x = global.teamTwo[z].col*tilePosConst+startingX;
+            global.teamTwo[z].y = global.teamTwo[z].row*tilePosConst+startingY;
+           
+            //set objects
+            PlayerOneObjective.image_xscale=spriteScaleFull;
+            PlayerOneObjective.image_yscale=spriteScaleFull;
+            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingX;
+            PlayerOneObjective.y = PlayerOneObjective.row*tilePosConst+startingY;
+
+            PlayerTwoObject.image_xscale=spriteScaleFull;
+            PlayerTwoObject.image_yscale=spriteScaleFull;
+            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingX;
+            PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
+
+        }
+        
                 
-        break;       
+        break;     
+        
+    case SplitScreen:
+        
+        break;  
 
     }        
 
@@ -193,6 +260,9 @@ global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
 //size = ds_grid_width(global.roomTiles);
 switch(mapNum){
     case 1:
+        global.roomSize = 30;
+        break;
+    case 2: 
         global.roomSize = 30;
         break;
 }
