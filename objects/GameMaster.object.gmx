@@ -75,11 +75,13 @@ instance_create(0,0,PlayerTwoObject);
 tick = 0;
 moveAlg = false;
 canRun = true;
-mapNum = 1;
+mapNum = 2;
 myFile = file_text_open_read("smallCity.txt");
 startingX = 100;
 startingY = 100;
+
 switch(mapNum){
+
     case 1:
         var i, j, z;
         for (i = 0; i &lt; 30; i += 1)
@@ -120,10 +122,50 @@ switch(mapNum){
                 }
               }
            }
+           
         break;
+    case 2: 
+        // for full screen
 
-}
+        spriteScale=16*5/3; //1.66666667 scaling of sprites to fit full screen top to bottom
+        startingX=400;
+        startingY=0;
+        
+        //set initial ds grid
+        var i, j, z;
+        for (i = 0; i &lt; 30; i += 1)
+        {
+        for (j = 0; j &lt; 30; j += 1)
+           {
+             tempTile = instance_create(j*16, i*16, Tile);
+             global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
+             var temp = file_text_read_real(myFile);
+             global.roomTiles[j,i].tileType = temp;
+           }
+        }
+        
+        //rotate the grid
+
+        rotatedGrid = ds_grid_create(30,30);
+        for (i = 0; i &lt;30; i += 1)
+        {
+            for (j = 0; j &lt; 30; j += 1)
+            {
+                rotatedGrid[j,30-i-1].tileType=global.roomTiles[i,j].tileType;
+                
+              //reset the tiles in roomTiles
+               global.roomTiles[i,j].tileType = rotatedGrid[i, j].tileType; //reset the grid  
+                
+            }
+        }
+                
+        break;       
+
+    }        
+
 file_text_close(myFile);
+
+//set initial position of the players cursors
 
 global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
 global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
