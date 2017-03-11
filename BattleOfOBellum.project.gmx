@@ -70,9 +70,9 @@
     <object>objects\PlayerTwoButton</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\FullScreen</room>
     <room>rooms\SplashScreen</room>
     <room>rooms\Stronghold</room>
+    <room>rooms\FullScreen</room>
     <room>rooms\SplitScreen</room>
   </rooms>
   <help>

@@ -47,10 +47,10 @@ canMove=true;
 canSelect=true;
 isHighlighted=false;
 
-global.roomTiles[curCol,curRow].playerTwoSelected=true;
+//global.roomTiles[curCol,curRow].playerTwoSelected=true;
 
 //Setting the team
-global.teamTwo[0] = characterTwo;
+global.teamTwo[0] = instance_create(0,0,characterTwo);
 characterSelected = 0;
 
 //queue of highlighted tiles

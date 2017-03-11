@@ -25,15 +25,63 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Setup the players
+instance_create(0,0,PlayerOne);
+instance_create(0,0,PlayerTwo);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set up the objectives
+instance_create(0,0,PlayerOneObjective);
+instance_create(0,0,PlayerTwoObject);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///set up map
 tick = 0;
 moveAlg = false;
 canRun = true;
 mapNum = 1;
 myFile = file_text_open_read("smallCity.txt");
+startingX = 100;
+startingY = 100;
 switch(mapNum){
     case 1:
-        var i, j;
+        var i, j, z;
         for (i = 0; i &lt; 30; i += 1)
            {
            for (j = 0; j &lt; 30; j += 1)
@@ -42,12 +90,43 @@ switch(mapNum){
                 global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
                 var temp = file_text_read_real(myFile);
                 global.roomTiles[j,i].tileType = temp;
+                
+                for(z=0; z&lt;global.teamSize; z+=1)
+                {
+                    if(global.teamOne[z].row==i &amp;&amp; global.teamOne[z].col==j)
+                    {
+                        global.teamOne[z].x=j*16;
+                        global.teamOne[z].y = i*16;
+                    }
+                     if(global.teamTwo[z].row==i &amp;&amp; global.teamTwo[z].col==j)
+                    {
+                        global.teamTwo[z].x = j*16;
+                        global.teamTwo[z].y = i*16;
+                    }
+                }
+                
+                //Set the objectives
+                //check if objective one goes on this tile
+                if(PlayerOneObjective.row==i &amp;&amp; PlayerOneObjective.col==j)
+                {
+                    PlayerOneObjective.x = j*16;
+                    PlayerOneObjective.y = i*16;    
+                }
+                //check if objective two goes on this tile
+                if(PlayerTwoObject.row==i &amp;&amp; PlayerTwoObject.col==j)
+                {
+                    PlayerTwoObject.x = j*16;
+                    PlayerTwoObject.y = i*16;    
+                }
               }
            }
         break;
 
 }
 file_text_close(myFile);
+
+global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
+global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
 </string>
           </argument>
         </arguments>

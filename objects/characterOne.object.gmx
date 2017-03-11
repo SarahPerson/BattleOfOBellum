@@ -37,6 +37,10 @@ attack = 4;
 defence = 4;
 hp = 10;
 attackDice = 4;
+
+//initial position
+row = 27;
+col = 27;
 </string>
           </argument>
         </arguments>

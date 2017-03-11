@@ -36,6 +36,10 @@ attack = 4;
 defence = 4;
 hitPoints = 10;
 attackDice = 4;
+
+//initial position
+row = 2;
+col = 2;
 </string>
           </argument>
         </arguments>
