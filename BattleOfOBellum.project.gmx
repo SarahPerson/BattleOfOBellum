@@ -26,7 +26,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite1</sprite>
-    <sprite>sprites\characterOneSprite</sprite>
+    <sprite>sprites\Soldier</sprite>
     <sprite>sprites\playerOneGoal</sprite>
     <sprite>sprites\playerTwoGoal</sprite>
     <sprite>sprites\Wizard</sprite>
@@ -68,6 +68,7 @@
     <object>objects\versionText</object>
     <object>objects\PlayerOneButton</object>
     <object>objects\PlayerTwoButton</object>
+    <object>objects\Character</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>

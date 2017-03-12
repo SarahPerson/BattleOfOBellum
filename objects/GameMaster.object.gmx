@@ -258,6 +258,8 @@ global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
             <kind>1</kind>
             <string>///global variable for room
 //size = ds_grid_width(global.roomTiles);
+charOne = 0;
+charTwo = 0;
 switch(mapNum){
     case 1:
         global.roomSize = 30;
@@ -515,9 +517,8 @@ moveAlg = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//combat alg
-charOne = 0;
-charTwo = 0;
+            <string>///combat alg
+
 
 switch(charOne.attack){
     case 1:
@@ -686,6 +687,22 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }
         //Check Colisions/Do Combat
+        for(var q = 0; q &lt; global.teamSize; q++){
+            var inst;
+            inst = instance_place(global.teamOne[q].x,global.teamOne[q].y, Character); 
+            show_message("1");
+            if(inst != noone){
+                for(var t = 0; t &lt; global.teamSize; t++){
+                show_message("2");
+                    if(inst == global.teamTwo[t]){
+                        charOne = inst;
+                        charTwo = global.teamTwo[t];
+                        show_message("3");
+                        //alarm[1] = room_speed*.05;
+                    }
+                }
+            }
+        }
         moveAlg = false;
         tick += 1;
         alarm[0] = room_speed*.25;
