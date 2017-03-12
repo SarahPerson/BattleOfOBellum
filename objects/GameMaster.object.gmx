@@ -620,8 +620,41 @@ switch(charTwo.attack){
 }
 
 for(var g = 0; g &lt; 3; g++){
-    if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g];}
-    if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g];}
+    var sum1 = 0;
+    var sum2 = 0;
+    if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g]; sum2 += charTwo.attackArray[g];}
+    if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g]; sum1 += charOne.attackArray[g];}
+}
+
+if(sum1 == sum2){
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charOne.moveArray[o] != 0){
+            charOne.x = charOne.moveArray[o].x;
+            charOne.y = charOne.moveArray[o].y;
+            charOne.moveArray = array(9);
+        }
+        if(charTwo.moveArray[o] != 0){
+            charTwo.x = charTwo.moveArray[o].x;
+            charTwo.y = charTwo.moveArray[o].y;
+            charTwo.moveArray = array(9);
+        }
+    }
+} else if(sum1 &gt; sum2) {
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charTwo.moveArray[o] != 0){
+            charTwo.x = charTwo.moveArray[o].x;
+            charTwo.y = charTwo.moveArray[o].y;
+            charTwo.moveArray = array(9);
+        }
+    }
+} else {
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charOne.moveArray[o] != 0){
+            charOne.x = charOne.moveArray[o].x;
+            charOne.y = charOne.moveArray[o].y;
+            charOne.moveArray = array(9);
+        }
+    }
 }
 
 </string>
@@ -687,22 +720,7 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }
         //Check Colisions/Do Combat
-        for(var q = 0; q &lt; global.teamSize; q++){
-            var inst;
-            inst = instance_place(global.teamOne[q].x,global.teamOne[q].y, Character); 
-            show_message("1");
-            if(inst != noone){
-                for(var t = 0; t &lt; global.teamSize; t++){
-                show_message("2");
-                    if(inst == global.teamTwo[t]){
-                        charOne = inst;
-                        charTwo = global.teamTwo[t];
-                        show_message("3");
-                        //alarm[1] = room_speed*.05;
-                    }
-                }
-            }
-        }
+        
         moveAlg = false;
         tick += 1;
         alarm[0] = room_speed*.25;

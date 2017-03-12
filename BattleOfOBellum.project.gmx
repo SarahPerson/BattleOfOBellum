@@ -60,10 +60,8 @@
     <object>objects\Tile</object>
     <object>objects\PlayerOne</object>
     <object>objects\PlayerTwo</object>
-    <object>objects\characterOne</object>
     <object>objects\GameMaster</object>
     <object>objects\PlayerOneObjective</object>
-    <object>objects\characterTwo</object>
     <object>objects\PlayerTwoObject</object>
     <object>objects\versionText</object>
     <object>objects\PlayerOneButton</object>
