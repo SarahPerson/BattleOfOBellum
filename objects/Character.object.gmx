@@ -39,8 +39,13 @@ hp = 10;
 attackDice = 4;
 
 //initial position
+originRow= 27;
+originCol=27;
+
 row = 27;
 col = 27;
+
+
 </string>
           </argument>
         </arguments>

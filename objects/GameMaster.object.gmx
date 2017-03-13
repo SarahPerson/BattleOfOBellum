@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Setup the players
-instance_create(0,0,PlayerOne);
-instance_create(0,0,PlayerTwo);
+            <string>///Set up the objectives
+instance_create(0,0,PlayerOneObjective);
+instance_create(0,0,PlayerTwoObject);
 </string>
           </argument>
         </arguments>
@@ -48,9 +48,9 @@ instance_create(0,0,PlayerTwo);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set up the objectives
-instance_create(0,0,PlayerOneObjective);
-instance_create(0,0,PlayerTwoObject);
+            <string>///Setup the players
+instance_create(0,0,PlayerOne);
+instance_create(0,0,PlayerTwo);
 </string>
           </argument>
         </arguments>
@@ -161,6 +161,7 @@ switch(room){
             }
         }
         
+        //draw grid
         for (i = 0; i &lt;30; i += 1)
         {
             for (j = 0; j &lt; 30; j += 1)
@@ -174,24 +175,24 @@ switch(room){
         
         //place characters and objectives
         for(z=0; z&lt;global.teamSize; z+=1){
-            n=global.teamOne[z].col
-            global.teamOne[z].col = 30-global.teamOne[z].row-1;
+            n=global.teamOne[z].originCol
+            global.teamOne[z].col = 30-global.teamOne[z].originRow-1;
             global.teamOne[z].row = n;
 
-            n=global.teamTwo[z].col    
-            global.teamTwo[z].col = 30-global.teamTwo[z].row-1;
+            n=global.teamTwo[z].originCol    
+            global.teamTwo[z].col = 30-global.teamTwo[z].originRow-1;
             global.teamTwo[z].row= n;
         }
         
         //Set the objectives
-        n=PlayerOneObjective.col;
-        PlayerOneObjective.col = 30-PlayerOneObjective.row-1;
+        n=PlayerOneObjective.originCol;
+        PlayerOneObjective.col = 30-PlayerOneObjective.originRow-1;
         PlayerOneObjective.row = n;    
       
         //check if objective two goes on this tile
 
-        n=PlayerTwoObject.col;
-        PlayerTwoObject.col = 30-PlayerTwoObject.row-1;
+        n=PlayerTwoObject.originCol;
+        PlayerTwoObject.col = 30-PlayerTwoObject.originRow-1;
         PlayerTwoObject.row = n;
         
         for(z=0; z&lt;global.teamSize; z+=1)
@@ -220,7 +221,9 @@ switch(room){
             PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
 
         }
-        
+        //set initial position of the players cursors
+        //global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
+        //global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
                 
         break;     
         
@@ -231,7 +234,7 @@ switch(room){
         startingXTwo=875;
         startingY=100;
         
-        tilePosConst = 16*spriteScaleFull;
+        tilePosConst = 16*spriteScaleSplit;
         //set initial ds grid
         var i, j, z;
         for (i = 0; i &lt; 30; i += 1)
@@ -245,17 +248,42 @@ switch(room){
            }
         }
         
-        //Make two copies
-        gridOne = ds_grid_create(30,30);
-        gridTwo = ds_grid_create(30,30);
+        //Make one copies
+        //gridTwo = ds_grid_create(30,30);
+        var temp;
         for (i = 0; i &lt; 30; i += 1)
         {
             for (j = 0; j &lt; 30; j += 1)
                {
-                    gridOne[ = global.roomTile[i,j]
+                    //make flipped copy of player two 
+                    temp=instance_create(0,0,Tile);
+                    temp.tileType = global.roomTiles[i,30-j-1].tileType;
+                    global.gridTwo[i,j]=temp;
                }
         }
         
+        //draw the things
+        for (i = 0; i &lt; 30; i += 1)
+        {
+            for (j = 0; j &lt; 30; j += 1)
+                {
+                    //move player ones grid into position
+                    global.roomTiles[i,j].image_xscale=spriteScaleSplit;
+                    global.roomTiles[i,j].image_yscale=spriteScaleSplit;
+                    global.roomTiles[i,j].x=i*tilePosConst+startingXOne;
+                    global.roomTiles[i,j].y=j*tilePosConst+startingY;  
+                    
+                    //move player twos grid into position
+                    global.gridTwo[i,j].image_xscale=spriteScaleSplit;
+                    global.gridTwo[i,j].image_yscale=spriteScaleSplit;
+                    global.gridTwo[i,j].x=i*tilePosConst+startingXTwo;
+                    global.gridTwo[i,j].y=j*tilePosConst+startingY; 
+                    
+                }
+        }
+        
+        global.gridTwo[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
+        global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
         
         break;  
 
@@ -263,10 +291,9 @@ switch(room){
 
 file_text_close(myFile);
 
-//set initial position of the players cursors
 
-global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
-global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
+
+
 </string>
           </argument>
         </arguments>
