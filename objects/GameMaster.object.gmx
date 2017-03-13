@@ -226,6 +226,37 @@ switch(room){
         
     case SplitScreen:
         
+       
+        startingXOne=25;
+        startingXTwo=875;
+        startingY=100;
+        
+        tilePosConst = 16*spriteScaleFull;
+        //set initial ds grid
+        var i, j, z;
+        for (i = 0; i &lt; 30; i += 1)
+        {
+        for (j = 0; j &lt; 30; j += 1)
+           {
+             tempTile = instance_create(j*16, i*16, Tile);
+             global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
+             var temp = file_text_read_real(myFile);
+             global.roomTiles[j,i].tileType = temp;
+           }
+        }
+        
+        //Make two copies
+        gridOne = ds_grid_create(30,30);
+        gridTwo = ds_grid_create(30,30);
+        for (i = 0; i &lt; 30; i += 1)
+        {
+            for (j = 0; j &lt; 30; j += 1)
+               {
+                    gridOne[ = global.roomTile[i,j]
+               }
+        }
+        
+        
         break;  
 
     }        

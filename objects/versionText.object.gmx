@@ -55,7 +55,7 @@ draw_text(120,10, "Ver. 0.3");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(Stronghold);
+            <string>room_goto(SplitScreen);
 </string>
           </argument>
         </arguments>
