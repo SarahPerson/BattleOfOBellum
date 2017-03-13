@@ -211,7 +211,8 @@ var i = 0;
     if(canSelect)
     {
 for(i = 0; i&lt;global.teamSize;i++){
-
+        show_message(curCol);
+        show_message(curRow);
         if(isHighlighted==false &amp;&amp; self.curCol == (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16 &amp;&amp; self.curRow == (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16){
             ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
             selectedCharacter = i;
