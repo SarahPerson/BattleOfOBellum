@@ -289,6 +289,8 @@ global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
             <kind>1</kind>
             <string>///global variable for room
 //size = ds_grid_width(global.roomTiles);
+charOne = 0;
+charTwo = 0;
 switch(mapNum){
     case 1:
         global.roomSize = 30;
@@ -546,9 +548,8 @@ moveAlg = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//combat alg
-charOne = 0;
-charTwo = 0;
+            <string>///combat alg
+
 
 switch(charOne.attack){
     case 1:
@@ -650,8 +651,41 @@ switch(charTwo.attack){
 }
 
 for(var g = 0; g &lt; 3; g++){
-    if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g];}
-    if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g];}
+    var sum1 = 0;
+    var sum2 = 0;
+    if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g]; sum2 += charTwo.attackArray[g];}
+    if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g]; sum1 += charOne.attackArray[g];}
+}
+
+if(sum1 == sum2){
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charOne.moveArray[o] != 0){
+            charOne.x = charOne.moveArray[o].x;
+            charOne.y = charOne.moveArray[o].y;
+            charOne.moveArray = array(9);
+        }
+        if(charTwo.moveArray[o] != 0){
+            charTwo.x = charTwo.moveArray[o].x;
+            charTwo.y = charTwo.moveArray[o].y;
+            charTwo.moveArray = array(9);
+        }
+    }
+} else if(sum1 &gt; sum2) {
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charTwo.moveArray[o] != 0){
+            charTwo.x = charTwo.moveArray[o].x;
+            charTwo.y = charTwo.moveArray[o].y;
+            charTwo.moveArray = array(9);
+        }
+    }
+} else {
+    for(var o = tick - 1; o &gt;= 0; o--){
+        if(charOne.moveArray[o] != 0){
+            charOne.x = charOne.moveArray[o].x;
+            charOne.y = charOne.moveArray[o].y;
+            charOne.moveArray = array(9);
+        }
+    }
 }
 
 </string>
@@ -717,6 +751,7 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }
         //Check Colisions/Do Combat
+        
         moveAlg = false;
         tick += 1;
         alarm[0] = room_speed*.25;

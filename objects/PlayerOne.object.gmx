@@ -43,7 +43,8 @@ isHighlighted=false;
 //global.roomTiles[curCol,curRow].playerOneSelected=true;
 
 //Setting the team
-global.teamOne[0] = instance_create(0,0,characterOne);
+global.teamOne[0] = instance_create(0,0,Character);
+global.teamOne[0].sprite_index = Soldier;
 characterSelected = 0;
 
 //queue of highlighted tiles
