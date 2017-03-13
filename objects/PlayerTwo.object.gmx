@@ -224,6 +224,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             toLook = ds_queue_create();
             global.roomTiles[curX, curY].currentCost = 0;
             global.roomTiles[curX, curY].originTile = 0;
+            global.roomTiles[curX, curY].originDerect = 0;
             ds_queue_enqueue(toLook, global.roomTiles[curX, curY]);
             
             while(!ds_queue_empty(toLook)){
@@ -238,18 +239,22 @@ for(i = 0; i&lt;global.teamSize;i++){
                        if(curX + 1 &lt; maxSize &amp;&amp; global.roomTiles[curX + 1, curY].currentCost &gt; global.roomTiles[curX + 1, curY].cost + curTile.currentCost){ 
                             global.roomTiles[curX + 1, curY].currentCost = global.roomTiles[curX + 1, curY].cost + curTile.currentCost;
                             global.roomTiles[curX + 1, curY].originTile = curTile;
+                            global.roomTiles[curX + 1, curY].originDerect = 1;
                             ds_queue_enqueue(toLook, global.roomTiles[curX + 1, curY]);
                         }if(curX - 1 &gt;= 0 &amp;&amp; global.roomTiles[curX - 1, curY].currentCost &gt; global.roomTiles[curX - 1, curY].cost + curTile.currentCost){
                             global.roomTiles[curX - 1, curY].currentCost = global.roomTiles[curX - 1, curY].cost + curTile.currentCost;
                             global.roomTiles[curX - 1, curY].originTile = curTile;
+                            global.roomTiles[curX - 1, curY].originDerect = 2;
                             ds_queue_enqueue(toLook, global.roomTiles[curX - 1, curY]);
                         }if(curY + 1 &lt; maxSize &amp;&amp; global.roomTiles[curX, curY + 1].currentCost &gt; global.roomTiles[curX, curY + 1].cost + curTile.currentCost){
                             global.roomTiles[curX, curY + 1].currentCost = global.roomTiles[curX, curY + 1].cost + curTile.currentCost;
                             global.roomTiles[curX, curY + 1].originTile = curTile;
+                            global.roomTiles[curX, curY + 1].originDerect = 3;
                             ds_queue_enqueue(toLook, global.roomTiles[curX, curY + 1]);
                         }if(curY - 1 &gt;= 0 &amp;&amp; global.roomTiles[curX, curY - 1].currentCost &gt; global.roomTiles[curX, curY - 1].cost + curTile.currentCost){
                             global.roomTiles[curX, curY - 1].currentCost = global.roomTiles[curX, curY - 1].cost + curTile.currentCost;
                             global.roomTiles[curX, curY - 1].originTile = curTile;
+                            global.roomTiles[curX, curY - 1].originDerect = 4;
                             ds_queue_enqueue(toLook, global.roomTiles[curX, curY - 1]);
                             }
                         }
@@ -326,6 +331,17 @@ for(i = 0; i&lt;global.teamSize;i++){
 if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
     if(isHighlighted==true  &amp;&amp; global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
         global.teamTwo[selectedCharacter].destTile = global.roomTiles[curCol, curRow];
+        var dx = global.roomTiles[curCol, curRow].originTile.x - global.roomTiles[curCol, curRow].x;
+        var dy = global.roomTiles[curCol, curRow].originTile.y - global.roomTiles[curCol, curRow].y;
+        if(dx != 0 || dy != 0){
+            if(dx == 0){
+                if(dy &lt; 0){ global.teamTwo[selectedCharacter].destTile.originDerect = 3;}
+                else { global.teamTwo[selectedCharacter].destTile.originDerect = 4;}
+            } else {
+                if(dx &lt; 0) {global.teamTwo[selectedCharacter].destTile.originDerect = 1;}
+                else {global.teamTwo[selectedCharacter].destTile.originDerect = 2;}
+            }
+        }
         
         var i;
         var j;

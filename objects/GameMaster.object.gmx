@@ -597,7 +597,7 @@ for(var p = 0; p &lt; global.teamSize; p++){
                 curSpot += 1;
             }
             
-            global.teamTwo[p].moveArray[nextSlot[curSpot]] = tempTile;
+            global.teamTwo[p].moveArray[nextSlot[curSpot]] = tempTile.originDerect;
             curSpot += 1;
             //show_message("MoveArray: " + string(tempTile));
         }
@@ -815,6 +815,7 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             <string>///simul movement algorithm
 
 //time step
+moveDist = 16*global.spriteScaleSplit;
     if(moveAlg){
         for(var b = 0; b &lt; global.teamSize; b++){ //going through all character at each time step
             if(global.teamOne[b].moveArray[tick] != 0){
@@ -823,12 +824,19 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
                
             } 
             if(global.teamTwo[b].moveArray[tick] != 0){
-               global.teamTwo[b].x =  global.teamTwo[b].moveArray[tick].x;
-               global.teamTwo[b].y =  global.teamTwo[b].moveArray[tick].y;        
+                if(global.teamTwo[b].moveArray[tick] == 1){
+                    global.teamTwo[b].x += moveDist
+                } else if (global.teamTwo[b].moveArray[tick] == 2){
+                    global.teamTwo[b].x -= moveDist
                 }
+                else if (global.teamTwo[b].moveArray[tick] == 3){
+                    global.teamTwo[b].y += moveDist;
+                } else {
+                    global.teamTwo[b].y -= moveDist;
+                }
+            }
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }
-        //Check Colisions/Do Combat
         
         moveAlg = false;
         tick += 1;
