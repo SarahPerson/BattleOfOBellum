@@ -337,6 +337,36 @@ switch(room){
             PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
 
         }
+        
+        //Copy teams and draw seconds on screen
+        copyTeamOne = array(global.teamSize);
+        
+        for (z=0; z&lt; global.teamSize; z+=1)
+        {
+            copyTeamOne[z] = instance_create(0,0, Character);
+            copyTeamOne[z].sprite_index = global.teamOne[z].sprite_index;
+            copyTeamOne[z].originRow = global.teamOne[z].originRow;
+            copyTeamOne[z].originCol = global.teamOne[z].originCol;
+            
+            //move to correct location
+            copyTeamOne[z].image_xscale=spriteScaleSplit;
+            copyTeamOne[z].image_yscale=spriteScaleSplit;
+            copyTeamOne[z].x = copyTeamOne[z].originCol*tilePosConst+startingXOne;
+            copyTeamOne[z].y = copyTeamOne[z].originRow*tilePosConst+startingY;
+            
+            copyTeamTwo[z] = instance_create(0,0, Character);
+            copyTeamTwo[z].sprite_index = global.teamTwo[z].sprite_index;
+            copyTeamTwo[z].originRow = 30-global.teamTwo[z].originRow-1;
+            copyTeamTwo[z].originCol = 30 - global.teamTwo[z].originCol-1;
+            
+            //set team one characters    
+            copyTeamTwo[z].image_xscale=spriteScaleSplit;
+            copyTeamTwo[z].image_yscale=spriteScaleSplit;
+            copyTeamTwo[z].x = copyTeamTwo[z].originCol*tilePosConst+startingXTwo;
+            copyTeamTwo[z].y = copyTeamTwo[z].originRow*tilePosConst+startingY;
+        }
+
+        
         break;  
 
     }        
