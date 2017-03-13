@@ -15,6 +15,16 @@ global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);
 gridTwo = ds_grid_create(30,30);
+
+
+//rando global patch
+global.spriteScaleFull = 1.875;
+global.spriteScaleSplit = 700/(30*16);
+global.startingX = 0;
+global.startingY = 0;
+global.startingXOne = 0;
+global.startingXTwo = 0;
+
 //room_goto(Stronghold);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>

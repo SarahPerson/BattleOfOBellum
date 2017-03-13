@@ -205,13 +205,14 @@ if(room == SplitScreen){
           <argument>
             <kind>1</kind>
             <string>///Display possible Character Movement
-if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect))
+if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect)&amp;&amp;room==SplitScreen)
 {
 var i = 0;
     if(canSelect)
     {
 for(i = 0; i&lt;global.teamSize;i++){
-        if(isHighlighted==false &amp;&amp; self.curCol == global.teamTwo[i].x/16 &amp;&amp; self.curRow == global.teamTwo[i].y/16){
+
+        if(isHighlighted==false &amp;&amp; self.curCol == (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16 &amp;&amp; self.curRow == (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16){
             ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
             selectedCharacter = i;
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
@@ -226,8 +227,8 @@ for(i = 0; i&lt;global.teamSize;i++){
             
             while(!ds_queue_empty(toLook)){
                 curTile = ds_queue_dequeue(toLook)
-                curX = curTile.x/16;
-                curY = curTile.y/16;
+                curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
+                curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
             
                 if(curTile.color !=  2){
                     if(curTile.currentCost &lt;= totMove){
@@ -243,11 +244,11 @@ for(i = 0; i&lt;global.teamSize;i++){
                         }if(curY + 1 &lt; maxSize &amp;&amp; global.roomTiles[curX, curY + 1].currentCost &gt; global.roomTiles[curX, curY + 1].cost + curTile.currentCost){
                             global.roomTiles[curX, curY + 1].currentCost = global.roomTiles[curX, curY + 1].cost + curTile.currentCost;
                             global.roomTiles[curX, curY + 1].originTile = curTile;
-                            ds_queue_enqueue(toLook, roomTiles[curX, curY + 1]);
+                            ds_queue_enqueue(toLook, global.roomTiles[curX, curY + 1]);
                         }if(curY - 1 &gt;= 0 &amp;&amp; global.roomTiles[curX, curY - 1].currentCost &gt; global.roomTiles[curX, curY - 1].cost + curTile.currentCost){
                             global.roomTiles[curX, curY - 1].currentCost = global.roomTiles[curX, curY - 1].cost + curTile.currentCost;
                             global.roomTiles[curX, curY - 1].originTile = curTile;
-                            ds_queue_enqueue(toLook, roomTiles[curX, curY - 1]);
+                            ds_queue_enqueue(toLook, global.roomTiles[curX, curY - 1]);
                             }
                         }
                         curTile.color = 2;

@@ -79,8 +79,8 @@ mapNum = 2;
 myFile = file_text_open_read("smallCity.txt");
 startingX = 100;
 startingY = 100;
-spriteScaleFull=1.875; //1.66666667 scaling of sprites to fit full screen top to bottom
-spriteScaleSplit=700/(30*16); //1.66666667 scaling of sprites to fit full screen top to bottom
+spriteScaleFull=global.spriteScaleFull ; //1.66666667 scaling of sprites to fit full screen top to bottom
+spriteScaleSplit=global.spriteScaleSplit; //1.66666667 scaling of sprites to fit full screen top to bottom
 
 switch(room){
     
@@ -129,9 +129,12 @@ switch(room){
     case FullScreen: 
         // for full screen
         
-       
+       //TODO______________________________________________________________________________
         startingX=350;
+        global.startingX = startingX;
         startingY=0;
+        global.startingY = startingY;
+        
         
         tilePosConst = 16*spriteScaleFull;
         //set initial ds grid
@@ -221,7 +224,7 @@ switch(room){
             PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
 
         }
-        //set initial position of the players cursors
+        //set initial position of the players cursors - we no need cursors on this screen
         //global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
         //global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
                 
@@ -229,10 +232,14 @@ switch(room){
         
     case SplitScreen:
         
-       
+       //TODO___________________________________________________________________________________
         startingXOne=25;
+        global.startingXOne=startingXOne
         startingXTwo=875;
+        global.startingXTwo=startingXTwo;
         startingY=100;
+        global.startingY=startingY;
+        //______________________________________________________________________________________
         
         tilePosConst = 16*spriteScaleSplit;
         //set initial ds grid
@@ -249,7 +256,7 @@ switch(room){
         }
         
         //Make one copies
-        //gridTwo = ds_grid_create(30,30);
+        //gridTwo = ds_grid_create(30,30); -&gt; moved to global
         var temp;
         for (i = 0; i &lt; 30; i += 1)
         {
@@ -257,7 +264,7 @@ switch(room){
                {
                     //make flipped copy of player two 
                     temp=instance_create(0,0,Tile);
-                    temp.tileType = global.roomTiles[i,30-j-1].tileType;
+                    temp.tileType = global.roomTiles[30-i-1,30-j-1].tileType;
                     global.gridTwo[i,j]=temp;
                }
         }
@@ -282,9 +289,54 @@ switch(room){
                 }
         }
         
+        //place origins of cursors
         global.gridTwo[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
         global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
         
+        
+        //place characters and objectives - move player one to opposite side of grid
+        for(z=0; z&lt;global.teamSize; z+=1){
+            global.teamOne[z].col = 30-global.teamOne[z].originCol-1;
+            global.teamOne[z].row = 30-global.teamOne[z].originCol-1;
+  
+            global.teamTwo[z].col = global.teamTwo[z].originCol;
+            global.teamTwo[z].row= global.teamTwo[z].originRow;
+        }
+        
+        //Set the objectives
+        PlayerOneObjective.col = 30-PlayerOneObjective.originCol-1;
+        PlayerOneObjective.row = 30-PlayerOneObjective.originRow-1;    
+      
+        //check if objective two goes on this tile
+        PlayerTwoObject.col = PlayerTwoObject.originCol;
+        PlayerTwoObject.row =PlayerTwoObject.originRow;
+        
+         for(z=0; z&lt;global.teamSize; z+=1)
+        {
+            //set team one characters    
+            global.teamOne[z].image_xscale=spriteScaleSplit;
+            global.teamOne[z].image_yscale=spriteScaleSplit;
+            global.teamOne[z].x = global.teamOne[z].col*tilePosConst+startingXTwo;
+            global.teamOne[z].y = global.teamOne[z].row*tilePosConst+startingY;
+            
+            //set team two characters
+            global.teamTwo[z].image_xscale=spriteScaleSplit;
+            global.teamTwo[z].image_yscale=spriteScaleSplit;
+            global.teamTwo[z].x = global.teamTwo[z].col*tilePosConst+startingXOne;
+            global.teamTwo[z].y = global.teamTwo[z].row*tilePosConst+startingY;
+           
+            //set objects
+            PlayerOneObjective.image_xscale=spriteScaleSplit;
+            PlayerOneObjective.image_yscale=spriteScaleSplit;
+            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingXTwo;
+            PlayerOneObjective.y = PlayerOneObjective.row*tilePosConst+startingY;
+
+            PlayerTwoObject.image_xscale=spriteScaleSplit;
+            PlayerTwoObject.image_yscale=spriteScaleSplit;
+            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingXOne;
+            PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
+
+        }
         break;  
 
     }        
