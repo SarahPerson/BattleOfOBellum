@@ -211,15 +211,15 @@ var i = 0;
     if(canSelect)
     {
 for(i = 0; i&lt;global.teamSize;i++){
-        show_message(curCol);
-        show_message(curRow);
-        if(isHighlighted==false &amp;&amp; self.curCol == (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16 &amp;&amp; self.curRow == (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16){
+        curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
+        curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
+        if(isHighlighted==false &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
             ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
             selectedCharacter = i;
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
-            curX = self.curCol//selectedChar.xCord;
-            curY = self.curRow//selectedChar.yCord;
-            totMove = 4//selectedChar.movement;
+            //curX = self.curCol//selectedChar.xCord;
+            //curY = self.curRow//selectedChar.yCord;
+            totMove = 4;//selectedChar.movement;
             maxSize = 30;
             toLook = ds_queue_create();
             global.roomTiles[curX, curY].currentCost = 0;
@@ -227,10 +227,11 @@ for(i = 0; i&lt;global.teamSize;i++){
             ds_queue_enqueue(toLook, global.roomTiles[curX, curY]);
             
             while(!ds_queue_empty(toLook)){
-                curTile = ds_queue_dequeue(toLook)
+                curTile = ds_queue_dequeue(toLook);
                 curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
                 curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
-            
+                //show_message(curX);
+                //show_message(curY);
                 if(curTile.color !=  2){
                     if(curTile.currentCost &lt;= totMove){
                         curTile.canMove = true;

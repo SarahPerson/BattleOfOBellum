@@ -248,8 +248,8 @@ switch(room){
         {
         for (j = 0; j &lt; 30; j += 1)
            {
-             tempTile = instance_create(j*16, i*16, Tile);
-             global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
+             tempTile = instance_create(j*tilePosConst+startingY*16, 16*i*tilePosConst+startingXOne, Tile);
+             global.roomTiles[j,i] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
            }
@@ -604,7 +604,6 @@ for(var p = 0; p &lt; global.teamSize; p++){
         curSpot = 0;
     }
 }
-moveAlg = true;
 </string>
           </argument>
         </arguments>
@@ -821,11 +820,11 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
             if(global.teamOne[b].moveArray[tick] != 0){
                global.teamOne[b].x =  global.teamOne[b].moveArray[tick].x;
                global.teamOne[b].y =  global.teamOne[b].moveArray[tick].y;
+               
             } 
             if(global.teamTwo[b].moveArray[tick] != 0){
                global.teamTwo[b].x =  global.teamTwo[b].moveArray[tick].x;
-               global.teamTwo[b].y =  global.teamTwo[b].moveArray[tick].y;
-        
+               global.teamTwo[b].y =  global.teamTwo[b].moveArray[tick].y;        
                 }
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));
         }

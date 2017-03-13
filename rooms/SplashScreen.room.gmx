@@ -19,7 +19,7 @@ gridTwo = ds_grid_create(30,30);
 
 //rando global patch
 global.spriteScaleFull = 1.875;
-global.spriteScaleSplit = 700/(30*16);
+global.spriteScaleSplit = 1;//700/(30*16);
 global.startingX = 0;
 global.startingY = 0;
 global.startingXOne = 0;
