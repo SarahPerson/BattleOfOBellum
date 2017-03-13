@@ -178,25 +178,25 @@ switch(room){
         
         //place characters and objectives
         for(z=0; z&lt;global.teamSize; z+=1){
-            n=global.teamOne[z].originCol
-            global.teamOne[z].col = 30-global.teamOne[z].originRow-1;
-            global.teamOne[z].row = n;
+            n=global.teamOne[z].originRow
+            global.teamOne[z].row = 30-global.teamOne[z].originCol-1;
+            global.teamOne[z].col = n;
 
-            n=global.teamTwo[z].originCol    
-            global.teamTwo[z].col = 30-global.teamTwo[z].originRow-1;
-            global.teamTwo[z].row= n;
+            n=global.teamTwo[z].originRow    
+            global.teamTwo[z].row = 30-global.teamTwo[z].originCol-1;
+            global.teamTwo[z].col= n;
         }
         
         //Set the objectives
-        n=PlayerOneObjective.originCol;
-        PlayerOneObjective.col = 30-PlayerOneObjective.originRow-1;
-        PlayerOneObjective.row = n;    
+        n=PlayerOneObjective.originRow;
+        PlayerOneObjective.row = 30-PlayerOneObjective.originCol-1;
+        PlayerOneObjective.col = n;    
       
         //check if objective two goes on this tile
 
-        n=PlayerTwoObject.originCol;
-        PlayerTwoObject.col = 30-PlayerTwoObject.originRow-1;
-        PlayerTwoObject.row = n;
+        n=PlayerTwoObject.originRow;
+        PlayerTwoObject.row = 30-PlayerTwoObject.originCol-1;
+        PlayerTwoObject.col = n;
         
         for(z=0; z&lt;global.teamSize; z+=1)
         {
