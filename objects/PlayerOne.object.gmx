@@ -101,6 +101,179 @@ canSelect = true;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Move Character 
+if(keyboard_check(key_enter)){
+
+    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
+        global.teamOne[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
+        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
+        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
+        if(dx != 0 || dy != 0){
+            if(dx == 0){
+                if(dy &lt; 0){ global.teamOne[selectedCharacter].destTile.originDerect = 3;}
+                else { global.teamOne[selectedCharacter].destTile.originDerect = 4;}
+            } else {
+                if(dx &lt; 0) {global.teamOne[selectedCharacter].destTile.originDerect = 1;}
+                else {global.teamOne[selectedCharacter].destTile.originDerect = 2;}
+            }
+        }
+        
+        var i;
+        var j;
+        for (i = 0; i &lt; maxSize; i += 1){
+            for(j=0; j&lt;maxSize; j+=1){
+                global.gridTwo[i,j].canMove=false;
+                global.gridTwo[i,j].color=0;
+                global.gridTwo[i,j].currentCost = 10;
+                //global.roomTiles[i,j].originTile = 0;
+            }
+        }
+        isHighlighted=false;
+        global.teamOne[selectedCharacter].isSelected = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Display possible Character Movement
+if(keyboard_check(key_select))
+{
+var i = 0;
+    if(canSelect)
+    {
+for(i = 0; i&lt;global.teamSize;i++){
+        if(isHighlighted==false &amp;&amp; self.curCol == (global.teamOne[i].x-global.startingXTwo)/global.spriteScaleSplit/16 &amp;&amp; self.curRow == (global.teamOne[i].y-global.startingY)/global.spriteScaleSplit/16){
+            ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
+            selectedCharacter = i;
+            global.teamOne[i].isSelected = true; //variable to hold if this is the current character being moved
+            curX = self.curCol//selectedChar.xCord;
+            curY = self.curRow//selectedChar.yCord;
+            totMove = 4//selectedChar.movement;
+            maxSize = 30;
+            toLook = ds_queue_create();
+            global.gridTwo[curX, curY].currentCost = 0;
+            global.gridTwo[curX, curY].originTile = 0;
+            global.gridTwo[curX, curY].originDirect = 0;
+            ds_queue_enqueue(toLook, global.gridTwo[curX, curY]);
+            
+            while(!ds_queue_empty(toLook)){
+                curTile = ds_queue_dequeue(toLook)
+                curX = (curTile.x-global.startingXTwo)/global.spriteScaleSplit/16;
+                curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
+                if(curTile.color !=  2){
+                    if(curTile.currentCost &lt;= totMove){
+                        curTile.canMove = true;
+                        if(curX + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX + 1, curY].currentCost &gt; global.gridTwo[curX + 1, curY].cost + curTile.currentCost){ 
+                            global.gridTwo[curX + 1, curY].currentCost = global.gridTwo[curX + 1, curY].cost + curTile.currentCost;
+                            global.gridTwo[curX + 1, curY].originTile = curTile;
+                            global.gridTwo[curX + 1, curY].originDirect = 1;
+                            ds_queue_enqueue(toLook, global.gridTwo[curX + 1, curY]);
+                        }if(curX - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX - 1, curY].currentCost &gt; global.gridTwo[curX - 1, curY].cost + curTile.currentCost){
+                            global.gridTwo[curX - 1, curY].currentCost = global.gridTwo[curX - 1, curY].cost + curTile.currentCost;
+                            global.gridTwo[curX - 1, curY].originTile = curTile;
+                            global.gridTwo[curX - 1, curY].originDirect = 2;
+                            ds_queue_enqueue(toLook, global.gridTwo[curX - 1, curY]);
+                        }if(curY + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX, curY + 1].currentCost &gt; global.gridTwo[curX, curY + 1].cost + curTile.currentCost){
+                            global.gridTwo[curX, curY + 1].currentCost = global.gridTwo[curX, curY + 1].cost + curTile.currentCost;
+                            global.gridTwo[curX, curY + 1].originTile = curTile;
+                            global.gridTwo[curX, curY + 1].originDirect = 3;
+                            ds_queue_enqueue(toLook, global.gridTwo[curX, curY + 1]);
+                        }if(curY - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX, curY - 1].currentCost &gt; global.gridTwo[curX, curY - 1].cost + curTile.currentCost){
+                            global.gridTwo[curX, curY - 1].currentCost = global.gridTwo[curX, curY - 1].cost + curTile.currentCost;
+                            global.gridTwo[curX, curY - 1].originTile = curTile;
+                            global.gridTwo[curX, curY - 1].originDirect = 4;
+                            ds_queue_enqueue(toLook, global.gridTwo[curX, curY - 1]);
+                            }
+                        }
+                        curTile.color = 2;
+                        ds_queue_enqueue(highlightedTiles, curTile);
+                    }
+                }
+    
+                isHighlighted=true;
+                canSelect=false;
+            
+                if(alarm[0]==-1)
+                {
+                    alarm[0]= room_speed*(0.25);
+                }
+                exit;
+            }
+            if(isHighlighted==true &amp;&amp; global.teamOne[i].isSelected==true)
+            {
+                global.teamOne[i].isSelected=false;
+
+                while(!ds_queue_empty(highlightedTiles)){
+                    
+                    curTile = ds_queue_dequeue(highlightedTiles);
+                    curTile.originTile = 0;
+                    curTile.originDirect = 0;
+                    curTile.canMove = false;
+                    curTile.color=0;
+                    curTile.currentCost = 10;
+                }
+                /*
+                var i;
+                var j;
+                for (i = 0; i &lt; maxSize; i += 1){
+                    for(j=0; j&lt;maxSize; j+=1){
+                        global.gridTwo[i,j].canMove=false;
+                        global.gridTwo[i,j].color=0;
+                        global.gridTwo[i,j].currentCost = 0;
+                    }
+                }
+                */
+                isHighlighted=false;
+                canSelect=false;
+            
+                if(alarm[0]==-1)
+                {
+                    alarm[0]= room_speed*(0.25);
+                }
+                exit;
+            }
+            
+        } 
+
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Move Cursor
 //Move highlighted tile to where current location of player
 if(room==SplitScreen){
@@ -181,183 +354,6 @@ if(room==SplitScreen){
 
     
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Display possible Character Movement
-if(keyboard_check(key_select))
-{
-var i = 0;
-    if(canSelect)
-    {
-for(i = 0; i&lt;global.teamSize;i++){
-        if(isHighlighted==false &amp;&amp; self.curCol == global.teamOne[i].x/(16) &amp;&amp; self.curRow == global.teamOne[i].y/(16)){
-            ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
-            selectedCharacter = i;
-            global.teamOne[i].isSelected = true; //variable to hold if this is the current character being moved
-            curX = self.curCol//selectedChar.xCord;
-            curY = self.curRow//selectedChar.yCord;
-            totMove = 4//selectedChar.movement;
-            maxSize = 30;
-            toLook = ds_queue_create();
-            global.gridTwo[curX, curY].currentCost = 0;
-            global.gridTwo[curX, curY].originTile = 0;
-            global.gridTwo[curX, curY].originDerect = 0;
-            ds_queue_enqueue(toLook, global.gridTwo[curX, curY]);
-            
-            while(!ds_queue_empty(toLook)){
-                curTile = ds_queue_dequeue(toLook)
-                curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
-                curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
-            
-                if(curTile.color !=  2){
-                    if(curTile.currentCost &lt;= totMove){
-                        curTile.canMove = true;
-                        if(curX + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX + 1, curY].currentCost &gt; global.gridTwo[curX + 1, curY].cost + curTile.currentCost){ 
-                            global.gridTwo[curX + 1, curY].currentCost = global.gridTwo[curX + 1, curY].cost + curTile.currentCost;
-                            global.gridTwo[curX + 1, curY].originTile = curTile;
-                            global.gridTwo[curX + 1, curY].originDerect = 1;
-                            ds_queue_enqueue(toLook, global.gridTwo[curX + 1, curY]);
-                        }if(curX - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX - 1, curY].currentCost &gt; global.gridTwo[curX - 1, curY].cost + curTile.currentCost){
-                            global.gridTwo[curX - 1, curY].currentCost = global.gridTwo[curX - 1, curY].cost + curTile.currentCost;
-                            global.gridTwo[curX - 1, curY].originTile = curTile;
-                            global.gridTwo[curX - 1, curY].originDerect = 2;
-                            ds_queue_enqueue(toLook, global.gridTwo[curX - 1, curY]);
-                        }if(curY + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX, curY + 1].currentCost &gt; global.gridTwo[curX, curY + 1].cost + curTile.currentCost){
-                            global.gridTwo[curX, curY + 1].currentCost = global.gridTwo[curX, curY + 1].cost + curTile.currentCost;
-                            global.gridTwo[curX, curY + 1].originTile = curTile;
-                            global.gridTwo[curX, curY + 1].originDerect = 3;
-                            ds_queue_enqueue(toLook, global.gridTwo[curX, curY + 1]);
-                        }if(curY - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX, curY - 1].currentCost &gt; global.gridTwo[curX, curY - 1].cost + curTile.currentCost){
-                            global.gridTwo[curX, curY - 1].currentCost = global.gridTwo[curX, curY - 1].cost + curTile.currentCost;
-                            global.gridTwo[curX, curY - 1].originTile = curTile;
-                            global.gridTwo[curX, curY - 1].originDerect = 4;
-                            ds_queue_enqueue(toLook, global.gridTwo[curX, curY - 1]);
-                            }
-                        }
-                        curTile.color = 2;
-                        ds_queue_enqueue(highlightedTiles, curTile);
-                    }
-                }
-    
-                isHighlighted=true;
-                canSelect=false;
-            
-                if(alarm[0]==-1)
-                {
-                    alarm[0]= room_speed*(0.25);
-                }
-                exit;
-            }
-            if(isHighlighted==true &amp;&amp; global.teamOne[i].isSelected==true)
-            {
-                global.teamOne[i].isSelected=false;
-
-                while(!ds_queue_empty(highlightedTiles)){
-                    
-                    curTile = ds_queue_dequeue(highlightedTiles);
-                    curTile.originTile = 0;
-                    curTile.originDerect = 0;
-                    curTile.canMove = false;
-                    curTile.color=0;
-                    curTile.currentCost = 10;
-                }
-                /*
-                var i;
-                var j;
-                for (i = 0; i &lt; maxSize; i += 1){
-                    for(j=0; j&lt;maxSize; j+=1){
-                        global.gridTwo[i,j].canMove=false;
-                        global.gridTwo[i,j].color=0;
-                        global.gridTwo[i,j].currentCost = 0;
-                    }
-                }
-                */
-                isHighlighted=false;
-                canSelect=false;
-            
-                if(alarm[0]==-1)
-                {
-                    alarm[0]= room_speed*(0.25);
-                }
-                exit;
-            }
-            
-        } 
-
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Move Character 
-if(keyboard_check(key_enter)){
-
-    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
-        global.teamOne[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
-        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
-        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
-        if(dx != 0 || dy != 0){
-            if(dx == 0){
-                if(dy &lt; 0){ global.teamOne[selectedCharacter].destTile.originDerect = 3;}
-                else { global.teamOne[selectedCharacter].destTile.originDerect = 4;}
-            } else {
-                if(dx &lt; 0) {global.teamOne[selectedCharacter].destTile.originDerect = 1;}
-                else {global.teamOne[selectedCharacter].destTile.originDerect = 2;}
-            }
-        }
-        
-        var i;
-        var j;
-        for (i = 0; i &lt; maxSize; i += 1){
-            for(j=0; j&lt;maxSize; j+=1){
-                global.gridTwo[i,j].canMove=false;
-                global.gridTwo[i,j].color=0;
-                global.gridTwo[i,j].currentCost = 10;
-                //global.roomTiles[i,j].originTile = 0;
-            }
-        }
-        isHighlighted=false;
-        global.teamOne[selectedCharacter].isSelected = false;
-    }
-    if(GameMaster.alarm[2] == -1){
-        GameMaster.alarm[2] = room_speed*1;
-    }
-}
 </string>
           </argument>
         </arguments>
