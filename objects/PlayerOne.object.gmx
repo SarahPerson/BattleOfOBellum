@@ -43,7 +43,6 @@ isHighlighted=false;
 //global.roomTiles[curCol,curRow].playerOneSelected=true;
 
 //Setting the team
-global.teamOne[0] = instance_create(0,0,Character);
 global.teamOne[0].sprite_index = Soldier;
 characterSelected = 0;
 
@@ -220,12 +219,13 @@ for(i = 0; i&lt;global.teamSize;i++){
             toLook = ds_queue_create();
             global.gridTwo[curX, curY].currentCost = 0;
             global.gridTwo[curX, curY].originTile = 0;
+            global.gridTwo[curX, curY].originDerect = 0;
             ds_queue_enqueue(toLook, global.gridTwo[curX, curY]);
             
             while(!ds_queue_empty(toLook)){
                 curTile = ds_queue_dequeue(toLook)
-                curX = curTile.x/(16);
-                curY = curTile.y/(16);
+                curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
+                curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
             
                 if(curTile.color !=  2){
                     if(curTile.currentCost &lt;= totMove){
@@ -233,18 +233,22 @@ for(i = 0; i&lt;global.teamSize;i++){
                         if(curX + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX + 1, curY].currentCost &gt; global.gridTwo[curX + 1, curY].cost + curTile.currentCost){ 
                             global.gridTwo[curX + 1, curY].currentCost = global.gridTwo[curX + 1, curY].cost + curTile.currentCost;
                             global.gridTwo[curX + 1, curY].originTile = curTile;
+                            global.gridTwo[curX + 1, curY].originDerect = 1;
                             ds_queue_enqueue(toLook, global.gridTwo[curX + 1, curY]);
                         }if(curX - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX - 1, curY].currentCost &gt; global.gridTwo[curX - 1, curY].cost + curTile.currentCost){
                             global.gridTwo[curX - 1, curY].currentCost = global.gridTwo[curX - 1, curY].cost + curTile.currentCost;
                             global.gridTwo[curX - 1, curY].originTile = curTile;
+                            global.gridTwo[curX - 1, curY].originDerect = 2;
                             ds_queue_enqueue(toLook, global.gridTwo[curX - 1, curY]);
                         }if(curY + 1 &lt; maxSize &amp;&amp; global.gridTwo[curX, curY + 1].currentCost &gt; global.gridTwo[curX, curY + 1].cost + curTile.currentCost){
                             global.gridTwo[curX, curY + 1].currentCost = global.gridTwo[curX, curY + 1].cost + curTile.currentCost;
                             global.gridTwo[curX, curY + 1].originTile = curTile;
+                            global.gridTwo[curX, curY + 1].originDerect = 3;
                             ds_queue_enqueue(toLook, global.gridTwo[curX, curY + 1]);
                         }if(curY - 1 &gt;= 0 &amp;&amp; global.gridTwo[curX, curY - 1].currentCost &gt; global.gridTwo[curX, curY - 1].cost + curTile.currentCost){
                             global.gridTwo[curX, curY - 1].currentCost = global.gridTwo[curX, curY - 1].cost + curTile.currentCost;
                             global.gridTwo[curX, curY - 1].originTile = curTile;
+                            global.gridTwo[curX, curY - 1].originDerect = 4;
                             ds_queue_enqueue(toLook, global.gridTwo[curX, curY - 1]);
                             }
                         }
@@ -269,7 +273,8 @@ for(i = 0; i&lt;global.teamSize;i++){
                 while(!ds_queue_empty(highlightedTiles)){
                     
                     curTile = ds_queue_dequeue(highlightedTiles);
-                    //curTile.originTile = 0;
+                    curTile.originTile = 0;
+                    curTile.originDerect = 0;
                     curTile.canMove = false;
                     curTile.color=0;
                     curTile.currentCost = 10;
@@ -322,16 +327,27 @@ for(i = 0; i&lt;global.teamSize;i++){
             <string>///Move Character 
 if(keyboard_check(key_enter)){
 
-    if(isHighlighted==true  &amp;&amp; global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
-        global.teamOne[selectedCharacter].destTile = global.roomTiles[curCol, curRow];
+    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
+        global.teamOne[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
+        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
+        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
+        if(dx != 0 || dy != 0){
+            if(dx == 0){
+                if(dy &lt; 0){ global.teamOne[selectedCharacter].destTile.originDerect = 3;}
+                else { global.teamOne[selectedCharacter].destTile.originDerect = 4;}
+            } else {
+                if(dx &lt; 0) {global.teamOne[selectedCharacter].destTile.originDerect = 1;}
+                else {global.teamOne[selectedCharacter].destTile.originDerect = 2;}
+            }
+        }
         
         var i;
         var j;
         for (i = 0; i &lt; maxSize; i += 1){
             for(j=0; j&lt;maxSize; j+=1){
-                global.roomTiles[i,j].canMove=false;
-                global.roomTiles[i,j].color=0;
-                global.roomTiles[i,j].currentCost = 10;
+                global.gridTwo[i,j].canMove=false;
+                global.gridTwo[i,j].color=0;
+                global.gridTwo[i,j].currentCost = 10;
                 //global.roomTiles[i,j].originTile = 0;
             }
         }

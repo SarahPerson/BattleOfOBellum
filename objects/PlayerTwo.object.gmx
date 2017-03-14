@@ -276,6 +276,7 @@ for(i = 0; i&lt;global.teamSize;i++){
                  while(!ds_queue_empty(highlightedTiles)){
                     curTile = ds_queue_dequeue(highlightedTiles);
                     curTile.originTile = 0;
+                    curTile.originDerect = 0;
                     curTile.canMove = false;
                     curTile.color=0;
                     curTile.currentCost = 10;

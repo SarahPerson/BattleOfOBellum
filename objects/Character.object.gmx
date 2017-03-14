@@ -92,11 +92,13 @@ col = 27;
           <argument>
             <kind>1</kind>
             <string>///determine if we fight
-for(var t = 0; t &lt; global.teamSize; t++){
-    if(other == global.teamTwo[t]){
-        GameMaster.charOne = self;
-        GameMaster.charTwo = global.teamTwo[t];
-        GameMaster.alarm[1] = room_speed*.05;
+if(room == FullScreen){
+    for(var t = 0; t &lt; global.teamSize; t++){
+        if(other == global.teamTwo[t]){
+            GameMaster.charOne = self;
+            GameMaster.charTwo = global.teamTwo[t];
+            GameMaster.alarm[1] = room_speed*.05;
+        }
     }
 }
 </string>

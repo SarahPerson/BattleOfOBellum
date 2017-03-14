@@ -662,7 +662,6 @@ room_goto(FullScreen);
             <kind>1</kind>
             <string>///combat alg
 
-
 switch(charOne.attack){
     case 1:
     var P = random_range(1,5);
@@ -772,29 +771,77 @@ for(var g = 0; g &lt; 3; g++){
 if(sum1 == sum2){
     for(var o = tick - 1; o &gt;= 0; o--){
         if(charOne.moveArray[o] != 0){
-            charOne.x = charOne.moveArray[o].x;
-            charOne.y = charOne.moveArray[o].y;
+            if(charOne.moveArray[o] == 3){
+                    charOne.x -= moveDist
+                    charOne.originRow += 1;
+                } else if (charTwo.moveArray[o] == 4){
+                    charOne.x += moveDist
+                    charOne.originRow -= 1;
+                }
+                else if (charTwo.moveArray[o] == 2){
+                    charOne.y -= moveDist;
+                    charOne.originCol -= 1;
+                } else {
+                    charOne.y += moveDist;
+                    charOne.originCol += 1;
+                }
             charOne.moveArray = array(9);
         }
         if(charTwo.moveArray[o] != 0){
-            charTwo.x = charTwo.moveArray[o].x;
-            charTwo.y = charTwo.moveArray[o].y;
+            if(charTwo.moveArray[o] == 3){
+                    charTwo.x += moveDist
+                    charTwo.originRow += 1;
+                } else if (charTwo.moveArray[o] == 4){
+                    charTwo.x -= moveDist
+                    charTwo.originRow -= 1;
+                }
+                else if (charTwo.moveArray[o] == 2){
+                    charTwo.y += moveDist;
+                    charTwo.originCol -= 1;
+                } else {
+                    charTwo.y -= moveDist;
+                    charTwo.originCol += 1;
+                }
             charTwo.moveArray = array(9);
         }
     }
 } else if(sum1 &gt; sum2) {
     for(var o = tick - 1; o &gt;= 0; o--){
         if(charTwo.moveArray[o] != 0){
-            charTwo.x = charTwo.moveArray[o].x;
-            charTwo.y = charTwo.moveArray[o].y;
+            if(charTwo.moveArray[o] == 3){
+                    charTwo.x += moveDist
+                    charTwo.originRow += 1;
+                } else if (charTwo.moveArray[o] == 4){
+                    charTwo.x -= moveDist
+                    charTwo.originRow -= 1;
+                }
+                else if (charTwo.moveArray[o] == 2){
+                    charTwo.y += moveDist;
+                    charTwo.originCol -= 1;
+                } else {
+                    charTwo.y -= moveDist;
+                    charTwo.originCol += 1;
+                }
             charTwo.moveArray = array(9);
         }
     }
 } else {
     for(var o = tick - 1; o &gt;= 0; o--){
         if(charOne.moveArray[o] != 0){
-            charOne.x = charOne.moveArray[o].x;
-            charOne.y = charOne.moveArray[o].y;
+            if(charOne.moveArray[o] == 3){
+                    charOne.x -= moveDist
+                    charOne.originRow += 1;
+                } else if (charTwo.moveArray[o] == 4){
+                    charOne.x += moveDist
+                    charOne.originRow -= 1;
+                }
+                else if (charTwo.moveArray[o] == 2){
+                    charOne.y -= moveDist;
+                    charOne.originCol -= 1;
+                } else {
+                    charOne.y += moveDist;
+                    charOne.originCol += 1;
+                }
             charOne.moveArray = array(9);
         }
     }
@@ -854,8 +901,20 @@ moveDist = 16*global.spriteScaleFull;
     //show_message("Alg");
         for(var b = 0; b &lt; global.teamSize; b++){ //going through all character at each time step
             if(global.teamOne[b].moveArray[tick] != 0){
-               global.teamOne[b].x =  global.teamOne[b].moveArray[tick].x;
-               global.teamOne[b].y =  global.teamOne[b].moveArray[tick].y;
+               if(global.teamOne[b].moveArray[tick] == 3){
+                    global.teamOne[b].x -= moveDist
+                    global.teamOne[b].originRow += 1;
+                } else if (global.teamTwo[b].moveArray[tick] == 4){
+                    global.teamOne[b].x += moveDist
+                    global.teamOne[b].originRow -= 1;
+                }
+                else if (global.teamTwo[b].moveArray[tick] == 2){
+                    global.teamOne[b].y -= moveDist;
+                    global.teamOne[b].originCol -= 1;
+                } else {
+                    global.teamOne[b].y += moveDist;
+                    global.teamOne[b].originCol += 1;
+                }
                
             } 
             if(global.teamTwo[b].moveArray[tick] != 0){
