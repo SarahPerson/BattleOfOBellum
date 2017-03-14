@@ -25,7 +25,11 @@ global.startingY = 0;
 global.startingXOne = 0;
 global.startingXTwo = 0;
 
-//room_goto(Stronghold);</code>
+//room_goto(Stronghold);
+
+global.teamTwo[0] = instance_create(0,0,Character);
+global.teamTwo[0].originRow = 25;
+global.teamTwo[0].persistent = true;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

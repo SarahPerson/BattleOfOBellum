@@ -50,9 +50,7 @@ isHighlighted=false;
 //global.roomTiles[curCol,curRow].playerTwoSelected=true;
 
 //Setting the team
-global.teamTwo[0] = instance_create(0,0,Character);
 global.teamTwo[0].sprite_index = Wizard;
-global.teamTwo[0].originRow = 25;
 characterSelected = 0;
 
 //queue of highlighted tiles
