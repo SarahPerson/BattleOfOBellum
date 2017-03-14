@@ -49,8 +49,15 @@ instance_create(0,0,PlayerTwoObject);
           <argument>
             <kind>1</kind>
             <string>///Setup the players
+if(!instance_exists(PlayerOne))
+{
 instance_create(0,0,PlayerOne);
+}
+
+if(!instance_exists(PlayerTwo))
+{
 instance_create(0,0,PlayerTwo);
+}
 </string>
           </argument>
         </arguments>
@@ -636,7 +643,15 @@ for(var p = 0; p &lt; global.teamSize; p++){
     }
 }
 
+//set the current cursor locations to not highlight
+global.roomTiles[PlayerOne.curRow,PlayerOne.curCol].playerOneSelected=false;
+global.roomTiles[PlayerTwo.curRow,PlayerTwo.curCol].playerTwoSelected=false;
+
 room_goto(FullScreen);
+
+
+
+
 </string>
           </argument>
         </arguments>

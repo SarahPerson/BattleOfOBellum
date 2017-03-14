@@ -14,7 +14,7 @@
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);
-gridTwo = ds_grid_create(30,30);
+global.gridTwo = ds_grid_create(30,30);
 
 
 //rando global patch
