@@ -41,8 +41,8 @@ gp_padselect = gp_face1;
 gp_enter = gp_face2;   
  
  //set starting position
-curRow = 3;
-curCol =10;
+curRow = 29;
+curCol =15;
 canMove=true;
 canSelect=true;
 isHighlighted=false;

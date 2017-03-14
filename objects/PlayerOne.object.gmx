@@ -34,8 +34,8 @@ key_select = vk_shift; //for select key
  key_enter = vk_enter; //for enter key 
  
  //set starting position
-curRow = 25;
-curCol = 25;
+curRow = 29;
+curCol = 15;
 canMove=true;
 canSelect=true;
 isHighlighted=false;

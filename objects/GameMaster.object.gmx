@@ -51,12 +51,12 @@ instance_create(0,0,PlayerTwoObject);
             <string>///Setup the players
 if(!instance_exists(PlayerOne))
 {
-instance_create(0,0,PlayerOne);
+    instance_create(0,0,PlayerOne);
 }
 
 if(!instance_exists(PlayerTwo))
 {
-instance_create(0,0,PlayerTwo);
+    instance_create(0,0,PlayerTwo);
 }
 </string>
           </argument>
@@ -264,7 +264,7 @@ switch(room){
            }
         }
         
-        //Make one copies
+        //Make one copy
         //gridTwo = ds_grid_create(30,30); -&gt; moved to global
         var temp;
         for (i = 0; i &lt; 30; i += 1)
@@ -374,7 +374,29 @@ switch(room){
             copyTeamTwo[z].x = copyTeamTwo[z].originCol*tilePosConst+startingXTwo;
             copyTeamTwo[z].y = copyTeamTwo[z].originRow*tilePosConst+startingY;
         }
+            //set objects Copies
+            PlayerOneObjectiveCopy = instance_create(0,0, PlayerOneObjective);
+            PlayerOneObjectiveCopy.col=PlayerOneObjective.col;
+            PlayerOneObjectiveCopy.col = 30 - PlayerOneObjectiveCopy.col -1;
+            PlayerOneObjectiveCopy.row=PlayerOneObjective.row
+            PlayerOneObjectiveCopy.row = 30 - PlayerOneObjectiveCopy.row -1;
+            
+            PlayerOneObjectiveCopy.image_xscale=spriteScaleSplit;
+            PlayerOneObjectiveCopy.image_yscale=spriteScaleSplit;
+            PlayerOneObjectiveCopy.x = PlayerOneObjectiveCopy.col*tilePosConst+startingXOne;
+            PlayerOneObjectiveCopy.y = PlayerOneObjectiveCopy.row*tilePosConst+startingY;
 
+            PlayerTwoObjectiveCopy = instance_create(0,0, PlayerTwoObject);
+            PlayerTwoObjectiveCopy.col=PlayerTwoObject.col;
+            PlayerTwoObjectiveCopy.col = 30 - PlayerTwoObjectiveCopy.col -1;
+            PlayerTwoObjectiveCopy.row=PlayerTwoObject.row
+            PlayerTwoObjectiveCopy.row = 30 - PlayerTwoObjectiveCopy.row -1;
+            
+            PlayerTwoObjectiveCopy.image_xscale=spriteScaleSplit;
+            PlayerTwoObjectiveCopy.image_yscale=spriteScaleSplit;
+            PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXTwo;
+            PlayerTwoObjectiveCopy.y = PlayerTwoObjectiveCopy.row*tilePosConst+startingY;
+           
         
         break;  
 
