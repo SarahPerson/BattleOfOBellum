@@ -235,11 +235,11 @@ switch(room){
     case SplitScreen:
         
        //TODO___________________________________________________________________________________
-        startingXOne=25;
+        startingXOne=160;
         global.startingXOne=startingXOne
-        startingXTwo=875;
+        startingXTwo=960;
         global.startingXTwo=startingXTwo;
-        startingY=100;
+        startingY=210;
         global.startingY=startingY;
         //______________________________________________________________________________________
         
