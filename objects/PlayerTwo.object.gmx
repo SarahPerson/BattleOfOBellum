@@ -356,9 +356,6 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
         isHighlighted=false;
         global.teamTwo[selectedCharacter].isSelected = false;
     }
-    if(GameMaster.alarm[2] == -1){
-        GameMaster.alarm[2] = room_speed*1;
-    }
 }
 </string>
           </argument>

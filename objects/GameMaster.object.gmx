@@ -185,6 +185,8 @@ switch(room){
             n=global.teamTwo[z].originRow    
             global.teamTwo[z].row = 30-global.teamTwo[z].originCol-1;
             global.teamTwo[z].col= n;
+            
+            //show_message(global.teamTwo[z].moveArray[2]);
         }
         
         //Set the objectives
@@ -634,6 +636,13 @@ for(var p = 0; p &lt; global.teamSize; p++){
         curSpot = 0;
     }
 }
+show_message(room);
+for(var w = 0; w &lt; 9; w++){
+show_message(global.teamTwo[0].moveArray[w]);
+}
+show_message("fck");
+room_goto(FullScreen);
+
 </string>
           </argument>
         </arguments>
@@ -847,6 +856,7 @@ if(tick &lt; 9){ moveAlg = true; } else {tick = 0;}
 //time step
 moveDist = 16*global.spriteScaleSplit;
     if(moveAlg){
+    //show_message("Alg");
         for(var b = 0; b &lt; global.teamSize; b++){ //going through all character at each time step
             if(global.teamOne[b].moveArray[tick] != 0){
                global.teamOne[b].x =  global.teamOne[b].moveArray[tick].x;
@@ -854,6 +864,7 @@ moveDist = 16*global.spriteScaleSplit;
                
             } 
             if(global.teamTwo[b].moveArray[tick] != 0){
+                show_message("moving");
                 if(global.teamTwo[b].moveArray[tick] == 1){
                     global.teamTwo[b].x += moveDist
                 } else if (global.teamTwo[b].moveArray[tick] == 2){
