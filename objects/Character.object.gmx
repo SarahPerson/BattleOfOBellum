@@ -93,6 +93,7 @@ col = 27;
             <kind>1</kind>
             <string>///determine if we fight
 if(room == FullScreen){
+
     for(var t = 0; t &lt; global.teamSize; t++){
         if(other == global.teamTwo[t]){
             GameMaster.charOne = self;

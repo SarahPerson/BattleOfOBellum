@@ -697,7 +697,7 @@ room_goto(FullScreen);
           <argument>
             <kind>1</kind>
             <string>///combat alg
-
+show_message("fufufufu");
 switch(charOne.attack){
     case 1:
     var P = random_range(1,5);
@@ -803,7 +803,8 @@ for(var g = 0; g &lt; 3; g++){
     if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g]; sum2 += charTwo.attackArray[g];}
     if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g]; sum1 += charOne.attackArray[g];}
 }
-
+show_message(sum1);
+show_message(sum2);
 if(sum1 == sum2){
     for(var o = tick - 1; o &gt;= 0; o--){
         if(charOne.moveArray[o] != 0){

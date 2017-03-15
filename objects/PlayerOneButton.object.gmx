@@ -75,6 +75,12 @@ inMenu = false;
             <kind>1</kind>
             <string>
 if(room==FullScreen){
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].destTile = 0;
+        global.teamOne[i].moveArray = array(9);
+        global.teamTwo[i].destTile = 0;
+        global.teamTwo[i].moveArray = array(9)
+    }
     room_goto(SplitScreen);
 }
 if(room == SplitScreen)

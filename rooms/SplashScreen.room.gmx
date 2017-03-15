@@ -27,7 +27,7 @@ global.startingXTwo = 0;
 
 //room_goto(Stronghold);
 global.teamOne[0] = instance_create(0,0,Character);
-global.teamOne[0].originRow = 2;
+global.teamOne[0].originRow = 29;//2;
 global.teamOne[0].originCol = 15;
 global.teamOne[0].persistent = true;
 global.teamTwo[0] = instance_create(0,0,Character);
