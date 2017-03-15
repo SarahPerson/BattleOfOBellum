@@ -57,7 +57,6 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\array.gml</script>
-    <script>scripts\CleanTiles.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\Tile</object>
