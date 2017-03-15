@@ -838,8 +838,8 @@ for(var g = 0; g &lt; 3; g++){
                 }
             charTwo.moveArray = array(9);
         }
- /*   }
-} else if(sum1 &gt; sum2) {
+   }
+/*} else if(sum1 &gt; sum2) {
     for(var o = tick - 1; o &gt;= 0; o--){
         if(charTwo.moveArray[o] != 0){
             if(charTwo.moveArray[o] == 3){
