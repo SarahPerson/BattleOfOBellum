@@ -51,6 +51,107 @@ col = 27;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set Initial HP
+switch(hp){
+    case 2:
+    hp += 15;
+    break;
+    case 3:
+    hp += 12;
+    break;
+    case 4:
+    hp += 11;
+    break;
+    case 5:
+    hp += 9;
+    break;
+    case 6:
+    hp += 8;
+    break;
+    case 7:
+    hp += 6;
+    break;
+    case 8:
+    hp += 5;
+    break;
+    case 9:
+    hp = 4;
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set Initial HP
+switch(hp){
+    case 1:
+    hp = 30;
+    break;
+    case 2:
+    hp = 45;
+    break;
+    case 3:
+    hp = 57;
+    break;
+    case 4:
+    hp = 68;
+    break;
+    case 5:
+    hp = 77;
+    break;
+    case 6:
+    hp = 85;
+    break;
+    case 7:
+    hp = 91;
+    break;
+    case 8:
+    hp = 96;
+    break;
+    case 9:
+    hp = 100;
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -68,7 +169,55 @@ col = 27;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(hp &lt;= 0) { sprite_index = sprite1; }
+            <string>if(hp &lt;= 0) { sprite_index = sprite1;}
+switch(sprite_index){
+    case Angont:
+        movement = 4;
+        attack = 4;
+        defence = 4;
+        break;
+    case Beyla:
+        movement = 7;
+        attack = 1;
+        defence = 4;
+        break;
+    case Jadzia:
+        movement = 4;
+        attack = 7;
+        defence = 1;
+        break;
+    case Khufu:
+        movement = 4;
+        attack = 4;
+        defence = 4;
+        break;
+    case Marinka:
+        movement = 7;
+        attack = 1;
+        defence = 4;
+        break;
+    case Tashi:
+        movement = 4;
+        attack = 1;
+        defence = 7;
+        break;
+    case Theseus:
+        movement = 4;
+        attack = 1;
+        defence = 7;
+        break;
+    case Mavia:
+        movement = 1;
+        attack = 7;
+        defence = 4;
+        break;
+    case default:
+        movement = 4;
+        attack = 4;
+        defence = 4;
+        break;
+    
+}
 </string>
           </argument>
         </arguments>
