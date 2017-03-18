@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="5" name="datafiles">
+  <datafiles number="7" name="datafiles">
     <datafile>
       <name>smallCity.txt</name>
       <exists>-1</exists>
@@ -20,6 +20,40 @@
         </Config>
       </ConfigOptions>
       <filename>smallCity.txt</filename>
+    </datafile>
+    <datafile>
+      <name>smallStrongholdI.txt</name>
+      <exists>-1</exists>
+      <size>449</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>smallStrongholdI.txt</filename>
+    </datafile>
+    <datafile>
+      <name>smallStrongholdR.txt</name>
+      <exists>-1</exists>
+      <size>449</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>smallStrongholdR.txt</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
@@ -47,6 +81,16 @@
     </sprites>
     <sprites name="UIWidgets">
       <sprite>sprites\splitScreenReadyButton</sprite>
+    </sprites>
+    <sprites name="Characters">
+      <sprite>sprites\Angont</sprite>
+      <sprite>sprites\Beyla</sprite>
+      <sprite>sprites\Jadzia</sprite>
+      <sprite>sprites\Khufu</sprite>
+      <sprite>sprites\Marinka</sprite>
+      <sprite>sprites\Tashi</sprite>
+      <sprite>sprites\Theseus</sprite>
+      <sprite>sprites\Mavia</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
