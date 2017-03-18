@@ -10,7 +10,19 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>var i, j, z;
+myFile = file_text_open_read("smallStrongholdR.txt");
+for (i = 0; i &lt; 15; i += 1)
+   {
+   for (j = 0; j &lt; 15; j += 1)
+      {
+        tempTile = instance_create(j*16, i*16, Tile);
+        global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
+        var temp = file_text_read_real(myFile);
+        global.roomTiles[j,i].tileType = temp;
+        }
+   }
+file_text_close(myFile);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -50,9 +62,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances>
-    <instance objName="GameMaster" x="272" y="224" name="inst_EBDBE4A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-  </instances>
+  <instances/>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
