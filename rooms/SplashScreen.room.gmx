@@ -10,11 +10,39 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.teamSize = 1;
+  <code>global.teamSize = 4;
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);
 global.gridTwo = ds_grid_create(30,30);
+
+global.allCharacter = array(24);
+
+global.allCharacter[0] = Angont;
+global.allCharacter[1] = Beyla;
+global.allCharacter[2] = Jadzia;
+global.allCharacter[3] = Khufu;
+global.allCharacter[4] = Marinka;
+global.allCharacter[5] = Tashi;
+global.allCharacter[6] = Theseus;
+global.allCharacter[7] = Mavia;
+
+global.allCharacter[8] = sprite1;
+global.allCharacter[9] = sprite1;
+global.allCharacter[10] = sprite1;
+global.allCharacter[11] = sprite1;
+global.allCharacter[12] = sprite1;
+global.allCharacter[13] = sprite1;
+global.allCharacter[14] = sprite1;
+global.allCharacter[15] = sprite1;
+global.allCharacter[16] = sprite1;
+global.allCharacter[17] = sprite1;
+global.allCharacter[18] = sprite1;
+global.allCharacter[19] = sprite1;
+global.allCharacter[20] = sprite1;
+global.allCharacter[21] = sprite1;
+global.allCharacter[22] = sprite1;
+global.allCharacter[23] = sprite1;
 
 
 //rando global patch
@@ -25,15 +53,33 @@ global.startingY = 0;
 global.startingXOne = 0;
 global.startingXTwo = 0;
 
-
+//set Team one
 global.teamOne[0] = instance_create(0,0,Character);
+global.teamOne[0].persistent = true;
+global.teamOne[1] = instance_create(0,0,Character);
+global.teamOne[1].persistent = true;
+global.teamOne[2] = instance_create(0,0,Character);
+global.teamOne[2].persistent = true;
+global.teamOne[3] = instance_create(0,0,Character);
+global.teamOne[3].persistent = true;
+
 global.teamOne[0].originRow = 29;//2;
 global.teamOne[0].originCol = 15;
-global.teamOne[0].persistent = true;
+
+
+//set Team Two 
 global.teamTwo[0] = instance_create(0,0,Character);
+global.teamTwo[0].persistent = true;
+global.teamTwo[1] = instance_create(0,0,Character);
+global.teamTwo[1].persistent = true;
+global.teamTwo[2] = instance_create(0,0,Character);
+global.teamTwo[2].persistent = true;
+global.teamTwo[3] = instance_create(0,0,Character);
+global.teamTwo[3].persistent = true;
+
 global.teamTwo[0].originRow = 28;
 global.teamTwo[0].originCol =15;
-global.teamTwo[0].persistent = true;
+
 
 //room_goto(Stronghold);</code>
   <enableViews>0</enableViews>
