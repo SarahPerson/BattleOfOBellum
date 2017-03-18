@@ -25,6 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///setup drafting screen
+pool = ds_grid_create(12,2);
+
+var newX=100;
+var newY=50;
+var buttonSpacing = 122;
+
+if(room==Drafting)
+{
+    for( i=0; i&lt; 2; i+=1)
+    {
+        for(j=0; j&lt;12;j+=1)
+        {
+            newButton = instance_create(newX,newY,CharacterButton);
+            pool[i,j]=newButton;
+            newX+=buttonSpacing;      
+        }
+
+        newX=100;
+        newY+=buttonSpacing;
+    }
+
+
+
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Set up the objectives
 instance_create(0,0,PlayerOneObjective);
 instance_create(0,0,PlayerTwoObject);
@@ -49,6 +95,7 @@ instance_create(0,0,PlayerTwoObject);
           <argument>
             <kind>1</kind>
             <string>///Setup the players
+
 if(!instance_exists(PlayerOne))
 {
     instance_create(0,0,PlayerOne);
@@ -441,6 +488,43 @@ switch(mapNum){
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///set visibility of characters based on room
+if( room== Drafting){
+    for(i=0; i&lt; global.teamSize;i+=1){
+        global.teamOne[i].visible=false;
+        global.teamTwo[i].visible=false;
+        PlayerOneObjective.visible=false;
+        PlayerTwoObject.visible=false;
+    }
+}
+if(room!=Drafting){
+    for(i=0; i&lt; global.teamSize;i+=1){
+        global.teamOne[i].visible=true;
+        global.teamTwo[i].visible=true;
+        PlayerOneObjective.visible=true;
+        PlayerTwoObject.visible=true;
+    }
+}
 </string>
           </argument>
         </arguments>

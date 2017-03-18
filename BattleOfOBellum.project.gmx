@@ -47,6 +47,7 @@
     </sprites>
     <sprites name="UIWidgets">
       <sprite>sprites\splitScreenReadyButton</sprite>
+      <sprite>sprites\characterButtonsSprite</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -69,12 +70,14 @@
     <object>objects\PlayerOneButton</object>
     <object>objects\PlayerTwoButton</object>
     <object>objects\Character</object>
+    <object>objects\CharacterButton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>
     <room>rooms\Stronghold</room>
     <room>rooms\FullScreen</room>
     <room>rooms\SplitScreen</room>
+    <room>rooms\Drafting</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
