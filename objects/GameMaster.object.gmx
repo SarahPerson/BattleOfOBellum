@@ -28,9 +28,9 @@
             <string>///setup drafting screen
 pool = ds_grid_create(12,2);
 
-var newX=100;
+var newX=50;
 var newY=50;
-var buttonSpacing = 122;
+var buttonSpacing = 100;
 
 if(room==Drafting)
 {
@@ -43,14 +43,22 @@ if(room==Drafting)
             newX+=buttonSpacing;      
         }
 
-        newX=100;
+        newX=50;
         newY+=buttonSpacing;
     }
-
-
-
 }
 
+//set all of the character sprites
+var j = 0;
+for(i=0; i&lt;24; i+=1)
+{
+    pool[j,i%12].spriteToDraw=global.allCharacters[i];
+    show_message("tile "+ string(j)+" "+string(i%12)+ " " +string(pool[i%2,i%12]))
+
+    
+    if(i==11)
+        j+=1;
+}
 </string>
           </argument>
         </arguments>

@@ -16,33 +16,33 @@ global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);
 global.gridTwo = ds_grid_create(30,30);
 
-global.allCharacter = array(24);
+global.allCharacters = array(24);
 
-global.allCharacter[0] = Angont;
-global.allCharacter[1] = Beyla;
-global.allCharacter[2] = Jadzia;
-global.allCharacter[3] = Khufu;
-global.allCharacter[4] = Marinka;
-global.allCharacter[5] = Tashi;
-global.allCharacter[6] = Theseus;
-global.allCharacter[7] = Mavia;
+global.allCharacters[0] = Angont;
+global.allCharacters[1] = Beyla;
+global.allCharacters[2] = Jadzia;
+global.allCharacters[3] = Khufu;
+global.allCharacters[4] = Marinka;
+global.allCharacters[5] = Tashi;
+global.allCharacters[6] = Theseus;
+global.allCharacters[7] = Mavia;
 
-global.allCharacter[8] = sprite1;
-global.allCharacter[9] = sprite1;
-global.allCharacter[10] = sprite1;
-global.allCharacter[11] = sprite1;
-global.allCharacter[12] = sprite1;
-global.allCharacter[13] = sprite1;
-global.allCharacter[14] = sprite1;
-global.allCharacter[15] = sprite1;
-global.allCharacter[16] = sprite1;
-global.allCharacter[17] = sprite1;
-global.allCharacter[18] = sprite1;
-global.allCharacter[19] = sprite1;
-global.allCharacter[20] = sprite1;
-global.allCharacter[21] = sprite1;
-global.allCharacter[22] = sprite1;
-global.allCharacter[23] = sprite1;
+global.allCharacters[8] = sprite1;
+global.allCharacters[9] = sprite1;
+global.allCharacters[10] = sprite1;
+global.allCharacters[11] = sprite1;
+global.allCharacters[12] = sprite1;
+global.allCharacters[13] = sprite1;
+global.allCharacters[14] = sprite1;
+global.allCharacters[15] = sprite1;
+global.allCharacters[16] = sprite1;
+global.allCharacters[17] = sprite1;
+global.allCharacters[18] = sprite1;
+global.allCharacters[19] = sprite1;
+global.allCharacters[20] = sprite1;
+global.allCharacters[21] = sprite1;
+global.allCharacters[22] = sprite1;
+global.allCharacters[23] = sprite1;
 
 
 //rando global patch
