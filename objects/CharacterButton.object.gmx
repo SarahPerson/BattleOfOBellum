@@ -28,6 +28,7 @@
             <string>///Initialize
 image_speed=0;
 playerOneSelected = false;
+playerOneHighlighted=false;
 </string>
           </argument>
         </arguments>
@@ -50,13 +51,16 @@ playerOneSelected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(playerOneSelected==false)
+            <string>if(playerOneSelected==false &amp;&amp; playerOneHighlighted=false)
 {
     image_index=0;
 }
 if(playerOneSelected==true)
 {
 
+    image_index=2;
+}
+if(playerOneHighlighted==true){
     image_index=1;
 }
 </string>
