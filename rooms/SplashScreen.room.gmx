@@ -25,7 +25,7 @@ global.startingY = 0;
 global.startingXOne = 0;
 global.startingXTwo = 0;
 
-//room_goto(Stronghold);
+
 global.teamOne[0] = instance_create(0,0,Character);
 global.teamOne[0].originRow = 29;//2;
 global.teamOne[0].originCol = 15;
@@ -33,7 +33,9 @@ global.teamOne[0].persistent = true;
 global.teamTwo[0] = instance_create(0,0,Character);
 global.teamTwo[0].originRow = 28;
 global.teamTwo[0].originCol =15;
-global.teamTwo[0].persistent = true;</code>
+global.teamTwo[0].persistent = true;
+
+//room_goto(Stronghold);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
