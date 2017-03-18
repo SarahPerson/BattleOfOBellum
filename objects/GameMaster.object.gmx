@@ -46,19 +46,21 @@ if(room==Drafting)
         newX=50;
         newY+=buttonSpacing;
     }
-}
-
-//set all of the character sprites
-var j = 0;
-for(i=0; i&lt;24; i+=1)
-{
-    pool[j,i%12].spriteToDraw=global.allCharacters[i];
-    show_message("tile "+ string(j)+" "+string(i%12)+ " " +string(pool[i%2,i%12]))
-
     
-    if(i==11)
-        j+=1;
+    //set all of the character sprites
+    var j = 0;
+    for(i=0; i&lt;24; i+=1)
+    {
+        pool[j,i%12].spriteToDraw=global.allCharacters[i];
+        show_message("tile "+ string(j)+" "+string(i%12)+ " " +string(pool[i%2,i%12]))
+    
+        
+        if(i==11)
+            j+=1;
+    }
 }
+
+
 </string>
           </argument>
         </arguments>

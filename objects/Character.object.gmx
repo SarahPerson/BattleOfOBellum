@@ -211,7 +211,7 @@ switch(sprite_index){
         attack = 7;
         defence = 4;
         break;
-    case default:
+    default:
         movement = 4;
         attack = 4;
         defence = 4;
