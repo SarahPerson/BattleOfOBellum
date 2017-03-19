@@ -60,15 +60,7 @@ if(room==Drafting)
     }
 }
 
-//set all of the character sprites
-var j = 0;
-for(i=0; i&lt;24; i+=1)
-{
-    pool[j,i%12].spriteToDraw=global.allCharacters[i];
-    
-    if(i==11)
-        j+=1;
-}
+
 
 </string>
           </argument>
