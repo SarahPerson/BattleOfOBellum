@@ -86,7 +86,7 @@ if(room==FullScreen){
 if(room == SplitScreen)
 {
     //GameMaster.moveAlg = true;
-    if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
+    room_goto(FullScreen);
     
 }
 if(room==Drafting)
