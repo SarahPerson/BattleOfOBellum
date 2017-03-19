@@ -50,16 +50,16 @@ isHighlighted=false;
 //global.roomTiles[curCol,curRow].playerTwoSelected=true;
 
 //Setting the team
-global.teamTwo[0].sprite_index = Soldier;
+//global.teamTwo[0].sprite_index = Soldier;
 global.teamTwo[0].originRow = 2;
 global.teamTwo[0].originCol = 12;
-global.teamTwo[1].sprite_index = Soldier;
+//global.teamTwo[1].sprite_index = Soldier;
 global.teamTwo[1].originRow = 2;
 global.teamTwo[1].originCol = 13;
-global.teamTwo[2].sprite_index = Soldier;
+//global.teamTwo[2].sprite_index = Soldier;
 global.teamTwo[2].originRow = 2;
 global.teamTwo[2].originCol = 14;
-global.teamTwo[3].sprite_index = Soldier;
+//global.teamTwo[3].sprite_index = Soldier;
 global.teamTwo[3].originRow = 2;
 global.teamTwo[3].originCol = 15;
 characterSelected = 0;
@@ -71,6 +71,41 @@ highlightedTiles = ds_queue_create();
 inMenu = true;
 currentIncrement = 0;
 
+//setting drafting controls
+draftCanMove=true;
+draftRow = 0;
+draftCol = 11;
+
+draftColMax =11;
+draftRowMax =1
+
+//Set up drafting
+draftCount=0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///set drafting move delay
+draftCanMove= true;
 </string>
           </argument>
         </arguments>
@@ -366,6 +401,111 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
         isHighlighted=false;
         global.teamTwo[selectedCharacter].isSelected = false;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move cursor on drafting screen 
+if(room==Drafting ){
+
+    if(keyboard_check(key_down)&amp;&amp; draftCanMove)
+    {
+
+
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=false;
+        draftRow+=1;    //increment the row selected
+        if(draftRow&gt;draftRowMax )
+            draftRow=draftRowMax; 
+            
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
+        
+        draftCanMove=false
+        
+    }
+    
+    if(keyboard_check(key_right)&amp;&amp; draftCanMove)
+    {
+
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=false;
+        draftCol+=1;
+        
+        if(draftCol&gt;draftColMax)
+            draftCol=draftColMax;
+            
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
+        
+        draftCanMove=false
+    }
+    
+    if(keyboard_check(key_left)&amp;&amp; draftCanMove)
+    {
+
+            GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=false;    
+        draftCol=draftCol-1;
+        
+        
+        if(draftCol&lt;0)
+            draftCol=0;    
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
+    
+        draftCanMove=false
+        
+    
+    }
+    
+    if(keyboard_check(key_up)&amp;&amp; draftCanMove)
+    {
+    
+
+    GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=false;
+        draftRow=draftRow-1;;    //increment the row selected 
+        
+        if(draftRow&lt;0 )
+            draftRow=0; 
+            
+        GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
+        
+        draftCanMove=false
+    }
+    
+    if(keyboard_check(key_enter)&amp;&amp; draftCanMove)
+    {
+        //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
+        if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false&amp;&amp; draftCount&lt;global.teamSize){
+            //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
+            GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
+            global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
+            draftCount+=1;
+        }
+        else{
+            GameMaster.pool[draftRow, draftCol].playerTwoSelected=false;
+        }
+        
+        
+    }
+    
+   if(alarm[1]==-1)
+   {
+        
+        alarm[1]= room_speed*(0.2);
+   }
 }
 </string>
           </argument>

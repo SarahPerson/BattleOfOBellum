@@ -52,7 +52,7 @@ if(room==Drafting)
     for(i=0; i&lt;24; i+=1)
     {
         pool[j,i%12].spriteToDraw=global.allCharacters[i];
-        show_message("tile "+ string(j)+" "+string(i%12)+ " " +string(pool[i%2,i%12]))
+        //show_message("tile "+ string(j)+" "+string(i%12)+ " " +string(pool[i%2,i%12]))
     
         
         if(i==11)

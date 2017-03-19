@@ -43,16 +43,16 @@ isHighlighted=false;
 //global.roomTiles[curCol,curRow].playerOneSelected=true;
 
 //Setting the team
-global.teamOne[0].sprite_index = Wizard;
+//global.teamOne[0].sprite_index = Wizard;
 global.teamOne[0].originRow = 27;
 global.teamOne[0].originCol = 12;
-global.teamOne[1].sprite_index = Wizard;
+//global.teamOne[1].sprite_index = Wizard;
 global.teamOne[1].originRow = 27;
 global.teamOne[1].originCol = 13;
-global.teamOne[2].sprite_index = Wizard;
+//global.teamOne[2].sprite_index = Wizard;
 global.teamOne[2].originRow = 27;
 global.teamOne[2].originCol = 14;
-global.teamOne[3].sprite_index = Wizard;
+//global.teamOne[3].sprite_index = Wizard;
 global.teamOne[3].originRow = 27;
 global.teamOne[3].originCol = 15;
 characterSelected = 0;
@@ -72,6 +72,8 @@ draftCol = 11;
 draftColMax =11;
 draftRowMax =1
 
+//Set up drafting
+draftCount=0;
 
 </string>
           </argument>
@@ -480,11 +482,14 @@ if(room==Drafting ){
         draftCanMove=false
     }
     
-    if(keyboard_check(key_enter)&amp;&amp; draftCanMove)
+    if(keyboard_check(key_enter)&amp;&amp; draftCanMove )
     {
-        show_message("Selected "+ string(draftRow) +" "+string(draftCol))
-        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false){
+        
+        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; draftCount&lt;global.teamSize){
+            show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerOneSelected=true;
+            global.teamOne[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
+            draftCount+=1;
         }
         else{
             GameMaster.pool[draftRow, draftCol].playerOneSelected=false;

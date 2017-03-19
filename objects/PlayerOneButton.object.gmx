@@ -89,6 +89,10 @@ if(room == SplitScreen)
     if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
     
 }
+if(room==Drafting)
+{
+    room_goto(SplitScreen);
+}
 </string>
           </argument>
         </arguments>
