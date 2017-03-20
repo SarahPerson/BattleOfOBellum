@@ -68,7 +68,7 @@ characterSelected = 0;
 highlightedTiles = ds_queue_create();
 
 //Setting up menu controls
-inMenu = true;
+inMenu = false;
 currentIncrement = 0;
 
 //setting drafting controls
@@ -425,7 +425,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
           <argument>
             <kind>1</kind>
             <string>///move cursor on drafting screen 
-if(room==Drafting ){
+if(room==Drafting &amp;&amp; inMenu == false ){
 
     if(keyboard_check(key_down)&amp;&amp; draftCanMove)
     {
@@ -496,9 +496,9 @@ if(room==Drafting ){
             global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCount+=1;
         }
-        else{
-            GameMaster.pool[draftRow, draftCol].playerTwoSelected=false;
-        }
+        //else{
+        //    GameMaster.pool[draftRow, draftCol].playerTwoSelected=false;
+        //}
         
         
     }

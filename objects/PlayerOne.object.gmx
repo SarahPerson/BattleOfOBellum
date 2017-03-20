@@ -61,7 +61,7 @@ characterSelected = 0;
 highlightedTiles = ds_queue_create();
 
 //Setting up menu controls
-inMenu = true;
+inMenu = false;
 currentIncrement = 0;
 
 //setting drafting controls
@@ -148,7 +148,7 @@ canSelect = true;
             <kind>1</kind>
             <string>///Move Character 
 if(room == SplitScreen){
-if(keyboard_check(key_enter) &amp;&amp; !global.setup){
+if(keyboard_check(key_enter) &amp;&amp; !global.setup &amp;&amp; !inMenu){
 
     if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
         global.teamOne[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
@@ -179,7 +179,7 @@ if(keyboard_check(key_enter) &amp;&amp; !global.setup){
         isHighlighted=false;
         global.teamOne[selectedCharacter].isSelected = false;
     }
-} else if(keyboard_check(key_enter)){
+} else if(keyboard_check(key_enter)&amp;&amp; !inMenu &amp;&amp; isHighlighted==true){
     if(global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){
         show_message("gotHere");
          global.teamOne[selectedCharacter].originRow = curRow;
@@ -439,7 +439,7 @@ if(room==SplitScreen){
           <argument>
             <kind>1</kind>
             <string>///move cursor on drafting screen 
-if(room==Drafting ){
+if(room==Drafting &amp;&amp; inMenu==false ){
 
     if(keyboard_check(key_down)&amp;&amp; draftCanMove)
     {
@@ -504,15 +504,15 @@ if(room==Drafting ){
     if(keyboard_check(key_enter)&amp;&amp; draftCanMove )
     {
         
-        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; draftCount&lt;global.teamSize){
+        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp;GameMaster.pool[draftRow, draftCol].playerTwoSelected==false  &amp;&amp; draftCount&lt;global.teamSize){
             show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerOneSelected=true;
             global.teamOne[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCount+=1;
         }
-        else{
-            GameMaster.pool[draftRow, draftCol].playerOneSelected=false;
-        }
+        //else{
+        //    GameMaster.pool[draftRow, draftCol].playerOneSelected=false;
+        //}
         
         
     }
