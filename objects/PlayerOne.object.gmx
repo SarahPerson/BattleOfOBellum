@@ -344,11 +344,11 @@ if(room==SplitScreen){
     if(keyboard_check(key_down))
     {
         if(canMove){
-            global.gridTwo[curCol,curRow].playerOneSelected=false;
+            global.roomTiles[curCol,curRow].playerOneSelected=false;
             if(curRow&lt;global.roomSize-1)
                 curRow++;
                 
-            global.gridTwo[curCol,curRow].playerOneSelected=true;
+            global.roomTiles[curCol,curRow].playerOneSelected=true;
         
             canMove=false;
         }    
@@ -362,10 +362,10 @@ if(room==SplitScreen){
     if(keyboard_check(key_right))
     {
         if(canMove){
-            global.gridTwo[curCol,curRow].playerOneSelected=false;
+            global.roomTiles[curCol,curRow].playerOneSelected=false;
             if(curCol&lt;global.roomSize-1)    
                 curCol++;
-            global.gridTwo[curCol,curRow].playerOneSelected=true;
+            global.roomTiles[curCol,curRow].playerOneSelected=true;
         
             canMove=false;
         
@@ -380,10 +380,10 @@ if(room==SplitScreen){
     if(keyboard_check(key_left))
     {
         if(canMove){
-            global.gridTwo[curCol,curRow].playerOneSelected=false;
+            global.roomTiles[curCol,curRow].playerOneSelected=false;
             if (curCol&gt;0)
                 curCol--;
-            global.gridTwo[curCol,curRow].playerOneSelected=true;
+            global.roomTiles[curCol,curRow].playerOneSelected=true;
         
             canMove=false;
         
@@ -399,10 +399,10 @@ if(room==SplitScreen){
     {
     
         if(canMove){
-            global.gridTwo[curCol,curRow].playerOneSelected=false;
+            global.roomTiles[curCol,curRow].playerOneSelected=false;
             if(curRow&gt;0)
                 curRow--;
-            global.gridTwo[curCol,curRow].playerOneSelected=true;
+            global.roomTiles[curCol,curRow].playerOneSelected=true;
         
             canMove=false;
         }    

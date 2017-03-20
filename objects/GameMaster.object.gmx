@@ -315,7 +315,7 @@ switch(room){
         {
         for (j = 0; j &lt; 30; j += 1)
            {
-             tempTile = instance_create(j*tilePosConst+startingY*16, 16*i*tilePosConst+startingXOne, Tile);
+             tempTile = instance_create(j*tilePosConst+startingY*16, 16*i*tilePosConst+startingXTwo, Tile);
              global.roomTiles[j,i] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
@@ -344,30 +344,30 @@ switch(room){
                     //move player ones grid into position
                     global.roomTiles[i,j].image_xscale=spriteScaleSplit;
                     global.roomTiles[i,j].image_yscale=spriteScaleSplit;
-                    global.roomTiles[i,j].x=i*tilePosConst+startingXOne;
+                    global.roomTiles[i,j].x=i*tilePosConst+startingXTwo;
                     global.roomTiles[i,j].y=j*tilePosConst+startingY;  
                     
                     //move player twos grid into position
                     global.gridTwo[i,j].image_xscale=spriteScaleSplit;
                     global.gridTwo[i,j].image_yscale=spriteScaleSplit;
-                    global.gridTwo[i,j].x=i*tilePosConst+startingXTwo;
+                    global.gridTwo[i,j].x=i*tilePosConst+startingXOne;
                     global.gridTwo[i,j].y=j*tilePosConst+startingY; 
                     
                 }
         }
         
         //place origins of cursors
-        global.gridTwo[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
-        global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
+        global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
+        global.gridTwo[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
         
         
         //place characters and objectives - move player one to opposite side of grid
         for(z=0; z&lt;global.teamSize; z+=1){
-            global.teamOne[z].col = 30-global.teamOne[z].originCol-1;
-            global.teamOne[z].row = 30-global.teamOne[z].originRow-1;
+            global.teamTwo[z].col = 30-global.teamTwo[z].originCol-1;
+            global.teamTwo[z].row = 30-global.teamTwo[z].originRow-1;
   
-            global.teamTwo[z].col = global.teamTwo[z].originCol;
-            global.teamTwo[z].row= global.teamTwo[z].originRow;
+            global.teamOne[z].col = global.teamOne[z].originCol;
+            global.teamOne[z].row= global.teamOne[z].originRow;
         }
         
         //Set the objectives
@@ -389,18 +389,18 @@ switch(room){
             //set team two characters
             global.teamTwo[z].image_xscale=spriteScaleSplit;
             global.teamTwo[z].image_yscale=spriteScaleSplit;
-            global.teamTwo[z].x = global.teamTwo[z].col*tilePosConst+startingXOne;
+            global.teamTwo[z].x = global.teamTwo[z].col*tilePosConst+startingXOne ;
             global.teamTwo[z].y = global.teamTwo[z].row*tilePosConst+startingY;
            
             //set objects
             PlayerOneObjective.image_xscale=spriteScaleSplit;
             PlayerOneObjective.image_yscale=spriteScaleSplit;
-            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingXTwo;
+            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingXOne;
             PlayerOneObjective.y = PlayerOneObjective.row*tilePosConst+startingY;
 
             PlayerTwoObject.image_xscale=spriteScaleSplit;
             PlayerTwoObject.image_yscale=spriteScaleSplit;
-            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingXOne;
+            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingXTwo;
             PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
 
         }
@@ -412,8 +412,8 @@ switch(room){
         {
             copyTeamOne[z] = instance_create(0,0, Character);
             copyTeamOne[z].sprite_index = global.teamOne[z].sprite_index;
-            copyTeamOne[z].originRow = global.teamOne[z].originRow;
-            copyTeamOne[z].originCol = global.teamOne[z].originCol;
+            copyTeamOne[z].originRow = 30-global.teamOne[z].originRow-1;
+            copyTeamOne[z].originCol = 30-global.teamOne[z].originCol-1;
             
             //move to correct location
             copyTeamOne[z].image_xscale=spriteScaleSplit;
@@ -423,8 +423,8 @@ switch(room){
             
             copyTeamTwo[z] = instance_create(0,0, Character);
             copyTeamTwo[z].sprite_index = global.teamTwo[z].sprite_index;
-            copyTeamTwo[z].originRow = 30-global.teamTwo[z].originRow-1;
-            copyTeamTwo[z].originCol = 30 - global.teamTwo[z].originCol-1;
+            copyTeamTwo[z].originRow = global.teamTwo[z].originRow;
+            copyTeamTwo[z].originCol = global.teamTwo[z].originCol;
             
             //set team one characters    
             copyTeamTwo[z].image_xscale=spriteScaleSplit;
@@ -441,7 +441,7 @@ switch(room){
             
             PlayerOneObjectiveCopy.image_xscale=spriteScaleSplit;
             PlayerOneObjectiveCopy.image_yscale=spriteScaleSplit;
-            PlayerOneObjectiveCopy.x = PlayerOneObjectiveCopy.col*tilePosConst+startingXOne;
+            PlayerOneObjectiveCopy.x = PlayerOneObjectiveCopy.col*tilePosConst+startingXTwo;
             PlayerOneObjectiveCopy.y = PlayerOneObjectiveCopy.row*tilePosConst+startingY;
 
             PlayerTwoObjectiveCopy = instance_create(0,0, PlayerTwoObject);
@@ -452,7 +452,7 @@ switch(room){
             
             PlayerTwoObjectiveCopy.image_xscale=spriteScaleSplit;
             PlayerTwoObjectiveCopy.image_yscale=spriteScaleSplit;
-            PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXTwo;
+            PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXOne;
             PlayerTwoObjectiveCopy.y = PlayerTwoObjectiveCopy.row*tilePosConst+startingY;
             if(global.setup){
                 for (i = 0; i &lt; 30; i += 1)

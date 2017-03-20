@@ -68,11 +68,11 @@
       <sprite>sprites\treeTile</sprite>
       <sprite>sprites\wallTile</sprite>
       <sprite>sprites\HLTreeTile</sprite>
-      <sprite>sprites\playerTwoSelect</sprite>
       <sprite>sprites\grassTile</sprite>
       <sprite>sprites\tileDefault</sprite>
       <sprite>sprites\HLGrassTile</sprite>
       <sprite>sprites\HLTile</sprite>
+      <sprite>sprites\playerTwoSelect</sprite>
       <sprite>sprites\playerOneSelect</sprite>
       <sprite>sprites\waterTile</sprite>
       <sprite>sprites\HLBrushTile</sprite>
