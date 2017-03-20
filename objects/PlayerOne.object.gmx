@@ -147,7 +147,8 @@ canSelect = true;
           <argument>
             <kind>1</kind>
             <string>///Move Character 
-if(keyboard_check(key_enter)){
+if(room == SplitScreen){
+if(keyboard_check(key_enter) &amp;&amp; !global.setup){
 
     if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){    
         global.teamOne[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
@@ -178,6 +179,15 @@ if(keyboard_check(key_enter)){
         isHighlighted=false;
         global.teamOne[selectedCharacter].isSelected = false;
     }
+} else if(keyboard_check(key_enter)){
+    if(global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected ){
+        show_message("gotHere");
+         global.teamOne[selectedCharacter].originRow = curRow;
+         global.teamOne[selectedCharacter].originCol = curCol;
+         isHighlighted=false;
+         global.teamOne[selectedCharacter].isSelected = false;
+    }
+}
 }
 </string>
           </argument>
@@ -200,7 +210,7 @@ if(keyboard_check(key_enter)){
           <argument>
             <kind>1</kind>
             <string>///Display possible Character Movement
-if(keyboard_check(key_select))
+if(keyboard_check(key_select) &amp;&amp; !global.setup)
 {
 var i = 0;
     if(canSelect)
@@ -299,6 +309,13 @@ for(i = 0; i&lt;global.teamSize;i++){
             
         } 
 
+    }
+}
+else {
+    for(i = 0; i&lt;global.teamSize;i++){
+            if(isHighlighted==false &amp;&amp; self.curCol == (global.teamOne[i].x-global.startingXTwo)/global.spriteScaleSplit/16 &amp;&amp; self.curRow == (global.teamOne[i].y-global.startingY)/global.spriteScaleSplit/16){
+                selectedCharacter = i;
+            }
     }
 }
 </string>

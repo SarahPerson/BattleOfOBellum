@@ -454,8 +454,15 @@ switch(room){
             PlayerTwoObjectiveCopy.image_yscale=spriteScaleSplit;
             PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXTwo;
             PlayerTwoObjectiveCopy.y = PlayerTwoObjectiveCopy.row*tilePosConst+startingY;
-           
-        
+            if(global.setup){
+                for (i = 0; i &lt; 30; i += 1)
+                {
+                    global.roomTiles[i,28].canMove = true;
+                    global.roomTiles[i,29].canMove = true;
+                    global.gridTwo[i,28].canMove = true;
+                    global.gridTwo[i,29].canMove = true;
+                }
+            }
         break;  
 
     }        
