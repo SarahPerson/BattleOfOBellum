@@ -263,7 +263,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
             //curX = self.curCol//selectedChar.xCord;
             //curY = self.curRow//selectedChar.yCord;
-            totMove = 4;//selectedChar.movement;
+            totMove = global.teamTwo[i].movement;
             maxSize = 30;
             toLook = ds_queue_create();
             global.roomTiles[curX, curY].currentCost = 0;
@@ -387,6 +387,8 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
                 else {global.teamTwo[selectedCharacter].destTile.originDirect = 2;}
             }
         }
+        GameMaster.toMove = global.teamOne[selectedCharacter];
+        if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.01); }
         
         var i;
         var j;

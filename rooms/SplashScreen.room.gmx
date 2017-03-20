@@ -11,6 +11,7 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>global.teamSize = 4;
+global.setup = true;
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 global.roomTiles = ds_grid_create(1,1);

@@ -73,8 +73,7 @@ inMenu = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if(room==FullScreen){
+            <string>if(room==FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         global.teamOne[i].destTile = 0;
         global.teamOne[i].moveArray = array(9);
@@ -85,8 +84,20 @@ if(room==FullScreen){
 }
 if(room == SplitScreen)
 {
-    //GameMaster.moveAlg = true;
-    if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
+    if(!global.setup){ room_goto(FullScreen); }
+    else {
+        global.setup = false;
+        isSelected = false;
+        PlayerTwoButton.isSelected = false;
+        for (i = 0; i &lt; 30; i += 1)
+        {
+            for (j = 0; j &lt; 30; j += 1)
+               {
+                 global.roomTiles[j,i].canMove = false;
+                 global.gridTwo[j,i].canMove = false;
+               }
+        }
+    }
     
 }
 if(room==Drafting)

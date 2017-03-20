@@ -454,8 +454,15 @@ switch(room){
             PlayerTwoObjectiveCopy.image_yscale=spriteScaleSplit;
             PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXTwo;
             PlayerTwoObjectiveCopy.y = PlayerTwoObjectiveCopy.row*tilePosConst+startingY;
-           
-        
+            if(global.setup){
+                for (i = 0; i &lt; 30; i += 1)
+                {
+                    global.roomTiles[i,28].canMove = true;
+                    global.roomTiles[i,29].canMove = true;
+                    global.gridTwo[i,28].canMove = true;
+                    global.gridTwo[i,29].canMove = true;
+                }
+            }
         break;  
 
     }        
@@ -489,6 +496,7 @@ file_text_close(myFile);
 //size = ds_grid_width(global.roomTiles);
 charOne = 0;
 charTwo = 0;
+toMove = 0;
 switch(mapNum){
     case 1:
         global.roomSize = 30;
@@ -565,206 +573,106 @@ curSpot = 0;
 nextSlot = 0;
 tick = 0;
 
-for(var p = 0; p &lt; global.teamSize; p++){
-      if(global.teamOne[p].destTile != 0){
-        tempTile = global.teamOne[p].destTile;
-        while(tempTile != 0){
-            ds_stack_push(moveStack, tempTile);
-            tempTile = tempTile.originTile;
-        }
-    
-        switch(global.teamOne[p].movement){
-            case 1:
-                nextSlot = array(1);
-                nextSlot[0] = 8;
-            break;
-            case 2:
-                nextSlot = array(2);   
-                nextSlot[0] = 3;
-                nextSlot[1] = 7;
-            break;
-            case 3:
-                nextSlot = array(3);
-                nextSlot[0] = 2;
-                nextSlot[1] = 5;
-                nextSlot[2] = 8;
-            break;
-            case 4:
-                nextSlot = array(4);
-                nextSlot[0] = 1;
-                nextSlot[1] = 3;
-                nextSlot[2] = 5;
-                nextSlot[3] = 7;
-            break;
-            case 5:
-                nextSlot = array(5);
-                nextSlot[0] = 0;
-                nextSlot[1] = 2;
-                nextSlot[2] = 4;
-                nextSlot[3] = 6;
-                nextSlot[4] = 8;
-            break;
-            case 6:
-                nextSlot = array(6);
-                nextSlot[0] = 0;
-                nextSlot[1] = 2;
-                nextSlot[2] = 3;
-                nextSlot[3] = 5;
-                nextSlot[4] = 6;
-                nextSlot[5] = 8;
-            break;
-            case 7:
-                nextSlot = array(7);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 3;
-                nextSlot[3] = 4;
-                nextSlot[4] = 6;
-                nextSlot[5] = 7;
-                nextSlot[6] = 8;
-            break;
-            case 8:
-                nextSlot = array(8);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 2;
-                nextSlot[3] = 3;
-                nextSlot[4] = 4;
-                nextSlot[5] = 5;
-                nextSlot[6] = 6;
-                nextSlot[7] = 7;
-            break;
-            case 9:
-                nextSlot = array(9);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 2;
-                nextSlot[3] = 3;
-                nextSlot[4] = 4;
-                nextSlot[5] = 5;
-                nextSlot[6] = 6;
-                nextSlot[7] = 7;
-                nextSlot[8] = 8;
-            break;
-        }
-        ds_stack_pop(moveStack);
-        global.teamOne[p].moveArray = array(9);
-        while(!ds_stack_empty(moveStack)){
-            tempTile = ds_stack_pop(moveStack);
-            while(tempTile.cost != 1){
-                tempTile.cost -= 1;
-                curSpot += 1;
-            }
-            
-            global.teamOne[p].moveArray[nextSlot[curSpot]] = tempTile.originDirect;
-            curSpot += 1;
-            //show_message("MoveArray: " + string(tempTile));
-        }
-        curSpot = 0;
-      }  
-    if(global.teamTwo[p].destTile != 0){
-        tempTile = global.teamTwo[p].destTile;
-        while(tempTile != 0){
-            ds_stack_push(moveStack, tempTile);
-            tempTile = tempTile.originTile;
-        }
-        
-        switch(global.teamTwo[p].movement){
-            case 1:
-                nextSlot = array(1);
-                nextSlot[0] = 8;
-            break;
-            case 2:
-                nextSlot = array(2);   
-                nextSlot[0] = 3;
-                nextSlot[1] = 7;
-            break;
-            case 3:
-                nextSlot = array(3);
-                nextSlot[0] = 2;
-                nextSlot[1] = 5;
-                nextSlot[2] = 8;
-            break;
-            case 4:
-                nextSlot = array(4);
-                nextSlot[0] = 1;
-                nextSlot[1] = 3;
-                nextSlot[2] = 5;
-                nextSlot[3] = 7;
-            break;
-            case 5:
-                nextSlot = array(5);
-                nextSlot[0] = 0;
-                nextSlot[1] = 2;
-                nextSlot[2] = 4;
-                nextSlot[3] = 6;
-                nextSlot[4] = 8;
-            break;
-            case 6:
-                nextSlot = array(6);
-                nextSlot[0] = 0;
-                nextSlot[1] = 2;
-                nextSlot[2] = 3;
-                nextSlot[3] = 5;
-                nextSlot[4] = 6;
-                nextSlot[5] = 8;
-            break;
-            case 7:
-                nextSlot = array(7);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 3;
-                nextSlot[3] = 4;
-                nextSlot[4] = 6;
-                nextSlot[5] = 7;
-                nextSlot[6] = 8;
-            break;
-            case 8:
-                nextSlot = array(8);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 2;
-                nextSlot[3] = 3;
-                nextSlot[4] = 4;
-                nextSlot[5] = 5;
-                nextSlot[6] = 6;
-                nextSlot[7] = 7;
-            break;
-            case 9:
-                nextSlot = array(9);
-                nextSlot[0] = 0;
-                nextSlot[1] = 1;
-                nextSlot[2] = 2;
-                nextSlot[3] = 3;
-                nextSlot[4] = 4;
-                nextSlot[5] = 5;
-                nextSlot[6] = 6;
-                nextSlot[7] = 7;
-                nextSlot[8] = 8;
-            break;
-        }
-        ds_stack_pop(moveStack);
-        global.teamTwo[p].moveArray = array(9);
-        while(!ds_stack_empty(moveStack)){
-            tempTile = ds_stack_pop(moveStack);
-            while(tempTile.cost != 1){
-                tempTile.cost -= 1;
-                curSpot += 1;
-            }
-            
-            global.teamTwo[p].moveArray[nextSlot[curSpot]] = tempTile.originDirect;
-            curSpot += 1;
-            //show_message("MoveArray: " + string(tempTile));
-        }
-        curSpot = 0;
-    }
+
+if(toMove.destTile != 0){
+  tempTile = toMove.destTile;
+  while(tempTile != 0){
+      ds_stack_push(moveStack, tempTile);
+      tempTile = tempTile.originTile;
+  }
+
+  switch(toMove.movement){
+      case 1:
+          nextSlot = array(1);
+          nextSlot[0] = 8;
+      break;
+      case 2:
+          nextSlot = array(2);   
+          nextSlot[0] = 3;
+          nextSlot[1] = 7;
+      break;
+      case 3:
+          nextSlot = array(3);
+          nextSlot[0] = 2;
+          nextSlot[1] = 5;
+          nextSlot[2] = 8;
+      break;
+      case 4:
+          nextSlot = array(4);
+          nextSlot[0] = 1;
+          nextSlot[1] = 3;
+          nextSlot[2] = 5;
+          nextSlot[3] = 7;
+      break;
+      case 5:
+          nextSlot = array(5);
+          nextSlot[0] = 0;
+          nextSlot[1] = 2;
+          nextSlot[2] = 4;
+          nextSlot[3] = 6;
+          nextSlot[4] = 8;
+      break;
+      case 6:
+          nextSlot = array(6);
+          nextSlot[0] = 0;
+          nextSlot[1] = 2;
+          nextSlot[2] = 3;
+          nextSlot[3] = 5;
+          nextSlot[4] = 6;
+          nextSlot[5] = 8;
+      break;
+      case 7:
+          nextSlot = array(7);
+          nextSlot[0] = 0;
+          nextSlot[1] = 1;
+          nextSlot[2] = 3;
+          nextSlot[3] = 4;
+          nextSlot[4] = 6;
+          nextSlot[5] = 7;
+          nextSlot[6] = 8;
+      break;
+      case 8:
+          nextSlot = array(8);
+          nextSlot[0] = 0;
+          nextSlot[1] = 1;
+          nextSlot[2] = 2;
+          nextSlot[3] = 3;
+          nextSlot[4] = 4;
+          nextSlot[5] = 5;
+          nextSlot[6] = 6;
+          nextSlot[7] = 7;
+      break;
+      case 9:
+          nextSlot = array(9);
+          nextSlot[0] = 0;
+          nextSlot[1] = 1;
+          nextSlot[2] = 2;
+          nextSlot[3] = 3;
+          nextSlot[4] = 4;
+          nextSlot[5] = 5;
+          nextSlot[6] = 6;
+          nextSlot[7] = 7;
+          nextSlot[8] = 8;
+      break;
+  }
+  ds_stack_pop(moveStack);
+  toMove.moveArray = array(9);
+  while(!ds_stack_empty(moveStack)){
+      tempTile = ds_stack_pop(moveStack);
+      while(tempTile.cost != 1){
+          tempTile.cost -= 1;
+          curSpot += 1;
+      }
+      
+      toMove.moveArray[nextSlot[curSpot]] = tempTile.originDirect;
+      curSpot += 1;
+      //show_message("MoveArray: " + string(tempTile));
+  }
+  curSpot = 0;
 }
-
+show_message(toMove);
 //set the current cursor locations to not highlight
-global.roomTiles[PlayerOne.curRow,PlayerOne.curCol].playerOneSelected=false;
-global.roomTiles[PlayerTwo.curRow,PlayerTwo.curCol].playerTwoSelected=false;
 
-room_goto(FullScreen);
 
 
 
