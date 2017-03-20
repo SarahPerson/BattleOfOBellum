@@ -249,6 +249,7 @@ if(room == SplitScreen){
           <argument>
             <kind>1</kind>
             <string>///Display possible Character Movement
+if(!global.setup){
 if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect)&amp;&amp;room==SplitScreen)
 {
 var i = 0;
@@ -258,11 +259,11 @@ for(i = 0; i&lt;global.teamSize;i++){
         curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
         curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
         
-        show_message("selecting: "+" "+string(self.curCol)+" "+ string(self.curRow));
-        show_message("character at: "+string(curX)+" " + string(curY));
+        //show_message("selecting: "+" "+string(self.curCol)+" "+ string(self.curRow));
+        //show_message("character at: "+string(curX)+" " + string(curY));
         
         if(isHighlighted==false &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
-        show_message("detecting character selection");
+        //show_message("detecting character selection");
             ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
             selectedCharacter = i;
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
@@ -280,8 +281,8 @@ for(i = 0; i&lt;global.teamSize;i++){
                 curTile = ds_queue_dequeue(toLook);
                 curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
                 curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
-                show_message(curX);
-                show_message(curY);
+                //show_message(curX);
+                //show_message(curY);
                 if(curTile.color !=  2){
                     if(curTile.currentCost &lt;= totMove){
                         curTile.canMove = true;
@@ -357,6 +358,16 @@ for(i = 0; i&lt;global.teamSize;i++){
 
     }
 }
+} else if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect)&amp;&amp;room==SplitScreen){
+    for(i = 0; i&lt;global.teamSize;i++){
+        curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
+        curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
+        if (canSelect &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
+            selectedCharacter = i;
+            global.teamTwo[i].isSelected = true;
+         }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -378,11 +389,12 @@ for(i = 0; i&lt;global.teamSize;i++){
           <argument>
             <kind>1</kind>
             <string>///Move Character 
-if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
-    if(isHighlighted==true  &amp;&amp; global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
-        global.teamTwo[selectedCharacter].destTile = global.roomTiles[curCol, curRow];
-        var dx = global.roomTiles[curCol, curRow].originTile.x - global.roomTiles[curCol, curRow].x;
-        var dy = global.roomTiles[curCol, curRow].originTile.y - global.roomTiles[curCol, curRow].y;
+if(!global.setup){
+if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) ){
+    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
+        global.teamTwo[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
+        var dx = global.roomTiles[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
+        var dy = global.roomTiles[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
         if(dx != 0 || dy != 0){
             if(dx == 0){
                 if(dy &lt; 0){ global.teamTwo[selectedCharacter].destTile.originDirect = 3;}
@@ -408,6 +420,14 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter)){
         isHighlighted=false;
         global.teamTwo[selectedCharacter].isSelected = false;
     }
+} 
+}else if(room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+    if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
+        global.teamTwo[selectedCharacter].x = global.gridTwo[curCol, curRow].x;
+        global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
+        global.teamTwo[selectedCharacter].originRow = curRow;
+        global.teamTwo[selectedCharacter].originCol = curCol;
+    }  
 }
 </string>
           </argument>
@@ -496,7 +516,7 @@ if(room==Drafting &amp;&amp; inMenu == false ){
     {
         //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
         if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false&amp;&amp; draftCount&lt;global.teamSize){
-            show_message("Selected "+ string(draftRow) +" "+string(draftCol))
+            //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
             global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCount+=1;
