@@ -390,11 +390,11 @@ for(i = 0; i&lt;global.teamSize;i++){
             <kind>1</kind>
             <string>///Move Character 
 if(!global.setup){
-if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) ){
+if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room == SplitScreen){
     if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
         global.teamTwo[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
-        var dx = global.roomTiles[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
-        var dy = global.roomTiles[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
+        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
+        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
         if(dx != 0 || dy != 0){
             if(dx == 0){
                 if(dy &lt; 0){ global.teamTwo[selectedCharacter].destTile.originDirect = 3;}
@@ -404,16 +404,16 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) ){
                 else {global.teamTwo[selectedCharacter].destTile.originDirect = 2;}
             }
         }
-        GameMaster.toMove = global.teamOne[selectedCharacter];
-        if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.01); }
+        GameMaster.toMove = global.teamTwo[selectedCharacter];
+        if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
         
         var i;
         var j;
         for (i = 0; i &lt; maxSize; i += 1){
             for(j=0; j&lt;maxSize; j+=1){
-                global.roomTiles[i,j].canMove=false;
-                global.roomTiles[i,j].color=0;
-                global.roomTiles[i,j].currentCost = 10;
+                global.gridTwo[i,j].canMove=false;
+                global.gridTwo[i,j].color=0;
+                global.gridTwo[i,j].currentCost = 10;
                 //global.roomTiles[i,j].originTile = 0;
             }
         }
@@ -421,12 +421,12 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) ){
         global.teamTwo[selectedCharacter].isSelected = false;
     }
 } 
-}else if(room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+}else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
     if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
         global.teamTwo[selectedCharacter].x = global.gridTwo[curCol, curRow].x;
         global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
-        global.teamTwo[selectedCharacter].originRow = curRow;
-        global.teamTwo[selectedCharacter].originCol = curCol;
+        global.teamTwo[selectedCharacter].originRow = 30-curRow-1;
+        global.teamTwo[selectedCharacter].originCol = 30-curCol-1;
     }  
 }
 </string>
