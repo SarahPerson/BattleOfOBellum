@@ -489,7 +489,7 @@ if(room==Drafting ){
     {
         //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
         if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false&amp;&amp; draftCount&lt;global.teamSize){
-            //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
+            show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
             global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCount+=1;
