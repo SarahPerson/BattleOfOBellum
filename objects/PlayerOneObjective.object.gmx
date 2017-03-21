@@ -53,6 +53,11 @@ col = 25;
           <argument>
             <kind>1</kind>
             <string>///do things when colliding 
+for(var i = 0; i &lt; global.teamSize; i++){
+    if(other = global.teamTwo[i]){
+        show_message("YOU WON!!!");
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -127,8 +127,8 @@ if(room==Drafting)
           <argument>
             <kind>1</kind>
             <string>///Set up the objectives
-instance_create(0,0,PlayerOneObjective);
-instance_create(0,0,PlayerTwoObject);
+instance_create(100,100,PlayerOneObjective);
+instance_create(100,100,PlayerTwoObject);
 </string>
           </argument>
         </arguments>
@@ -471,10 +471,10 @@ switch(room){
             if(global.setup){
                 for (i = 0; i &lt; global.mapSize; i += 1)
                 {
-                    //global.roomTiles[i,28].canMove = true;
-                    //global.roomTiles[i,29].canMove = true;
-                    //global.gridTwo[i,28].canMove = true;
-                    //global.gridTwo[i,29].canMove = true;
+                    global.roomTiles[i,28].canMove = true;
+                    global.roomTiles[i,29].canMove = true;
+                    global.gridTwo[i,28].canMove = true;
+                    global.gridTwo[i,29].canMove = true;
                 }
             }
         break;  
