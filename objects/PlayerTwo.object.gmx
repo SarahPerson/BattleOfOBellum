@@ -153,81 +153,47 @@ canSelect = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Move Cursor
-//Move highlighted tile to where current location of player
-if(room == SplitScreen){
-    if(keyboard_check(key_down)|| gamepad_button_check(0,gp_down))
-    {
-        if(canMove){
-        global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if(curRow&lt;global.mapSize-1)
-            curRow++;
-        global.gridTwo[curCol,curRow].playerTwoSelected=true;
-    
-        canMove=false;
+            <string>///Move Character 
+if(!global.setup){
+if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room == SplitScreen){
+    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
+        global.teamTwo[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
+        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
+        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
+        if(dx != 0 || dy != 0){
+            if(dx == 0){
+                if(dy &lt; 0){ global.teamTwo[selectedCharacter].destTile.originDirect = 3;}
+                else { global.teamTwo[selectedCharacter].destTile.originDirect = 4;}
+            } else {
+                if(dx &lt; 0) {global.teamTwo[selectedCharacter].destTile.originDirect = 1;}
+                else {global.teamTwo[selectedCharacter].destTile.originDirect = 2;}
+            }
         }
-        if(alarm[0]==-1)
-        {
-           alarm[0]= room_speed*(0.1);
-        }
+        GameMaster.toMove = global.teamTwo[selectedCharacter];
+        if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
         
+        var i;
+        var j;
+        for (i = 0; i &lt; maxSize; i += 1){
+            for(j=0; j&lt;maxSize; j+=1){
+                global.gridTwo[i,j].canMove=false;
+                global.gridTwo[i,j].color=0;
+                global.gridTwo[i,j].currentCost = 10;
+                //global.roomTiles[i,j].originTile = 0;
+            }
+        }
+        isHighlighted=false;
+        global.teamTwo[selectedCharacter].isSelected = false;
     }
-    if(keyboard_check(key_right)|| gamepad_button_check(0,gp_right))
-    {
-        if(self.canMove){
-        global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if(curCol&lt;global.mapSize-1)    
-            curCol++;
-        global.gridTwo[curCol,curRow].playerTwoSelected=true;
-    
-        canMove=false;
-    
-        }
-        if(alarm[0]==-1)
-        {
-           alarm[0]= room_speed*(0.1);
-        }
-    
-    }
-    if(keyboard_check(key_left)|| gamepad_button_check(0,gp_left))
-    {
-        if(self.canMove){
-        global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if (curCol&gt;0)
-            curCol--;
-        global.gridTwo[curCol,curRow].playerTwoSelected=true;
-    
-        canMove=false;
-    
-        }
-        if(alarm[0]==-1)
-        {
-           alarm[0]= room_speed*(0.1);
-        }
-    }
-    
-    if(keyboard_check(key_up)|| gamepad_button_check(0,gp_up))
-    {
-    
-        if(canMove){
-        global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if(curRow&gt;0)
-            curRow--;
-        global.gridTwo[curCol,curRow].playerTwoSelected=true;
-    
-        canMove=false;
-        }
-        if(alarm[0]==-1)
-        {
-           alarm[0]= room_speed*(0.1);
-        }
-    
-    }
+} 
+}else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+    if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
+        global.teamTwo[selectedCharacter].x = global.gridTwo[curCol, curRow].x;
+        global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
+        global.teamTwo[selectedCharacter].originRow = 30-curRow-1;
+        global.teamTwo[selectedCharacter].originCol = 30-curCol-1;
+    }  
 }
-
-
-    
-
 </string>
           </argument>
         </arguments>
@@ -388,47 +354,81 @@ for(i = 0; i&lt;global.teamSize;i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Move Character 
-if(!global.setup){
-if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room == SplitScreen){
-    if(isHighlighted==true  &amp;&amp; global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected ){    
-        global.teamTwo[selectedCharacter].destTile = global.gridTwo[curCol, curRow];
-        var dx = global.gridTwo[curCol, curRow].originTile.x - global.gridTwo[curCol, curRow].x;
-        var dy = global.gridTwo[curCol, curRow].originTile.y - global.gridTwo[curCol, curRow].y;
-        if(dx != 0 || dy != 0){
-            if(dx == 0){
-                if(dy &lt; 0){ global.teamTwo[selectedCharacter].destTile.originDirect = 3;}
-                else { global.teamTwo[selectedCharacter].destTile.originDirect = 4;}
-            } else {
-                if(dx &lt; 0) {global.teamTwo[selectedCharacter].destTile.originDirect = 1;}
-                else {global.teamTwo[selectedCharacter].destTile.originDirect = 2;}
-            }
+            <string>///Move Cursor
+//Move highlighted tile to where current location of player
+if(room == SplitScreen){
+    if(keyboard_check(key_down)|| gamepad_button_check(0,gp_down))
+    {
+        if(canMove){
+        global.gridTwo[curCol,curRow].playerTwoSelected=false;
+        if(curRow&lt;global.mapSize-1)
+            curRow++;
+        global.gridTwo[curCol,curRow].playerTwoSelected=true;
+    
+        canMove=false;
         }
-        GameMaster.toMove = global.teamTwo[selectedCharacter];
-        if(GameMaster.alarm[2] == -1){ GameMaster.alarm[2] = room_speed*(.05); }
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
         
-        var i;
-        var j;
-        for (i = 0; i &lt; maxSize; i += 1){
-            for(j=0; j&lt;maxSize; j+=1){
-                global.gridTwo[i,j].canMove=false;
-                global.gridTwo[i,j].color=0;
-                global.gridTwo[i,j].currentCost = 10;
-                //global.roomTiles[i,j].originTile = 0;
-            }
-        }
-        isHighlighted=false;
-        global.teamTwo[selectedCharacter].isSelected = false;
     }
-} 
-}else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
-    if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
-        global.teamTwo[selectedCharacter].x = global.gridTwo[curCol, curRow].x;
-        global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
-        global.teamTwo[selectedCharacter].originRow = 30-curRow-1;
-        global.teamTwo[selectedCharacter].originCol = 30-curCol-1;
-    }  
+    if(keyboard_check(key_right)|| gamepad_button_check(0,gp_right))
+    {
+        if(self.canMove){
+        global.gridTwo[curCol,curRow].playerTwoSelected=false;
+        if(curCol&lt;global.mapSize-1)    
+            curCol++;
+        global.gridTwo[curCol,curRow].playerTwoSelected=true;
+    
+        canMove=false;
+    
+        }
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
+    }
+    if(keyboard_check(key_left)|| gamepad_button_check(0,gp_left))
+    {
+        if(self.canMove){
+        global.gridTwo[curCol,curRow].playerTwoSelected=false;
+        if (curCol&gt;0)
+            curCol--;
+        global.gridTwo[curCol,curRow].playerTwoSelected=true;
+    
+        canMove=false;
+    
+        }
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    }
+    
+    if(keyboard_check(key_up)|| gamepad_button_check(0,gp_up))
+    {
+    
+        if(canMove){
+        global.gridTwo[curCol,curRow].playerTwoSelected=false;
+        if(curRow&gt;0)
+            curRow--;
+        global.gridTwo[curCol,curRow].playerTwoSelected=true;
+    
+        canMove=false;
+        }
+        if(alarm[0]==-1)
+        {
+           alarm[0]= room_speed*(0.1);
+        }
+    
+    }
 }
+
+
+    
+
 </string>
           </argument>
         </arguments>
