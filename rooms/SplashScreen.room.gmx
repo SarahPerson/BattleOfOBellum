@@ -14,8 +14,13 @@
 global.setup = true;
 global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
-global.roomTiles = ds_grid_create(1,1);
-global.gridTwo = ds_grid_create(30,30);
+
+global.gameSize=3;
+global.currentMap=1;
+global.mapSize=30;
+
+global.roomTiles = ds_grid_create(global.mapSize,global.mapSize);
+global.gridTwo = ds_grid_create(global.mapSize,global.mapSize);
 
 global.allCharacters = array(24);
 
@@ -64,8 +69,8 @@ global.teamOne[2].persistent = true;
 global.teamOne[3] = instance_create(0,0,Character);
 global.teamOne[3].persistent = true;
 
-global.teamOne[0].originRow = 29;//2;
-global.teamOne[0].originCol = 15;
+global.teamOne[0].originRow = 14;//2;
+global.teamOne[0].originCol = 7;
 
 
 //set Team Two 
@@ -78,8 +83,9 @@ global.teamTwo[2].persistent = true;
 global.teamTwo[3] = instance_create(0,0,Character);
 global.teamTwo[3].persistent = true;
 
-global.teamTwo[0].originRow = 28;
-global.teamTwo[0].originCol =15;
+global.teamTwo[0].originRow = 14;
+global.teamTwo[0].originCol =7;
+
 
 
 //room_goto(Stronghold);</code>

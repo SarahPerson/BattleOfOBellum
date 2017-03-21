@@ -25,6 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///intitial setup things
+global.gameSize = 3
+switch(global.currentMap)
+{
+    case 1:
+        global.mapSize=15;
+        global.spriteScaleSplit=2;
+        global.spriteScaleFull=3;
+        myFile=file_text_open_read("smallStrongholdL.txt");
+        break;
+    case 2:
+        global.mapSize=30;
+        global.spriteScaleSplit=1;
+        global.spriteScaleFull=1;
+        myFile= file_text_open_read("smallCity.txt");
+        break;
+    case 3:
+    
+    global.mapSize=15;
+        global.spriteScaleSplit=2;
+        global.spriteScaleFull=3;
+        myFile=file_text_open_read("smallStrongholdR.txt");
+        break
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///setup drafting screen
 pool = ds_grid_create(12,2);
 
@@ -105,43 +149,12 @@ instance_create(0,0,PlayerTwoObject);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Setup the players
-
-if(!instance_exists(PlayerOne))
-{
-    instance_create(0,0,PlayerOne);
-}
-
-if(!instance_exists(PlayerTwo))
-{
-    instance_create(0,0,PlayerTwo);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///set up map
 tick = 0;
 moveAlg = false;
 canRun = true;
 mapNum = 2;
-myFile = file_text_open_read("smallCity.txt");
+//myFile = file_text_open_read("smallCity.txt");
 startingX = 100;
 startingY = 100;
 spriteScaleFull=global.spriteScaleFull ; //1.66666667 scaling of sprites to fit full screen top to bottom
@@ -151,9 +164,9 @@ switch(room){
     
     case Stronghold:
         var i, j, z;
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
            {
-           for (j = 0; j &lt; 30; j += 1)
+           for (j = 0; j &lt; global.mapSize; j += 1)
               {
                 tempTile = instance_create(j*16, i*16, Tile);
                 global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
@@ -204,9 +217,9 @@ switch(room){
         tilePosConst = 16*spriteScaleFull;
         //set initial ds grid
         var i, j, z;
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
         {
-        for (j = 0; j &lt; 30; j += 1)
+        for (j = 0; j &lt; global.mapSize; j += 1)
            {
              tempTile = instance_create(j*16, i*16, Tile);
              global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
@@ -217,22 +230,22 @@ switch(room){
         
         //rotate the grid
 
-        rotatedGrid = ds_grid_create(30,30);
+        rotatedGrid = ds_grid_create(global.mapSize,global.mapSize);
         
-        for (i = 0; i &lt;30; i += 1)
+        for (i = 0; i &lt;global.mapSize; i += 1)
         {
-            for (j = 0; j &lt; 30; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
             {
-                rotatedGrid[j,30-i-1]=global.roomTiles[i,j].id;
-                rotatedGrid[j,30-i-1].tileType=global.roomTiles[i,j].tileType;
+                rotatedGrid[j,global.mapSize-i-1]=global.roomTiles[i,j].id;
+                rotatedGrid[j,global.mapSize-i-1].tileType=global.roomTiles[i,j].tileType;
                 
             }
         }
         
         //draw grid
-        for (i = 0; i &lt;30; i += 1)
+        for (i = 0; i &lt;global.mapSize; i += 1)
         {
-            for (j = 0; j &lt; 30; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
             {
                 rotatedGrid[i,j].image_xscale=spriteScaleFull;
                 rotatedGrid[i,j].image_yscale=spriteScaleFull;
@@ -244,11 +257,11 @@ switch(room){
         //place characters and objectives
         for(z=0; z&lt;global.teamSize; z+=1){
             n=global.teamOne[z].originRow
-            global.teamOne[z].row = 30-global.teamOne[z].originCol-1;
+            global.teamOne[z].row = global.mapSize-global.teamOne[z].originCol-1;
             global.teamOne[z].col = n;
 
             n=global.teamTwo[z].originRow    
-            global.teamTwo[z].row = 30-global.teamTwo[z].originCol-1;
+            global.teamTwo[z].row = global.mapSize-global.teamTwo[z].originCol-1;
             global.teamTwo[z].col= n;
             
             //show_message(global.teamTwo[z].moveArray[2]);
@@ -256,13 +269,13 @@ switch(room){
         
         //Set the objectives
         n=PlayerOneObjective.originRow;
-        PlayerOneObjective.row = 30-PlayerOneObjective.originCol-1;
+        PlayerOneObjective.row = global.mapSize-PlayerOneObjective.originCol-1;
         PlayerOneObjective.col = n;    
       
         //check if objective two goes on this tile
 
         n=PlayerTwoObject.originRow;
-        PlayerTwoObject.row = 30-PlayerTwoObject.originCol-1;
+        PlayerTwoObject.row = global.mapSize-PlayerTwoObject.originCol-1;
         PlayerTwoObject.col = n;
         
         for(z=0; z&lt;global.teamSize; z+=1)
@@ -311,9 +324,9 @@ switch(room){
         tilePosConst = 16*spriteScaleSplit;
         //set initial ds grid
         var i, j, z;
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
         {
-        for (j = 0; j &lt; 30; j += 1)
+        for (j = 0; j &lt; global.mapSize; j += 1)
            {
              tempTile = instance_create(j*tilePosConst+startingY*16, 16*i*tilePosConst+startingXTwo, Tile);
              global.roomTiles[j,i] = tempTile;
@@ -323,23 +336,23 @@ switch(room){
         }
         
         //Make one copy
-        //gridTwo = ds_grid_create(30,30); -&gt; moved to global
+        //gridTwo = ds_grid_create(global.mapSize,global.mapSize); -&gt; moved to global
         var temp;
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
         {
-            for (j = 0; j &lt; 30; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
                {
                     //make flipped copy of player two 
                     temp=instance_create(0,0,Tile);
-                    temp.tileType = global.roomTiles[30-i-1,30-j-1].tileType;
+                    temp.tileType = global.roomTiles[global.mapSize-i-1,global.mapSize-j-1].tileType;
                     global.gridTwo[i,j]=temp;
                }
         }
         
         //draw the things
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
         {
-            for (j = 0; j &lt; 30; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
                 {
                     //move player ones grid into position
                     global.roomTiles[i,j].image_xscale=spriteScaleSplit;
@@ -363,22 +376,22 @@ switch(room){
         
         //place characters and objectives - move player one to opposite side of grid
         for(z=0; z&lt;global.teamSize; z+=1){
-            global.teamTwo[z].col = 30-global.teamTwo[z].originCol-1;
-            global.teamTwo[z].row = 30-global.teamTwo[z].originRow-1;
+            global.teamTwo[z].col = global.mapSize-global.teamTwo[z].originCol-1;
+            global.teamTwo[z].row = global.mapSize-global.teamTwo[z].originRow-1;
   
             global.teamOne[z].col = global.teamOne[z].originCol;
             global.teamOne[z].row= global.teamOne[z].originRow;
         }
         
         //Set the objectives
-        PlayerOneObjective.col = 30-PlayerOneObjective.originCol-1;
-        PlayerOneObjective.row = 30-PlayerOneObjective.originRow-1;    
+        PlayerOneObjective.col = global.mapSize-PlayerOneObjective.originCol-1;
+        PlayerOneObjective.row = global.mapSize-PlayerOneObjective.originRow-1;    
       
         //check if objective two goes on this tile
         PlayerTwoObject.col = PlayerTwoObject.originCol;
         PlayerTwoObject.row =PlayerTwoObject.originRow;
         
-         for(z=0; z&lt;global.teamSize; z+=1)
+        for(z=0; z&lt;global.teamSize; z+=1)
         {
             //set team one characters    
             global.teamOne[z].image_xscale=spriteScaleSplit;
@@ -412,8 +425,8 @@ switch(room){
         {
             copyTeamOne[z] = instance_create(0,0, Character);
             copyTeamOne[z].sprite_index = global.teamOne[z].sprite_index;
-            copyTeamOne[z].originRow = 30-global.teamOne[z].originRow-1;
-            copyTeamOne[z].originCol = 30-global.teamOne[z].originCol-1;
+            copyTeamOne[z].originRow = global.mapSize-global.teamOne[z].originRow-1;
+            copyTeamOne[z].originCol = global.mapSize-global.teamOne[z].originCol-1;
             
             //move to correct location
             copyTeamOne[z].image_xscale=spriteScaleSplit;
@@ -435,9 +448,9 @@ switch(room){
             //set objects Copies
             PlayerOneObjectiveCopy = instance_create(0,0, PlayerOneObjective);
             PlayerOneObjectiveCopy.col=PlayerOneObjective.col;
-            PlayerOneObjectiveCopy.col = 30 - PlayerOneObjectiveCopy.col -1;
+            PlayerOneObjectiveCopy.col = global.mapSize - PlayerOneObjectiveCopy.col -1;
             PlayerOneObjectiveCopy.row=PlayerOneObjective.row
-            PlayerOneObjectiveCopy.row = 30 - PlayerOneObjectiveCopy.row -1;
+            PlayerOneObjectiveCopy.row = global.mapSize - PlayerOneObjectiveCopy.row -1;
             
             PlayerOneObjectiveCopy.image_xscale=spriteScaleSplit;
             PlayerOneObjectiveCopy.image_yscale=spriteScaleSplit;
@@ -446,21 +459,22 @@ switch(room){
 
             PlayerTwoObjectiveCopy = instance_create(0,0, PlayerTwoObject);
             PlayerTwoObjectiveCopy.col=PlayerTwoObject.col;
-            PlayerTwoObjectiveCopy.col = 30 - PlayerTwoObjectiveCopy.col -1;
+            PlayerTwoObjectiveCopy.col = global.mapSize - PlayerTwoObjectiveCopy.col -1;
             PlayerTwoObjectiveCopy.row=PlayerTwoObject.row
-            PlayerTwoObjectiveCopy.row = 30 - PlayerTwoObjectiveCopy.row -1;
+            PlayerTwoObjectiveCopy.row = global.mapSize - PlayerTwoObjectiveCopy.row -1;
             
             PlayerTwoObjectiveCopy.image_xscale=spriteScaleSplit;
             PlayerTwoObjectiveCopy.image_yscale=spriteScaleSplit;
             PlayerTwoObjectiveCopy.x = PlayerTwoObjectiveCopy.col*tilePosConst+startingXOne;
             PlayerTwoObjectiveCopy.y = PlayerTwoObjectiveCopy.row*tilePosConst+startingY;
+            
             if(global.setup){
-                for (i = 0; i &lt; 30; i += 1)
+                for (i = 0; i &lt; global.mapSize; i += 1)
                 {
-                    global.roomTiles[i,28].canMove = true;
-                    global.roomTiles[i,29].canMove = true;
-                    global.gridTwo[i,28].canMove = true;
-                    global.gridTwo[i,29].canMove = true;
+                    //global.roomTiles[i,28].canMove = true;
+                    //global.roomTiles[i,29].canMove = true;
+                    //global.gridTwo[i,28].canMove = true;
+                    //global.gridTwo[i,29].canMove = true;
                 }
             }
         break;  
@@ -497,6 +511,7 @@ file_text_close(myFile);
 charOne = 0;
 charTwo = 0;
 toMove = 0;
+/*
 switch(mapNum){
     case 1:
         global.roomSize = 30;
@@ -505,6 +520,7 @@ switch(mapNum){
         global.roomSize = 30;
         break;
 }
+*/
 
 
 </string>
@@ -543,6 +559,37 @@ if(room!=Drafting){
         PlayerOneObjective.visible=true;
         PlayerTwoObject.visible=true;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Setup the players
+
+if(!instance_exists(PlayerOne))
+{
+    instance_create(0,0,PlayerOne);
+}
+
+if(!instance_exists(PlayerTwo))
+{
+    instance_create(0,0,PlayerTwo);
 }
 </string>
           </argument>

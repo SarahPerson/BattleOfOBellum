@@ -22,7 +22,7 @@
       <filename>smallCity.txt</filename>
     </datafile>
     <datafile>
-      <name>smallStrongholdI.txt</name>
+      <name>smallStrongholdL.txt</name>
       <exists>-1</exists>
       <size>449</size>
       <exportAction>2</exportAction>
@@ -36,7 +36,7 @@
           <CopyToMask>9223372036854775807</CopyToMask>
         </Config>
       </ConfigOptions>
-      <filename>smallStrongholdI.txt</filename>
+      <filename>smallStrongholdL.txt</filename>
     </datafile>
     <datafile>
       <name>smallStrongholdR.txt</name>

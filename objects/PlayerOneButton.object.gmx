@@ -89,9 +89,9 @@ if(room == SplitScreen)
         global.setup = false;
         isSelected = false;
         PlayerTwoButton.isSelected = false;
-        for (i = 0; i &lt; 30; i += 1)
+        for (i = 0; i &lt; global.mapSize; i += 1)
         {
-            for (j = 0; j &lt; 30; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
                {
                  global.roomTiles[j,i].canMove = false;
                  global.gridTwo[j,i].canMove = false;

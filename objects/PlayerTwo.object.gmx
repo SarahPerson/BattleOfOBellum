@@ -41,8 +41,8 @@ gp_padselect = gp_face1;
 gp_enter = gp_face2;   
  
  //set starting position
-curRow = 29;
-curCol =15;
+curRow = 14;
+curCol =7;
 canMove=true;
 canSelect=true;
 isHighlighted=false;
@@ -52,16 +52,16 @@ isHighlighted=false;
 //Setting the team
 //global.teamTwo[0].sprite_index = Soldier;
 global.teamTwo[0].originRow = 2;
-global.teamTwo[0].originCol = 12;
+global.teamTwo[0].originCol = 5;
 //global.teamTwo[1].sprite_index = Soldier;
 global.teamTwo[1].originRow = 2;
-global.teamTwo[1].originCol = 13;
+global.teamTwo[1].originCol = 6;
 //global.teamTwo[2].sprite_index = Soldier;
 global.teamTwo[2].originRow = 2;
-global.teamTwo[2].originCol = 14;
+global.teamTwo[2].originCol = 7;
 //global.teamTwo[3].sprite_index = Soldier;
 global.teamTwo[3].originRow = 2;
-global.teamTwo[3].originCol = 15;
+global.teamTwo[3].originCol = 8;
 characterSelected = 0;
 
 //queue of highlighted tiles
@@ -160,7 +160,7 @@ if(room == SplitScreen){
     {
         if(canMove){
         global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if(curRow&lt;global.roomSize-1)
+        if(curRow&lt;global.mapSize-1)
             curRow++;
         global.gridTwo[curCol,curRow].playerTwoSelected=true;
     
@@ -176,7 +176,7 @@ if(room == SplitScreen){
     {
         if(self.canMove){
         global.gridTwo[curCol,curRow].playerTwoSelected=false;
-        if(curCol&lt;global.roomSize-1)    
+        if(curCol&lt;global.mapSize-1)    
             curCol++;
         global.gridTwo[curCol,curRow].playerTwoSelected=true;
     
@@ -269,7 +269,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             //curX = self.curCol//selectedChar.xCord;
             //curY = self.curRow//selectedChar.yCord;
             totMove = global.teamTwo[i].movement;
-            maxSize = 30;
+            maxSize = global.mapSize;
             toLook = ds_queue_create();
             global.gridTwo[curX, curY].currentCost = 0;
             global.gridTwo[curX, curY].originTile = 0;

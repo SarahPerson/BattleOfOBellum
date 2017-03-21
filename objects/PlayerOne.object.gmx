@@ -34,8 +34,8 @@ key_select = vk_shift; //for select key
  key_enter = vk_enter; //for enter key 
  
  //set starting position
-curRow = 29;
-curCol = 15;
+curRow = 14;
+curCol = 6;
 canMove=true;
 canSelect=true;
 isHighlighted=false;
@@ -44,17 +44,17 @@ isHighlighted=false;
 
 //Setting the team
 //global.teamOne[0].sprite_index = Wizard;
-global.teamOne[0].originRow = 27;
-global.teamOne[0].originCol = 12;
+global.teamOne[0].originRow = 14;
+global.teamOne[0].originCol = 7;
 //global.teamOne[1].sprite_index = Wizard;
-global.teamOne[1].originRow = 27;
-global.teamOne[1].originCol = 13;
+global.teamOne[1].originRow = 14;
+global.teamOne[1].originCol = 8;
 //global.teamOne[2].sprite_index = Wizard;
-global.teamOne[2].originRow = 27;
-global.teamOne[2].originCol = 14;
+global.teamOne[2].originRow = 14;
+global.teamOne[2].originCol = 6;
 //global.teamOne[3].sprite_index = Wizard;
-global.teamOne[3].originRow = 27;
-global.teamOne[3].originCol = 15;
+global.teamOne[3].originRow = 14;
+global.teamOne[3].originCol = 5;
 characterSelected = 0;
 
 //queue of highlighted tiles
@@ -223,7 +223,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             curX = self.curCol//selectedChar.xCord;
             curY = self.curRow//selectedChar.yCord;
             totMove = global.teamOne[i].movement;
-            maxSize = 30;
+            maxSize = global.mapSize;
             toLook = ds_queue_create();
             global.gridTwo[curX, curY].currentCost = 0;
             global.gridTwo[curX, curY].originTile = 0;
@@ -345,7 +345,7 @@ if(room==SplitScreen){
     {
         if(canMove){
             global.roomTiles[curCol,curRow].playerOneSelected=false;
-            if(curRow&lt;global.roomSize-1)
+            if(curRow&lt;global.mapSize-1)
                 curRow++;
                 
             global.roomTiles[curCol,curRow].playerOneSelected=true;
@@ -363,7 +363,7 @@ if(room==SplitScreen){
     {
         if(canMove){
             global.roomTiles[curCol,curRow].playerOneSelected=false;
-            if(curCol&lt;global.roomSize-1)    
+            if(curCol&lt;global.mapSize-1)    
                 curCol++;
             global.roomTiles[curCol,curRow].playerOneSelected=true;
         
