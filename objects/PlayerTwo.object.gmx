@@ -187,11 +187,11 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
     }
 } 
 }else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
-    if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
+    if(global.gridTwo[curCol, curRow].canMove==true &amp;&amp; global.teamTwo[selectedCharacter].isSelected){
         global.teamTwo[selectedCharacter].x = global.gridTwo[curCol, curRow].x;
         global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
-        global.teamTwo[selectedCharacter].originRow = 30-curRow-1;
-        global.teamTwo[selectedCharacter].originCol = 30-curCol-1;
+        global.teamTwo[selectedCharacter].originRow = global.mapSize-curRow-1;
+        global.teamTwo[selectedCharacter].originCol = global.mapSize-curCol-1;
     }  
 }
 </string>
@@ -325,12 +325,14 @@ for(i = 0; i&lt;global.teamSize;i++){
     }
 }
 } else if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect)&amp;&amp;room==SplitScreen){
+    //show_message("why does the world hate me");
     for(i = 0; i&lt;global.teamSize;i++){
         curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
         curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
         if (canSelect &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
             selectedCharacter = i;
             global.teamTwo[i].isSelected = true;
+            isHighlighted=true;
          }
     }
 }

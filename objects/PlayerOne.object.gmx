@@ -179,7 +179,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         global.teamOne[selectedCharacter].isSelected = false;
     }
 } 
-}else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+}else if(isHighlighted==true  &amp;&amp; room == SplitScreen &amp;&amp; keyboard_check(key_enter)){
     if(global.roomTiles[curCol, curRow].canMove==true &amp;&amp; global.teamOne[selectedCharacter].isSelected){
         global.teamOne[selectedCharacter].x = global.roomTiles[curCol, curRow].x;
         global.teamOne[selectedCharacter].y = global.roomTiles[curCol, curRow].y;
@@ -324,6 +324,7 @@ for(i = 0; i&lt;global.teamSize;i++){
         if (canSelect &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
             selectedCharacter = i;
             global.teamOne[i].isSelected = true;
+            isHighlighted=true;
          }
     }
 }
