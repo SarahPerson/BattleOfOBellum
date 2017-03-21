@@ -209,7 +209,6 @@ if(keyboard_check(key_enter) &amp;&amp; !global.setup &amp;&amp; !inMenu){
         <arguments>
           <argument>
             <kind>1</kind>
-			
             <string>///Display possible Character Movement
 if(keyboard_check(key_select) &amp;&amp; !global.setup)
 {
@@ -339,8 +338,6 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-
-			
             <string>///Move Cursor
 //Move highlighted tile to where current location of player
 if(room==SplitScreen){
