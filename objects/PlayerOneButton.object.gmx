@@ -265,17 +265,17 @@ switch(currentIncrement)
           <argument>
             <kind>1</kind>
             <string>///move into and out of the menu
-show_message(string(PlayerOne.inMenu));
+//show_message(string(PlayerOne.inMenu));
 if(PlayerOne.inMenu==false)
 {
-    show_message("false");
+    //show_message("false");
     PlayerOne.inMenu=true;
     currentIncrement = 0;
     
 }
 else if(PlayerOne.inMenu==true)
 {
-    show_message("true");
+    //show_message("true");
     if(isSelected==true)
     {
         isSelected = false;
