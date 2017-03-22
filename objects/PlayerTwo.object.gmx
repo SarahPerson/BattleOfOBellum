@@ -51,8 +51,8 @@ isHighlighted=false;
 
 //Setting the team
 //global.teamTwo[0].sprite_index = Soldier;
-global.teamTwo[0].originRow = 2;
-global.teamTwo[0].originCol = 5;
+global.teamTwo[0].originRow = 28;
+global.teamTwo[0].originCol = 20;
 //global.teamTwo[1].sprite_index = Soldier;
 global.teamTwo[1].originRow = 2;
 global.teamTwo[1].originCol = 6;

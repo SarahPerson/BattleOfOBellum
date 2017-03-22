@@ -56,6 +56,14 @@ col = 25;
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamTwo[i]){
         show_message("YOU WON!!!");
+        if(global.currentMap&lt;global.gameSize){
+            global.currentMap+=1;
+            global.setup=true;
+            global.teamTwo[i].originRow=13
+            global.teamTwo[i].originCol = 5
+            show_message("current map: "+ string(global.currentMap));
+            room_goto(SplitScreen);
+        }
     }
 }
 </string>

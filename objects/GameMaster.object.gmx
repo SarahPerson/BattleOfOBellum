@@ -34,7 +34,7 @@ switch(global.currentMap)
         global.mapSize=15;
         global.spriteScaleSplit=2;
         global.spriteScaleFull=3.75;
-        myFile=file_text_open_read("smallStrongholdL.txt");
+        myFile=file_text_open_read("smallStrongholdR.txt");
         break;
         
     case 2:
@@ -48,7 +48,7 @@ switch(global.currentMap)
         global.mapSize=15;
         global.spriteScaleSplit=2;
         global.spriteScaleFull=3.75;
-        myFile=file_text_open_read("smallStrongholdR.txt");
+        myFile=file_text_open_read("smallStrongholdL.txt");
         break
 }
 
