@@ -57,6 +57,7 @@ global.teamOne[3].originRow = 14;
 global.teamOne[3].originCol = 5;
 characterSelected = 0;
 
+
 //queue of highlighted tiles
 highlightedTiles = ds_queue_create();
 

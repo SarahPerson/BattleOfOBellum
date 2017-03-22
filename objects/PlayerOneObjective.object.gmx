@@ -52,17 +52,20 @@ col = 25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///do things when colliding 
+            <string>///check collision with objective and move to new map
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamTwo[i]){
         show_message("YOU WON!!!");
+        
+        //check if not at the end of the board and if not move to new map
         if(global.currentMap&lt;global.gameSize){
-            global.currentMap+=1;
-            global.setup=true;
-            global.teamTwo[i].originRow=13
+            global.currentMap+=1; //increment current map
+            global.setup=true;  //call setup for placing characters
+             global.teamTwo[i].moveArray = array(9);
+            global.teamTwo[i].originRow=13 //hard coded for testing
             global.teamTwo[i].originCol = 5
             show_message("current map: "+ string(global.currentMap));
-            room_goto(SplitScreen);
+            room_goto(SplitScreen); //go back to split screen after win condition met 
         }
     }
 }

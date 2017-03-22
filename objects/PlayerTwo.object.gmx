@@ -64,6 +64,7 @@ global.teamTwo[3].originRow = 2;
 global.teamTwo[3].originCol = 8;
 characterSelected = 0;
 
+
 //queue of highlighted tiles
 highlightedTiles = ds_queue_create();
 

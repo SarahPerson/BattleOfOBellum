@@ -55,7 +55,16 @@ col = 3;
             <string>///check win condition
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamOne[i]){
-        show_message("YOU WON!!!");
+        show_message("Player One Won!");
+        //check if not at the end of the board and if not move to new map
+        if(global.currentMap&lt;global.gameSize){
+            global.currentMap=global.currentMap-1; //increment current map
+            global.setup=true;  //call setup for placing characters
+            global.teamOne[i].originRow=13 //hard coded for testing
+            global.teamOne[i].originCol = 5
+            show_message("current map: "+ string(global.currentMap));
+            room_goto(SplitScreen); //go back to split screen after win condition met 
+        }
     }
 }
 </string>
