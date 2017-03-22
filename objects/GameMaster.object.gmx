@@ -27,28 +27,31 @@
             <kind>1</kind>
             <string>///intitial setup things
 global.gameSize = 3
+
 switch(global.currentMap)
 {
     case 1:
         global.mapSize=15;
         global.spriteScaleSplit=2;
-        global.spriteScaleFull=3;
+        global.spriteScaleFull=3.75;
         myFile=file_text_open_read("smallStrongholdL.txt");
         break;
+        
     case 2:
         global.mapSize=30;
         global.spriteScaleSplit=1;
-        global.spriteScaleFull=1;
+        global.spriteScaleFull=1.87;
         myFile= file_text_open_read("smallCity.txt");
         break;
     case 3:
     
-    global.mapSize=15;
+        global.mapSize=15;
         global.spriteScaleSplit=2;
-        global.spriteScaleFull=3;
+        global.spriteScaleFull=3.75;
         myFile=file_text_open_read("smallStrongholdR.txt");
         break
 }
+
 </string>
           </argument>
         </arguments>
@@ -471,10 +474,10 @@ switch(room){
             if(global.setup){
                 for (i = 0; i &lt; global.mapSize; i += 1)
                 {
-                    global.roomTiles[i,28].canMove = true;
-                    global.roomTiles[i,29].canMove = true;
-                    global.gridTwo[i,28].canMove = true;
-                    global.gridTwo[i,29].canMove = true;
+                    global.roomTiles[i,global.mapSize-2].canMove = true;
+                    global.roomTiles[i,global.mapSize-1].canMove = true;
+                    global.gridTwo[i,global.mapSize-2].canMove = true;
+                    global.gridTwo[i,global.mapSize-1].canMove = true;
                 }
             }
         break;  

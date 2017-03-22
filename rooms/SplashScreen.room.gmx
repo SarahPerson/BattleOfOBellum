@@ -16,7 +16,7 @@ global.teamOne = array(global.teamSize);
 global.teamTwo = array(global.teamSize);
 
 global.gameSize=3;
-global.currentMap=2;
+global.currentMap=1;
 global.mapSize=30;
 
 global.roomTiles = ds_grid_create(global.mapSize,global.mapSize);
