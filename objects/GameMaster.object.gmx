@@ -894,6 +894,7 @@ for(var o = tick - 1; o &gt;= 0; o--){
      }
 }
 
+
 </string>
           </argument>
         </arguments>
@@ -991,6 +992,38 @@ moveDist = 16*global.spriteScaleFull;
 
     }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// determine win conditions
+deadPlayersOne = 0;
+deadPlayersTwo = 0;
+for(var f = 0; f &lt; global.teamSize; f++){
+    if(global.teamOne[f].hp &lt;= 0){ deadPlayersOne += 1;}
+    if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
+}
+if(deadPlayersOne == global.teamSize - 1){
+    show_message("Player Two Wins!!");
+} else if(deadPlayersTwo== global.teamSize - 1){
+    show_message("Player One Wins!!");
+}
 </string>
           </argument>
         </arguments>
