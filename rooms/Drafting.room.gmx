@@ -52,8 +52,10 @@
   </views>
   <instances>
     <instance objName="GameMaster" x="160" y="224" name="inst_34A3E9F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="PlayerOneButton" x="1536" y="832" name="inst_78DE044D" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="PlayerTwoButton" x="64" y="832" name="inst_C6E68904" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerOneButton" x="1536" y="832" name="inst_78DE044D" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerTwoButton" x="192" y="832" name="inst_C6E68904" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerOneButton" x="1408" y="832" name="inst_529C36B1" locked="0" code="///creation things&#xA;buttonText=&quot;Controls&quot;&#xA;action=1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerTwoButton" x="64" y="832" name="inst_D84B6737" locked="0" code="buttonText=&quot;Controls&quot;;&#xA;action=1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

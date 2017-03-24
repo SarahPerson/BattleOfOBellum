@@ -25,9 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize
-image_speed = 0;
-isSelected = false;
+            <string>///variables that will be moved to the player
+currentIncrement = 0;
+inMenu = false;
+SplitScreenText="Player One Controls: # 
+Move Cursor - arrow keys #
+Select Character - shift #
+Select Tile To Move Character To - enter #
+Enter/Exit Menu - page up  #
+Select Button In Menu - enter";
+
+FullScreenText = "Player One Controls: # 
+Enter/Exit Menu - page up  #
+Select Button In Menu - enter";
+
+DraftingText="Player One Controls: # 
+Move Cursor - arrow keys #
+Select Character To Add To Team - enter #
+Enter/Exit Menu - page up  #
+Select Button In Menu - enter";
+
+SetupText = "Player One Controls: # 
+Select Character To Be Placed- alt #
+Select Tile Place Character On - space #
+Enter/Exit Menu - 'v' #
+Select Button In Menu - space";
 </string>
           </argument>
         </arguments>
@@ -48,9 +70,10 @@ isSelected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Temporary variables that will be moved to the player
-currentIncrement = 0;
-inMenu = false;
+            <string>///Initialize
+image_speed = 0;
+isSelected = false;
+currentIncrement=0;
 </string>
           </argument>
         </arguments>
@@ -126,17 +149,17 @@ if(room==Drafting)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(currentIncrement == action &amp;&amp; PlayerOne.inMenu==true &amp;&amp; isSelected==false)
+            <string>///TEMP - set alarm to move to room
+if(self.isSelected==true &amp;&amp; PlayerTwoButton.isSelected == true)
 {
-    image_index = 1;
-}
-else if (isSelected==true &amp;&amp; PlayerOne.inMenu==true)
-{
-    image_index = 2;
-}
-else
-{
-    image_index=0;
+    
+   
+    if(alarm[0]==-1)
+    {
+       alarm[0]= room_speed*(0.1);
+       PlayerOne.inMenu=false;
+       PlayerTwo.inMenu=false;
+    }
 }
 </string>
           </argument>
@@ -158,17 +181,17 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///TEMP - set alarm to move to room
-if(self.isSelected==true &amp;&amp; PlayerTwoButton.isSelected == true)
+            <string>if(currentIncrement == action &amp;&amp; PlayerOne.inMenu==true &amp;&amp; isSelected==false)
 {
-    
-   
-    if(alarm[0]==-1)
-    {
-       alarm[0]= room_speed*(0.1);
-       PlayerOne.inMenu=false;
-       PlayerTwo.inMenu=false;
-    }
+    image_index = 1;
+}
+else if (isSelected==true &amp;&amp; PlayerOne.inMenu==true &amp;&amp; action==0)
+{
+    image_index = 2;
+}
+else
+{
+    image_index=0;
 }
 </string>
           </argument>
@@ -228,7 +251,7 @@ draw_text(x,y,buttonText);
 switch(currentIncrement)
 {
     case 0:
-        if(PlayerOne.inMenu){
+        if(PlayerOne.inMenu &amp;&amp; action == 0){
             if(room!=Drafting){
                 if(isSelected==false )
                 {
@@ -259,9 +282,84 @@ switch(currentIncrement)
             }
         }
         break;
-    
+    case 1:
+        if(PlayerOne.inMenu &amp;&amp; action ==1 )
+        {
+            switch(room)
+            {
+                case SplitScreen: 
+                    if(global.setup){
+                        show_message(SetupText);
+                    }
+                    else{
+                        show_message(SplitScreenText);  
+                    }
+                    break;
+                case FullScreen:
+                    show_message(FullScreenText);
+                    break;
+                case Drafting:
+                    show_message(DraftingText);
+                    break;
+            }
+        }
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///decrement code when right selected
+//if still in range decrement
+if(currentIncrement&gt;0&amp;&amp;PlayerOne.inMenu){
+    currentIncrement=currentIncrement-1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///increment button selected
+//if current increment still in range add to it
+if(currentIncrement&lt;1&amp;&amp; PlayerOne.inMenu){
+    currentIncrement+=1
+}
+
 </string>
           </argument>
         </arguments>
@@ -286,22 +384,26 @@ switch(currentIncrement)
             <kind>1</kind>
             <string>///move into and out of the menu
 //show_message(string(PlayerOne.inMenu));
-if(PlayerOne.inMenu==false)
-{
-    //show_message("false");
-    PlayerOne.inMenu=true;
-    currentIncrement = 0;
-    
-}
-else if(PlayerOne.inMenu==true)
-{
-    //show_message("true");
-    if(isSelected==true)
+if(currentIncrement==action){
+
+    if(PlayerOne.inMenu==false)
     {
-        isSelected = false;
+        PlayerOne.inMenu=true;
     }
-    PlayerOne.inMenu=false;
+    else 
+    {
+        if(isSelected==true)
+        {
+            isSelected = false;
+        }
+        PlayerOne.inMenu=false;
+        
+    }
+
 }
+
+//set increment to zero each time page up is pressed
+currentIncrement=0;
 </string>
           </argument>
         </arguments>
