@@ -76,6 +76,10 @@ for(var i = 0; i &lt; global.teamSize; i++){
             
             room_goto(SplitScreen); //go back to split screen after win condition met 
         }
+        else 
+        {
+            show_message("Player One Won the Game!")
+        }
     }
 }
 </string>

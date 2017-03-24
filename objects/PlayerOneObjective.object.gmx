@@ -55,7 +55,7 @@ col = global.mapSize-4;
             <string>///check collision with objective and move to new map
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamTwo[i]){
-        show_message("YOU WON!!!");
+        show_message("Player Two Reached the Objective");
         
         //check if not at the end of the board and if not move to new map
         if(global.currentMap&lt;global.gameSize){
@@ -79,9 +79,11 @@ for(var i = 0; i &lt; global.teamSize; i++){
             room_goto(SplitScreen); //go back to split screen after win condition met 
             
             //destroy both players so that they are recreated
-            
-            
-            
+  
+        }
+        else 
+        {
+            show_message("Player Two Won the Game!")
         }
     }
 }

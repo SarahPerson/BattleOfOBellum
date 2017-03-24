@@ -229,13 +229,33 @@ switch(currentIncrement)
 {
     case 0:
         if(PlayerOne.inMenu){
-            if(isSelected==false )
-            {
-                isSelected=true;
+            if(room!=Drafting){
+                if(isSelected==false )
+                {
+                    isSelected=true;
+                }
+                else
+                {
+                    isSelected = false;
+                }
             }
             else
             {
-                isSelected = false;
+                if(PlayerOne.draftCount&lt;global.teamSize)
+                {
+                    show_message("Player One: Select more characters#to fill out your team");
+                }
+                else
+                {
+                    if(isSelected==false )
+                    {
+                        isSelected=true;
+                    }
+                    else
+                    {
+                        isSelected = false;
+                    }
+                }
             }
         }
         break;

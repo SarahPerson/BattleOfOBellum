@@ -143,13 +143,33 @@ draw_text(x,y,buttonText);
 {
     case 0:
         if(PlayerTwo.inMenu==true){
-            if(isSelected==false)
-            {
-                isSelected=true;
+            if(room!=Drafting){
+                if(isSelected==false)
+                {
+                    isSelected=true;
+                }
+                else
+                {
+                    isSelected = false;
+                }
             }
             else
             {
-                isSelected = false;
+                if(PlayerTwo.draftCount&lt;global.teamSize)
+                {
+                    show_message("Player Two: select more characters#to fill out your team");
+                }
+                else
+                {
+                    if(isSelected==false )
+                    {
+                        isSelected=true;
+                    }
+                    else
+                    {
+                        isSelected = false;
+                    }
+                }
             }
         }
         break;
