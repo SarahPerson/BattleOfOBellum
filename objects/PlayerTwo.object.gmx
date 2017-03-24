@@ -51,17 +51,17 @@ isHighlighted=false;
 
 //Setting the team
 //global.teamTwo[0].sprite_index = Soldier;
-global.teamTwo[0].originRow = 28;
-global.teamTwo[0].originCol = 20;
+global.teamTwo[0].originRow = global.mapSize-global.mapSize+1;
+global.teamTwo[0].originCol = global.mapSize-5;
 //global.teamTwo[1].sprite_index = Soldier;
-global.teamTwo[1].originRow = 2;
-global.teamTwo[1].originCol = 6;
+global.teamTwo[1].originRow = global.mapSize-global.mapSize+1;
+global.teamTwo[1].originCol =global.mapSize-6;
 //global.teamTwo[2].sprite_index = Soldier;
-global.teamTwo[2].originRow = 2;
-global.teamTwo[2].originCol = 7;
+global.teamTwo[2].originRow = global.mapSize-global.mapSize+1;
+global.teamTwo[2].originCol = global.mapSize-7;
 //global.teamTwo[3].sprite_index = Soldier;
-global.teamTwo[3].originRow = 2;
-global.teamTwo[3].originCol = 8;
+global.teamTwo[3].originRow = global.mapSize-global.mapSize+1;
+global.teamTwo[3].originCol = global.mapSize-8;
 characterSelected = 0;
 
 
@@ -75,7 +75,7 @@ currentIncrement = 0;
 //setting drafting controls
 draftCanMove=true;
 draftRow = 0;
-draftCol = 11;
+draftCol = 0;
 
 draftColMax =11;
 draftRowMax =1
@@ -517,9 +517,8 @@ if(room==Drafting &amp;&amp; inMenu == false ){
     
     if(keyboard_check(key_enter)&amp;&amp; draftCanMove)
     {
-        //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
-        if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false&amp;&amp; draftCount&lt;global.teamSize){
-            //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
+        //if tile hasn't been selected by either player, is a tile with a character associated, and drafting turns still left, allow for selection
+        if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].spriteToDraw!=sprite1 &amp;&amp; draftCount&lt;global.teamSize){
             GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
             global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCount+=1;

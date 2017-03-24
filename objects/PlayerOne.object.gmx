@@ -44,17 +44,17 @@ isHighlighted=false;
 
 //Setting the team
 //global.teamOne[0].sprite_index = Wizard;
-global.teamOne[0].originRow = 14;
-global.teamOne[0].originCol = 7;
+global.teamOne[0].originRow = global.mapSize-2;
+global.teamOne[0].originCol = global.mapSize-5;
 //global.teamOne[1].sprite_index = Wizard;
-global.teamOne[1].originRow = 14;
-global.teamOne[1].originCol = 8;
+global.teamOne[1].originRow = global.mapSize-2;
+global.teamOne[1].originCol = global.mapSize-6;
 //global.teamOne[2].sprite_index = Wizard;
-global.teamOne[2].originRow = 14;
-global.teamOne[2].originCol = 6;
+global.teamOne[2].originRow = global.mapSize-2;
+global.teamOne[2].originCol = global.mapSize-7;
 //global.teamOne[3].sprite_index = Wizard;
-global.teamOne[3].originRow = 14;
-global.teamOne[3].originCol = 5;
+global.teamOne[3].originRow = global.mapSize-2;
+global.teamOne[3].originCol = global.mapSize-8;
 characterSelected = 0;
 
 
@@ -514,8 +514,8 @@ if(room==Drafting &amp;&amp; inMenu==false ){
     
     if(keyboard_check(key_enter)&amp;&amp; draftCanMove )
     {
-        
-        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp;GameMaster.pool[draftRow, draftCol].playerTwoSelected==false  &amp;&amp; draftCount&lt;global.teamSize){
+        //if tile hasn't been selected by either player, is a tile with a character associated, and drafting turns still left, allow for selection
+        if(GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].playerTwoSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].spriteToDraw!=sprite1 &amp;&amp; draftCount&lt;global.teamSize){
             //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerOneSelected=true;
             global.teamOne[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
@@ -530,7 +530,6 @@ if(room==Drafting &amp;&amp; inMenu==false ){
     
    if(alarm[1]==-1)
    {
-        
         alarm[1]= room_speed*(0.2);
    }
 }

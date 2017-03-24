@@ -26,10 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///Set position
-originRow = 28;
-originCol=25;
-row = 28;
-col = 25;
+originRow = global.mapSize-2;
+originCol=global.mapSize-4;
+row =global.mapSize-2;
+col = global.mapSize-4;
 </string>
           </argument>
         </arguments>

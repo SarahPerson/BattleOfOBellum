@@ -115,6 +115,8 @@
     <object>objects\PlayerTwoButton</object>
     <object>objects\Character</object>
     <object>objects\CharacterButton</object>
+    <object>objects\DraftTextPlayerOne</object>
+    <object>objects\DraftTextPlayerTwo</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>

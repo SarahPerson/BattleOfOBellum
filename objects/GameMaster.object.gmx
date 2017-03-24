@@ -136,7 +136,12 @@ if(room==Drafting)
         if(i==11)
             j+=1;
     }
+    
+    //setting the initial highlighting position of player
+GameMaster.pool[PlayerOne.draftRow, PlayerOne.draftCol].playerOneHighlighted=true;
+GameMaster.pool[PlayerTwo.draftRow, PlayerTwo.draftCol].playerTwoHighlighted=true;
 }
+
 
 
 
@@ -457,27 +462,31 @@ switch(room){
         
         for (z=0; z&lt; global.teamSize; z+=1)
         {
-            copyTeamOne[z] = instance_create(0,0, Character);
-            copyTeamOne[z].sprite_index = global.teamOne[z].sprite_index;
-            copyTeamOne[z].originRow = global.mapSize-global.teamOne[z].originRow-1;
-            copyTeamOne[z].originCol = global.mapSize-global.teamOne[z].originCol-1;
+            if(global.teamOne[z].hp&gt;0){
+                copyTeamOne[z] = instance_create(0,0, Character);
+                copyTeamOne[z].sprite_index = global.teamOne[z].sprite_index;
+                copyTeamOne[z].originRow = global.mapSize-global.teamOne[z].originRow-1;
+                copyTeamOne[z].originCol = global.mapSize-global.teamOne[z].originCol-1;
+                
+                //move to correct location
+                copyTeamOne[z].image_xscale=spriteScaleSplit;
+                copyTeamOne[z].image_yscale=spriteScaleSplit;
+                copyTeamOne[z].x = copyTeamOne[z].originCol*tilePosConst+startingXOne;
+                copyTeamOne[z].y = copyTeamOne[z].originRow*tilePosConst+startingY;
+            }
             
-            //move to correct location
-            copyTeamOne[z].image_xscale=spriteScaleSplit;
-            copyTeamOne[z].image_yscale=spriteScaleSplit;
-            copyTeamOne[z].x = copyTeamOne[z].originCol*tilePosConst+startingXOne;
-            copyTeamOne[z].y = copyTeamOne[z].originRow*tilePosConst+startingY;
-            
-            copyTeamTwo[z] = instance_create(0,0, Character);
-            copyTeamTwo[z].sprite_index = global.teamTwo[z].sprite_index;
-            copyTeamTwo[z].originRow = global.teamTwo[z].originRow;
-            copyTeamTwo[z].originCol = global.teamTwo[z].originCol;
-            
-            //set team one characters    
-            copyTeamTwo[z].image_xscale=spriteScaleSplit;
-            copyTeamTwo[z].image_yscale=spriteScaleSplit;
-            copyTeamTwo[z].x = copyTeamTwo[z].originCol*tilePosConst+startingXTwo;
-            copyTeamTwo[z].y = copyTeamTwo[z].originRow*tilePosConst+startingY;
+            if(global.teamTwo[z].hp&gt;0){
+                copyTeamTwo[z] = instance_create(0,0, Character);
+                copyTeamTwo[z].sprite_index = global.teamTwo[z].sprite_index;
+                copyTeamTwo[z].originRow = global.teamTwo[z].originRow;
+                copyTeamTwo[z].originCol = global.teamTwo[z].originCol;
+                
+                //set team one characters    
+                copyTeamTwo[z].image_xscale=spriteScaleSplit;
+                copyTeamTwo[z].image_yscale=spriteScaleSplit;
+                copyTeamTwo[z].x = copyTeamTwo[z].originCol*tilePosConst+startingXTwo;
+                copyTeamTwo[z].y = copyTeamTwo[z].originRow*tilePosConst+startingY;
+            }
         }
             //set objects Copies
             PlayerOneObjectiveCopy = instance_create(0,0, PlayerOneObjective);
@@ -593,6 +602,32 @@ if(room!=Drafting){
         PlayerOneObjective.visible=true;
         PlayerTwoObject.visible=true;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///if in drafting screen create draft text
+if(room==Drafting)
+{
+    instance_create(0,0,DraftTextPlayerTwo);
+    instance_create(0,0, DraftTextPlayerOne);
 }
 </string>
           </argument>
