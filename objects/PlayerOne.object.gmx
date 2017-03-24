@@ -523,6 +523,7 @@ if(room==Drafting &amp;&amp; inMenu==false ){
             //show_message("Selected "+ string(draftRow) +" "+string(draftCol))
             GameMaster.pool[draftRow, draftCol].playerOneSelected=true;
             global.teamOne[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
+            if(global.teamOne[draftCount].alarm[0] == -1) {global.teamOne[draftCount].alarm[0] = room_speed*(.05);}
             draftCount+=1;
         }
         //else{
