@@ -35,7 +35,7 @@ destTile = 0;
 movement = 4;
 attack = 4;
 defence = 4;
-hp = 0;
+hp = 10;
 attackDice = 4;
 
 //initial position

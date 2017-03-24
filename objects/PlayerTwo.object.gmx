@@ -193,6 +193,9 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
         global.teamTwo[selectedCharacter].originRow = global.mapSize-curRow-1;
         global.teamTwo[selectedCharacter].originCol = global.mapSize-curCol-1;
+        
+        GameMaster.copyTeamTwo[selectedCharacter].x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
+        GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
 }
 </string>
