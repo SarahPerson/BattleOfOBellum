@@ -63,6 +63,17 @@ for(var i = 0; i &lt; global.teamSize; i++){
             global.teamOne[i].originRow=13 //hard coded for testing
             global.teamOne[i].originCol = 5
             show_message("current map: "+ string(global.currentMap));
+            
+            //destroy both players so that they are recreated
+            with(PlayerOne)
+            {
+                instance_destroy();
+            }
+            with(PlayerTwo)
+            {
+                instance_destroy();
+            }
+            
             room_goto(SplitScreen); //go back to split screen after win condition met 
         }
     }
