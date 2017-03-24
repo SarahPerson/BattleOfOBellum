@@ -82,6 +82,7 @@
     <sprites name="UIWidgets">
       <sprite>sprites\splitScreenReadyButton</sprite>
       <sprite>sprites\characterButtonsSprite</sprite>
+      <sprite>sprites\spriteButton</sprite>
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\Angont</sprite>
@@ -117,6 +118,7 @@
     <object>objects\CharacterButton</object>
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
+    <object>objects\buttonObject</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>
