@@ -755,7 +755,6 @@ if(toMove.destTile != 0){
   }
   curSpot = 0;
 }
-show_message(toMove);
 //set the current cursor locations to not highlight
 
 
