@@ -186,6 +186,10 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         global.teamOne[selectedCharacter].y = global.roomTiles[curCol, curRow].y;
         global.teamOne[selectedCharacter].originRow = curRow;
         global.teamOne[selectedCharacter].originCol = curCol;
+        
+        //move coppies
+        GameMaster.copyTeamOne[selectedCharacter].x = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
+        GameMaster.copyTeamOne[selectedCharacter].y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
 }
 </string>

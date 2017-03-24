@@ -193,6 +193,9 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         global.teamTwo[selectedCharacter].y = global.gridTwo[curCol, curRow].y;
         global.teamTwo[selectedCharacter].originRow = global.mapSize-curRow-1;
         global.teamTwo[selectedCharacter].originCol = global.mapSize-curCol-1;
+        
+        GameMaster.copyTeamTwo[selectedCharacter].x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
+        GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
 }
 </string>
@@ -521,6 +524,7 @@ if(room==Drafting &amp;&amp; inMenu == false ){
         if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].spriteToDraw!=sprite1 &amp;&amp; draftCount&lt;global.teamSize){
             GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
             global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
+            if(global.teamTwo[draftCount].alarm[0] == -1) {global.teamTwo[draftCount].alarm[0] = room_speed*(.05);}
             draftCount+=1;
         }
         //else{

@@ -118,7 +118,7 @@ switch(hp){
           <argument>
             <kind>1</kind>
             <string>///Set Initial HP
-switch(hp){
+switch(defence){
     case 1:
     hp = 30;
     break;
