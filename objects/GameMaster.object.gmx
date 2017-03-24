@@ -855,85 +855,46 @@ for(var g = 0; g &lt; 3; g++){
     if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g]; sum1 += charOne.attackArray[g];}
 }
 
-//if(sum1 == sum2){
-    for(var o = tick - 1; o &gt;= 0; o--){
-        if(charOne.moveArray[o] != 0){
-            if(charOne.moveArray[o] == 3){
-                    charOne.x += moveDist
-                    charOne.originRow += 1;
-                } else if (charTwo.moveArray[o] == 4){
-                    charOne.x -= moveDist
-                    charOne.originRow -= 1;
-                }
-                else if (charTwo.moveArray[o] == 2){
-                    charOne.y += moveDist;
-                    charOne.originCol -= 1;
-                } else {
-                    charOne.y -= moveDist;
-                    charOne.originCol += 1;
-                }
-            charOne.moveArray = array(9);
-        }
-        if(charTwo.moveArray[o] != 0){
-            if(charTwo.moveArray[o] == 3){
-                    charTwo.x -= moveDist
-                    charTwo.originRow -= 1;
-                } else if (charTwo.moveArray[o] == 4){
-                    charTwo.x += moveDist
-                    charTwo.originRow += 1;
-                }
-                else if (charTwo.moveArray[o] == 2){
-                    charTwo.y -= moveDist;
-                    charTwo.originCol += 1;
-                } else {
-                    charTwo.y += moveDist;
-                    charTwo.originCol -= 1;
-                }
-            charTwo.moveArray = array(9);
-        }
-   }
-/*} else if(sum1 &gt; sum2) {
-    for(var o = tick - 1; o &gt;= 0; o--){
-        if(charTwo.moveArray[o] != 0){
-            if(charTwo.moveArray[o] == 3){
-                    charTwo.x -= moveDist
-                    charTwo.originRow -= 1;
-                } else if (charTwo.moveArray[o] == 4){
-                    charTwo.x += moveDist
-                    charTwo.originRow += 1;
-                }
-                else if (charTwo.moveArray[o] == 2){
-                    charTwo.y -= moveDist;
-                    charTwo.originCol += 1;
-                } else {
-                    charTwo.y += moveDist;
-                    charTwo.originCol -= 1;
-                }
-            charTwo.moveArray = array(9);
-        }
-    }
-} else {
-    for(var o = tick - 1; o &gt;= 0; o--){
-        if(charOne.moveArray[o] != 0){
-            if(charOne.moveArray[o] == 3){
-                    charOne.x += moveDist
-                    charOne.originRow += 1;
-                } else if (charTwo.moveArray[o] == 4){
-                    charOne.x -= moveDist
-                    charOne.originRow -= 1;
-                }
-                else if (charTwo.moveArray[o] == 2){
-                    charOne.y += moveDist;
-                    charOne.originCol -= 1;
-                } else {
-                    charOne.y -= moveDist;
-                    charOne.originCol += 1;
-                }
-            charOne.moveArray = array(9);
-        }
-    }
+for(var o = tick - 1; o &gt;= 0; o--){
+     if(charOne.moveArray[o] != 0){
+     show_message(charOne.moveArray[o]);
+         if(charOne.moveArray[o] == 3){
+                 charOne.x -= moveDist
+                 charOne.originRow -= 1;
+             } else if (charTwo.moveArray[o] == 4){
+                 charOne.x += moveDist
+                 charOne.originRow += 1;
+             }
+             else if (charTwo.moveArray[o] == 2){
+                 charOne.y -= moveDist;
+                 charOne.originCol += 1;
+             } else {
+                 charOne.y += moveDist;
+                 charOne.originCol -= 1;
+             }
+         charOne.moveArray = array(9);
+     }
+     if(charTwo.moveArray[o] != 0){
+     show_message(charTwo.moveArray[o]);
+         if(charTwo.moveArray[o] == 3){
+                 charTwo.x += moveDist
+                 charTwo.originRow += 1;
+             } else if (charTwo.moveArray[o] == 4){
+                 charTwo.x -= moveDist
+                 charTwo.originRow -= 1;
+             }
+             else if (charTwo.moveArray[o] == 2){
+                 charTwo.y += moveDist;
+                 charTwo.originCol -= 1;
+             } else {
+                 charTwo.y -= moveDist;
+                 charTwo.originCol += 1;
+             }
+         charTwo.moveArray = array(9);
+     }
 }
-*/
+
+
 </string>
           </argument>
         </arguments>
@@ -1031,6 +992,38 @@ moveDist = 16*global.spriteScaleFull;
 
     }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// determine win conditions
+deadPlayersOne = 0;
+deadPlayersTwo = 0;
+for(var f = 0; f &lt; global.teamSize; f++){
+    if(global.teamOne[f].hp &lt;= 0){ deadPlayersOne += 1;}
+    if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
+}
+if(deadPlayersOne == global.teamSize - 1){
+    show_message("Player Two Wins!!");
+} else if(deadPlayersTwo== global.teamSize - 1){
+    show_message("Player One Wins!!");
+}
 </string>
           </argument>
         </arguments>
