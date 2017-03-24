@@ -54,6 +54,8 @@ GameMaster.moveAlg = true;</code>
   <instances>
     <instance objName="PlayerOneButton" x="1536" y="832" name="inst_BE8BF7D1" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="PlayerTwoButton" x="288" y="832" name="inst_681A79E6" locked="0" code="buttonText=&quot;Ready&quot;&#xA;action = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerTwoButton" x="160" y="832" name="inst_31595617" locked="0" code="buttonText=&quot;Controls&quot;&#xA;action=1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PlayerOneButton" x="1408" y="832" name="inst_0911D4BE" locked="0" code="buttonText=&quot;Controls&quot;&#xA;action=1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
