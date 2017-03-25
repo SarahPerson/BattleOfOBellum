@@ -362,7 +362,7 @@ for(i = 0; i&lt;global.teamSize;i++){
             <kind>1</kind>
             <string>///Move Cursor
 //Move highlighted tile to where current location of player
-if(room == SplitScreen){
+if(room == SplitScreen &amp;&amp; !PlayerTwo.inMenu){
     if(keyboard_check(key_down)|| gamepad_button_check(0,gp_down))
     {
         if(canMove){
