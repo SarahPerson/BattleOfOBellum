@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>///Set position
 originRow= global.mapSize-global.mapSize+1;
-originCol=global.mapSize-4;
+originCol=global.mapSize-5;
 row = global.mapSize-global.mapSize+1;
-col = global.mapSize-4;
+col = global.mapSize-5;
 </string>
           </argument>
         </arguments>
@@ -78,7 +78,14 @@ for(var i = 0; i &lt; global.teamSize; i++){
         }
         else 
         {
-            show_message("Player One Won the Game!")
+            show_message("Player One Won the Game!");
+            //make characters invisible before going back to main menu
+            for(i=0; i&lt;global.teamSize;i+=1)
+            {
+                global.teamOne[i].visible=false;
+                global.teamTwo[i].visible=false;
+            }
+            room_goto(MainMenu);
         }
     }
 }

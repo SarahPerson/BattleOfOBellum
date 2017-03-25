@@ -1055,9 +1055,11 @@ if(room == FullScreen){
         if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
     }
     if(deadPlayersOne == global.teamSize - 1){
-        show_message("Player Two Wins!!");
+        show_message("Player One's Team Has Been Extinguished#Player Two Wins!");
+        room_goto(MainMenu);
     } else if(deadPlayersTwo== global.teamSize - 1){
-        show_message("Player One Wins!!");
+        show_message("Player Two's Team Has Been Extinguished#Player One Wins!");
+        room_goto(MainMenu);
     }
 }
 </string>

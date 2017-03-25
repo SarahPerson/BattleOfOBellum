@@ -26,13 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed=0;
-if(room == Menu){
+if(room == MainMenu){
 currentIncrement=0;
 }
-else if (room == gameOver)
-{
-currentIncrement =3;
-}
+
 </string>
           </argument>
         </arguments>
@@ -208,13 +205,10 @@ draw_text(x,y,buttonText);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == Menu &amp;&amp; currentIncrement&lt;2){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;3){
 currentIncrement++;
 }
-else if (room==gameOver &amp;&amp; currentIncrement&lt;5)
-{
-currentIncrement++;
-}
+
 
 </string>
           </argument>
@@ -238,12 +232,10 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == Menu &amp;&amp; currentIncrement&gt;0){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0){
 currentIncrement--;
 }
-else if( room == gameOver &amp;&amp; currentIncrement&gt;3){
-currentIncrement--;
-}
+
 </string>
           </argument>
         </arguments>
@@ -267,27 +259,50 @@ currentIncrement--;
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-switch(currentIncrement)
-{
-    case 0:
-        room_goto(main);
-        break;
-    case 1:
-        background_visible[1]=true;
-        break;     
-    case 2:
-        game_end();
-        break;
-    case 3: 
-        room_goto(main);
-        break;
-    case 4:
-        room_goto(Menu);
-        break;
-    case 5: 
-        game_end();
-        break;
-
+if(currentIncrement = action){
+    switch(currentIncrement)
+    {
+        case 0:
+            room_goto(Drafting);
+            break;
+        case 1:
+            if(background_visible[0]){
+                background_visible[0]=false;
+                background_visible[1]=true;
+            }
+            else if(background_visible[2])
+            {
+                background_visible[2]=false;
+                background_visible[1]=true;
+            }
+            else{
+                background_visible[1]=false;
+                background_visible[2] = false;
+                background_visible[0] = true;
+            }
+            break;     
+        case 2:
+            if(background_visible[0]){
+                background_visible[0]=false;
+                background_visible[2]=true;
+            }
+            else if(background_visible[1])
+            {
+                background_visible[1]=false;
+                background_visible[2]=true;
+            }
+            else{
+                background_visible[1]=false;
+                background_visible[2] = false;
+                background_visible[0]=true;
+                
+            }
+            break;
+        case 3: 
+            game_end();
+            break;
+    
+    }
 }
 </string>
           </argument>
