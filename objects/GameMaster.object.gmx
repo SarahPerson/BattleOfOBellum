@@ -1056,9 +1056,19 @@ if(room == FullScreen){
     }
     if(deadPlayersOne == global.teamSize - 1){
         show_message("Player One's Team Has Been Extinguished#Player Two Wins!");
+        for(i=0; i&lt;global.teamSize;i+=1)
+            {
+                global.teamOne[i].visible=false;
+                global.teamTwo[i].visible=false;
+            }
         room_goto(MainMenu);
     } else if(deadPlayersTwo== global.teamSize - 1){
         show_message("Player Two's Team Has Been Extinguished#Player One Wins!");
+        for(i=0; i&lt;global.teamSize;i+=1)
+            {
+                global.teamOne[i].visible=false;
+                global.teamTwo[i].visible=false;
+            }
         room_goto(MainMenu);
     }
 }
