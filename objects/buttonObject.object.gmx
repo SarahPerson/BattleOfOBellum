@@ -188,6 +188,59 @@ draw_text(x,y,buttonText);
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0){
+currentIncrement--;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;3){
+currentIncrement++;
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="40">
       <action>
         <libid>1</libid>
@@ -236,6 +289,74 @@ currentIncrement++;
 currentIncrement--;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//what to do on click
+if(currentIncrement = action){
+    switch(currentIncrement)
+    {
+        case 0:
+            room_goto(Drafting);
+            break;
+        case 1:
+            if(background_visible[0]){
+                background_visible[0]=false;
+                background_visible[1]=true;
+            }
+            else if(background_visible[2])
+            {
+                background_visible[2]=false;
+                background_visible[1]=true;
+            }
+            else{
+                background_visible[1]=false;
+                background_visible[2] = false;
+                background_visible[0] = true;
+            }
+            break;     
+        case 2:
+            if(background_visible[0]){
+                background_visible[0]=false;
+                background_visible[2]=true;
+            }
+            else if(background_visible[1])
+            {
+                background_visible[1]=false;
+                background_visible[2]=true;
+            }
+            else{
+                background_visible[1]=false;
+                background_visible[2] = false;
+                background_visible[0]=true;
+                
+            }
+            break;
+        case 3: 
+            game_end();
+            break;
+    
+    }
+}
 </string>
           </argument>
         </arguments>
