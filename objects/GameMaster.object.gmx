@@ -1047,16 +1047,18 @@ moveDist = 16*global.spriteScaleFull;
           <argument>
             <kind>1</kind>
             <string>/// determine win conditions
-deadPlayersOne = 0;
-deadPlayersTwo = 0;
-for(var f = 0; f &lt; global.teamSize; f++){
-    if(global.teamOne[f].hp &lt;= 0){ deadPlayersOne += 1;}
-    if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
-}
-if(deadPlayersOne == global.teamSize - 1){
-    show_message("Player Two Wins!!");
-} else if(deadPlayersTwo== global.teamSize - 1){
-    show_message("Player One Wins!!");
+if(room == FullScreen){
+    deadPlayersOne = 0;
+    deadPlayersTwo = 0;
+    for(var f = 0; f &lt; global.teamSize; f++){
+        if(global.teamOne[f].hp &lt;= 0){ deadPlayersOne += 1;}
+        if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
+    }
+    if(deadPlayersOne == global.teamSize - 1){
+        show_message("Player Two Wins!!");
+    } else if(deadPlayersTwo== global.teamSize - 1){
+        show_message("Player One Wins!!");
+    }
 }
 </string>
           </argument>
