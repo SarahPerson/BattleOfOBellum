@@ -129,7 +129,7 @@
     <room>rooms\FullScreen</room>
     <room>rooms\SplitScreen</room>
     <room>rooms\Drafting</room>
-    <room>rooms\room5</room>
+    <room>rooms\MainMenu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
