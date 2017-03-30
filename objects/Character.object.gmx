@@ -119,6 +119,9 @@ switch(hp){
             <kind>1</kind>
             <string>///Set Initial HP
 switch(defence){
+    case 0:
+    hp = 0;
+    break;
     case 1:
     hp = 30;
     break;
@@ -196,12 +199,12 @@ switch(sprite_index){
     case Angont:
         movement = 4;
         attack = 4;
-        defence = 4;
+        defence = 0;
         break;
     case Beyla:
         movement = 7;
         attack = 1;
-        defence = 4;
+        defence = 0;
         break;
     case Jadzia:
         movement = 4;
