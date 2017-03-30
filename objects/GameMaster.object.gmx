@@ -105,6 +105,7 @@ if(!instance_exists(PlayerTwo))
             <kind>1</kind>
             <string>///setup drafting screen
 pool = ds_grid_create(12,2);
+draftTurn = 0;
 
 var newX=50;
 var newY=50;
@@ -628,6 +629,7 @@ if(room==Drafting)
 {
     instance_create(0,0,DraftTextPlayerTwo);
     instance_create(0,0, DraftTextPlayerOne);
+    selectedChar = instance_create(0,0,CharInfo);
 }
 </string>
           </argument>
@@ -1071,6 +1073,32 @@ if(room == FullScreen){
             }
         room_goto(MainMenu);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///drafting turns and text
+if(draftTurn == 0){
+    selectedChar.turn = "Player 1's Turn to Draft";
+} else {
+   selectedChar.turn = "Player 2's Turn to Draft"; 
 }
 </string>
           </argument>

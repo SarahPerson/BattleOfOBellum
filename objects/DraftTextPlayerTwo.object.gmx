@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///draw text to display count of drafts
 draw_set_color(c_black);
+draw_set_halign(fa_center);
 draw_text(128,900-160,"Player Two#Drafts Remain: "+string(global.teamSize-PlayerTwo.draftCount)); //subtract current count from total team size
 </string>
           </argument>
