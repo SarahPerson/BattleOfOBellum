@@ -630,6 +630,8 @@ if(room==Drafting)
     instance_create(0,0,DraftTextPlayerTwo);
     instance_create(0,0, DraftTextPlayerOne);
     selectedChar = instance_create(0,0,CharInfo);
+    selectedCharInfo = instance_create(500, 500, Character);
+    selectedCharInfo.visible = false;
 }
 </string>
           </argument>
@@ -1095,10 +1097,16 @@ if(room == FullScreen){
           <argument>
             <kind>1</kind>
             <string>///drafting turns and text
-if(draftTurn == 0){
-    selectedChar.turn = "Player 1's Turn to Draft";
-} else {
-   selectedChar.turn = "Player 2's Turn to Draft"; 
+if(room == Drafting){
+    if(draftTurn == 0){
+        selectedChar.turn = "Player 1's Turn to Draft";
+    } else {
+       selectedChar.turn = "Player 2's Turn to Draft"; 
+    }
+    selectedChar.name = selectedCharInfo.sprite_index;
+    selectedChar.attack = selectedCharInfo.attack;
+    selectedChar.defence = selectedCharInfo.defence;
+    selectedChar.movement = selectedCharInfo.movement;
 }
 </string>
           </argument>

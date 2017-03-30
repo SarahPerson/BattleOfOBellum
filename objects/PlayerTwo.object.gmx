@@ -469,7 +469,7 @@ if(GameMaster.draftTurn == 1){
                 draftRow=draftRowMax; 
                 
             GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
-            
+            GameMaster.selectedCharInfo.sprite_index = GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCanMove=false
             
         }
@@ -484,7 +484,7 @@ if(GameMaster.draftTurn == 1){
                 draftCol=draftColMax;
                 
             GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
-            
+            GameMaster.selectedCharInfo.sprite_index = GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCanMove=false
         }
         
@@ -498,7 +498,7 @@ if(GameMaster.draftTurn == 1){
             if(draftCol&lt;0)
                 draftCol=0;    
             GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
-        
+            GameMaster.selectedCharInfo.sprite_index = GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCanMove=false
             
         
@@ -515,7 +515,7 @@ if(GameMaster.draftTurn == 1){
                 draftRow=0; 
                 
             GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=true;
-            
+            GameMaster.selectedCharInfo.sprite_index = GameMaster.pool[draftRow, draftCol].spriteToDraw;
             draftCanMove=false
         }
         
@@ -524,6 +524,7 @@ if(GameMaster.draftTurn == 1){
             //if tile hasn't been selected by either player, is a tile with a character associated, and drafting turns still left, allow for selection
             if(GameMaster.pool[draftRow, draftCol].playerTwoSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].playerOneSelected==false &amp;&amp; GameMaster.pool[draftRow, draftCol].spriteToDraw!=sprite1 &amp;&amp; draftCount&lt;global.teamSize){
                 GameMaster.pool[draftRow, draftCol].playerTwoSelected=true;
+                 GameMaster.pool[draftRow, draftCol].playerTwoHighlighted=false;
                 global.teamTwo[draftCount].sprite_index=GameMaster.pool[draftRow, draftCol].spriteToDraw;
                 if(global.teamTwo[draftCount].alarm[0] == -1) {global.teamTwo[draftCount].alarm[0] = room_speed*(.05);}
                 draftCount+=1;
