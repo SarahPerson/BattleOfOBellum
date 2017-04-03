@@ -1133,7 +1133,7 @@ if(room == Drafting){
             <string>///Draw Character Portraits Split screen
 spriteIconScale = 3;
 draw_set_halign(fa_center);
-if(room == SplitScreen){
+if(room == SplitScreen || room == FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         if(global.teamOne[i].hp &gt; 0){
             draw_sprite_ext(global.teamOne[i].sprite_index, 0,1530, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
