@@ -1132,17 +1132,20 @@ if(room == Drafting){
             <kind>1</kind>
             <string>///Draw Character Portraits Split screen
 spriteIconScale = 3;
+draw_set_halign(fa_center);
 if(room == SplitScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         if(global.teamOne[i].hp &gt; 0){
-            draw_sprite_ext(global.teamOne[i].sprite_index, 0,10, 200 + i*16*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
+            draw_sprite_ext(global.teamOne[i].sprite_index, 0,1530, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
+            draw_text(1550, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(global.teamOne[i].hp) + "/" + string(global.teamOne[i].maxHp) + "#" + string(global.teamOne[i].attack) + "/" + string(global.teamOne[i].defence) + "/"+ string(global.teamOne[i].movement));
         } else {
-            draw_sprite_ext(global.teamOne[i].sprite_index, 0,10, 200 + i*16*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
+            draw_sprite_ext(global.teamOne[i].sprite_index, 0,1530, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
         }
         if(global.teamTwo[i].hp &gt; 0){
-            draw_sprite_ext(global.teamTwo[i].sprite_index, 0,1550, 200 + i*16*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
+            draw_sprite_ext(global.teamTwo[i].sprite_index, 0,15, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
+            draw_text(45, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(global.teamTwo[i].hp) + "/" + string(global.teamTwo[i].maxHp) + "#" + string(global.teamTwo[i].attack) + "/" + string(global.teamTwo[i].defence) + "/"+ string(global.teamTwo[i].movement));
         } else {
-            draw_sprite_ext(global.teamTwo[i].sprite_index, 0,1550, 200 + i*16*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
+            draw_sprite_ext(global.teamTwo[i].sprite_index, 0,15, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
         }
     }
 }

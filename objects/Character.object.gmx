@@ -36,6 +36,7 @@ movement = 4;
 attack = 4;
 defence = 4;
 hp = 0;
+maxHp = 0;
 attackDice = 4;
 
 //initial position
@@ -71,29 +72,37 @@ col = 27;
             <string>///increase HP
 switch(hp){
     case 2:
-    hp += 15;
-    break;
+        maxHp += 15;
+        hp += 15;
+        break;
     case 3:
-    hp += 12;
-    break;
+        maxHp += 12;
+        hp += 12;
+        break;
     case 4:
-    hp += 11;
-    break;
+         maxHp += 11;
+        hp += 11;
+        break;
     case 5:
-    hp += 9;
-    break;
+        maxHp += 9;
+        hp += 9;
+        break;
     case 6:
-    hp += 8;
-    break;
+        maxHp += 8;
+        hp += 8;
+        break;
     case 7:
-    hp += 6;
-    break;
+        maxHp += 6;
+        hp += 6;
+        break;
     case 8:
-    hp += 5;
-    break;
+        maxHp += 5;
+        hp += 5;
+        break;
     case 9:
-    hp = 4;
-    break;
+        maxHp += 4;
+        hp = 4;
+        break;
 }
 </string>
           </argument>
@@ -120,35 +129,44 @@ switch(hp){
             <string>///Set Initial HP
 switch(defence){
     case 0:
-    hp = 0;
-    break;
+        hp = 0;
+        break;
     case 1:
-    hp = 30;
-    break;
+        maxHp = 30;
+        hp = 30;
+        break;
     case 2:
-    hp = 45;
-    break;
+        maxHp = 45;
+        hp = 45;
+        break;
     case 3:
-    hp = 57;
-    break;
+        maxHp = 57;
+        hp = 57;
+        break;
     case 4:
-    hp = 68;
-    break;
+        maxHp = 68;
+        hp = 68;
+        break;
     case 5:
-    hp = 77;
-    break;
+        maxHp = 77;
+        hp = 77;
+        break;
     case 6:
-    hp = 85;
-    break;
+        maxHp = 85;
+        hp = 85;
+        break;
     case 7:
-    hp = 91;
-    break;
+        maxHp = 91;
+        hp = 91;
+        break;
     case 8:
-    hp = 96;
-    break;
+        maxHp = 96;
+        hp = 96;
+        break;
     case 9:
-    hp = 100;
-    break;
+        maxHp = 100;
+        hp = 100;
+        break;
 }
 </string>
           </argument>
