@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="9" name="datafiles">
+  <datafiles number="11" name="datafiles">
     <datafile>
       <name>smallCity.txt</name>
       <exists>-1</exists>
@@ -88,6 +88,40 @@
         </Config>
       </ConfigOptions>
       <filename>smallSuburbanR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>smallRuralR.txt</name>
+      <exists>-1</exists>
+      <size>799</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>smallRuralR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>smallOutercityR.txt</name>
+      <exists>-1</exists>
+      <size>1457</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>smallOutercityR.txt</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
