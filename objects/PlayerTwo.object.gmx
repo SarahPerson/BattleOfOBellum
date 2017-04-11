@@ -83,6 +83,9 @@ draftRowMax =1
 //Set up drafting
 draftCount=0;
 
+//set up bonus screen shtuff
+maxBonusButtons = 3;
+
 </string>
           </argument>
         </arguments>

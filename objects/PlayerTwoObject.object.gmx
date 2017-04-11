@@ -56,6 +56,7 @@ col = global.mapSize-5;
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamOne[i]){
         show_message("Player One Won!");
+        global.PlayerWon = 1;
         //check if not at the end of the board and if not move to new map
         if(global.currentMap&lt;global.gameSize){
             global.currentMap=global.currentMap-1; //increment current map
@@ -74,11 +75,12 @@ for(var i = 0; i &lt; global.teamSize; i++){
                 instance_destroy();
             }
             
-            room_goto(SplitScreen); //go back to split screen after win condition met 
-        }
+            room_goto(BonusScreen); //go to bonus screen after win condition met 
+            }
         else 
         {
             show_message("Player One Won the Game!");
+            global.PlayerWon = 1;
             //make characters invisible before going back to main menu
             for(i=0; i&lt;global.teamSize;i+=1)
             {

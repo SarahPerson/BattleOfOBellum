@@ -117,6 +117,7 @@
       <sprite>sprites\splitScreenReadyButton</sprite>
       <sprite>sprites\characterButtonsSprite</sprite>
       <sprite>sprites\spriteButton</sprite>
+      <sprite>sprites\spriteButtonBonus</sprite>
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\Angont</sprite>
@@ -157,6 +158,7 @@
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
     <object>objects\buttonObject</object>
+    <object>objects\buttonObjectBonus</object>
     <object>objects\CharInfo</object>
   </objects>
   <rooms name="rooms">
@@ -166,6 +168,7 @@
     <room>rooms\SplitScreen</room>
     <room>rooms\Drafting</room>
     <room>rooms\MainMenu</room>
+    <room>rooms\BonusScreen</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

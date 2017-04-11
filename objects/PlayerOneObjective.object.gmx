@@ -56,6 +56,7 @@ col = global.mapSize-5;
 for(var i = 0; i &lt; global.teamSize; i++){
     if(other = global.teamTwo[i]){
         show_message("Player Two Reached the Objective");
+        global.PlayerWon = 2;
         
         //check if not at the end of the board and if not move to new map
         if(global.currentMap&lt;global.gameSize){
@@ -76,7 +77,7 @@ for(var i = 0; i &lt; global.teamSize; i++){
                 instance_destroy();
             }
             
-            room_goto(SplitScreen); //go back to split screen after win condition met 
+            room_goto(BonusScreen); //go to bonus screen after win condition met 
             
             //destroy both players so that they are recreated
   
@@ -84,7 +85,7 @@ for(var i = 0; i &lt; global.teamSize; i++){
         else 
         {
             show_message("Player Two Won the Game!")
-            
+            global.PlayerWon = 2;
             //make characters invisible before going back to main menu
             for(i=0; i&lt;global.teamSize;i+=1)
             {

@@ -96,7 +96,8 @@ currentIncrement=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room==FullScreen){
+            <string>//move screens if both ready buttons selected
+if(room==FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         global.teamOne[i].destTile = 0;
         global.teamOne[i].moveArray = array(9);
@@ -127,6 +128,13 @@ if(room==Drafting)
 {
     room_goto(SplitScreen);
 }
+
+//move from bonus screen to splitscreen
+if(room==BonusScreen){
+    room_goto(SplitScreen);
+}
+
+
 </string>
           </argument>
         </arguments>

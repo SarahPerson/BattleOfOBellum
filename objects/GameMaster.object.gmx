@@ -588,20 +588,21 @@ switch(mapNum){
           <argument>
             <kind>1</kind>
             <string>///set visibility of characters based on room
-if( room== Drafting){
-    for(i=0; i&lt; global.teamSize;i+=1){
-        global.teamOne[i].visible=false;
-        global.teamTwo[i].visible=false;
-        PlayerOneObjective.visible=false;
-        PlayerTwoObject.visible=false;
-    }
-}
-if(room!=Drafting){
+
+if(room==SplitScreen||room==FullScreen){
     for(i=0; i&lt; global.teamSize;i+=1){
         global.teamOne[i].visible=true;
         global.teamTwo[i].visible=true;
         PlayerOneObjective.visible=true;
         PlayerTwoObject.visible=true;
+    }
+}
+else{
+    for(i=0; i&lt; global.teamSize;i+=1){
+        global.teamOne[i].visible=false;
+        global.teamTwo[i].visible=false;
+        PlayerOneObjective.visible=false;
+        PlayerTwoObject.visible=false;
     }
 }
 </string>
@@ -632,6 +633,77 @@ if(room==Drafting)
     selectedChar = instance_create(0,0,CharInfo);
     selectedCharInfo = instance_create(500, 500, Character);
     selectedCharInfo.visible = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///setup the bonus screen shtuff
+//values to be used
+playerTwoX= 250;
+playerOneX=250+800;
+Y = 100;
+if(room==BonusScreen){
+    /*
+    instance_create(250,100,buttonObjectBonus);
+    temp=instance_find(buttonObjectBonus,1);
+    temp.buttonText="test1";
+    temp.action = 1;
+    instance_create(1050, 100, buttonObjectBonus);
+    temp=instance_find(buttonObjectBonus,2);
+    temp.buttonText="test2";
+    temp.action = 1;
+    */
+    currentIncrementOne = 0;
+    currentIncrementTwo = 0;     
+    
+    //set up array of buttons dependent on bonuses
+    switch(global.PlayerWon){
+        case 1:
+            playerOneBonuses=array(5);
+            playerTwoBonuses = array(3);
+            break;
+        case 2:
+            playerOneBonuses=array(3);
+            playerTwoBonuses = array(5);
+            break;
+        default:
+            playerOneBonuses=array(3);
+            playerTwoBonuses = array(3);
+            break;
+    }
+    
+    //set up player two buttons
+    for(i=0;i&lt;array_length_1d(playerTwoBonuses);i++){
+        playerTwoBonuses[i]=instance_create(playerTwoX,100*i+Y,buttonObjectBonus);
+        playerTwoBonuses[i].buttonText=global.bonusStrings[i];
+        playerTwoBonuses[i].action = i;
+        playerTwoBonuses[i].player=2;
+        
+    }
+    for(i=0;i&lt;array_length_1d(playerOneBonuses);i++){
+        playerOneBonuses[i]=instance_create(playerOneX,100*i+Y,buttonObjectBonus);
+        playerOneBonuses[i].buttonText=global.bonusStrings[i];
+        playerOneBonuses[i].action = i;
+        playerOneBonuses[i].player=1;
+    }
+
 }
 </string>
           </argument>
