@@ -155,7 +155,7 @@ currentIncrementTwo--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&lt;array_length_1d(GameMaster.playerTwoBonuses)){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&lt;array_length_1d(GameMaster.playerTwoBonuses)-1){
     currentIncrementTwo++;
 }
 
@@ -182,7 +182,7 @@ currentIncrementTwo--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&lt;array_length_1d(GameMaster.playerOneBonuses)){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&lt;array_length_1d(GameMaster.playerOneBonuses)-1){
     currentIncrementOne++;
 }
 
@@ -236,19 +236,31 @@ currentIncrementTwo--;
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrement = action &amp;&amp; player==2){
+if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!=true){
     switch(buttonText)
     {
     //do actual stuff here
-        case "test":
-            show_message("yay");
+        case "Heal entire team":
+            show_message("yay1");
             break;
+        case "Heal one character fully":
+            show_message("yay2");
+            break;
+        case "Get extra level up points":
+            show_message("yay3");
+            break;
+        case "Place objective":
+            show_message("yay4");
+            break;
+        case "Place a wall":
+            show_message("yay5");
+            break; 
         default:
             show_message("lawl this worked");
             break;
     }
     
-    show_message("Button #"+ string(currentIncrement)+"pressed");
+    show_message("Button #"+ string(currentIncrementTwo)+"pressed");
 }
 </string>
           </argument>
@@ -273,18 +285,30 @@ if(currentIncrement = action &amp;&amp; player==2){
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrement = action &amp;&amp; player==1){
+if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu!=true){
     switch(buttonText)
     {
-        case "test":
-            show_message("yay");
+        case "Heal entire team":
+            show_message("yay1");
             break;
+        case "Heal one character fully":
+            show_message("yay2");
+            break;
+        case "Get extra level up points":
+            show_message("yay3");
+            break;
+        case "Place objective":
+            show_message("yay4");
+            break;
+        case "Place a wall":
+            show_message("yay5");
+            break;    
         default:
             show_message("lawl this worked");
             break;
 
     }
-    show_message("Button #"+ string(currentIncrement)+"pressed");
+    show_message("Button #"+ string(currentIncrementOne)+"pressed");
 }
 </string>
           </argument>

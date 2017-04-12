@@ -96,7 +96,7 @@ global.setWall = 0;
 global.bonusStrings = array(5);
 global.bonusStrings[0] = "Heal entire team";
 global.bonusStrings[1] = "Heal one character fully";
-global.bonusStrings[2] = "another bonus?";
+global.bonusStrings[2] = "Get extra level up points";
 global.bonusStrings[3] = "Place objective";
 global.bonusStrings[4] = "Place a wall";</code>
   <enableViews>0</enableViews>
