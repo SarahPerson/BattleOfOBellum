@@ -216,7 +216,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
 } else if (global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
     global.gridTwo[curCol, curRow].tileType = 5;
     global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
-    global.placeWall -= 1;
+    global.setWall -= 1;
 }
 </string>
           </argument>

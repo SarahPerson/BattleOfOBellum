@@ -731,12 +731,22 @@ if(room==BonusScreen){
             <string>///heal all units by 10
 if(teamToHeal == 1){
     for(var i = 0; i &lt; global.teamSize; i++){
-        global.teamOne[i].hp += 10;
+        if(global.teamOne[i].hp &gt; 0){
+            global.teamOne[i].hp += 10;
+        }
+        if(global.teamOne[i].hp &gt; global.teamOne[i].maxHP) {
+            global.teamOne[i].hp = global.teamOne[i].maxHP;
+        }
     }
 }
 if(teamToHeal == 2){
     for(var i = 0; i &lt; global.teamSize; i++){
-        global.teamOne[i].hp += 10;
+        if(global.teamTwo[i].hp &gt; 0){
+            global.teamTwo[i].hp += 10;
+        }
+        if(global.teamTwo[i].hp &gt; global.teamTwo[i].maxHP) {
+            global.teamTwo[i].hp = global.teamTwo[i].maxHP;
+        }
     }
 }
 </string>

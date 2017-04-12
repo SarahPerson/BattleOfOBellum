@@ -196,7 +196,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         GameMaster.copyTeamOne[selectedCharacter].x = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamOne[selectedCharacter].y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
-}else if(global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag){
+}else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag){
    PlayerOneObjective.x = global.roomTiles[curCol, curRow].x;
    PlayerOneObjective.y = global.roomTiles[curCol, curRow].y;
    PlayerOneObjective.originRow = curRow;
@@ -206,10 +206,10 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
    GameMaster.PlayerOneObjectiveCopy.y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
    
    global.setFlag = false;
-}else if (global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
+}else if (room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
     global.roomTiles[curCol, curRow].tileType = 5;
     global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
-    global.placeWall -= 1;
+    global.setWall -= 1;
 }
 </string>
           </argument>
@@ -473,8 +473,9 @@ if(room==SplitScreen &amp;&amp; !PlayerOne.inMenu){
           <argument>
             <kind>1</kind>
             <string>///move cursor on drafting screen 
+if(room==Drafting){
 if(GameMaster.draftTurn == 0){
-    if(room==Drafting &amp;&amp; inMenu==false ){
+    if( inMenu==false ){
     
         if(keyboard_check(key_down)&amp;&amp; draftCanMove)
         {
@@ -560,6 +561,7 @@ if(GameMaster.draftTurn == 0){
             alarm[1]= room_speed*(0.2);
        }
     }
+}
 }
 </string>
           </argument>
