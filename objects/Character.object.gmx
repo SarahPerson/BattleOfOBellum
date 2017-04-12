@@ -126,7 +126,56 @@ switch(hp){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set Initial HP
+            <string>///Set Initial Stats
+
+switch(sprite_index){
+    case Angont:
+        movement = 4;
+        attack = 4;
+        defence = 4;
+        break;
+    case Beyla:
+        movement = 7;
+        attack = 1;
+        defence = 4;
+        break;
+    case Jadzia:
+        movement = 4;
+        attack = 7;
+        defence = 1;
+        break;
+    case Khufu:
+        movement = 4;
+        attack = 4;
+        defence = 4;
+        break;
+    case Marinka:
+        movement = 7;
+        attack = 1;
+        defence = 4;
+        break;
+    case Tashi:
+        movement = 4;
+        attack = 1;
+        defence = 7;
+        break;
+    case Theseus:
+        movement = 4;
+        attack = 1;
+        defence = 7;
+        break;
+    case Mavia:
+        movement = 1;
+        attack = 7;
+        defence = 4;
+        break;
+    default:
+        movement = 0;
+        attack = 0;
+        defence = 0;
+        break;
+    
+}
 switch(defence){
     case 0:
         hp = 0;
@@ -212,54 +261,6 @@ switch(defence){
             }
         } 
     }
-}
-switch(sprite_index){
-    case Angont:
-        movement = 4;
-        attack = 4;
-        defence = 0;
-        break;
-    case Beyla:
-        movement = 7;
-        attack = 1;
-        defence = 0;
-        break;
-    case Jadzia:
-        movement = 4;
-        attack = 7;
-        defence = 1;
-        break;
-    case Khufu:
-        movement = 4;
-        attack = 4;
-        defence = 4;
-        break;
-    case Marinka:
-        movement = 7;
-        attack = 1;
-        defence = 4;
-        break;
-    case Tashi:
-        movement = 4;
-        attack = 1;
-        defence = 7;
-        break;
-    case Theseus:
-        movement = 4;
-        attack = 1;
-        defence = 7;
-        break;
-    case Mavia:
-        movement = 1;
-        attack = 7;
-        defence = 4;
-        break;
-    default:
-        movement = 0;
-        attack = 0;
-        defence = 0;
-        break;
-    
 }
 </string>
           </argument>

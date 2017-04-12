@@ -30,6 +30,7 @@ originRow = global.mapSize-2;
 originCol=global.mapSize-5;
 row =global.mapSize-2;
 col = global.mapSize-5;
+
 </string>
           </argument>
         </arguments>

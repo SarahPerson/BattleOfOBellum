@@ -86,6 +86,9 @@ draftCount=0;
 //set up bonus screen shtuff
 maxBonusButtons = 3;
 
+//set bonus varibles
+if(room==BonusScreen){lvPoints = 10;}
+
 </string>
           </argument>
         </arguments>
@@ -200,6 +203,20 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         GameMaster.copyTeamTwo[selectedCharacter].x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
+} else if(global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag){
+   PlayerTwoObject.x = global.gridTwo[curCol, curRow].x;
+   PlayerTwoObject.y = global.gridTwo[curCol, curRow].y;
+   PlayerTwoObject.originRow = curRow;
+   PlayerTwoObject.originCol = curCol;
+   
+   GameMaster.PlayerTwoObjectiveCopy.x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
+   GameMaster.PlayerTwoObjectiveCopy.y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
+   
+   global.setFlag = false;
+} else if (global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
+    global.gridTwo[curCol, curRow].tileType = 5;
+    global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
+    global.placeWall -= 1;
 }
 </string>
           </argument>

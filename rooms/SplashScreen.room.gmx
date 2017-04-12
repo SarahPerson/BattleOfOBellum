@@ -91,6 +91,8 @@ global.teamTwo[0].originCol =7;
 
 //Winning values
 global.PlayerWon = 0;
+global.setFlag = false;
+global.setWall = 0;
 global.bonusStrings = array(5);
 bonusStrings[0] = "Heal entire team";
 bonusStrings[1] = "Heal one character fully";

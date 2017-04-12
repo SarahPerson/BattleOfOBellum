@@ -656,6 +656,7 @@ if(room==Drafting)
             <kind>1</kind>
             <string>///setup the bonus screen shtuff
 //values to be used
+teamToHeal = 0;
 playerTwoX= 250;
 playerOneX=250+800;
 Y = 100;
@@ -704,6 +705,39 @@ if(room==BonusScreen){
         playerOneBonuses[i].player=1;
     }
 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///heal all units by 10
+if(teamToHeal == 1){
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].hp += 10;
+    }
+}
+if(teamToHeal == 2){
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].hp += 10;
+    }
 }
 </string>
           </argument>
