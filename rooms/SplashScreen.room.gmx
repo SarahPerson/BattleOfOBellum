@@ -94,11 +94,11 @@ global.PlayerWon = 0;
 global.setFlag = false;
 global.setWall = 0;
 global.bonusStrings = array(5);
-bonusStrings[0] = "Heal entire team";
-bonusStrings[1] = "Heal one character fully";
-bonusStrings[2] = "another bonus?";
-bonusStrings[3] = "Place objective";
-bonusStrings[4] = "Place a wall";</code>
+global.bonusStrings[0] = "Heal entire team";
+global.bonusStrings[1] = "Heal one character fully";
+global.bonusStrings[2] = "another bonus?";
+global.bonusStrings[3] = "Place objective";
+global.bonusStrings[4] = "Place a wall";</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
