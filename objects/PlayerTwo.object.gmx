@@ -203,7 +203,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         GameMaster.copyTeamTwo[selectedCharacter].x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
-} else if(global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag){
+} else if(global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
    PlayerTwoObject.x = global.gridTwo[curCol, curRow].x;
    PlayerTwoObject.y = global.gridTwo[curCol, curRow].y;
    PlayerTwoObject.originRow = curRow;
@@ -213,7 +213,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
    GameMaster.PlayerTwoObjectiveCopy.y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
    
    global.setFlag = false;
-} else if (global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
+} else if (global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
     global.gridTwo[curCol, curRow].tileType = 5;
     global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
     global.setWall -= 1;

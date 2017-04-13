@@ -196,7 +196,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         GameMaster.copyTeamOne[selectedCharacter].x = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamOne[selectedCharacter].y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
-}else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag){
+}else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; keyboard_check(key_enter)){
    PlayerOneObjective.x = global.roomTiles[curCol, curRow].x;
    PlayerOneObjective.y = global.roomTiles[curCol, curRow].y;
    PlayerOneObjective.originRow = curRow;
@@ -206,7 +206,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
    GameMaster.PlayerOneObjectiveCopy.y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
    
    global.setFlag = false;
-}else if (room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0){
+}else if (room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; keyboard_check(key_enter)){
     global.roomTiles[curCol, curRow].tileType = 5;
     global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
     global.setWall -= 1;

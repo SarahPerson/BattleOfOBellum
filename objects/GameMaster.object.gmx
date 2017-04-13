@@ -734,8 +734,8 @@ if(teamToHeal == 1){
         if(global.teamOne[i].hp &gt; 0){
             global.teamOne[i].hp += 10;
         }
-        if(global.teamOne[i].hp &gt; global.teamOne[i].maxHP) {
-            global.teamOne[i].hp = global.teamOne[i].maxHP;
+        if(global.teamOne[i].hp &gt; global.teamOne[i].maxHp) {
+            global.teamOne[i].hp = global.teamOne[i].maxHp;
         }
     }
 }
@@ -744,8 +744,8 @@ if(teamToHeal == 2){
         if(global.teamTwo[i].hp &gt; 0){
             global.teamTwo[i].hp += 10;
         }
-        if(global.teamTwo[i].hp &gt; global.teamTwo[i].maxHP) {
-            global.teamTwo[i].hp = global.teamTwo[i].maxHP;
+        if(global.teamTwo[i].hp &gt; global.teamTwo[i].maxHp) {
+            global.teamTwo[i].hp = global.teamTwo[i].maxHp;
         }
     }
 }
