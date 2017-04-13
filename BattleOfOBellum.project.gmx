@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="13" name="datafiles">
+  <datafiles number="22" name="datafiles">
     <datafile>
       <name>smallCity.txt</name>
       <exists>-1</exists>
@@ -156,6 +156,159 @@
         </Config>
       </ConfigOptions>
       <filename>smallRuralI.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumStrongholdR.txt</name>
+      <exists>-1</exists>
+      <size>799</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumStrongholdR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumRuralR.txt</name>
+      <exists>-1</exists>
+      <size>1457</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumRuralR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumSuburbanR.txt</name>
+      <exists>-1</exists>
+      <size>2047</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumSuburbanR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumOutercityR.txt</name>
+      <exists>-1</exists>
+      <size>2591</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumOutercityR.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumCity.txt</name>
+      <exists>-1</exists>
+      <size>3198</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumCity.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumOutercityI.txt</name>
+      <exists>-1</exists>
+      <size>2591</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumOutercityI.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumSuburbanI.txt</name>
+      <exists>-1</exists>
+      <size>2047</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumSuburbanI.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumRuralI.txt</name>
+      <exists>-1</exists>
+      <size>1457</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumRuralI.txt</filename>
+    </datafile>
+    <datafile>
+      <name>mediumStrongholdI.txt</name>
+      <exists>-1</exists>
+      <size>799</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>mediumStrongholdI.txt</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
