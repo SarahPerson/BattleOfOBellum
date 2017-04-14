@@ -169,6 +169,21 @@ switch(sprite_index){
         attack = 7;
         defence = 4;
         break;
+    case Warlock:
+        movement = 7;
+        attack = 4;
+        defence = 1;
+        break;
+    case Ent:
+        movement = 1;
+        attack = 7;
+        defence = 4;
+        break;
+    case MechWarrior:
+        movement = 1;
+        attack = 4;
+        defence = 7;
+        break;
     default:
         movement = 0;
         attack = 0;
