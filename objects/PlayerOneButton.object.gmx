@@ -393,7 +393,8 @@ if(currentIncrement&lt;1&amp;&amp; PlayerOne.inMenu){
             <string>///move into and out of the menu
 //show_message(string(PlayerOne.inMenu));
 if(currentIncrement==action){
-
+if(!PlayerOne.selectedBonus){ //do this stuff if a bonus has not been selected yet
+    
     if(PlayerOne.inMenu==false)
     {
         PlayerOne.inMenu=true;
@@ -406,6 +407,7 @@ if(currentIncrement==action){
         }
         PlayerOne.inMenu=false;
         
+    }
     }
 
 }
@@ -437,19 +439,20 @@ currentIncrement=0;
             <string>///move into and out of the menu
 //show_message(string(PlayerOne.inMenu));
 if(currentIncrement==action){
-
-    if(PlayerOne.inMenu==false)
-    {
-        PlayerOne.inMenu=true;
-    }
-    else 
-    {
-        if(isSelected==true)
+    if(!PlayerOne.selectedBonus){ //do this stuff if a bonus has not been selected yet
+        if(PlayerOne.inMenu==false)
         {
-            isSelected = false;
+            PlayerOne.inMenu=true;
         }
-        PlayerOne.inMenu=false;
-        
+        else 
+        {
+            if(isSelected==true)
+            {
+                isSelected = false;
+            }
+            PlayerOne.inMenu=false;
+            
+        }
     }
 
 }

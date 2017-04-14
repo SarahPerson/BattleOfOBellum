@@ -247,6 +247,8 @@ draw_text(x,y,buttonText);
             <kind>1</kind>
             <string>///move into and out of the menu
 if(currentIncrement==action){
+if(!PlayerTwo.selectedBonus){ //do this stuff if a bonus has not been selected yet
+    
     if(PlayerTwo.inMenu==false)
     {
         PlayerTwo.inMenu=true;
@@ -258,6 +260,7 @@ if(currentIncrement==action){
             isSelected = false;
         }
         PlayerTwo.inMenu=false;
+    }
     }
     
 }

@@ -91,6 +91,7 @@ bonusRowMax = 1;
 bonusCol=0;
 bonusRow=0;
 bonusCanMove= true;
+selectedBonus=false;
 
 //set bonus varibles
 if(room==BonusScreen){lvPoints = 10;}
@@ -118,7 +119,8 @@ if(room==BonusScreen){lvPoints = 10;}
           <argument>
             <kind>1</kind>
             <string>///set drafting move delay
-draftCanMove= true;
+draftCanMove = true;
+bonusCanMove = true;
 </string>
           </argument>
         </arguments>
@@ -569,6 +571,118 @@ if(GameMaster.draftTurn == 1){
             alarm[1]= room_speed*(0.2);
        }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move cursor in characters on bonus screen
+if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
+    if( inMenu==false ){
+    
+    if(keyboard_check(key_down)&amp;&amp; bonusCanMove)
+    {
+
+
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
+        if(bonusRow&lt;bonusRowMax) //if in range  
+        {  
+            bonusRow+=1;
+            if(GameMaster.TeamTwo[bonusRow, bonusCol]==0)
+                bonusRow--; //if there isn't, go back to original spot
+        
+        }
+        
+        //bonusRow+=1;    //increment the row selected
+        //if(bonusRow&gt;bonusRowMax )
+        //    bonusRow=bonusRowMax; 
+            
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=true;
+        bonusCanMove=false
+        
+    }
+    
+    if(keyboard_check(key_right)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
+        
+        if(bonusCol&lt;bonusColMax) //if in range  
+        {  
+            bonusCol+=1;
+            if(GameMaster.TeamTwo[bonusRow, bonusCol]==0)
+                bonusCol--; //if there isn't, go back to original spot
+        
+        }
+    
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_left)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;    
+        bonusCol=bonusCol-1;
+        
+        
+        if(bonusCol&lt;0)
+            bonusCol=0;    
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=true;
+        bonusCanMove=false
+        
+    
+    }
+    
+    if(keyboard_check(key_up)&amp;&amp; bonusCanMove)
+    {
+    
+
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
+        bonusRow=bonusRow-1;;    //increment the row selected 
+        
+        if(bonusRow&lt;0 )
+            bonusRow=0; 
+            
+        GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove )
+    {
+            show_message("Selected "+ string(bonusRow) +" "+string(bonusCol))
+            GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoSelected=true;
+            GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
+            
+            // TODO apply the bonus to the selected character
+            
+            isSelectingCharacterForBonus = false;
+            inMenu=true;
+
+    }
+    
+   if(alarm[1]==-1)
+   {
+        alarm[1]= room_speed*(0.2);
+   }
+}
+
 }
 </string>
           </argument>
