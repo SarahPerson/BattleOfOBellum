@@ -51,7 +51,17 @@ switch(global.currentMap)
         myFile=file_text_open_read("smallStrongholdL.txt");
         break
 }
-
+/*if(global.setup){ 
+    global.playerTwoOb.originRow = global.mapSize-2;
+    global.playerTwoOb.originCol=global.mapSize-5;
+    global.playerTwoOb.row =global.mapSize-2;
+    global.playerTwoOb.col = global.mapSize-5;
+    
+    global.playerOneOb.originRow = global.mapSize-2;
+    global.playerOneOb.originCol=global.mapSize-5;
+    global.playerOneOb.row =global.mapSize-2;
+    global.playerOneOb.col = global.mapSize-5;
+}*/
 </string>
           </argument>
         </arguments>
@@ -73,8 +83,7 @@ switch(global.currentMap)
           <argument>
             <kind>1</kind>
             <string>///Set up the objectives
-instance_create(100,100,PlayerOneObjective);
-instance_create(100,100,PlayerTwoObject);
+
 </string>
           </argument>
         </arguments>
@@ -229,16 +238,16 @@ switch(room){
                 
                 //Set the objectives
                 //check if objective one goes on this tile
-                if(PlayerOneObjective.row==i &amp;&amp; PlayerOneObjective.col==j)
+                if(global.playerOneOb.row==i &amp;&amp; global.playerOneOb.col==j)
                 {
-                    PlayerOneObjective.x = global.roomTiles[j,i].x;
-                    PlayerOneObjective.y = global.roomTiles[j,i].y;    
+                    global.playerOneOb.x = global.roomTiles[j,i].x;
+                    global.playerOneOb.y = global.roomTiles[j,i].y;    
                 }
                 //check if objective two goes on this tile
-                if(PlayerTwoObject.row==i &amp;&amp; PlayerTwoObject.col==j)
+                if(global.playerTwoOb.row==i &amp;&amp; global.playerTwoOb.col==j)
                 {
-                    PlayerTwoObject.x = global.roomTiles[j,i].x;
-                    PlayerTwoObject.y = global.roomTiles[j,i].y;    
+                    global.playerTwoOb.x = global.roomTiles[j,i].x;
+                    global.playerTwoOb.y = global.roomTiles[j,i].y;    
                 }
               }
            }
@@ -265,6 +274,11 @@ switch(room){
              global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
+             //if(global.currentMap == global.walls[0,0]){
+                 for(var p = 1; p &lt; 6; p++){
+                    if(i == global.walls[p,1] &amp;&amp; j == global.walls[p,0]) {global.roomTiles[j,i].tileType  = 5;}
+                 }
+             //}
            }
         }
         
@@ -308,15 +322,15 @@ switch(room){
         }
         
         //Set the objectives
-        n=PlayerOneObjective.originRow;
-        PlayerOneObjective.row = global.mapSize-PlayerOneObjective.originCol-1;
-        PlayerOneObjective.col = n;    
+        n=global.playerOneOb.originRow;
+        global.playerOneOb.row = global.mapSize-global.playerOneOb.originCol-1;
+        global.playerOneOb.col = n;    
       
         //check if objective two goes on this tile
 
-        n=PlayerTwoObject.originRow;
-        PlayerTwoObject.row = global.mapSize-PlayerTwoObject.originCol-1;
-        PlayerTwoObject.col = n;
+        n=global.playerTwoOb.originRow;
+        global.playerTwoOb.row = global.mapSize-global.playerTwoOb.originCol-1;
+        global.playerTwoOb.col = n;
         
         for(z=0; z&lt;global.teamSize; z+=1)
         {
@@ -333,15 +347,15 @@ switch(room){
             global.teamTwo[z].y = global.teamTwo[z].row*tilePosConst+startingY;
            
             //set objects
-            PlayerOneObjective.image_xscale=spriteScaleFull;
-            PlayerOneObjective.image_yscale=spriteScaleFull;
-            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingX;
-            PlayerOneObjective.y = PlayerOneObjective.row*tilePosConst+startingY;
+            global.playerOneOb.image_xscale=spriteScaleFull;
+            global.playerOneOb.image_yscale=spriteScaleFull;
+            global.playerOneOb.x = global.playerOneOb.col*tilePosConst+startingX;
+            global.playerOneOb.y = global.playerOneOb.row*tilePosConst+startingY;
 
-            PlayerTwoObject.image_xscale=spriteScaleFull;
-            PlayerTwoObject.image_yscale=spriteScaleFull;
-            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingX;
-            PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
+            global.playerTwoOb.image_xscale=spriteScaleFull;
+            global.playerTwoOb.image_yscale=spriteScaleFull;
+            global.playerTwoOb.x = global.playerTwoOb.col*tilePosConst+startingX;
+            global.playerTwoOb.y = global.playerTwoOb.row*tilePosConst+startingY;               
 
         }
         //set initial position of the players cursors - we no need cursors on this screen
@@ -372,6 +386,11 @@ switch(room){
              global.roomTiles[j,i] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
+             //if(global.currentMap == global.walls[0,0]){
+                 for(var p = 1; p &lt; 6; p++){
+                    if(i == global.walls[p,1] &amp;&amp; j == global.walls[p,0]) {global.roomTiles[j,i].tileType  = 5;}
+                 }
+             //}
            }
         }
         
@@ -424,12 +443,12 @@ switch(room){
         }
         
         //Set the objectives
-        PlayerOneObjective.col = global.mapSize-PlayerOneObjective.originCol-1;
-        PlayerOneObjective.row = global.mapSize-PlayerOneObjective.originRow-1;    
+        global.playerOneOb.col = global.mapSize-global.playerOneOb.originCol-1;
+        global.playerOneOb.row = global.mapSize-global.playerOneOb.originRow-1;    
       
         //check if objective two goes on this tile
-        PlayerTwoObject.col = PlayerTwoObject.originCol;
-        PlayerTwoObject.row =PlayerTwoObject.originRow;
+        global.playerTwoOb.col = global.playerTwoOb.originCol;
+        global.playerTwoOb.row =global.playerTwoOb.originRow;
         
         for(z=0; z&lt;global.teamSize; z+=1)
         {
@@ -446,15 +465,15 @@ switch(room){
             global.teamTwo[z].y = global.teamTwo[z].row*tilePosConst+startingY;
            
             //set objects
-            PlayerOneObjective.image_xscale=spriteScaleSplit;
-            PlayerOneObjective.image_yscale=spriteScaleSplit;
-            PlayerOneObjective.x = PlayerOneObjective.col*tilePosConst+startingXOne;
-            PlayerOneObjective.y = PlayerOneObjective.row*tilePosConst+startingY;
+            global.playerOneOb.image_xscale=spriteScaleSplit;
+            global.playerOneOb.image_yscale=spriteScaleSplit;
+            global.playerOneOb.x = global.playerOneOb.col*tilePosConst+startingXOne;
+            global.playerOneOb.y = global.playerOneOb.row*tilePosConst+startingY;
 
-            PlayerTwoObject.image_xscale=spriteScaleSplit;
-            PlayerTwoObject.image_yscale=spriteScaleSplit;
-            PlayerTwoObject.x = PlayerTwoObject.col*tilePosConst+startingXTwo;
-            PlayerTwoObject.y = PlayerTwoObject.row*tilePosConst+startingY;               
+            global.playerTwoOb.image_xscale=spriteScaleSplit;
+            global.playerTwoOb.image_yscale=spriteScaleSplit;
+            global.playerTwoOb.x = global.playerTwoOb.col*tilePosConst+startingXTwo;
+            global.playerTwoOb.y = global.playerTwoOb.row*tilePosConst+startingY;               
 
         }
         
@@ -491,9 +510,9 @@ switch(room){
         }
             //set objects Copies
             PlayerOneObjectiveCopy = instance_create(0,0, PlayerOneObjective);
-            PlayerOneObjectiveCopy.col=PlayerOneObjective.col;
+            PlayerOneObjectiveCopy.col=global.playerOneOb.col;
             PlayerOneObjectiveCopy.col = global.mapSize - PlayerOneObjectiveCopy.col -1;
-            PlayerOneObjectiveCopy.row=PlayerOneObjective.row
+            PlayerOneObjectiveCopy.row=global.playerOneOb.row
             PlayerOneObjectiveCopy.row = global.mapSize - PlayerOneObjectiveCopy.row -1;
             
             PlayerOneObjectiveCopy.image_xscale=spriteScaleSplit;
@@ -502,9 +521,9 @@ switch(room){
             PlayerOneObjectiveCopy.y = PlayerOneObjectiveCopy.row*tilePosConst+startingY;
 
             PlayerTwoObjectiveCopy = instance_create(0,0, PlayerTwoObject);
-            PlayerTwoObjectiveCopy.col=PlayerTwoObject.col;
+            PlayerTwoObjectiveCopy.col=global.playerTwoOb.col;
             PlayerTwoObjectiveCopy.col = global.mapSize - PlayerTwoObjectiveCopy.col -1;
-            PlayerTwoObjectiveCopy.row=PlayerTwoObject.row
+            PlayerTwoObjectiveCopy.row=global.playerTwoOb.row
             PlayerTwoObjectiveCopy.row = global.mapSize - PlayerTwoObjectiveCopy.row -1;
             
             PlayerTwoObjectiveCopy.image_xscale=spriteScaleSplit;
