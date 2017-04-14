@@ -129,7 +129,7 @@ draw_text(x,y,buttonText);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&gt;0){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&gt;0 &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus){
 currentIncrementTwo--;
 }
 
@@ -155,7 +155,7 @@ currentIncrementTwo--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&lt;array_length_1d(GameMaster.playerTwoBonuses)-1){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementTwo&lt;array_length_1d(GameMaster.playerTwoBonuses)-1 &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus){
     currentIncrementTwo++;
 }
 
@@ -182,7 +182,7 @@ currentIncrementTwo--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&lt;array_length_1d(GameMaster.playerOneBonuses)-1){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&lt;array_length_1d(GameMaster.playerOneBonuses)-1 &amp;&amp; !PlayerOne.isSelectingCharacterForBonus){
     currentIncrementOne++;
 }
 
@@ -209,7 +209,7 @@ currentIncrementTwo--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&gt;0 ){
+            <string>if( room == BonusScreen &amp;&amp; currentIncrementOne&gt;0 &amp;&amp; !PlayerOne.isSelectingCharacterForBonus &amp;&amp; !PlayerOne.isSelectingCharacterForBonus){
     currentIncrementOne--;
 }
 
@@ -236,7 +236,7 @@ currentIncrementTwo--;
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!=true){
+if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!=true &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus){
     switch(buttonText)
     {
     //do actual stuff here
@@ -285,7 +285,7 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu!=true){
+if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu!=true &amp;&amp; !PlayerOne.isSelectingCharacterForBonus){
     switch(buttonText)
     {
         case "Heal entire team":
@@ -294,6 +294,8 @@ if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu
             break;
         case "Heal one character fully":
             show_message("yay2");
+            PlayerOne.isSelectingCharacterForBonus = true;
+            show_message(GameMaster.TeamOne[1,4]);
             break;
         case "Get extra level up points":
             PlayerOne.lvPoints += 3;

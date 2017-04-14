@@ -72,6 +72,29 @@ switch(global.currentMap)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Set up the objectives
+instance_create(100,100,PlayerOneObjective);
+instance_create(100,100,PlayerTwoObject);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Setup the players
 
 if(!instance_exists(PlayerOne))
@@ -146,29 +169,6 @@ GameMaster.pool[PlayerTwo.draftRow, PlayerTwo.draftCol].playerTwoHighlighted=tru
 
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Set up the objectives
-instance_create(100,100,PlayerOneObjective);
-instance_create(100,100,PlayerTwoObject);
 </string>
           </argument>
         </arguments>
@@ -663,8 +663,8 @@ playerOneX=250+800;
 Y = 100;
 
 teamY=620;
-teamOneX = 20;
-teamTwoX = 810;
+teamTwoX = 20;
+teamOneX = 810;
 spacing = 10;
 
 //Create arrays of the character buttons
@@ -716,11 +716,26 @@ if(room==BonusScreen){
                 // set player one's team buttons
                 TeamOne[i,j]=instance_create(teamOneX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
                 TeamOne[i,j].spriteToDraw= global.teamOne[j+i*6].sprite_index;
+                TeamOne[i,j].hpVal = global.teamOne[j+i*6].hp;
+                TeamOne[i,j].hpMax = global.teamOne[j+i*6].maxHp;
+                TeamOne[i,j].attackVal = global.teamOne[j+i*6].attack;
+                TeamOne[i,j].moveVal = global.teamOne[j+i*6].movement;
+                TeamOne[i,j].defVal = global.teamOne[j+i*6].defence;
+                
                 // set player two's team buttons
                 TeamTwo[i,j]=instance_create(teamTwoX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
                 TeamTwo[i,j].spriteToDraw= global.teamTwo[j+i*6].sprite_index;
+                TeamTwo[i,j].hpVal = global.teamTwo[j+i*6].hp;
+                TeamTwo[i,j].hpMax = global.teamTwo[j+i*6].maxHp;
+                TeamTwo[i,j].attackVal = global.teamTwo[j+i*6].attack;
+                TeamTwo[i,j].moveVal = global.teamTwo[j+i*6].movement;
+                TeamTwo[i,j].defVal = global.teamTwo[j+i*6].defence;
                 
                 buttonCount++;
+            }
+            else{
+                TeamOne[i,j] = 0;
+                TeamTwo[i,j] = 0;
             }
         }
         teamY+=spacing+130;

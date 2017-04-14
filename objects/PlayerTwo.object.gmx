@@ -85,6 +85,12 @@ draftCount=0;
 
 //set up bonus screen shtuff
 maxBonusButtons = 3;
+isSelectingCharacterForBonus = false;
+bonusColMax = 5;
+bonusRowMax = 1;
+bonusCol=0;
+bonusRow=0;
+bonusCanMove= true;
 
 //set bonus varibles
 if(room==BonusScreen){lvPoints = 10;}

@@ -78,9 +78,16 @@ draftCount=0;
 
 //set up bonus screen shtuff
 maxBonusButtons = 3;
+isSelectingCharacterForBonus = false;
+bonusColMax = 5;
+bonusRowMax = 0;
+bonusCol=0;
+bonusRow=0;
+bonusCanMove= true;
 
 //set bonus varibles
 if(room==BonusScreen){lvPoints = 10;}
+
 </string>
           </argument>
         </arguments>
@@ -105,6 +112,7 @@ if(room==BonusScreen){lvPoints = 10;}
             <kind>1</kind>
             <string>///set drafting move delay
 draftCanMove= true;
+bonusCanMove = true;
 </string>
           </argument>
         </arguments>
@@ -562,6 +570,101 @@ if(GameMaster.draftTurn == 0){
        }
     }
 }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move cursor in characters on bonus screen
+if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
+    if( inMenu==false ){
+    
+    if(keyboard_check(key_down)&amp;&amp; bonusCanMove)
+    {
+
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        bonusRow+=1;    //increment the row selected
+        if(bonusRow&gt;bonusRowMax )
+            bonusRow=bonusRowMax; 
+            
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+        
+    }
+    
+    if(keyboard_check(key_right)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        bonusCol+=1;
+        
+        if(bonusCol&gt;bonusColMax)
+            bonusCol=bonusColMax;
+            
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_left)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;    
+        bonusCol=bonusCol-1;
+        
+        
+        if(bonusCol&lt;0)
+            bonusCol=0;    
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+        
+    
+    }
+    
+    if(keyboard_check(key_up)&amp;&amp; bonusCanMove)
+    {
+    
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        bonusRow=bonusRow-1;;    //increment the row selected 
+        
+        if(bonusRow&lt;0 )
+            bonusRow=0; 
+            
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove )
+    {
+            show_message("Selected "+ string(bonusRow) +" "+string(bonusCol))
+            GameMaster.TeamOne[bonusRow, bonusCol].playerOneSelected=true;
+            GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+
+    }
+    
+   if(alarm[1]==-1)
+   {
+        alarm[1]= room_speed*(0.2);
+   }
+}
+
 }
 </string>
           </argument>

@@ -34,6 +34,11 @@ playerTwoSelected = false;
 playerTwoHighlighted=false;
 
 spriteToDraw=Soldier;
+hpVal = 0;
+hpMax = 0;
+moveVal = 0;
+attackVal = 0;
+defVal = 0;
 </string>
           </argument>
         </arguments>
@@ -107,7 +112,7 @@ draw_self();
 
 //draw sprite on button
 spriteScale=sprite_get_width(self.sprite_index)-30;
-draw_sprite_stretched(spriteToDraw, 0, self.x+15, self.y+15, spriteScale, spriteScale );
+draw_sprite_stretched(spriteToDraw, 0, self.x+15, self.y+10, spriteScale, spriteScale );
 
 
 //Draw all text in button
@@ -119,10 +124,10 @@ draw_set_color(c_black);
 initX = x+sprite_get_width(self.sprite_index)/2;
 initY = y+sprite_get_height(self.sprite_index)/2;
 
-draw_text(initX,initY ,"HP: ");
-draw_text(initX, initY+15 ,"Movement: ");
-draw_text(initX, initY+15*2, "Attack: ");
-draw_text(initX, initY+15*3, "Defense?: ");
+draw_text(initX,initY+10+5 ,"HP: "+string(hpVal)+"/"+string(hpMax)); //need to adjust placement
+draw_text(initX, initY+12*2+5 ,"Movement: "+ string(moveVal) );
+draw_text(initX, initY+12*3+5, "Attack: "+string(attackVal));
+draw_text(initX, initY+12*4+5, "Defense?: "+string(defVal));
 
 
 
