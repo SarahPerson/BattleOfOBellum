@@ -722,21 +722,21 @@ instance_create(0,0, DrawTextObject);
             if(buttonCount&lt;global.teamSize){
                 // set player one's team buttons
                 TeamOne[i,j]=instance_create(teamOneX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
-                TeamOne[i,j].spriteToDraw= global.teamOne[j+i*6].sprite_index;
-                TeamOne[i,j].hpVal = global.teamOne[j+i*6].hp;
-                TeamOne[i,j].hpMax = global.teamOne[j+i*6].maxHp;
-                TeamOne[i,j].attackVal = global.teamOne[j+i*6].attack;
-                TeamOne[i,j].moveVal = global.teamOne[j+i*6].movement;
-                TeamOne[i,j].defVal = global.teamOne[j+i*6].defence;
+                TeamOne[i,j].spriteToDraw= global.teamOne[buttonCount].sprite_index;
+                TeamOne[i,j].hpVal = global.teamOne[buttonCount].hp;
+                TeamOne[i,j].hpMax = global.teamOne[buttonCount].maxHp;
+                TeamOne[i,j].attackVal = global.teamOne[buttonCount].attack;
+                TeamOne[i,j].moveVal = global.teamOne[buttonCount].movement;
+                TeamOne[i,j].defVal = global.teamOne[buttonCount].defence;
                 
                 // set player two's team buttons
                 TeamTwo[i,j]=instance_create(teamTwoX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
-                TeamTwo[i,j].spriteToDraw= global.teamTwo[j+i*6].sprite_index;
-                TeamTwo[i,j].hpVal = global.teamTwo[j+i*6].hp;
-                TeamTwo[i,j].hpMax = global.teamTwo[j+i*6].maxHp;
-                TeamTwo[i,j].attackVal = global.teamTwo[j+i*6].attack;
-                TeamTwo[i,j].moveVal = global.teamTwo[j+i*6].movement;
-                TeamTwo[i,j].defVal = global.teamTwo[j+i*6].defence;
+                TeamTwo[i,j].spriteToDraw= global.teamTwo[buttonCount].sprite_index;
+                TeamTwo[i,j].hpVal = global.teamTwo[buttonCount].hp;
+                TeamTwo[i,j].hpMax = global.teamTwo[buttonCount].maxHp;
+                TeamTwo[i,j].attackVal = global.teamTwo[buttonCount].attack;
+                TeamTwo[i,j].moveVal = global.teamTwo[buttonCount].movement;
+                TeamTwo[i,j].defVal = global.teamTwo[buttonCount].defence;
                 
                 buttonCount++;
             }

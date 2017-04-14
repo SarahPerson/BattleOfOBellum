@@ -689,13 +689,28 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
         bonusCanMove=false
     }
     
-    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove )
+    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove &amp;&amp; !PlayerOne.inMenu)
     {
             show_message("Selected "+ string(bonusRow) +" "+string(bonusCol))
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneSelected=true;
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
             
             // TODO apply the bonus to the selected character
+            //get character selected sprite
+            selected = GameMaster.TeamOne[bonusRow, bonusCol].spriteToDraw;
+            show_message(string(selected)+" is selected");
+            var characterToHeal;
+            
+            for(i=0; i&lt; global.teamSize; i++){
+                if(global.teamOne[i].sprite_index ==selected)
+                {
+                    show_message("match found at "+ string(i) );
+                    characterToHeal = i;
+                }     
+            }
+            
+            //heal selected character 
+            global.teamOne[characterToHeal].hp=global.teamOne[characterToHeal].maxHp;
             
             isSelectingCharacterForBonus = false;
             inMenu = true;

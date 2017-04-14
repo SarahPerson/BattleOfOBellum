@@ -281,6 +281,11 @@ switch(defence){
             }
         } 
     }
+    //set character to invisible once it dies
+    //visible=false; //can't do this yet because for some reason it set an entire team to invisible 
+}
+else{
+    //visible=true;
 }
 </string>
           </argument>

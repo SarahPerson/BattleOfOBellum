@@ -241,16 +241,24 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
     {
     //do actual stuff here
         case "Heal entire team":
+            //set the team to heal and call the alarm with the event
+            GameMaster.teamToHeal = 1;
+            if(GameMaster.alarm[3] == -1) {GameMaster.alarm[3] = room_speed*0.1;}
+            
             PlayerTwo.selectedBonus = true;
             PlayerTwo.inMenu = true;
             break;
         case "Heal one character fully":
             PlayerTwo.isSelectingCharacterForBonus = true;
+            
             //set initial highlighted tile
             GameMaster.TeamTwo[PlayerTwo.bonusRow, PlayerTwo.bonusRow].playerTwoHighlighted = true;
             PlayerTwo.selectedBonus = true;
             break;
         case "Get extra level up points":
+            //add points to total level up points
+            PlayerTwo.lvPoints += 3;
+            
             PlayerTwo.selectedBonus = true;
             PlayerTwo.inMenu = true;
             break;
