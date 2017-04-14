@@ -350,6 +350,9 @@
       <sprite>sprites\Tashi</sprite>
       <sprite>sprites\Theseus</sprite>
       <sprite>sprites\Mavia</sprite>
+      <sprite>sprites\Ent</sprite>
+      <sprite>sprites\Warlock</sprite>
+      <sprite>sprites\MechWarrior</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

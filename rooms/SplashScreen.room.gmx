@@ -33,9 +33,10 @@ global.allCharacters[5] = Tashi;
 global.allCharacters[6] = Theseus;
 global.allCharacters[7] = Mavia;
 
-global.allCharacters[8] = sprite1;
-global.allCharacters[9] = sprite1;
-global.allCharacters[10] = sprite1;
+global.allCharacters[8] = Ent;
+global.allCharacters[9] = Warlock;
+global.allCharacters[10] = MechWarrior;
+
 global.allCharacters[11] = sprite1;
 global.allCharacters[12] = sprite1;
 global.allCharacters[13] = sprite1;
