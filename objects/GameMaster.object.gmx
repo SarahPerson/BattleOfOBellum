@@ -274,6 +274,11 @@ switch(room){
              global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
+             //if(global.currentMap == global.walls[0,0]){
+                 for(var p = 1; p &lt; 6; p++){
+                    if(i == global.walls[p,1] &amp;&amp; j == global.walls[p,0]) {global.roomTiles[j,i].tileType  = 5;}
+                 }
+             //}
            }
         }
         
@@ -381,6 +386,11 @@ switch(room){
              global.roomTiles[j,i] = tempTile;
              var temp = file_text_read_real(myFile);
              global.roomTiles[j,i].tileType = temp;
+             //if(global.currentMap == global.walls[0,0]){
+                 for(var p = 1; p &lt; 6; p++){
+                    if(i == global.walls[p,1] &amp;&amp; j == global.walls[p,0]) {global.roomTiles[j,i].tileType  = 5;}
+                 }
+             //}
            }
         }
         

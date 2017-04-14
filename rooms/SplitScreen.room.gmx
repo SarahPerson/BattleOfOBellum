@@ -22,6 +22,7 @@ if(global.setup) {
     global.playerOneOb.originCol=global.mapSize-5;
     global.playerOneOb.row =global.mapSize-2;
     global.playerOneOb.col = global.mapSize-5;
+    for(var w = 0; w &lt; 6; w++){ global.walls[w,0] = 0;  global.walls[w,1] = 0; }
 }</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
