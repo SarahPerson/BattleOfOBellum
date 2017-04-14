@@ -353,6 +353,7 @@
       <sprite>sprites\Ent</sprite>
       <sprite>sprites\Warlock</sprite>
       <sprite>sprites\MechWarrior</sprite>
+      <sprite>sprites\Pixie</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

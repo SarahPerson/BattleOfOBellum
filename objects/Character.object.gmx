@@ -184,6 +184,11 @@ switch(sprite_index){
         attack = 4;
         defence = 7;
         break;
+     case Pixie:
+        movement = 7;
+        attack = 4;
+        defence = 1;
+        break;
     default:
         movement = 0;
         attack = 0;

@@ -36,8 +36,8 @@ global.allCharacters[7] = Mavia;
 global.allCharacters[8] = Ent;
 global.allCharacters[9] = Warlock;
 global.allCharacters[10] = MechWarrior;
+global.allCharacters[11] = Pixie;
 
-global.allCharacters[11] = sprite1;
 global.allCharacters[12] = sprite1;
 global.allCharacters[13] = sprite1;
 global.allCharacters[14] = sprite1;
