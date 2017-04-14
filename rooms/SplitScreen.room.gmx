@@ -11,7 +11,18 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,GameMaster);
-if(global.setup) { show_message("select your units and move them anywhere in the highlighted area, then hit ready to start the game"); }</code>
+if(global.setup) { 
+    show_message("select your units and move them anywhere in the highlighted area, then hit ready to start the game"); 
+    global.playerTwoOb.originRow= global.mapSize-global.mapSize+1;
+    global.playerTwoOb.originCol=global.mapSize-5;
+    global.playerTwoOb.row = global.mapSize-global.mapSize+1;
+    global.playerTwoOb.col = global.mapSize-5;
+    
+    global.playerOneOb.originRow = global.mapSize-2;
+    global.playerOneOb.originCol=global.mapSize-5;
+    global.playerOneOb.row =global.mapSize-2;
+    global.playerOneOb.col = global.mapSize-5;
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

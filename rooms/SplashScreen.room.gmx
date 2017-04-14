@@ -99,7 +99,13 @@ global.bonusStrings[0] = "Heal entire team";
 global.bonusStrings[1] = "Heal one character fully";
 global.bonusStrings[2] = "Get extra level up points";
 global.bonusStrings[3] = "Place objective";
-global.bonusStrings[4] = "Place a wall";</code>
+global.bonusStrings[4] = "Place a wall";
+
+//objectives
+global.playerOneOb = instance_create(100,100,PlayerOneObjective);
+global.playerTwoOb = instance_create(100,100,PlayerTwoObject);
+global.playerOneOb.persistent = true; 
+global.playerTwoOb.persistent = true;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
