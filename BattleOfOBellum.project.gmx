@@ -349,6 +349,7 @@
       <sprite>sprites\Tashi</sprite>
       <sprite>sprites\Theseus</sprite>
       <sprite>sprites\Mavia</sprite>
+      <sprite>sprites\Ent</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
