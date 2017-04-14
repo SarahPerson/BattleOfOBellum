@@ -365,6 +365,10 @@
   <scripts name="scripts">
     <script>scripts\array.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\players</font>
+    <font>fonts\standard</font>
+  </fonts>
   <objects name="objects">
     <object>objects\Tile</object>
     <object>objects\PlayerOne</object>

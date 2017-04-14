@@ -103,11 +103,31 @@ if(playerTwoHighlighted==true){
           <argument>
             <kind>1</kind>
             <string>///Draw the character for the button
-
 draw_self();
-spriteScale=sprite_get_width(self.sprite_index)-30;
 
+//draw sprite on button
+spriteScale=sprite_get_width(self.sprite_index)-30;
 draw_sprite_stretched(spriteToDraw, 0, self.x+15, self.y+15, spriteScale, spriteScale );
+
+
+//Draw all text in button
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_font(players);
+draw_set_color(c_black);
+
+initX = x+sprite_get_width(self.sprite_index)/2;
+initY = y+sprite_get_height(self.sprite_index)/2;
+
+draw_text(initX,initY ,"HP: ");
+draw_text(initX, initY+15 ,"Movement: ");
+draw_text(initX, initY+15*2, "Attack: ");
+draw_text(initX, initY+15*3, "Defense?: ");
+
+
+
+
+
 </string>
           </argument>
         </arguments>
