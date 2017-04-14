@@ -289,19 +289,20 @@ if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu
     switch(buttonText)
     {
         case "Heal entire team":
-            show_message("yay1");
+            GameMaster.teamToHeal = 1;
+            if(GameMaster.alarm[3] == -1) {GameMaster.alarm[3] = room_speed*0.1;}
             break;
         case "Heal one character fully":
             show_message("yay2");
             break;
         case "Get extra level up points":
-            show_message("yay3");
+            PlayerOne.lvPoints += 3;
             break;
         case "Place objective":
-            show_message("yay4");
+            global.setFlag = true;
             break;
         case "Place a wall":
-            show_message("yay5");
+            global.setWall = 5;
             break;    
         default:
             show_message("lawl this worked");
