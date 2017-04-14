@@ -186,6 +186,7 @@
       <sprite>sprites\characterButtonsSprite</sprite>
       <sprite>sprites\spriteButton</sprite>
       <sprite>sprites\spriteButtonBonus</sprite>
+      <sprite>sprites\bonusScreenCharacterButtonSprite</sprite>
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\Angont</sprite>
@@ -223,6 +224,7 @@
     <object>objects\PlayerTwoButton</object>
     <object>objects\Character</object>
     <object>objects\CharacterButton</object>
+    <object>objects\BonusScreenCharacterButton</object>
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
     <object>objects\buttonObject</object>

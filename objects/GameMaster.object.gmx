@@ -656,21 +656,24 @@ if(room==Drafting)
             <kind>1</kind>
             <string>///setup the bonus screen shtuff
 //values to be used
+//ui values to use
 teamToHeal = 0;
 playerTwoX= 250;
 playerOneX=250+800;
 Y = 100;
+
+teamY=620;
+teamOneX = 20;
+teamTwoX = 810;
+spacing = 10;
+
+//Create arrays of the character buttons
+TeamOne= ds_grid_create(6,2);
+TeamTwo = ds_grid_create(6,2);
+
+
 if(room==BonusScreen){
-    /*
-    instance_create(250,100,buttonObjectBonus);
-    temp=instance_find(buttonObjectBonus,1);
-    temp.buttonText="test1";
-    temp.action = 1;
-    instance_create(1050, 100, buttonObjectBonus);
-    temp=instance_find(buttonObjectBonus,2);
-    temp.buttonText="test2";
-    temp.action = 1;
-    */
+    //set the initial selected buttons
     currentIncrementOne = 0;
     currentIncrementTwo = 0;     
     
@@ -692,19 +695,36 @@ if(room==BonusScreen){
     
     //set up player two buttons
     for(i=0;i&lt;array_length_1d(playerTwoBonuses);i++){
-        playerTwoBonuses[i]=instance_create(playerTwoX,100*i+Y,buttonObjectBonus);
+        playerTwoBonuses[i]=instance_create(playerTwoX,80*i+Y,buttonObjectBonus);
         playerTwoBonuses[i].buttonText=global.bonusStrings[i];
         playerTwoBonuses[i].action = i;
         playerTwoBonuses[i].player=2;
         
     }
     for(i=0;i&lt;array_length_1d(playerOneBonuses);i++){
-        playerOneBonuses[i]=instance_create(playerOneX,100*i+Y,buttonObjectBonus);
+        playerOneBonuses[i]=instance_create(playerOneX,80*i+Y,buttonObjectBonus);
         playerOneBonuses[i].buttonText=global.bonusStrings[i];
         playerOneBonuses[i].action = i;
         playerOneBonuses[i].player=1;
     }
-
+    
+    //place team buttons on bottom of screen 
+    buttonCount =0; 
+    for(i=0; i&lt;2; i++){
+        for(j=0; j&lt;6; j++){
+            if(buttonCount&lt;global.teamSize){
+                // set player one's team buttons
+                TeamOne[i,j]=instance_create(teamOneX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
+                TeamOne[i,j].spriteToDraw= global.teamOne[j+i*6].sprite_index;
+                // set player two's team buttons
+                TeamTwo[i,j]=instance_create(teamTwoX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
+                TeamTwo[i,j].spriteToDraw= global.teamTwo[j+i*6].sprite_index;
+                
+                buttonCount++;
+            }
+        }
+        teamY+=spacing+130;
+    }
 }
 </string>
           </argument>
