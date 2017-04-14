@@ -80,10 +80,11 @@ draftCount=0;
 maxBonusButtons = 3;
 isSelectingCharacterForBonus = false;
 bonusColMax = 5;
-bonusRowMax = 0;
+bonusRowMax = 1;
 bonusCol=0;
 bonusRow=0;
 bonusCanMove= true;
+selectedBonus = false;
 
 //set bonus varibles
 if(room==BonusScreen){lvPoints = 10;}
@@ -625,9 +626,17 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
 
 
         GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
-        bonusRow+=1;    //increment the row selected
-        if(bonusRow&gt;bonusRowMax )
-            bonusRow=bonusRowMax; 
+        if(bonusRow&lt;bonusRowMax) //if in range  
+        {  
+            bonusRow+=1;
+            if(GameMaster.TeamOne[bonusRow, bonusCol]==0)
+                bonusRow--; //if there isn't, go back to original spot
+        
+        }
+        
+        //bonusRow+=1;    //increment the row selected
+        //if(bonusRow&gt;bonusRowMax )
+        //    bonusRow=bonusRowMax; 
             
         GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
         bonusCanMove=false
@@ -638,11 +647,15 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
     {
 
         GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
-        bonusCol+=1;
         
-        if(bonusCol&gt;bonusColMax)
-            bonusCol=bonusColMax;
-            
+        if(bonusCol&lt;bonusColMax) //if in range  
+        {  
+            bonusCol+=1;
+            if(GameMaster.TeamOne[bonusRow, bonusCol]==0)
+                bonusCol--; //if there isn't, go back to original spot
+        
+        }
+    
         GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
         bonusCanMove=false
     }
@@ -681,6 +694,11 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
             show_message("Selected "+ string(bonusRow) +" "+string(bonusCol))
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneSelected=true;
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+            
+            // TODO apply the bonus to the selected character
+            
+            isSelectingCharacterForBonus = false;
+            inMenu = true;
 
     }
     

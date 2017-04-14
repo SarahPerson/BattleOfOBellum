@@ -236,32 +236,42 @@ currentIncrementTwo--;
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!=true &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus){
+if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!=true &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus &amp;&amp; !PlayerTwo.selectedBonus ){
     switch(buttonText)
     {
     //do actual stuff here
         case "Heal entire team":
-            show_message("yay1");
+            PlayerTwo.selectedBonus = true;
+            PlayerTwo.inMenu = true;
             break;
         case "Heal one character fully":
-            show_message("yay2");
+            PlayerTwo.isSelectingCharacterForBonus = true;
+            //set initial highlighted tile
+            GameMaster.TeamTwo[PlayerTwo.bonusRow, PlayerTwo.bonusRow].playerTwoHighlighted = true;
+            PlayerTwo.selectedBonus = true;
             break;
         case "Get extra level up points":
-            show_message("yay3");
+            PlayerTwo.selectedBonus = true;
+            PlayerTwo.inMenu = true;
             break;
         case "Place objective":
-            show_message("yay4");
+            PlayerTwo.selectedBonus = true;
+            PlayerTwo.inMenu = true;
             break;
         case "Place a wall":
-            show_message("yay5");
+            PlayerTwo.selectedBonus = true;
+            PlayerTwo.inMenu = true;
             break; 
         default:
-            show_message("lawl this worked");
             break;
     }
     
     show_message("Button #"+ string(currentIncrementTwo)+"pressed");
 }
+//else if(PlayerTwo.selectedBonus == true)
+//{
+//    show_message("Bonus already selected. Please select ready.");
+//}
 </string>
           </argument>
         </arguments>
@@ -285,34 +295,46 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
           <argument>
             <kind>1</kind>
             <string>//what to do on click
-if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu!=true &amp;&amp; !PlayerOne.isSelectingCharacterForBonus){
+if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu!=true &amp;&amp; !PlayerOne.isSelectingCharacterForBonus &amp;&amp; PlayerOne.selectedBonus != true){
     switch(buttonText)
     {
         case "Heal entire team":
             GameMaster.teamToHeal = 1;
             if(GameMaster.alarm[3] == -1) {GameMaster.alarm[3] = room_speed*0.1;}
+            PlayerOne.selectedBonus = true;
+            PlayerOne.inMenu = true;
             break;
         case "Heal one character fully":
-            show_message("yay2");
             PlayerOne.isSelectingCharacterForBonus = true;
-            show_message(GameMaster.TeamOne[1,4]);
+            //Set initially highlighted tile
+            GameMaster.TeamOne[PlayerTwo.bonusRow, PlayerTwo.bonusRow].playerOneHighlighted = true;
+            PlayerOne.selectedBonus = true;
             break;
         case "Get extra level up points":
             PlayerOne.lvPoints += 3;
+            PlayerOne.selectedBonus = true;
+            PlayerOne.inMenu = true;
             break;
         case "Place objective":
             global.setFlag = true;
+            PlayerOne.selectedBonus = true;
+            PlayerOne.inMenu = true;
             break;
         case "Place a wall":
             global.setWall = 5;
+            PlayerOne.selectedBonus = true;
+            PlayerOne.inMenu = true;
             break;    
         default:
-            show_message("lawl this worked");
             break;
 
     }
     show_message("Button #"+ string(currentIncrementOne)+"pressed");
 }
+//else if(PlayerOne.selectedBonus == true)
+//{
+//    show_message("Bonus already selected. Please select ready.");
+//}
 </string>
           </argument>
         </arguments>

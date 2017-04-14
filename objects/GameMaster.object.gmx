@@ -680,8 +680,15 @@ spacing = 10;
 TeamOne= ds_grid_create(6,2);
 TeamTwo = ds_grid_create(6,2);
 
+PlayerOne.selectedBonus=false;
+PlayerTwo.selectedBonus=false;
+
+
 
 if(room==BonusScreen){
+//put the gui drawer
+instance_create(0,0, DrawTextObject);
+
     //set the initial selected buttons
     currentIncrementOne = 0;
     currentIncrementTwo = 0;     
