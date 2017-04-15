@@ -666,11 +666,22 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
     
     if(keyboard_check(key_enter)&amp;&amp; bonusCanMove )
     {
-            show_message("Selected "+ string(bonusRow) +" "+string(bonusCol))
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoSelected=true;
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
+
+            //get character selected sprite
+            selected = GameMaster.TeamTwo[bonusRow, bonusCol].spriteToDraw;
+            var characterToHeal;
             
-            // TODO apply the bonus to the selected character
+            for(i=0; i&lt; global.teamSize; i++){
+                if(global.teamTwo[i].sprite_index ==selected)
+                {
+                    characterToHeal = i;
+                }     
+            }
+            
+            //heal selected character 
+            global.teamTwo[characterToHeal].hp=global.teamTwo[characterToHeal].maxHp;
             
             isSelectingCharacterForBonus = false;
             inMenu=true;

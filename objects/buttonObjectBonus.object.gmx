@@ -274,7 +274,6 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
             break;
     }
     
-    show_message("Button #"+ string(currentIncrementTwo)+"pressed");
 }
 //else if(PlayerTwo.selectedBonus == true)
 //{
@@ -337,7 +336,6 @@ if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu
             break;
 
     }
-    show_message("Button #"+ string(currentIncrementOne)+"pressed");
 }
 //else if(PlayerOne.selectedBonus == true)
 //{

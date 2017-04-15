@@ -395,7 +395,6 @@ switch(room){
         }
         
         //Make one copy
-        //gridTwo = ds_grid_create(global.mapSize,global.mapSize); -&gt; moved to global
         var temp;
         for (i = 0; i &lt; global.mapSize; i += 1)
         {
@@ -493,6 +492,9 @@ switch(room){
                 copyTeamOne[z].image_yscale=spriteScaleSplit;
                 copyTeamOne[z].x = copyTeamOne[z].originCol*tilePosConst+startingXOne;
                 copyTeamOne[z].y = copyTeamOne[z].originRow*tilePosConst+startingY;
+                
+                //set the hp of the copies?
+                copyTeamOne[z].hp = global.teamOne[z].hp;
             }
             
             if(global.teamTwo[z].hp&gt;0){
@@ -501,11 +503,14 @@ switch(room){
                 copyTeamTwo[z].originRow = global.teamTwo[z].originRow;
                 copyTeamTwo[z].originCol = global.teamTwo[z].originCol;
                 
-                //set team one characters    
+                //set team two characters    
                 copyTeamTwo[z].image_xscale=spriteScaleSplit;
                 copyTeamTwo[z].image_yscale=spriteScaleSplit;
                 copyTeamTwo[z].x = copyTeamTwo[z].originCol*tilePosConst+startingXTwo;
                 copyTeamTwo[z].y = copyTeamTwo[z].originRow*tilePosConst+startingY;
+                
+                //set the hp of the copies?
+                copyTeamTwo[z].hp = global.teamTwo[z].hp;
             }
         }
             //set objects Copies
