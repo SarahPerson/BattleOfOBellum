@@ -617,16 +617,16 @@ if(room==SplitScreen||room==FullScreen){
     for(i=0; i&lt; global.teamSize;i+=1){
         global.teamOne[i].visible=true;
         global.teamTwo[i].visible=true;
-        PlayerOneObjective.visible=true;
-        PlayerTwoObject.visible=true;
+        global.playerOneOb.visible=true;
+        global.playerTwoOb.visible=true;
     }
 }
 else{
     for(i=0; i&lt; global.teamSize;i+=1){
         global.teamOne[i].visible=false;
         global.teamTwo[i].visible=false;
-        PlayerOneObjective.visible=false;
-        PlayerTwoObject.visible=false;
+        global.playerOneOb.visible=false;
+        global.playerTwoOb.visible=false;
     }
 }
 </string>
