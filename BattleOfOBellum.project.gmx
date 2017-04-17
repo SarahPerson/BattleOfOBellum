@@ -340,6 +340,7 @@
       <sprite>sprites\spriteButton</sprite>
       <sprite>sprites\spriteButtonBonus</sprite>
       <sprite>sprites\bonusScreenCharacterButtonSprite</sprite>
+      <sprite>sprites\spriteButtonMedium</sprite>
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\Angont</sprite>
@@ -403,6 +404,7 @@
     <room>rooms\Drafting</room>
     <room>rooms\MainMenu</room>
     <room>rooms\BonusScreen</room>
+    <room>rooms\SettingsScreen</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

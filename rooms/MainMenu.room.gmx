@@ -51,10 +51,11 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="buttonObject" x="320" y="224" name="inst_A0560562" locked="0" code="buttonText = &quot;Start Game&quot;&#xA;action = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="320" y="224" name="inst_A0560562" locked="0" code="buttonText = &quot;Start Game&quot;&#xA;action = 0;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="buttonObject" x="320" y="288" name="inst_EFDD5490" locked="0" code="buttonText = &quot;About Game&quot;&#xA;action = 1;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="buttonObject" x="320" y="352" name="inst_BEB013E7" locked="0" code="buttonText = &quot;How To Play&quot;&#xA;action =2;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="buttonObject" x="320" y="416" name="inst_7A01205A" locked="0" code="buttonText =&quot;Exit&quot;&#xA;action = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="320" y="480" name="inst_7A01205A" locked="0" code="buttonText =&quot;Exit&quot;&#xA;action = 4;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="320" y="416" name="inst_C93DC009" locked="0" code="buttonText=&quot;Settings&quot;;&#xA;action=3;&#xA;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -26,9 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed=0;
-if(room == MainMenu){
+if(room == MainMenu||room==SettingsScreen){
 currentIncrement=0;
 }
+
 
 </string>
           </argument>
@@ -114,7 +115,7 @@ draw_text(x,y,buttonText);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0){
+            <string>if( room == MainMenu || room = SettingsScreen &amp;&amp; currentIncrement&gt;0){
 currentIncrement--;
 }
 
@@ -140,7 +141,11 @@ currentIncrement--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;3){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;4){
+currentIncrement++;
+}
+//if in the settings screen, the max amount of buttons is different
+if( room == SettingsScreen &amp;&amp; currentIncrement&lt;3){
 currentIncrement++;
 }
 
@@ -167,10 +172,14 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;3){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;4){
 currentIncrement++;
 }
 
+//if in the settings screen, the max amount of buttons is different
+if( room == SettingsScreen &amp;&amp; currentIncrement&lt;3){
+currentIncrement++;
+}
 
 </string>
           </argument>
@@ -194,7 +203,7 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0){
+            <string>if( room == MainMenu || room == SettingsScreen &amp;&amp; currentIncrement&gt;0){
 currentIncrement--;
 }
 
@@ -260,7 +269,10 @@ if(currentIncrement = action){
                 
             }
             break;
-        case 3: 
+        case 3:
+            room_goto(SettingsScreen);
+            break;
+        case 4: 
             game_end();
             break;
     
@@ -288,50 +300,97 @@ if(currentIncrement = action){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//what to do on click
-if(currentIncrement = action){
-    switch(currentIncrement)
-    {
-        case 0:
-            room_goto(Drafting);
-            break;
-        case 1:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[1]=true;
-            }
-            else if(background_visible[2])
-            {
-                background_visible[2]=false;
-                background_visible[1]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0] = true;
-            }
-            break;     
-        case 2:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[2]=true;
-            }
-            else if(background_visible[1])
-            {
-                background_visible[1]=false;
-                background_visible[2]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0]=true;
-                
-            }
-            break;
-        case 3: 
-            game_end();
-            break;
-    
+            <string>//what to do on click if in Main Menu
+if(room==MainMenu){
+    if(currentIncrement = action){
+        switch(currentIncrement)
+        {
+            case 0:
+                room_goto(Drafting);
+                break;
+            case 1:
+                if(background_visible[0]){
+                    background_visible[0]=false;
+                    background_visible[1]=true;
+                }
+                else if(background_visible[2])
+                {
+                    background_visible[2]=false;
+                    background_visible[1]=true;
+                }
+                else{
+                    background_visible[1]=false;
+                    background_visible[2] = false;
+                    background_visible[0] = true;
+                }
+                break;     
+            case 2:
+                if(background_visible[0]){
+                    background_visible[0]=false;
+                    background_visible[2]=true;
+                }
+                else if(background_visible[1])
+                {
+                    background_visible[1]=false;
+                    background_visible[2]=true;
+                }
+                else{
+                    background_visible[1]=false;
+                    background_visible[2] = false;
+                    background_visible[0]=true;
+                    
+                }
+                break;
+            case 3: 
+                room_goto(SettingsScreen);
+                break;
+            case 4: 
+                game_end();
+                break;
+        
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//what to do on click if in Settings Screen
+if(room==SettingsScreen){
+    if(currentIncrement = action){
+        switch(currentIncrement)
+        {
+            case 0:
+                show_message("first button selected");
+                break;
+            case 1:
+                show_message("second button selected");
+                break;     
+            case 2:
+                show_message("third button selected");
+                break;
+            case 3: 
+                show_message("fourth button selected");
+                room_goto(MainMenu);
+                break;
+        
+        }
     }
 }
 </string>
