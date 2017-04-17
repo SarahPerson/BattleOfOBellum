@@ -617,16 +617,16 @@ if(room==SplitScreen||room==FullScreen){
     for(i=0; i&lt; global.teamSize;i+=1){
         global.teamOne[i].visible=true;
         global.teamTwo[i].visible=true;
-        PlayerOneObjective.visible=true;
-        PlayerTwoObject.visible=true;
+        global.playerOneOb.visible=true;
+        global.playerTwoOb.visible=true;
     }
 }
 else{
     for(i=0; i&lt; global.teamSize;i+=1){
         global.teamOne[i].visible=false;
         global.teamTwo[i].visible=false;
-        PlayerOneObjective.visible=false;
-        PlayerTwoObject.visible=false;
+        global.playerOneOb.visible=false;
+        global.playerTwoOb.visible=false;
     }
 }
 </string>
@@ -1238,7 +1238,7 @@ if(room == FullScreen){
     deadPlayersTwo = 0;
     for(var f = 0; f &lt; global.teamSize; f++){
         if(global.teamOne[f].hp &lt;= 0){ deadPlayersOne += 1;}
-        if(global.teamOne[f].hp &lt;= 0){ deadPlayersTwo += 1;}
+        if(global.teamTwo[f].hp &lt;= 0){ deadPlayersTwo += 1;}
     }
     if(deadPlayersOne == global.teamSize - 1){
         show_message("Player One's Team Has Been Extinguished#Player Two Wins!");
@@ -1247,6 +1247,14 @@ if(room == FullScreen){
                 global.teamOne[i].visible=false;
                 global.teamTwo[i].visible=false;
             }
+            with(PlayerOne)
+            {
+                instance_destroy();
+            }
+            with(PlayerTwo)
+            {
+                instance_destroy();
+            }
         room_goto(MainMenu);
     } else if(deadPlayersTwo== global.teamSize - 1){
         show_message("Player Two's Team Has Been Extinguished#Player One Wins!");
@@ -1254,6 +1262,14 @@ if(room == FullScreen){
             {
                 global.teamOne[i].visible=false;
                 global.teamTwo[i].visible=false;
+            }
+            with(PlayerOne)
+            {
+                instance_destroy();
+            }
+            with(PlayerTwo)
+            {
+                instance_destroy();
             }
         room_goto(MainMenu);
     }

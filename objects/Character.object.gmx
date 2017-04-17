@@ -316,7 +316,8 @@ playerOneCanFight = false;
     for(var t = 0; t &lt; global.teamSize; t++){
         if(other == global.teamTwo[t]){
             playerTwoCanFight = true;
-            GameMaster.charTwo = global.teamTwo[t];    
+            GameMaster.charTwo = global.teamTwo[t];
+            show_message(GameMaster.charTwo);
         }
          if(self == global.teamOne[t]){
             playerOneCanFight = true;

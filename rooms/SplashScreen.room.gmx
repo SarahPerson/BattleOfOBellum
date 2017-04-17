@@ -106,6 +106,8 @@ global.playerOneOb = instance_create(100,100,PlayerOneObjective);
 global.playerTwoOb = instance_create(100,100,PlayerTwoObject);
 global.playerOneOb.persistent = true; 
 global.playerTwoOb.persistent = true;
+global.playerOneOb.visible = false;
+global.playerTwoOb.visible = false;
 
 global.walls = ds_grid_create(6,2);
 for(var w = 0; w &lt; 6; w++){ global.walls[w,0] = 0;  global.walls[w,1] = 0; }</code>
