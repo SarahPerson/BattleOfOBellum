@@ -338,6 +338,7 @@
       <sprite>sprites\splitScreenReadyButton</sprite>
       <sprite>sprites\characterButtonsSprite</sprite>
       <sprite>sprites\spriteButton</sprite>
+      <sprite>sprites\numCharButton</sprite>
       <sprite>sprites\spriteButtonBonus</sprite>
       <sprite>sprites\bonusScreenCharacterButtonSprite</sprite>
       <sprite>sprites\spriteButtonMedium</sprite>
@@ -392,6 +393,7 @@
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
     <object>objects\buttonObject</object>
+    <object>objects\buttonObjectSettings</object>
     <object>objects\buttonObjectBonus</object>
     <object>objects\CharInfo</object>
     <object>objects\DrawTextObject</object>

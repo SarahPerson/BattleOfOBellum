@@ -51,30 +51,33 @@ twoCharacterSelectText="";
           <argument>
             <kind>1</kind>
             <string>//determine character select text
-//player one
-if(PlayerOne.isSelectingCharacterForBonus)
-    oneCharacterSelectText = "Select Character To Be Healed Completely"
-else if(!PlayerOne.isSelectingCharacterForBonus)
-    oneCharacterSelectText = "";
+if(room==BonusScreen){
+    //player one
+    if(PlayerOne.isSelectingCharacterForBonus)
+        oneCharacterSelectText = "Select Character To Be Healed Completely"
+    else if(!PlayerOne.isSelectingCharacterForBonus)
+        oneCharacterSelectText = "";
+        
+    //player two
+    if(PlayerTwo.isSelectingCharacterForBonus)
+        twoCharacterSelectText = "Select Character To Be Healed Completely"
+    else if(!PlayerTwo.isSelectingCharacterForBonus)
+        twoCharacterSelectText = "";
+        
+        
+    //show end of bonus selection sequence
+    if(PlayerOne.selectedBonus &amp;&amp; !PlayerOne.isSelectingCharacterForBonus)
+        oneCharacterSelectText = "Bonus Selected - Please Select Ready"
+    else if(!PlayerOne.selectedBonus &amp;&amp; !PlayerOne.isSelectingCharacterForBonus)
+        oneCharacterSelectText = "";
+        
+         
+    if(PlayerTwo.selectedBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus  )
+        twoCharacterSelectText = "Bonus Selected - Please Select Ready"
+    else if(!PlayerTwo.selectedBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus)
+        twoCharacterSelectText = "";
     
-//player two
-if(PlayerTwo.isSelectingCharacterForBonus)
-    twoCharacterSelectText = "Select Character To Be Healed Completely"
-else if(!PlayerTwo.isSelectingCharacterForBonus)
-    twoCharacterSelectText = "";
-    
-    
-//show end of bonus selection sequence
-if(PlayerOne.selectedBonus &amp;&amp; !PlayerOne.isSelectingCharacterForBonus)
-    oneCharacterSelectText = "Bonus Selected - Please Select Ready"
-else if(!PlayerOne.selectedBonus &amp;&amp; !PlayerOne.isSelectingCharacterForBonus)
-    oneCharacterSelectText = "";
-    
-     
-if(PlayerTwo.selectedBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus  )
-    twoCharacterSelectText = "Bonus Selected - Please Select Ready"
-else if(!PlayerTwo.selectedBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus)
-    twoCharacterSelectText = "";
+}
 </string>
           </argument>
         </arguments>
@@ -119,6 +122,39 @@ if(room==BonusScreen){
     draw_set_font(standard);
     draw_text(300+800,600 , oneCharacterSelectText);
     draw_text(300,600 , twoCharacterSelectText);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Draw text for settings menu
+//Draw all text in button
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_color(c_black);
+
+//draw bonus screen stufffffs
+if(room==SettingsScreen){
+    //create screen title
+    draw_set_font(titles);
+    draw_text(800,  25, "Settings");
+
 }
 </string>
           </argument>
