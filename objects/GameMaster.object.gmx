@@ -1098,47 +1098,6 @@ for(var g = 0; g &lt; 3; g++){
     if(random_range(0,45) &gt; charOne.movement){ charOne.hp -= charTwo.attackArray[g]; sum2 += charTwo.attackArray[g];}
     if(random_range(0,45) &gt; charTwo.movement){ charTwo.hp -= charOne.attackArray[g]; sum1 += charOne.attackArray[g];}
 }
-
-for(var o = tick - 1; o &gt;= 0; o--){
-     if(charOne.moveArray[o] != 0){
-     show_message(charOne.moveArray[o]);
-         if(charOne.moveArray[o] == 3){
-                 charOne.x -= moveDist
-                 charOne.originRow -= 1;
-             } else if (charTwo.moveArray[o] == 4){
-                 charOne.x += moveDist
-                 charOne.originRow += 1;
-             }
-             else if (charTwo.moveArray[o] == 2){
-                 charOne.y -= moveDist;
-                 charOne.originCol += 1;
-             } else {
-                 charOne.y += moveDist;
-                 charOne.originCol -= 1;
-             }
-         charOne.moveArray = array(9);
-     }
-     if(charTwo.moveArray[o] != 0){
-     show_message(charTwo.moveArray[o]);
-         if(charTwo.moveArray[o] == 3){
-                 charTwo.x += moveDist
-                 charTwo.originRow += 1;
-             } else if (charTwo.moveArray[o] == 4){
-                 charTwo.x -= moveDist
-                 charTwo.originRow -= 1;
-             }
-             else if (charTwo.moveArray[o] == 2){
-                 charTwo.y += moveDist;
-                 charTwo.originCol -= 1;
-             } else {
-                 charTwo.y -= moveDist;
-                 charTwo.originCol += 1;
-             }
-         charTwo.moveArray = array(9);
-     }
-}
-
-
 </string>
           </argument>
         </arguments>
@@ -1197,11 +1156,12 @@ moveDist = 16*global.spriteScaleFull;
                if(global.teamOne[b].moveArray[tick] == 3){
                     with(global.teamOne[b]){
                         if(place_meeting(x + GameMaster.moveDist, y, Character)){
+                            p = instance_nearest(x + GameMaster.moveDist, y, Character);
                               for(var i = 0; i &lt; global.teamSize; i++){
-                                    if(other == global.teamTwo[i]){
+                                    if(p == global.teamTwo[i]){
                                         GameMaster.charOne = global.teamOne[b];
-                                        GameMaster.charTwo = other;
-                                        show_message("FUCK ME IN THE ASS");
+                                        GameMaster.charTwo = p;
+                                        
                                     }
                               }
                              if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
@@ -1222,11 +1182,11 @@ moveDist = 16*global.spriteScaleFull;
                 } else if (global.teamOne[b].moveArray[tick] == 4){
                     with(global.teamOne[b]){
                         if(place_meeting(x - GameMaster.moveDist, y, Character)){
+                            p = instance_nearest(x - GameMaster.moveDist, y, Character);
                               for(var i = 0; i &lt; global.teamSize; i++){
-                                    if(other == global.teamTwo[i]){
+                                    if(p == global.teamTwo[i]){
                                         GameMaster.charOne = global.teamOne[b];
-                                        GameMaster.charTwo = other;
-                                        show_message("FUCK ME IN THE ASS");
+                                        GameMaster.charTwo = p;
                                     }
                               }
                              if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
@@ -1248,11 +1208,12 @@ moveDist = 16*global.spriteScaleFull;
                 else if (global.teamOne[b].moveArray[tick] == 2){
                     with(global.teamOne[b]){
                         if(place_meeting(x, y + GameMaster.moveDist, Character)){
+                            p = instance_nearest(x , y + GameMaster.moveDist, Character);
                               for(var i = 0; i &lt; global.teamSize; i++){
-                                    if(other == global.teamTwo[i]){
+                                    if(p == global.teamTwo[i]){
                                         GameMaster.charOne = global.teamOne[b];
-                                        GameMaster.charTwo = other;
-                                        show_message("FUCK ME IN THE ASS");
+                                        GameMaster.charTwo = p;
+                                        
                                     }
                               }
                              if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
@@ -1273,11 +1234,12 @@ moveDist = 16*global.spriteScaleFull;
                 } else {
                    with(global.teamOne[b]){
                         if(place_meeting(x, y - GameMaster.moveDist, Character)){
+                            p = instance_nearest(x , y - GameMaster.moveDist, Character);
                               for(var i = 0; i &lt; global.teamSize; i++){
-                                    if(other == global.teamTwo[i]){
+                                    if(p == global.teamTwo[i]){
                                         GameMaster.charOne = global.teamOne[b];
-                                        GameMaster.charTwo = other;
-                                        show_message("FUCK ME IN THE ASS");
+                                        GameMaster.charTwo = p;
+                                        
                                     }
                               }
                              if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
@@ -1301,18 +1263,110 @@ moveDist = 16*global.spriteScaleFull;
             if(global.teamTwo[b].moveArray[tick] != 0){
                 //show_message("moving");
                 if(global.teamTwo[b].moveArray[tick] == 3){
-                    global.teamTwo[b].x -= GameMaster.moveDist
-                    global.teamTwo[b].originRow -= 1;
+                    with(global.teamTwo[b]){
+                            if(place_meeting(x - GameMaster.moveDist, y, Character)){
+                                p = instance_nearest(x - GameMaster.moveDist, y, Character);
+                                  for(var i = 0; i &lt; global.teamSize; i++){
+                                        if(p == global.teamOne[i]){
+                                            GameMaster.charOne = global.teamTwo[b];
+                                            GameMaster.charTwo = p;
+                                        }
+                                  }
+                                 if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
+                                    if(GameMaster.alarm[1] == -1) {
+                                        GameMaster.alarm[1] = room_speed*.05;
+                                    }
+                                 }
+                                 else {
+                                     global.teamTwo[b].x -= GameMaster.moveDist
+                                    global.teamTwo[b].originRow -= 1;
+                                 }                        
+                            }
+                            else{
+                                global.teamTwo[b].x -= GameMaster.moveDist
+                                global.teamTwo[b].originRow -= 1;
+                            }
+                        }
                 } else if (global.teamTwo[b].moveArray[tick] == 4){
-                    global.teamTwo[b].x += GameMaster.moveDist
-                    global.teamTwo[b].originRow += 1;
+                    with(global.teamTwo[b]){
+                            if(place_meeting(x + GameMaster.moveDist, y, Character)){
+                                p = instance_nearest(x + GameMaster.moveDist, y, Character);
+                                  for(var i = 0; i &lt; global.teamSize; i++){
+                                        if(p == global.teamOne[i]){
+                                            GameMaster.charOne = global.teamTwo[b];
+                                            GameMaster.charTwo = p;
+                                        }
+                                  }
+                                 if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
+                                    if(GameMaster.alarm[1] == -1) {
+                                        GameMaster.alarm[1] = room_speed*.05;
+                                    }
+                                 }
+                                 else {
+                                      global.teamTwo[b].x += GameMaster.moveDist
+                                      global.teamTwo[b].originRow += 1;
+                                 }                        
+                            }
+                            else{
+                                 global.teamTwo[b].x += GameMaster.moveDist
+                                global.teamTwo[b].originRow += 1;
+                            }
+                        }
                 }
                 else if (global.teamTwo[b].moveArray[tick] == 2){
-                    global.teamTwo[b].y -= GameMaster.moveDist;
-                    global.teamTwo[b].originCol += 1;
+                    with(global.teamTwo[b]){
+                            if(place_meeting(x, y - GameMaster.moveDist, Character)){
+                                p = instance_nearest(x, y - GameMaster.moveDist, Character);
+                                  for(var i = 0; i &lt; global.teamSize; i++){
+                                        if(p == global.teamOne[i]){
+                                            GameMaster.charOne = global.teamTwo[b];
+                                            GameMaster.charTwo = p;
+                                        }
+                                  }
+                                 if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
+                                    if(GameMaster.alarm[1] == -1) {
+                                        GameMaster.alarm[1] = room_speed*.05;
+                                    }
+                                 }
+                                 else {
+                                      global.teamTwo[b].y -= GameMaster.moveDist;
+                                      global.teamTwo[b].originCol += 1;
+                                 }                        
+                            }
+                            else{
+                                 global.teamTwo[b].y -= GameMaster.moveDist;
+                                global.teamTwo[b].originCol += 1;
+                            }
+                        }
+                    
+                    
                 } else {
-                    global.teamTwo[b].y += GameMaster.moveDist;
-                    global.teamTwo[b].originCol -= 1;
+                    with(global.teamTwo[b]){
+                            if(place_meeting(x, y + GameMaster.moveDist, Character)){
+                                p = instance_nearest(x, y + GameMaster.moveDist, Character);
+                                  for(var i = 0; i &lt; global.teamSize; i++){
+                                        if(p == global.teamOne[i]){
+                                            GameMaster.charOne = global.teamTwo[b];
+                                            GameMaster.charTwo = p;
+                                        }
+                                  }
+                                 if(GameMaster.charTwo != 0 &amp;&amp; GameMaster.charOne != 0){
+                                    if(GameMaster.alarm[1] == -1) {
+                                        GameMaster.alarm[1] = room_speed*.05;
+                                    }
+                                 }
+                                 else {
+                                      global.teamTwo[b].y += GameMaster.moveDist;
+                                        global.teamTwo[b].originCol -= 1;
+                                 }                        
+                            }
+                            else{
+                                 global.teamTwo[b].y += GameMaster.moveDist;
+                                    global.teamTwo[b].originCol -= 1;
+                            }
+                        }
+                    
+                    
                 }
             }
             //show_message(string(global.teamOne[b].moveArray[tick].x)+ " "+ string(global.teamOne[b].moveArray[tick].x));

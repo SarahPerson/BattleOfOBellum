@@ -259,7 +259,8 @@ switch(defence){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(hp &lt;= 0) { 
+            <string>///Dying and Movement
+if(hp &lt;= 0) { 
     for(var i = 0; i &lt; global.teamSize; i++){
         if(self == global.teamOne[i]){
             if(room == SplitScreen){
@@ -285,7 +286,7 @@ switch(defence){
     visible=false; //can't do this yet because for some reason it set an entire team to invisible 
 }
 else{
-    //visible=true;
+    
 }
 </string>
           </argument>
