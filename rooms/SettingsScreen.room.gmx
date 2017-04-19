@@ -16,10 +16,37 @@ instance_create(0,0,DrawTextObject);
 //create number of player selection
 yPos=825;
 for(i=4;i&lt;=12;i++){
-    temp = instance_create( yPos, 256, buttonObjectSettings);
+    temp = instance_create( yPos, 256, buttonObjectSettingsNumCharacters);
     temp.buttonText=string(i);
     temp.action=i;
     yPos+=75;
+}
+
+//create map size buttons
+yPos=888;
+//first button
+temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
+temp.buttonText = "Small"
+temp.action = 0;
+yPos += 234;
+//seccond Button
+temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
+temp.buttonText = "Medium"
+temp.action = 1;
+yPos += 234;
+//third button
+temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
+temp.buttonText = "Large"
+temp.action = 2;
+yPos += 234;
+
+//create number of map buttons
+yPos= 872
+for(i = 3; i&lt;=9; i+=2){
+    temp = instance_create( yPos, 576, buttonObjectSettingsNumberMaps);
+    temp.buttonText=string(i);
+    temp.action=i;
+    yPos+=169;
 }</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -61,10 +88,10 @@ for(i=4;i&lt;=12;i++){
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="buttonObject" x="320" y="256" name="inst_EE3CEF1E" locked="0" code="buttonText=&quot;Change Team Size&quot;;&#xA;action = 0;&#xA;sprite_index=spriteButtonMedium;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="buttonObject" x="320" y="416" name="inst_AF83A079" locked="0" code="buttonText=&quot;Select Map Size&quot;&#xA;action=1;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="buttonObject" x="320" y="576" name="inst_BAB45BFC" locked="0" code="buttonText = &quot;Select Number of Maps&quot;;&#xA;action=2;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="buttonObject" x="320" y="736" name="inst_A4DEE916" locked="0" code="buttonText = &quot;Done&quot;;&#xA;action=3;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="384" y="256" name="inst_EE3CEF1E" locked="0" code="buttonText=&quot;Change Team Size&quot;;&#xA;action = 0;&#xA;sprite_index=spriteButtonMedium;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="384" y="416" name="inst_AF83A079" locked="0" code="buttonText=&quot;Select Map Size&quot;&#xA;action=1;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="384" y="576" name="inst_BAB45BFC" locked="0" code="buttonText = &quot;Select Number of Maps&quot;;&#xA;action=2;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="buttonObject" x="384" y="736" name="inst_A4DEE916" locked="0" code="buttonText = &quot;Done&quot;;&#xA;action=3;&#xA;sprite_index=spriteButtonMedium;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
