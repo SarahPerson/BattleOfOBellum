@@ -292,51 +292,6 @@ else{
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="Character">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///determine if we fight
-if(room == FullScreen){
-playerTwoCanFight = false;
-playerOneCanFight = false;
-    for(var t = 0; t &lt; global.teamSize; t++){
-        if(other == global.teamTwo[t]){
-            playerTwoCanFight = true;
-            GameMaster.charTwo = global.teamTwo[t];
-            show_message(GameMaster.charTwo);
-        }
-         if(self == global.teamOne[t]){
-            playerOneCanFight = true;
-            GameMaster.charOne = global.teamOne[t];    
-        }
-    }
-    if(playerTwoCanFight &amp;&amp; playerOneCanFight){
-        if(GameMaster.alarm[1] == -1) {
-            GameMaster.alarm[1] = room_speed*.05;
-            playerTwoCanFight = false;
-            playerOneCanFight = false;
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="PlayerOneObjective">
       <action>
         <libid>1</libid>
