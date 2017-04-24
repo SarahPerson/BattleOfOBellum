@@ -263,10 +263,12 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
             PlayerTwo.inMenu = true;
             break;
         case "Place objective":
+            global.setFlag = true;
             PlayerTwo.selectedBonus = true;
             PlayerTwo.inMenu = true;
             break;
         case "Place a wall":
+            global.setWall = 5;
             PlayerTwo.selectedBonus = true;
             PlayerTwo.inMenu = true;
             break; 

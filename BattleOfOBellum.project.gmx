@@ -395,12 +395,12 @@
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
     <object>objects\buttonObject</object>
-    <object>objects\buttonObjectSettingsNumCharacters</object>
-    <object>objects\buttonObjectSettingsMapSize</object>
-    <object>objects\buttonObjectSettingsNumberMaps</object>
     <object>objects\buttonObjectBonus</object>
     <object>objects\CharInfo</object>
     <object>objects\DrawTextObject</object>
+    <object>objects\buttonObjectSettingsMapSize</object>
+    <object>objects\buttonObjectSettingsNumberMaps</object>
+    <object>objects\buttonObjectSettingsNumCharacters</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>
