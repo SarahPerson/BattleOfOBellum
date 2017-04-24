@@ -23,22 +23,17 @@ for(i=4;i&lt;=12;i++){
 }
 
 //create map size buttons
-yPos=888;
+yPos=975;
 //first button
 temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
 temp.buttonText = "Small"
 temp.action = 0;
-yPos += 234;
-//seccond Button
-temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
-temp.buttonText = "Medium"
-temp.action = 1;
-yPos += 234;
+yPos += 350;
+
 //third button
 temp = instance_create(yPos, 416, buttonObjectSettingsMapSize);
 temp.buttonText = "Large"
-temp.action = 2;
-yPos += 234;
+temp.action = 1;
 
 //create number of map buttons
 yPos= 872

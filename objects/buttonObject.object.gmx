@@ -403,9 +403,10 @@ if(room==SettingsScreen &amp;&amp; canSelect){
         switch(currentIncrement)
         {
             case 0:
-                show_message("setting num characters: "+ string(GameMaster.settingNumCharacters));
+                
                 buttonObject.canSelect=false;
                 GameMaster.settingNumCharacters=true;
+                
                 //set alarm for other button selection
                 if(buttonObjectSettingsNumCharacters.alarm[0]==-1)
                 {
@@ -414,9 +415,9 @@ if(room==SettingsScreen &amp;&amp; canSelect){
                 
                 break;
             case 1:
-                show_message("setting map size: " + string(GameMaster.settingMapSize));
+                buttonObject.canSelect=false;
                 GameMaster.settingMapSize = true;
-                show_message("setting map size: " + string(GameMaster.settingMapSize));
+                
                 if(buttonObjectSettingsMapSize.alarm[0]==-1)
                 {
                    buttonObjectSettingsMapSize.alarm[0]= room_speed*(0.1);

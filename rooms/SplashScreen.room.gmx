@@ -17,6 +17,7 @@ global.setup = true;
 global.gameSize=3;
 global.currentMap=2;
 global.mapSize=30;
+global.gameMapSize = 0;
 
 global.roomTiles = ds_grid_create(global.mapSize,global.mapSize);
 global.gridTwo = ds_grid_create(global.mapSize,global.mapSize);
@@ -49,7 +50,6 @@ global.allCharacters[21] = MechWarrior;
 global.allCharacters[22] = Pixie;
 global.allCharacters[23] = Theseus;
 
-
 //rando global patch
 global.spriteScaleFull = 1.875;
 global.spriteScaleSplit = 1;//700/(30*16);
@@ -57,37 +57,6 @@ global.startingX = 0;
 global.startingY = 0;
 global.startingXOne = 0;
 global.startingXTwo = 0;
-
-/*
-//set Team one
-global.teamOne[0] = instance_create(0,0,Character);
-global.teamOne[0].persistent = true;
-global.teamOne[1] = instance_create(0,0,Character);
-global.teamOne[1].persistent = true;
-global.teamOne[2] = instance_create(0,0,Character);
-global.teamOne[2].persistent = true;
-global.teamOne[3] = instance_create(0,0,Character);
-global.teamOne[3].persistent = true;
-
-global.teamOne[0].originRow = 14;//2;
-global.teamOne[0].originCol = 7;
-
-
-//set Team Two 
-global.teamTwo[0] = instance_create(0,0,Character);
-global.teamTwo[0].persistent = true;
-global.teamTwo[1] = instance_create(0,0,Character);
-global.teamTwo[1].persistent = true;
-global.teamTwo[2] = instance_create(0,0,Character);
-global.teamTwo[2].persistent = true;
-global.teamTwo[3] = instance_create(0,0,Character);
-global.teamTwo[3].persistent = true;
-global.teamTwo[4] = instance_create(0,0,Character);
-global.teamTwo[4].persistent = true;
-
-global.teamTwo[0].originRow = 14;
-global.teamTwo[0].originCol =7;
-*/
 
 //Winning values
 global.PlayerWon = 0;

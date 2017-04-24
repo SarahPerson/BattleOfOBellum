@@ -64,41 +64,72 @@ if(room==MainMenu){
             <kind>1</kind>
             <string>///intitial setup for maps
 global.gameSize = 3
-
-switch(global.currentMap)
-{
-    case 1:
-        global.mapSize=15;
-        global.spriteScaleSplit=2;
-        global.spriteScaleFull=3.75;
-        myFile=file_text_open_read("smallStrongholdR.txt");
-        break;
-        
-    case 2:
-        global.mapSize=30;
-        global.spriteScaleSplit=1;
-        global.spriteScaleFull=1.87;
-        myFile= file_text_open_read("smallCity.txt");
-        break;
+//global.gameMapSize=1;
+//pick which size of maps you are using
+switch(global.gameSize){
     case 3:
-    
-        global.mapSize=15;
-        global.spriteScaleSplit=2;
-        global.spriteScaleFull=3.75;
-        myFile=file_text_open_read("smallStrongholdL.txt");
-        break
+        if(global.gameMapSize==0){
+            switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdR.txt");
+                    break;
+                    
+                case 2:
+                    global.mapSize=30;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.87;
+                    myFile= file_text_open_read("smallCity.txt");
+                    break;
+                case 3:
+                
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdL.txt");
+                    break
+            }
+            
+            //set the starting positions for drawing the maps in split screen
+            global.startingXOne=160;
+            global.startingXTwo = 960;
+            global.startingY = 210;
+            
+        }
+        else if(global.gameMapSize==1){
+                    switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdR.txt");
+                    break;
+                    
+                case 2:
+                    global.mapSize=40;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.406;
+                    myFile= file_text_open_read("mediumCity.txt");
+                    break;
+                case 3:
+                
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdI.txt");
+                    break
+            }
+            
+            //set the starting positions for drawing the maps in split screen
+            global.startingXOne=80;
+            global.startingXTwo = 880;
+            global.startingY = 130;
+        }
 }
-/*if(global.setup){ 
-    global.playerTwoOb.originRow = global.mapSize-2;
-    global.playerTwoOb.originCol=global.mapSize-5;
-    global.playerTwoOb.row =global.mapSize-2;
-    global.playerTwoOb.col = global.mapSize-5;
-    
-    global.playerOneOb.originRow = global.mapSize-2;
-    global.playerOneOb.originCol=global.mapSize-5;
-    global.playerOneOb.row =global.mapSize-2;
-    global.playerOneOb.col = global.mapSize-5;
-}*/
 </string>
           </argument>
         </arguments>
@@ -241,59 +272,15 @@ moveAlg = false;
 canRun = true;
 mapNum = 2;
 //myFile = file_text_open_read("smallCity.txt");
-startingX = 100;
-startingY = 100;
+//startingX = 100;
+//startingY = 100;
 spriteScaleFull=global.spriteScaleFull ; //1.66666667 scaling of sprites to fit full screen top to bottom
 spriteScaleSplit=global.spriteScaleSplit; //1.66666667 scaling of sprites to fit full screen top to bottom
 
 switch(room){
-    
-    case Stronghold:
-        var i, j, z;
-        for (i = 0; i &lt; global.mapSize; i += 1)
-           {
-           for (j = 0; j &lt; global.mapSize; j += 1)
-              {
-                tempTile = instance_create(j*16, i*16, Tile);
-                global.roomTiles[tempTile.x/16,tempTile.y/16] = tempTile;
-                var temp = file_text_read_real(myFile);
-                global.roomTiles[j,i].tileType = temp;
-                
-                for(z=0; z&lt;global.teamSize; z+=1)
-                {
-                    if(global.teamOne[z].row==i &amp;&amp; global.teamOne[z].col==j)
-                    {
-                        global.teamOne[z].x = global.roomTiles[j,i].x;
-                        global.teamOne[z].y = global.roomTiles[j,i].y;
-                    }
-                     if(global.teamTwo[z].row==i &amp;&amp; global.teamTwo[z].col==j)
-                    {
-                        global.teamTwo[z].x = global.roomTiles[j,i].x;
-                        global.teamTwo[z].y = global.roomTiles[j,i].y;
-                    }
-                }
-                
-                //Set the objectives
-                //check if objective one goes on this tile
-                if(global.playerOneOb.row==i &amp;&amp; global.playerOneOb.col==j)
-                {
-                    global.playerOneOb.x = global.roomTiles[j,i].x;
-                    global.playerOneOb.y = global.roomTiles[j,i].y;    
-                }
-                //check if objective two goes on this tile
-                if(global.playerTwoOb.row==i &amp;&amp; global.playerTwoOb.col==j)
-                {
-                    global.playerTwoOb.x = global.roomTiles[j,i].x;
-                    global.playerTwoOb.y = global.roomTiles[j,i].y;    
-                }
-              }
-           }
-           
-        break;
     case FullScreen: 
         // for full screen
         
-       //TODO______________________________________________________________________________
         startingX=350;
         global.startingX = startingX;
         startingY=0;
@@ -402,7 +389,7 @@ switch(room){
         break;     
         
     case SplitScreen:
-        
+        /*
        //TODO___________________________________________________________________________________
         startingXOne=160;
         global.startingXOne=startingXOne
@@ -411,6 +398,12 @@ switch(room){
         startingY=210;
         global.startingY=startingY;
         //______________________________________________________________________________________
+        */
+        
+        startingXOne = global.startingXOne;
+        startingXTwo = global.startingXTwo;
+        startingY = global.startingY;
+
         
         tilePosConst = 16*spriteScaleSplit;
         //set initial ds grid

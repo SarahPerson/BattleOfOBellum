@@ -146,7 +146,7 @@ draw_text(x,y,buttonText);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&gt;0&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement--;
 }
 
@@ -172,7 +172,7 @@ currentIncrement--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;12){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;12&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement++;
 }
 
@@ -201,7 +201,7 @@ currentIncrement++;
           <argument>
             <kind>1</kind>
             <string>//if in the settings screen, the max amount of buttons is different
-if( room == SettingsScreen &amp;&amp; currentIncrement&lt;11){
+if( room == SettingsScreen &amp;&amp; currentIncrement&lt;11&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement++;
 }
 </string>
@@ -226,7 +226,7 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;4){
+            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;4&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement--;
 }
 </string>
@@ -251,7 +251,7 @@ currentIncrement--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;4){
+            <string>if( room == MainMenu &amp;&amp; currentIncrement&lt;4&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement++;
 }
 
@@ -279,7 +279,7 @@ currentIncrement++;
           <argument>
             <kind>1</kind>
             <string>//if in the settings screen, the max amount of buttons is different
-if( room == SettingsScreen &amp;&amp; currentIncrement&lt;12){
+if( room == SettingsScreen &amp;&amp; currentIncrement&lt;12&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement++;
 }
 </string>
@@ -304,7 +304,7 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( room == MainMenu  &amp;&amp; currentIncrement&gt;0){
+            <string>if( room == MainMenu  &amp;&amp; currentIncrement&gt;0&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement--;
 }
 
@@ -330,7 +330,7 @@ currentIncrement--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;4){
+            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;4&amp;&amp; GameMaster.settingNumCharacters){
 currentIncrement--;
 }
 </string>
@@ -428,18 +428,21 @@ if(currentIncrement = action){
             <kind>1</kind>
             <string>//what to do on click if in Settings Screen
 
-if(room==SettingsScreen &amp;&amp; canSelect){
+if(room==SettingsScreen &amp;&amp; canSelect &amp;&amp; GameMaster.settingNumCharacters){
 show_message("num char button selected");
     if(currentIncrement == action){
         show_message("current increment: " + string(currentIncrement));
+        
+        
         //set the new team size
         global.teamSize=action;
         show_message("team size: "+ string( global.teamSize));
     
     }
-            //set the new team size
-        global.teamSize=currentIncrement;
-        show_message("team size: "+ string( global.teamSize));
+    //set the new team size
+    global.teamSize=currentIncrement;
+    show_message("team size: "+ string( global.teamSize));
+    
     //set no longer setting value
     GameMaster.settingNumCharacters = false;
 

@@ -84,10 +84,10 @@ canSelect=false;
 {
     image_index = 1;
 }
-//else if( global.teamSize == action)
-//{
-//    image_index = 2;
-//}
+else if( global.gameMapSize == action)
+{
+    image_index = 2;
+}
 else
 {
     image_index = 0;
@@ -147,7 +147,7 @@ draw_text(x,y,buttonText);
           <argument>
             <kind>1</kind>
             <string>//if in the settings screen, the max amount of buttons is different
-if( room == SettingsScreen &amp;&amp; currentIncrement&lt;2){
+if( room == SettingsScreen&amp;&amp; canSelect &amp;&amp; currentIncrement&lt;1&amp;&amp; GameMaster.settingMapSize){
 currentIncrement++;
 }
 </string>
@@ -172,7 +172,7 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;0){
+            <string>if(room == SettingsScreen&amp;&amp; canSelect &amp;&amp; currentIncrement&gt;0&amp;&amp; GameMaster.settingMapSize){
 currentIncrement--;
 }
 </string>
@@ -198,7 +198,7 @@ currentIncrement--;
           <argument>
             <kind>1</kind>
             <string>//if in the settings screen, the max amount of buttons is different
-if( room == SettingsScreen &amp;&amp; currentIncrement&lt;2){
+if( room == SettingsScreen&amp;&amp; canSelect  &amp;&amp; currentIncrement&lt;1&amp;&amp; GameMaster.settingMapSize){
 currentIncrement++;
 }
 </string>
@@ -223,7 +223,7 @@ currentIncrement++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == SettingsScreen &amp;&amp; currentIncrement&gt;0){
+            <string>if(room == SettingsScreen &amp;&amp; canSelect &amp;&amp; currentIncrement&gt;0&amp;&amp; GameMaster.settingMapSize){
 currentIncrement--;
 }
 </string>
@@ -320,12 +320,14 @@ if(currentIncrement = action){
           <argument>
             <kind>1</kind>
             <string>//what to do on click if in Settings Screen
-if(room==SettingsScreen &amp;&amp; canSelect){
+if(room==SettingsScreen &amp;&amp; canSelect &amp;&amp; GameMaster.settingMapSize){
     if(currentIncrement == action){
         show_message("current increment: " + string(currentIncrement));
         
-    
+
     }
+    global.gameMapSize = currentIncrement;
+    
     //set no longer setting value
     GameMaster.settingMapSize=false;
 
