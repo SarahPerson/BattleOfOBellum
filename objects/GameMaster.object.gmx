@@ -83,7 +83,17 @@ switch(global.currentMap)
           <argument>
             <kind>1</kind>
             <string>///Set up the objectives
-
+if (global.setup) {
+    global.playerOneOb.originRow = global.mapSize-1;
+    global.playerOneOb.originCol=global.mapSize-global.mapSize/2;
+    global.playerOneOb.row = global.mapSize-1;
+    global.playerOneOb.col = global.mapSize-global.mapSize/2;
+    
+    global.playerTwoOb.originRow = 0;
+    global.playerTwoOb.originCol=global.mapSize-global.mapSize/2;
+    global.playerTwoOb.row = 0;
+    global.playerTwoOb.col = global.mapSize-global.mapSize/2;
+}
 </string>
           </argument>
         </arguments>
