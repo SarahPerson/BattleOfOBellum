@@ -260,33 +260,36 @@ switch(defence){
           <argument>
             <kind>1</kind>
             <string>///Dying and Movement
-if(hp &lt;= 0) { 
-    for(var i = 0; i &lt; global.teamSize; i++){
-        if(self == global.teamOne[i]){
-            if(room == SplitScreen){
-                //show_message(visible);
-                y = global.startingY + (global.mapSize + 1)*global.spriteScaleSplit*16;
-                x = global.startingXTwo - global.teamSize/2*global.spriteScaleSplit*16 + i*global.spriteScaleSplit*16 + global.mapSize*global.spriteScaleSplit*16/2;
-            } else if (room == FullScreen){
-                y = window_get_height()/2 ;
-                x = 350*1.5+ global.mapSize*16*global.spriteScaleFull + i*global.spriteScaleFull*16 - global.teamSize/2*16*global.spriteScaleFull;
-               
+//only do when in battle screens
+if(room==SplitScreen || room== FullScreen){
+    if(hp &lt;= 0) { 
+        for(var i = 0; i &lt; global.teamSize; i++){
+            if(self == global.teamOne[i]){
+                if(room == SplitScreen){
+                    //show_message(visible);
+                    y = global.startingY + (global.mapSize + 1)*global.spriteScaleSplit*16;
+                    x = global.startingXTwo - global.teamSize/2*global.spriteScaleSplit*16 + i*global.spriteScaleSplit*16 + global.mapSize*global.spriteScaleSplit*16/2;
+                } else if (room == FullScreen){
+                    y = window_get_height()/2 ;
+                    x = 350*1.5+ global.mapSize*16*global.spriteScaleFull + i*global.spriteScaleFull*16 - global.teamSize/2*16*global.spriteScaleFull;
+                   
+                } 
+            } else if (self == global.teamTwo[i]){
+                if(room == SplitScreen){
+                    y = global.startingY + (global.mapSize + 1)*global.spriteScaleSplit*16;
+                    x = global.startingXOne - global.teamSize/2*global.spriteScaleSplit*16 + i*global.spriteScaleSplit*16 + global.mapSize*global.spriteScaleSplit*16/2;
+                } else if (room == FullScreen){
+                    y = window_get_height()/2 ;
+                     x = i*global.spriteScaleFull*16 + 350/2 - global.teamSize/2*16*global.spriteScaleFull;
+                }
             } 
-        } else if (self == global.teamTwo[i]){
-            if(room == SplitScreen){
-                y = global.startingY + (global.mapSize + 1)*global.spriteScaleSplit*16;
-                x = global.startingXOne - global.teamSize/2*global.spriteScaleSplit*16 + i*global.spriteScaleSplit*16 + global.mapSize*global.spriteScaleSplit*16/2;
-            } else if (room == FullScreen){
-                y = window_get_height()/2 ;
-                 x = i*global.spriteScaleFull*16 + 350/2 - global.teamSize/2*16*global.spriteScaleFull;
-            }
-        } 
+        }
+        //set character to invisible once it dies
+        visible=false; //can't do this yet because for some reason it set an entire team to invisible 
     }
-    //set character to invisible once it dies
-    visible=false; //can't do this yet because for some reason it set an entire team to invisible 
-}
-else{
-    
+    else{
+        
+    }
 }
 </string>
           </argument>

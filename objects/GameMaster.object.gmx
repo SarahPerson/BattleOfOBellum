@@ -25,7 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///intitial setup things
+            <string>///set the teams based off of team size selected
+//set the teams initially in the drafting screen
+if(room==MainMenu){
+    //set initial arrays
+    global.teamOne = array(global.teamSize);
+    global.teamTwo = array(global.teamSize);
+    
+    for(i=0; i&lt;global.teamSize; i++){
+        //set team one
+        global.teamOne[i] = instance_create(0,0,Character);
+        global.teamOne[i].persistent = true;
+        
+        //set team two
+        global.teamTwo[i] = instance_create(0,0,Character);
+        global.teamTwo[i].persistent = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///intitial setup for maps
 global.gameSize = 3
 
 switch(global.currentMap)
@@ -1498,6 +1535,7 @@ if(room == Drafting){
             <string>///Draw Character Portraits Split screen
 spriteIconScale = 3;
 draw_set_halign(fa_center);
+
 if(room == SplitScreen || room == FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         if(global.teamOne[i].hp &gt; 0){
@@ -1514,6 +1552,7 @@ if(room == SplitScreen || room == FullScreen){
         }
     }
 }
+
 </string>
           </argument>
         </arguments>

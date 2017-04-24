@@ -10,10 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.teamSize = 4;
+  <code>global.teamSize = 5; //changed from 4 to 5
 global.setup = true;
-global.teamOne = array(global.teamSize);
-global.teamTwo = array(global.teamSize);
+
 
 global.gameSize=3;
 global.currentMap=2;
@@ -32,24 +31,23 @@ global.allCharacters[4] = Marinka;
 global.allCharacters[5] = Tashi;
 global.allCharacters[6] = Theseus;
 global.allCharacters[7] = Mavia;
-
 global.allCharacters[8] = Ent;
 global.allCharacters[9] = Warlock;
 global.allCharacters[10] = MechWarrior;
 global.allCharacters[11] = Pixie;
-
-global.allCharacters[12] = sprite1;
-global.allCharacters[13] = sprite1;
-global.allCharacters[14] = sprite1;
-global.allCharacters[15] = sprite1;
-global.allCharacters[16] = sprite1;
-global.allCharacters[17] = sprite1;
-global.allCharacters[18] = sprite1;
-global.allCharacters[19] = sprite1;
-global.allCharacters[20] = sprite1;
-global.allCharacters[21] = sprite1;
-global.allCharacters[22] = sprite1;
-global.allCharacters[23] = sprite1;
+//duplicated - may or may not be changed
+global.allCharacters[12] = Angont;
+global.allCharacters[13] = Beyla;
+global.allCharacters[14] = Jadzia;
+global.allCharacters[15] = Khufu;
+global.allCharacters[16] =  Marinka;
+global.allCharacters[17] = Tashi;
+global.allCharacters[18] = Mavia;
+global.allCharacters[19] = Ent;
+global.allCharacters[20] = Warlock;
+global.allCharacters[21] = MechWarrior;
+global.allCharacters[22] = Pixie;
+global.allCharacters[23] = Theseus;
 
 
 //rando global patch
@@ -60,6 +58,7 @@ global.startingY = 0;
 global.startingXOne = 0;
 global.startingXTwo = 0;
 
+/*
 //set Team one
 global.teamOne[0] = instance_create(0,0,Character);
 global.teamOne[0].persistent = true;
@@ -83,12 +82,12 @@ global.teamTwo[2] = instance_create(0,0,Character);
 global.teamTwo[2].persistent = true;
 global.teamTwo[3] = instance_create(0,0,Character);
 global.teamTwo[3].persistent = true;
+global.teamTwo[4] = instance_create(0,0,Character);
+global.teamTwo[4].persistent = true;
 
 global.teamTwo[0].originRow = 14;
 global.teamTwo[0].originCol =7;
-
-
-//room_goto(Stronghold);
+*/
 
 //Winning values
 global.PlayerWon = 0;
