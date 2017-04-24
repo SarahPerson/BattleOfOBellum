@@ -96,7 +96,7 @@ currentIncrement=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//move screens if both ready buttons selected
+            <string>///move screens if both ready buttons selected
 if(room==FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         global.teamOne[i].destTile = 0;
@@ -108,10 +108,14 @@ if(room==FullScreen){
 }
 if(room == SplitScreen)
 {
+    //for(var p = 0; p &lt; instance_number(Tile); p++) { with(instance_find(Tile,p)){ instance_destroy();}}
     if(!global.setup){ room_goto(FullScreen); }
     else {
         global.setup = false;
-        isSelected = false;
+        room_goto(SplitScreen);
+        /*isSelected = false;
+        PlayerOne.isHighlited = false;
+        playerTwo.isHighlighted = false;
         PlayerTwoButton.isSelected = false;
         for (i = 0; i &lt; global.mapSize; i += 1)
         {
@@ -121,6 +125,14 @@ if(room == SplitScreen)
                  global.gridTwo[j,i].canMove = false;
                }
         }
+         for(var i = 0; i &lt; global.teamSize; i++){
+            global.teamOne[i].destTile = 0;
+            global.teamOne[i].moveArray = array(9);
+            global.teamTwo[i].destTile = 0;
+            global.teamTwo[i].moveArray = array(9);
+            global.teamOne[i].isSelected = false;
+            global.teamTwo[i].isSelected = false;
+         }*/
     }
     
 }
