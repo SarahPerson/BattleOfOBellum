@@ -342,6 +342,8 @@
       <sprite>sprites\spriteButtonBonus</sprite>
       <sprite>sprites\bonusScreenCharacterButtonSprite</sprite>
       <sprite>sprites\spriteButtonMedium</sprite>
+      <sprite>sprites\mapSizeButton</sprite>
+      <sprite>sprites\numberMapsButton</sprite>
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\Angont</sprite>
@@ -395,6 +397,9 @@
     <object>objects\DraftTextPlayerOne</object>
     <object>objects\DraftTextPlayerTwo</object>
     <object>objects\buttonObject</object>
+    <object>objects\buttonObjectSettingsNumCharacters</object>
+    <object>objects\buttonObjectSettingsMapSize</object>
+    <object>objects\buttonObjectSettingsNumberMaps</object>
     <object>objects\buttonObjectBonus</object>
     <object>objects\CharInfo</object>
     <object>objects\DrawTextObject</object>

@@ -426,58 +426,20 @@ if(currentIncrement = action){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//what to do on click if in Main Menu
-if(room==MainMenu){
-    if(currentIncrement = action){
-    //I don't think we need a case statement
-        switch(currentIncrement)
-        {
-            case 0:
-                
-                break;
-            case 1:
-                
-                break;     
-            case 2:
-                
-                break;
-            case 3: 
-               
-                break;
-            case 4: 
-                
-                break;
-        
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>//what to do on click if in Settings Screen
+
 if(room==SettingsScreen &amp;&amp; canSelect){
+show_message("num char button selected");
     if(currentIncrement == action){
         show_message("current increment: " + string(currentIncrement));
-        
+        //set the new team size
+        global.teamSize=action;
+        show_message("team size: "+ string( global.teamSize));
     
     }
+            //set the new team size
+        global.teamSize=currentIncrement;
+        show_message("team size: "+ string( global.teamSize));
     //set no longer setting value
     GameMaster.settingNumCharacters = false;
 
