@@ -357,6 +357,8 @@
       <sprite>sprites\MechWarrior</sprite>
       <sprite>sprites\Pixie</sprite>
     </sprites>
+    <sprite>sprites\mapSizeButton</sprite>
+    <sprite>sprites\numberMapsButton</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -396,6 +398,9 @@
     <object>objects\buttonObjectBonus</object>
     <object>objects\CharInfo</object>
     <object>objects\DrawTextObject</object>
+    <object>objects\buttonObjectSettingsMapSize</object>
+    <object>objects\buttonObjectSettingsNumberMaps</object>
+    <object>objects\buttonObjectSettingsNumCharacters</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SplashScreen</room>

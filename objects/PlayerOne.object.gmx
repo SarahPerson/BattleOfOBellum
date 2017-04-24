@@ -112,14 +112,13 @@ if(room==BonusScreen){lvPoints = 10;}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.roomTiles[curCol, curRow].tileType = 5;
+            <string>///set Wall
+global.roomTiles[curCol, curRow].tileType = 5;
 global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
 global.setWall -= 1;
 global.walls[0,0] = global.currentMap;
 global.walls[global.setWall,0] = curCol;
 global.walls[global.setWall,1] = curRow;
-show_message(curCol);
-show_message(curRow);
 </string>
           </argument>
         </arguments>
@@ -288,10 +287,10 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         GameMaster.copyTeamOne[selectedCharacter].y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
 }else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; keyboard_check(key_enter)){
-   PlayerOneObjective.x = global.roomTiles[curCol, curRow].x;
-   PlayerOneObjective.y = global.roomTiles[curCol, curRow].y;
-   PlayerOneObjective.originRow = curRow;
-   PlayerOneObjective.originCol = curCol;
+   global.playerOneOb.x = global.roomTiles[curCol, curRow].x;
+   global.playerOneOb.y = global.roomTiles[curCol, curRow].y;
+   global.playerOneOb.originRow = curRow;
+   global.playerOneOb.originCol = curCol;
    
    GameMaster.PlayerOneObjectiveCopy.x = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
    GameMaster.PlayerOneObjectiveCopy.y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;

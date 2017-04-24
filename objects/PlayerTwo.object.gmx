@@ -102,6 +102,35 @@ if(room==BonusScreen){lvPoints = 10;}
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///set Wall
+global.roomTiles[curCol, curRow].tileType = 5;
+global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
+global.setWall -= 1;
+global.walls[0,0] = global.currentMap;
+global.walls[global.setWall,0] = curCol;
+global.walls[global.setWall,1] = curRow;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -264,11 +293,10 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
 } else if(global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
-   PlayerTwoObject.x = global.gridTwo[curCol, curRow].x;
-   PlayerTwoObject.y = global.gridTwo[curCol, curRow].y;
-   PlayerTwoObject.originRow = curRow;
-   PlayerTwoObject.originCol = curCol;
-   
+   global.playerTwoOb.x = global.gridTwo[curCol, curRow].x;
+   global.playerTwoOb.y = global.gridTwo[curCol, curRow].y;
+   global.playerTwoOb.originRow = curRow;
+   global.playerTwoOb.originCol = curCol;
    GameMaster.PlayerTwoObjectiveCopy.x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
    GameMaster.PlayerTwoObjectiveCopy.y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
    

@@ -747,7 +747,7 @@ instance_create(0,0, DrawTextObject);
                 // set player one's team buttons
                 TeamOne[i,j]=instance_create(teamOneX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
                 TeamOne[i,j].spriteToDraw= global.teamOne[buttonCount].sprite_index;
-                TeamOne[i,j].hpVal = global.teamOne[buttonCount].hp;
+                TeamOne[i,j].hpVal = floor(global.teamOne[buttonCount].hp);
                 TeamOne[i,j].hpMax = global.teamOne[buttonCount].maxHp;
                 TeamOne[i,j].attackVal = global.teamOne[buttonCount].attack;
                 TeamOne[i,j].moveVal = global.teamOne[buttonCount].movement;
@@ -756,7 +756,7 @@ instance_create(0,0, DrawTextObject);
                 // set player two's team buttons
                 TeamTwo[i,j]=instance_create(teamTwoX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
                 TeamTwo[i,j].spriteToDraw= global.teamTwo[buttonCount].sprite_index;
-                TeamTwo[i,j].hpVal = global.teamTwo[buttonCount].hp;
+                TeamTwo[i,j].hpVal = floor(global.teamTwo[buttonCount].hp);
                 TeamTwo[i,j].hpMax = global.teamTwo[buttonCount].maxHp;
                 TeamTwo[i,j].attackVal = global.teamTwo[buttonCount].attack;
                 TeamTwo[i,j].moveVal = global.teamTwo[buttonCount].movement;
@@ -1502,13 +1502,13 @@ if(room == SplitScreen || room == FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){
         if(global.teamOne[i].hp &gt; 0){
             draw_sprite_ext(global.teamOne[i].sprite_index, 0,1530, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
-            draw_text(1550, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(global.teamOne[i].hp) + "/" + string(global.teamOne[i].maxHp) + "#" + string(global.teamOne[i].attack) + "/" + string(global.teamOne[i].defence) + "/"+ string(global.teamOne[i].movement));
+            draw_text(1550, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(floor(global.teamOne[i].hp)) + "/" + string(global.teamOne[i].maxHp) + "#" + string(global.teamOne[i].attack) + "/" + string(global.teamOne[i].defence) + "/"+ string(global.teamOne[i].movement));
         } else {
             draw_sprite_ext(global.teamOne[i].sprite_index, 0,1530, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
         }
         if(global.teamTwo[i].hp &gt; 0){
             draw_sprite_ext(global.teamTwo[i].sprite_index, 0,15, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_white, 1);
-            draw_text(45, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(global.teamTwo[i].hp) + "/" + string(global.teamTwo[i].maxHp) + "#" + string(global.teamTwo[i].attack) + "/" + string(global.teamTwo[i].defence) + "/"+ string(global.teamTwo[i].movement));
+            draw_text(45, 225 + 16*spriteIconScale + i*36*spriteIconScale, "HP: " + string(floor(global.teamTwo[i].hp)) + "/" + string(global.teamTwo[i].maxHp) + "#" + string(global.teamTwo[i].attack) + "/" + string(global.teamTwo[i].defence) + "/"+ string(global.teamTwo[i].movement));
         } else {
             draw_sprite_ext(global.teamTwo[i].sprite_index, 0,15, 200 + i*36*spriteIconScale, spriteIconScale, spriteIconScale, 0, c_red, 1);
         }
