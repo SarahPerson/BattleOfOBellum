@@ -61,7 +61,7 @@ if(place_meeting(x,y,Character)){
             show_message("Player One Won!");
             global.PlayerWon = 1;
             //check if not at the end of the board and if not move to new map
-            if(global.currentMap&lt;global.gameSize){
+            if(global.currentMap &gt; 1){
                 global.currentMap=global.currentMap-1; //increment current map
                 global.setup=true;  //call setup for placing characters
                 global.teamOne[i].moveArray = array(9);
