@@ -867,12 +867,14 @@ switch(global.gameSize){
 
 if(!instance_exists(PlayerOne))
 {
-    instance_create(0,0,PlayerOne);
+    p = instance_create(0,0,PlayerOne);
+    p.lvPoints = 10;
 }
 
 if(!instance_exists(PlayerTwo))
 {
-    instance_create(0,0,PlayerTwo);
+    g = instance_create(0,0,PlayerTwo);
+    g.lvPoints = 10;
 }
 </string>
           </argument>

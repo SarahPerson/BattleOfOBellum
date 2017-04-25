@@ -876,6 +876,7 @@ if(room==LevelUpMenu &amp;&amp; isSelectingCharacterForLevel){
             if(global.teamOne[i].sprite_index ==selected)
             {
                 charToLevel = global.teamOne[i];
+                show_message(lvPoints);
                 if(alarm[2] == -1) {alarm[2] = room_speed*0.05;}
             }     
         }        

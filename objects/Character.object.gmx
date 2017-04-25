@@ -71,8 +71,7 @@ col = 27;
           <argument>
             <kind>1</kind>
             <string>///increase HP
-show_message("HERE");
-switch(hp){
+switch(defence){
     case 2:
         maxHp += 15;
         hp += 15;

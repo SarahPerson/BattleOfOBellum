@@ -95,7 +95,7 @@ selectedBonus=false;
 
 //set bonus varibles
 charToLevel = 0;
-if(room==BonusScreen){lvPoints = 10;}
+lvPoints = 10;
 isSelectingCharacterForLevel=true
 
 </string>
@@ -874,10 +874,10 @@ if(room==LevelUpMenu &amp;&amp; isSelectingCharacterForLevel){
             for(i=0; i&lt; global.teamSize; i++){
                 if(global.teamTwo[i].sprite_index ==selected)
                 {
-                    charToLevel = i;
+                    charToLevel = global.teamTwo[i];
+                    if(alarm[2] == -1) {alarm[2] = room_speed*0.05;}
                 }     
             }
-            show_message("character selected" + string(charToLevel));
             //add level up code here
     }
     
