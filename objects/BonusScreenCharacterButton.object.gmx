@@ -65,15 +65,19 @@ defVal = 0;
 {
     image_index=0;
 }
+if(playerTwoSelected==false &amp;&amp; playerTwoHighlighted=false)
+{
+    image_index=0;
+}
 
-//if(playerOneSelected==true)
-//{
+if(playerOneSelected==true)
+{
 
-//    image_index=2;
-//}
-//if(playerTwoSelected==true){
-//    image_index=4;
-//}
+    image_index=2;
+}
+if(playerTwoSelected==true){
+    image_index=4;
+}
 
 if(playerOneHighlighted==true){
     image_index=1;

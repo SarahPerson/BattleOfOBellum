@@ -62,6 +62,28 @@ if(room==MainMenu){
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Place the gui drawer in each room 
+instance_create(0,0, DrawTextObject);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///intitial setup for maps
 
 
@@ -81,6 +103,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdR.txt");
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     break;
                     
                 case 2:
@@ -92,6 +115,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                     myFile= file_text_open_read("smallCity.txt");
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     break;
                 case 3:
                 
@@ -103,6 +127,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdL.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     break
             }
             
@@ -124,6 +149,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 18;
                     myFile=file_text_open_read("mediumStrongholdR.txt");
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     break;
                     
                 case 2:
@@ -135,6 +161,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 19;
                     myFile= file_text_open_read("mediumCity.txt");
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     break;
                 case 3:
                 
@@ -146,6 +173,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 11;
                     myFile=file_text_open_read("mediumStrongholdI.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     break
             }
             
@@ -169,6 +197,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdR.txt");
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -184,6 +213,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                     myFile= file_text_open_read("smallSuburbanR.txt");
+                    DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=208;
                     global.startingXTwo = 1008;
@@ -199,6 +229,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                     myFile= file_text_open_read("smallCity.txt");
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -213,6 +244,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 13;
                     myFile= file_text_open_read("smallSuburbanI.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -228,6 +260,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdL.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -249,7 +282,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 18;
                     myFile=file_text_open_read("mediumStrongholdR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -265,7 +298,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                     myFile= file_text_open_read("mediumSuburbanR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=144;
                     global.startingXTwo = 944;
@@ -280,7 +313,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 19;
                     myFile= file_text_open_read("mediumCity.txt");
-                    
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -295,7 +328,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                     myFile= file_text_open_read("mediumSuburbanI.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=144;
                     global.startingXTwo = 944;
@@ -311,7 +344,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 11;
                     myFile=file_text_open_read("mediumStrongholdI.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -337,6 +370,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdR.txt");
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -352,7 +386,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 9;
                     myFile= file_text_open_read("smallRuralR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic Rural Area";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -368,7 +402,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                     myFile= file_text_open_read("smallSuburbanR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=208;
                     global.startingXTwo = 1008;
@@ -385,7 +419,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                     myFile= file_text_open_read("smallCity.txt");
-                    
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -401,6 +435,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 13;
                     myFile= file_text_open_read("smallSuburbanI.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=208;
                     global.startingXTwo = 1008;
@@ -415,6 +450,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 9;
                     myFile= file_text_open_read("smallRuralI.txt");
+                    DrawTextObject.splitScreenTitle = "Industrialist Rural Area";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -430,7 +466,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                     myFile=file_text_open_read("smallStrongholdL.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=160;
                     global.startingXTwo = 960;
@@ -451,7 +487,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 18;
                     myFile=file_text_open_read("mediumStrongholdR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -466,7 +502,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 14;
                     myFile= file_text_open_read("mediumRuralR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic Rural Area";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=184;
                     global.startingXTwo = 984;
@@ -481,7 +517,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                     myFile= file_text_open_read("mediumSuburbanR.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=144;
                     global.startingXTwo = 944;
@@ -496,7 +532,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 19;
                     myFile= file_text_open_read("mediumCity.txt");
-                    
+                    DrawTextObject.splitScreenTitle="City of O' Bellum";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -511,7 +547,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                     myFile= file_text_open_read("mediumSuburbanI.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=144;
                     global.startingXTwo = 944;
@@ -526,7 +562,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 14;
                     myFile= file_text_open_read("mediumRuralI.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist Rural Area";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=184;
                     global.startingXTwo = 984;
@@ -542,7 +578,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 11;
                     myFile=file_text_open_read("mediumStrongholdI.txt");
-                    
+                    DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
@@ -567,6 +603,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                 myFile=file_text_open_read("smallStrongholdR.txt");
+                DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=160;
                 global.startingXTwo = 960;
@@ -582,7 +619,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 9;
                 myFile= file_text_open_read("smallRuralR.txt");
-                
+                DrawTextObject.splitScreenTitle = "Romantic Rural Area";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=80;
                 global.startingXTwo = 880;
@@ -598,7 +635,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                 myFile= file_text_open_read("smallSuburbanR.txt");
-                
+                DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=208;
                 global.startingXTwo = 1008;
@@ -614,7 +651,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 14;
                 myFile= file_text_open_read("smallOutercityR.txt");
-                
+                DrawTextObject.splitScreenTitle = "O' Bellum Outer City - Romantic Side";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=184;
                 global.startingXTwo = 984;
@@ -629,7 +666,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                 myFile= file_text_open_read("smallCity.txt");
-                
+                DrawTextObject.splitScreenTitle="City of O' Bellum";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=160;
                 global.startingXTwo = 960;
@@ -645,7 +682,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                 myFile= file_text_open_read("smallOutercityI.txt");
-                
+                DrawTextObject.splitScreenTitle = "O' Bellum Outer City - Industrialist Side";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=184;
                 global.startingXTwo = 984;
@@ -660,6 +697,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 13;
                 myFile= file_text_open_read("smallSuburbanI.txt");
+                DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=208;
                 global.startingXTwo = 1008;
@@ -674,6 +712,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 9;
                 myFile= file_text_open_read("smallRuralI.txt");
+                DrawTextObject.splitScreenTitle = "Industrialist Rural Area";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=80;
                 global.startingXTwo = 880;
@@ -689,7 +728,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 1;
                     global.playerTwoOb.originCol = 7;
                 myFile=file_text_open_read("smallStrongholdL.txt");
-                
+                DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=160;
                 global.startingXTwo = 960;
@@ -710,7 +749,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 18;
                 myFile=file_text_open_read("mediumStrongholdR.txt");
-                
+                DrawTextObject.splitScreenTitle = "Romantic's Stronghold";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=80;
                 global.startingXTwo = 880;
@@ -725,7 +764,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 14;
                 myFile= file_text_open_read("mediumRuralR.txt");
-                
+                DrawTextObject.splitScreenTitle = "Romantic Rural Area";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=184;
                 global.startingXTwo = 984;
@@ -740,7 +779,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                 myFile= file_text_open_read("mediumSuburbanR.txt");
-                
+                DrawTextObject.splitScreenTitle = "Romantic's Suburb";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=144;
                 global.startingXTwo = 944;
@@ -755,7 +794,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 17;
                 myFile= file_text_open_read("mediumOutercityR.txt");
-                
+                DrawTextObject.splitScreenTitle = "O' Bellum Outer City - Romantic Side";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=112;
                 global.startingXTwo = 912;
@@ -770,7 +809,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 19;
                 myFile= file_text_open_read("mediumCity.txt");
-                
+                DrawTextObject.splitScreenTitle="City of O' Bellum";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=80;
                 global.startingXTwo = 880;
@@ -785,7 +824,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 0;
                 myFile= file_text_open_read("mediumOutercityI.txt");
-                
+                DrawTextObject.splitScreenTitle = "O' Bellum Outer City - Industrialist Side";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=112;
                 global.startingXTwo = 912;
@@ -800,7 +839,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 15;
                 myFile= file_text_open_read("mediumSuburbanI.txt");
-                
+                DrawTextObject.splitScreenTitle = "Industrialist's Suburb";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=144;
                 global.startingXTwo = 944;
@@ -815,7 +854,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 14;
                 myFile= file_text_open_read("mediumRuralI.txt");
-                
+                DrawTextObject.splitScreenTitle = "Industrial Rural Area";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=184;
                 global.startingXTwo = 984;
@@ -831,7 +870,7 @@ switch(global.gameSize){
                     global.playerTwoOb.originRow = 0;
                     global.playerTwoOb.originCol = 11;
                 myFile=file_text_open_read("mediumStrongholdI.txt");
-                
+                DrawTextObject.splitScreenTitle = "Industrialist's Stronghold";
                 //set the starting positions for drawing the maps in split screen
                 global.startingXOne=80;
                 global.startingXTwo = 880;
@@ -1081,16 +1120,6 @@ switch(room){
         break;     
         
     case SplitScreen:
-        /*
-       //TODO___________________________________________________________________________________
-        startingXOne=160;
-        global.startingXOne=startingXOne
-        startingXTwo=960;
-        global.startingXTwo=startingXTwo;
-        startingY=210;
-        global.startingY=startingY;
-        //______________________________________________________________________________________
-        */
         
         startingXOne = global.startingXOne;
         startingXTwo = global.startingXTwo;
@@ -1469,7 +1498,7 @@ PlayerOne.selectedBonus=false;
 PlayerTwo.selectedBonus=false;
 
 //put the gui drawer
-instance_create(0,0, DrawTextObject);
+//instance_create(0,0, DrawTextObject);
 
     //set the initial selected buttons
     currentIncrementOne = 0;
@@ -1565,8 +1594,8 @@ instance_create(0,0, DrawTextObject);
 
 if(room==LevelUpMenu){
 teamY=315;
-teamTwoX = 20;
-teamOneX = 810;
+teamTwoX = 105;
+teamOneX = 905;
 spacing = 10;
 
 TeamOne= ds_grid_create(6,2);
@@ -2339,6 +2368,7 @@ if(room == Drafting){
             <string>///Draw Character Portraits Split screen
 spriteIconScale = 3;
 draw_set_halign(fa_center);
+draw_set_font(players);
 
 if(room == SplitScreen || room == FullScreen){
     for(var i = 0; i &lt; global.teamSize; i++){

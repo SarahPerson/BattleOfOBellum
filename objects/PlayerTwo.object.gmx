@@ -103,6 +103,30 @@ isSelectingCharacterForLevel=true
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isSelectingCharacterForBonus=true;
+bonusCanMove=true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
@@ -691,9 +715,7 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
         
         }
         
-        //bonusRow+=1;    //increment the row selected
-        //if(bonusRow&gt;bonusRowMax )
-        //    bonusRow=bonusRowMax; 
+
             
         GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=true;
         bonusCanMove=false
@@ -746,8 +768,9 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
         bonusCanMove=false
     }
     
-    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove )
+    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove &amp;&amp; !PlayerTwo.inMenu )
     {
+            show_message("selecting character")
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoSelected=true;
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
 
@@ -767,12 +790,13 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
             
             isSelectingCharacterForBonus = false;
             inMenu=true;
+            bonusCanMove=false;
 
     }
     
    if(alarm[1]==-1)
    {
-        alarm[1]= room_speed*(0.2);
+        alarm[1]= room_speed*(0.3);
    }
 }
 
@@ -888,6 +912,28 @@ if(room==LevelUpMenu &amp;&amp; isSelectingCharacterForLevel){
 }
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update HP
+DrawTextObject.pTwoLv=string(lvPoints);
 </string>
           </argument>
         </arguments>
