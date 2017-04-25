@@ -1592,8 +1592,8 @@ PlayerTwo.selectedBonus=false;
 
 if(room==LevelUpMenu){
 teamY=315;
-teamTwoX = 20;
-teamOneX = 810;
+teamTwoX = 105;
+teamOneX = 905;
 spacing = 10;
 
 TeamOne= ds_grid_create(6,2);
