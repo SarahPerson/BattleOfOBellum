@@ -11,7 +11,7 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0,0, GameMaster);
-instance_create(0,0,DrawTextObject);
+//instance_create(0,0,DrawTextObject);
 
 //create number of player selection
 yPos=825;

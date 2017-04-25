@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//variables
+            <string>///variables
 oneCharacterSelectText="";
 twoCharacterSelectText="";
+splitScreenTitle="";
 </string>
           </argument>
         </arguments>
@@ -163,6 +164,38 @@ if(room==SettingsScreen){
     draw_text(1137, 191+160, "Select the size of the maps you would like to play on");
     
     draw_text(1137, 191+160*2, "Select the number of maps the game will include");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw text for splitscreen
+//Draw all text in button
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_color(c_black);
+
+//draw all gui objects
+if(room==SplitScreen){
+    //create screen title
+    draw_set_font(titles);
+    draw_text(800,  50, splitScreenTitle);
 }
 </string>
           </argument>
