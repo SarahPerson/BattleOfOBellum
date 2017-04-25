@@ -15,7 +15,7 @@ global.setup = true;
 
 
 global.gameSize=5;
-global.currentMap=4;
+global.currentMap=3;
 global.mapSize=30;
 global.gameMapSize = 0;
 

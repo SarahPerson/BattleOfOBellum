@@ -63,7 +63,7 @@ if(room==MainMenu){
           <argument>
             <kind>1</kind>
             <string>///intitial setup for maps
-global.gameSize = 7
+
 
 //global.gameMapSize=1;
 //pick which size of maps you are using
@@ -284,7 +284,7 @@ switch(global.gameSize){
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
-                    global.startingY = 260;
+                    global.startingY = 130;
 
                     break;
                 case 3:
@@ -330,7 +330,7 @@ switch(global.gameSize){
                     //set the starting positions for drawing the maps in split screen
                     global.startingXOne=80;
                     global.startingXTwo = 880;
-                    global.startingY = 260;
+                    global.startingY = 130;
                     break;
                     
                 case 7:
@@ -362,7 +362,7 @@ switch(global.gameSize){
                     global.startingY = 130;
                     break;
                 case 2:
-                    global.mapSize=32;
+                    global.mapSize=27;
                     global.spriteScaleSplit=1;
                     global.spriteScaleFull=2.083;
                     myFile= file_text_open_read("mediumRuralR.txt");
@@ -406,7 +406,7 @@ switch(global.gameSize){
                     global.startingY = 194;
                     break;
                 case 6: 
-                    global.mapSize=32;
+                    global.mapSize=27;
                     global.spriteScaleSplit=1;
                     global.spriteScaleFull=2.083;
                     myFile= file_text_open_read("mediumRuralI.txt");
@@ -427,12 +427,229 @@ switch(global.gameSize){
                     global.startingXOne=80;
                     global.startingXTwo = 880;
                     global.startingY = 130;
-                    break
+                    break;
             }
             
 
         }
         break;
+    case 9: 
+        if(global.gameMapSize==0){
+        //need to set starting map
+        switch(global.currentMap)
+        {
+            case 1:
+                global.mapSize=15;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=3.75;
+                myFile=file_text_open_read("smallStrongholdR.txt");
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=160;
+                global.startingXTwo = 960;
+                global.startingY = 210;
+                break;
+                
+            case 2:
+                global.mapSize=20;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=2.8125;
+                myFile= file_text_open_read("smallRuralR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=80;
+                global.startingXTwo = 880;
+                global.startingY = 130;
+
+                break;
+            case 3:
+                global.mapSize=24;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.344;
+                myFile= file_text_open_read("smallSuburbanR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=208;
+                global.startingXTwo = 1008;
+                global.startingY = 258;
+
+                break;    
+            case 4:
+                global.mapSize=27;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.083;
+                myFile= file_text_open_read("smallOutercityR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=184;
+                global.startingXTwo = 984;
+                global.startingY = 234;
+                break;
+            case 5:
+                global.mapSize=30;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.875;
+                myFile= file_text_open_read("smallCity.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=160;
+                global.startingXTwo = 960;
+                global.startingY = 210;
+
+                break;
+            case 6: 
+                global.mapSize=27;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.083;
+                myFile= file_text_open_read("smallOutercityI.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=184;
+                global.startingXTwo = 984;
+                global.startingY = 234;
+                break;
+            case 7:
+                global.mapSize=24;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.344;
+                myFile= file_text_open_read("smallSuburbanI.txt");
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=208;
+                global.startingXTwo = 1008;
+                global.startingY = 258;
+                break;
+            case 8:
+                global.mapSize=20;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=2.8125;
+                myFile= file_text_open_read("smallRuralI.txt");
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=80;
+                global.startingXTwo = 880;
+                global.startingY = 130;
+                break;
+                
+            case 9:
+                global.mapSize=15;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=3.75;
+                myFile=file_text_open_read("smallStrongholdL.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=160;
+                global.startingXTwo = 960;
+                global.startingY = 210;
+                break;
+        }
+        
+    }
+    else if(global.gameMapSize==1){
+        switch(global.currentMap)
+        {
+            case 1:
+                global.mapSize=20;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=2.813;
+                myFile=file_text_open_read("mediumStrongholdR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=80;
+                global.startingXTwo = 880;
+                global.startingY = 130;
+                break;
+            case 2:
+                global.mapSize=27;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.083;
+                myFile= file_text_open_read("mediumRuralR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=184;
+                global.startingXTwo = 984;
+                global.startingY = 234;
+                break;
+            case 3:
+                global.mapSize=32;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.758;
+                myFile= file_text_open_read("mediumSuburbanR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=144;
+                global.startingXTwo = 944;
+                global.startingY = 194;
+                break;
+            case 4:
+                global.mapSize=36;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.563;
+                myFile= file_text_open_read("mediumOutercityR.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=112;
+                global.startingXTwo = 912;
+                global.startingY = 162;
+                break;
+            case 5: 
+                global.mapSize=40;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.406;
+                myFile= file_text_open_read("mediumCity.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=80;
+                global.startingXTwo = 880;
+                global.startingY = 130;
+                break;
+            case 6: 
+                global.mapSize=36;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.563;
+                myFile= file_text_open_read("mediumOutercityI.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=112;
+                global.startingXTwo = 912;
+                global.startingY = 162;
+                break;
+            case 7:
+                global.mapSize=32;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=1.758;
+                myFile= file_text_open_read("mediumSuburbanI.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=144;
+                global.startingXTwo = 944;
+                global.startingY = 194;
+                break;
+            case 8: 
+                global.mapSize=27;
+                global.spriteScaleSplit=1;
+                global.spriteScaleFull=2.083;
+                myFile= file_text_open_read("mediumRuralI.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=184;
+                global.startingXTwo = 984;
+                global.startingY = 234;
+                break;
+            case 9:
+            
+                global.mapSize=20;
+                global.spriteScaleSplit=2;
+                global.spriteScaleFull=2.813;
+                myFile=file_text_open_read("mediumStrongholdI.txt");
+                
+                //set the starting positions for drawing the maps in split screen
+                global.startingXOne=80;
+                global.startingXTwo = 880;
+                global.startingY = 130;
+                break;
+        }
+        
+
+    }
+    break;
 }
 </string>
           </argument>
@@ -1925,7 +2142,7 @@ if(room == SplitScreen || room == FullScreen){
           <argument>
             <kind>1</kind>
             <string>///moving maps cheat key - moves down in maps
-if(global.currentMap&lt;global.gameSize){
+if(global.currentMap&gt;1){
         global.currentMap=global.currentMap-1; //increment current map
         global.setup=true;  //call setup for placing characters
         //global.teamOne[i].originRow=13 //hard coded for testing
