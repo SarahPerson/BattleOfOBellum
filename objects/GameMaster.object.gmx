@@ -750,9 +750,9 @@ switch(global.gameSize){
                 global.mapSize=36;
                 global.spriteScaleSplit=1;
                 global.spriteScaleFull=1.563;
-                global.playerOneOb.originRow = 34;
+                global.playerOneOb.originRow = 33;
                     global.playerOneOb.originCol = 18;
-                    global.playerTwoOb.originRow = 1;
+                    global.playerTwoOb.originRow = 2;
                     global.playerTwoOb.originCol = 17;
                 myFile= file_text_open_read("mediumOutercityR.txt");
                 
