@@ -64,6 +64,7 @@ if(room==MainMenu){
             <kind>1</kind>
             <string>///intitial setup for maps
 global.gameSize = 3
+
 //global.gameMapSize=1;
 //pick which size of maps you are using
 switch(global.gameSize){
@@ -100,7 +101,7 @@ switch(global.gameSize){
             
         }
         else if(global.gameMapSize==1){
-                    switch(global.currentMap)
+            switch(global.currentMap)
             {
                 case 1:
                     global.mapSize=20;
@@ -129,6 +130,275 @@ switch(global.gameSize){
             global.startingXTwo = 880;
             global.startingY = 130;
         }
+        break;
+    case 5: 
+            if(global.gameMapSize==0){
+            //need to set starting map
+            switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdR.txt");
+                    break;
+                    
+                case 2:
+                    global.mapSize=24;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=2.344;
+                    myFile= file_text_open_read("smallSuburbanR.txt");
+                    break;
+                    
+                case 3:
+                    global.mapSize=30;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.87;
+                    myFile= file_text_open_read("smallCity.txt");
+                    break;
+                case 4:
+                    global.mapSize=24;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=2.344;
+                    myFile= file_text_open_read("smallSuburbanI.txt");
+                    break;
+                case 5:
+                
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdL.txt");
+                    break;
+            }
+            
+            //set the starting positions for drawing the maps in split screen
+            global.startingXOne=160;
+            global.startingXTwo = 960;
+            global.startingY = 210;
+            
+        }
+        else if(global.gameMapSize==1){
+            switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break;
+                    
+                case 2:
+                    global.mapSize=32;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.758;
+                    myFile= file_text_open_read("mediumSuburbanR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=144;
+                    global.startingXTwo = 944;
+                    global.startingY = 194;
+                    break;
+                case 3: 
+                    global.mapSize=40;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.406;
+                    myFile= file_text_open_read("mediumCity.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break;
+                case 4:
+                    global.mapSize=32;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.758;
+                    myFile= file_text_open_read("mediumSuburbanI.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=144;
+                    global.startingXTwo = 944;
+                    global.startingY = 194;
+                    break;
+                case 5:
+                
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdI.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break
+            }
+            
+
+        }
+        break;
+    
+    case 7: 
+            if(global.gameMapSize==0){
+            //need to set starting map
+            show_message("Small maps - 7")
+            switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdR.txt");
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=160;
+                    global.startingXTwo = 960;
+                    global.startingY = 210;
+                    break;
+                    
+                case 2:
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.8125;
+                    myFile= file_text_open_read("smallRuralR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 260;
+
+                    break;
+                case 3:
+                    global.mapSize=24;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=2.344;
+                    myFile= file_text_open_read("smallSuburbanR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=192;
+                    global.startingXTwo = 992;
+                    global.startingY = 258;
+
+                    break;    
+                
+                case 4:
+                    global.mapSize=30;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.87;
+                    myFile= file_text_open_read("smallCity.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=160;
+                    global.startingXTwo = 960;
+                    global.startingY = 210;
+                    show_message("map 4")
+                    break;
+                case 5:
+                    global.mapSize=24;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=2.344;
+                    myFile= file_text_open_read("smallSuburbanI.txt");
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=192;
+                    global.startingXTwo = 992;
+                    global.startingY = 258;
+                    break;
+                case 6:
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.8125;
+                    myFile= file_text_open_read("smallRuralI.txt");
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 260;
+                    break;
+                    
+                case 7:
+                    global.mapSize=15;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=3.75;
+                    myFile=file_text_open_read("smallStrongholdL.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=160;
+                    global.startingXTwo = 960;
+                    global.startingY = 210;
+                    break;
+            }
+            
+
+            
+        }
+        else if(global.gameMapSize==1){
+            switch(global.currentMap)
+            {
+                case 1:
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break;
+                    
+                case 2:
+                    global.mapSize=32;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.758;
+                    myFile= file_text_open_read("mediumSuburbanR.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=144;
+                    global.startingXTwo = 944;
+                    global.startingY = 194;
+                    break;
+                case 3: 
+                    global.mapSize=40;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.406;
+                    myFile= file_text_open_read("mediumCity.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break;
+                case 4:
+                    global.mapSize=32;
+                    global.spriteScaleSplit=1;
+                    global.spriteScaleFull=1.758;
+                    myFile= file_text_open_read("mediumSuburbanI.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=144;
+                    global.startingXTwo = 944;
+                    global.startingY = 194;
+                    break;
+                case 5:
+                
+                    global.mapSize=20;
+                    global.spriteScaleSplit=2;
+                    global.spriteScaleFull=2.813;
+                    myFile=file_text_open_read("mediumStrongholdI.txt");
+                    
+                    //set the starting positions for drawing the maps in split screen
+                    global.startingXOne=80;
+                    global.startingXTwo = 880;
+                    global.startingY = 130;
+                    break
+            }
+            
+
+        }
+        break;
 }
 </string>
           </argument>
@@ -280,7 +550,7 @@ GameMaster.pool[PlayerTwo.draftRow, PlayerTwo.draftCol].playerTwoHighlighted=tru
 tick = 0;
 moveAlg = false;
 canRun = true;
-mapNum = 2;
+//mapNum = 2;
 
 
 spriteScaleFull=global.spriteScaleFull ; //1.66666667 scaling of sprites to fit full screen top to bottom
@@ -314,7 +584,7 @@ switch(room){
              //}
            }
         }
-        
+
         //rotate the grid
 
         rotatedGrid = ds_grid_create(global.mapSize,global.mapSize);
@@ -435,45 +705,45 @@ switch(room){
 // ----------------------------------------------------------------------------------
         if(global.setup){
             //player one goes on the bottom - player two goes on the top
-            var char = 0;
-            
-            //set the positions of team one
-            for(i=global.mapSize-1; i&gt;global.mapSize-3; i--)
-            {
-                for(j = 0; j&lt;global.mapSize;j++){
-                    show_message("tile type: "+string(global.roomTiles[i,j].tileType));
-                    if(char&lt;global.teamSize){
-                        if(global.roomTiles[i,j].tileType&lt;3){
-                            //set the characters starting row and col to this position
-                            show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
-                            global.teamOne[char].originRow = i;
-                            global.teamOne[char].originCol = j;
-                            char++; //move to next character
-                        }
+             var char = 0;
+             
+             //set the positions of team one
+             for(i=global.mapSize-1; i&gt;global.mapSize-3; i--)
+             {
+                 for(j = 0; j&lt;global.mapSize;j++){
+                     //show_message("tile type: "+string(global.roomTiles[i,j].tileType));
+                     if(char&lt;global.teamSize){
+                         if(global.roomTiles[i,j].tileType&lt;3){
+                             //set the characters starting row and col to this position
+                             //show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
+                             global.teamOne[char].originRow = i;
+                             global.teamOne[char].originCol = j;
+                             char++; //move to next character
+                         }
+                     }
+                 }
+             }
+             
+             //player one goes on the bottom - player two goes on the top
+             var char = 0;
+             
+             //set the positions of team two
+             for(i=0; i&lt;3; i++)
+             {
+                 for(j = global.mapSize-1; j&gt;=0;j--){
+                     //show_message("tile type: "+string(global.roomTiles[i,j].tileType));
+                     if(char&lt;global.teamSize){
+                         if(global.roomTiles[i,j].tileType&lt;3){
+                             //set the characters starting row and col to this position
+                             //show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
+                             global.teamTwo[char].originRow = i;
+                             global.teamTwo[char].originCol = j;
+                             char++; //move to next character
+                         }
                     }
-                }
-            }
-            
-            //player one goes on the bottom - player two goes on the top
-            var char = 0;
-            
-            //set the positions of team two
-            for(i=0; i&lt;3; i++)
-            {
-                for(j = global.mapSize-1; j&gt;=0;j--){
-                    show_message("tile type: "+string(global.roomTiles[i,j].tileType));
-                    if(char&lt;global.teamSize){
-                        if(global.roomTiles[i,j].tileType&lt;3){
-                            //set the characters starting row and col to this position
-                            show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
-                            global.teamTwo[char].originRow = i;
-                            global.teamTwo[char].originCol = j;
-                            char++; //move to next character
-                        }
-                    }
-                }
-            }
-        }
+                 }
+             }
+         }
 //----------------------------------------------------------------------------------------------
         
         //Make one copy
@@ -1598,6 +1868,92 @@ if(room == SplitScreen || room == FullScreen){
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="80">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///moving maps cheat key - moves down in maps
+if(global.currentMap&lt;global.gameSize){
+        global.currentMap=global.currentMap-1; //increment current map
+        global.setup=true;  //call setup for placing characters
+        //global.teamOne[i].originRow=13 //hard coded for testing
+        //global.teamOne[i].originCol = 5
+        show_message("current map: "+ string(global.currentMap));
+        
+        //destroy both players so that they are recreated
+        with(PlayerOne)
+        {
+            instance_destroy();
+        }
+        with(PlayerTwo)
+        {
+            instance_destroy();
+        }
+        room_goto(SplitScreen);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="79">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//cheat key to move up in maps
+
+        //check if not at the end of the board and if not move to new map
+        if(global.currentMap&lt;global.gameSize){
+            global.currentMap+=1; //increment current map
+            global.setup=true;  //call setup for placing characters
+            //global.teamTwo[i].moveArray = array(9);
+            //global.teamTwo[i].originRow=13 //hard coded for testing
+            //global.teamTwo[i].originCol = 5
+            show_message("current map: "+ string(global.currentMap));
+            
+            //destroy both players so that they are recreated
+            with(PlayerOne)
+            {
+                instance_destroy();
+            }
+            with(PlayerTwo)
+            {
+                instance_destroy();
+            }
+            
+            room_goto(SplitScreen);
+            }
 </string>
           </argument>
         </arguments>
