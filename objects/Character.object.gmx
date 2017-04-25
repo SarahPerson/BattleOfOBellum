@@ -38,6 +38,7 @@ defence = 4;
 hp = 0;
 maxHp = 0;
 attackDice = 4;
+name = "";
 
 //initial position
 originRow= 0;
@@ -70,6 +71,7 @@ col = 27;
           <argument>
             <kind>1</kind>
             <string>///increase HP
+show_message("HERE");
 switch(hp){
     case 2:
         maxHp += 15;
@@ -133,61 +135,73 @@ switch(sprite_index){
         movement = 4;
         attack = 4;
         defence = 4;
+        name = "Angont";
         break;
     case Beyla:
         movement = 7;
         attack = 1;
         defence = 4;
+        name = "Beyla";
         break;
     case Jadzia:
         movement = 4;
         attack = 7;
         defence = 1;
+        name = "Jadzia";
         break;
     case Khufu:
         movement = 4;
         attack = 4;
         defence = 4;
+        name = "Khufu";
         break;
     case Marinka:
         movement = 7;
         attack = 1;
         defence = 4;
+        name = "Marinka";
         break;
     case Tashi:
         movement = 4;
         attack = 1;
         defence = 7;
+        name = "Tashi";
         break;
     case Theseus:
         movement = 4;
         attack = 1;
         defence = 7;
+        name = "Theseus";
         break;
     case Mavia:
         movement = 1;
         attack = 7;
         defence = 4;
+        name = "Mavia";
         break;
     case Warlock:
         movement = 7;
         attack = 4;
         defence = 1;
+        name = "Adam";
         break;
     case Ent:
         movement = 1;
         attack = 7;
         defence = 4;
+        name = "Oak";
         break;
     case MechWarrior:
         movement = 1;
         attack = 4;
         defence = 7;
+        name = "Jen";
         break;
      case Pixie:
         movement = 7;
         attack = 4;
         defence = 1;
+        name = "Wendy";
         break;
     default:
         movement = 0;

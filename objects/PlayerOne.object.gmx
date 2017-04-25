@@ -88,7 +88,7 @@ selectedBonus = false;
 
 //set bonus varibles
 charToLevel = 0;
-if(room==BonusScreen){lvPoints = 10;}
+lvPoints = 10;
 isSelectingCharacterForLevel=true
 
 </string>
@@ -176,7 +176,7 @@ if(charToLevel.movement &lt; charToLevel.defence &amp;&amp; charToLevel.movement
         if(charToLevel.attack &lt; 9 &amp;&amp; lvPoints &gt; 0){charToLevel.attack += 1; lvPoints -= 1;}
         if(charToLevel.defence &lt; 9 &amp;&amp; lvPoints &gt; 0) {charToLevel.defence += 1; lvPoints -= 1; if(charToLevel.alarm[1] == -1) {charToLevel.alarm[1] = room_speed*0.05}}
     }
-} else if(charToLevel.defence &lt; charTolevel.attack) {
+} else if(charToLevel.defence &lt; charToLevel.attack) {
     if(charToLevel.defence &lt; 9 &amp;&amp; lvPoints &gt; 0) {charToLevel.defence += 1; lvPoints -= 1; if(charToLevel.alarm[1] == -1) {charToLevel.alarm[1] = room_speed*0.05}}
     if(charToLevel.attack &lt; charToLevel.movement){
          if(charToLevel.attack &lt; 9 &amp;&amp; lvPoints &gt; 0){charToLevel.attack += 1; lvPoints -= 1;}
@@ -899,16 +899,11 @@ if(room==LevelUpMenu &amp;&amp; isSelectingCharacterForLevel){
         for(i=0; i&lt; global.teamSize; i++){
             if(global.teamOne[i].sprite_index ==selected)
             {
-                charToLevel = i;
+                charToLevel = global.teamOne[i];
+                if(alarm[2] == -1) {alarm[2] = room_speed*0.05;}
             }     
-        }
-        
-        show_message("character selected" + string(charToLevel));
-        
+        }        
         //add level up code here
-            
-
-
     }
     
    if(alarm[1]==-1)
