@@ -143,6 +143,12 @@ if(room==Drafting)
 
 //move from bonus screen to splitscreen
 if(room==BonusScreen){
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].destTile = 0;
+        global.teamOne[i].moveArray = array(9);
+        global.teamTwo[i].destTile = 0;
+        global.teamTwo[i].moveArray = array(9)
+    }
     room_goto(SplitScreen);
 }
 

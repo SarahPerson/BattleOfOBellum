@@ -36,7 +36,7 @@ col = global.mapSize-global.mapSize/2;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="Character">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,46 +54,49 @@ col = global.mapSize-global.mapSize/2;
           <argument>
             <kind>1</kind>
             <string>///check collision with objective and move to new map
-for(var i = 0; i &lt; global.teamSize; i++){
-    if(other = global.teamTwo[i]){
-        show_message("Player Two Reached the Objective");
-        global.PlayerWon = 2;
-        
-        //check if not at the end of the board and if not move to new map
-        if(global.currentMap&lt;global.gameSize){
-            global.currentMap+=1; //increment current map
-            global.setup=true;  //call setup for placing characters
-             global.teamTwo[i].moveArray = array(9);
-            global.teamTwo[i].originRow=13 //hard coded for testing
-            global.teamTwo[i].originCol = 5
-            show_message("current map: "+ string(global.currentMap));
-            
-            //destroy both players so that they are recreated
-            with(PlayerOne)
-            {
-                instance_destroy();
-            }
-            with(PlayerTwo)
-            {
-                instance_destroy();
-            }
-            
-            room_goto(BonusScreen); //go to bonus screen after win condition met 
-            
-            //destroy both players so that they are recreated
-  
-        }
-        else 
-        {
-            show_message("Player Two Won the Game!")
+if(place_meeting(x,y, Character)){
+    p = instance_nearest(x,y, Character);
+    for(var i = 0; i &lt; global.teamSize; i++){
+        if(p = global.teamTwo[i]){
+            show_message("Player Two Reached the Objective");
             global.PlayerWon = 2;
-            //make characters invisible before going back to main menu
-            for(i=0; i&lt;global.teamSize;i+=1)
-            {
-                global.teamOne[i].visible=false;
-                global.teamTwo[i].visible=false;
+            
+            //check if not at the end of the board and if not move to new map
+            if(global.currentMap&lt;global.gameSize){
+                global.currentMap+=1; //increment current map
+                global.setup=true;  //call setup for placing characters
+                 global.teamTwo[i].moveArray = array(9);
+                global.teamTwo[i].x=0; //hard coded for testing
+                global.teamTwo[i].y = 0;
+                show_message("current map: "+ string(global.currentMap));
+                
+                //destroy both players so that they are recreated
+                with(PlayerOne)
+                {
+                    instance_destroy();
+                }
+                with(PlayerTwo)
+                {
+                    instance_destroy();
+                }
+                
+                room_goto(BonusScreen); //go to bonus screen after win condition met 
+                
+                //destroy both players so that they are recreated
+      
             }
-            room_goto(MainMenu);
+            else 
+            {
+                show_message("Player Two Won the Game!")
+                global.PlayerWon = 2;
+                //make characters invisible before going back to main menu
+                for(i=0; i&lt;global.teamSize;i+=1)
+                {
+                    global.teamOne[i].visible=false;
+                    global.teamTwo[i].visible=false;
+                }
+                room_goto(MainMenu);
+            }
         }
     }
 }
