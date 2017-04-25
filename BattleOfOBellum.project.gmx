@@ -411,6 +411,7 @@
     <room>rooms\Drafting</room>
     <room>rooms\MainMenu</room>
     <room>rooms\BonusScreen</room>
+    <room>rooms\LevelUpMenu</room>
     <room>rooms\SettingsScreen</room>
   </rooms>
   <help>

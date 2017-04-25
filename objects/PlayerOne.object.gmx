@@ -89,6 +89,7 @@ selectedBonus = false;
 //set bonus varibles
 charToLevel = 0;
 if(room==BonusScreen){lvPoints = 10;}
+isSelectingCharacterForLevel=true
 
 </string>
           </argument>
@@ -767,6 +768,122 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
             
             isSelectingCharacterForBonus = false;
             inMenu = true;
+
+    }
+    
+   if(alarm[1]==-1)
+   {
+        alarm[1]= room_speed*(0.2);
+   }
+}
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move cursor in characters on level up screen
+if(room==LevelUpMenu &amp;&amp; isSelectingCharacterForLevel){
+    if( inMenu==false ){
+    
+    if(keyboard_check(key_down)&amp;&amp; bonusCanMove)
+    {
+
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        if(bonusRow&lt;bonusRowMax) //if in range  
+        {  
+            bonusRow+=1;
+            if(GameMaster.TeamOne[bonusRow, bonusCol]==0)
+                bonusRow--; //if there isn't, go back to original spot
+        
+        }
+        
+            
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+        
+    }
+    
+    if(keyboard_check(key_right)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        
+        if(bonusCol&lt;bonusColMax) //if in range  
+        {  
+            bonusCol+=1;
+            if(GameMaster.TeamOne[bonusRow, bonusCol]==0)
+                bonusCol--; //if there isn't, go back to original spot
+        
+        }
+    
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_left)&amp;&amp; bonusCanMove)
+    {
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;    
+        bonusCol=bonusCol-1;
+        
+        
+        if(bonusCol&lt;0)
+            bonusCol=0;    
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+        
+    
+    }
+    
+    if(keyboard_check(key_up)&amp;&amp; bonusCanMove)
+    {
+    
+
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
+        bonusRow=bonusRow-1;;    //increment the row selected 
+        
+        if(bonusRow&lt;0 )
+            bonusRow=0; 
+            
+        GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=true;
+        bonusCanMove=false
+    }
+    
+    if(keyboard_check(key_enter)&amp;&amp; bonusCanMove &amp;&amp; !PlayerOne.inMenu)
+    {
+        //get character selected sprite
+        selected = GameMaster.TeamOne[bonusRow, bonusCol].spriteToDraw;
+        
+        for(i=0; i&lt; global.teamSize; i++){
+            if(global.teamOne[i].sprite_index ==selected)
+            {
+                charToLevel = i;
+            }     
+        }
+        
+        show_message("character selected" + string(charToLevel));
+        
+        //add level up code here
+            
+
 
     }
     
