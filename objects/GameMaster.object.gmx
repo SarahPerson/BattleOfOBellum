@@ -281,9 +281,8 @@ tick = 0;
 moveAlg = false;
 canRun = true;
 mapNum = 2;
-//myFile = file_text_open_read("smallCity.txt");
-//startingX = 100;
-//startingY = 100;
+
+
 spriteScaleFull=global.spriteScaleFull ; //1.66666667 scaling of sprites to fit full screen top to bottom
 spriteScaleSplit=global.spriteScaleSplit; //1.66666667 scaling of sprites to fit full screen top to bottom
 
@@ -302,7 +301,7 @@ switch(room){
         var i, j, z;
         for (i = 0; i &lt; global.mapSize; i += 1)
         {
-        for (j = 0; j &lt; global.mapSize; j += 1)
+            for (j = 0; j &lt; global.mapSize; j += 1)
            {
              tempTile = instance_create(j*16, i*16, Tile);
              global.roomTiles[tempTile.x/(16),tempTile.y/(16)] = tempTile;
@@ -433,6 +432,49 @@ switch(room){
              //}
            }
         }
+// ----------------------------------------------------------------------------------
+        if(global.setup){
+            //player one goes on the bottom - player two goes on the top
+            var char = 0;
+            
+            //set the positions of team one
+            for(i=global.mapSize-1; i&gt;global.mapSize-3; i--)
+            {
+                for(j = 0; j&lt;global.mapSize;j++){
+                    show_message("tile type: "+string(global.roomTiles[i,j].tileType));
+                    if(char&lt;global.teamSize){
+                        if(global.roomTiles[i,j].tileType&lt;3){
+                            //set the characters starting row and col to this position
+                            show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
+                            global.teamOne[char].originRow = i;
+                            global.teamOne[char].originCol = j;
+                            char++; //move to next character
+                        }
+                    }
+                }
+            }
+            
+            //player one goes on the bottom - player two goes on the top
+            var char = 0;
+            
+            //set the positions of team two
+            for(i=0; i&lt;3; i++)
+            {
+                for(j = global.mapSize-1; j&gt;=0;j--){
+                    show_message("tile type: "+string(global.roomTiles[i,j].tileType));
+                    if(char&lt;global.teamSize){
+                        if(global.roomTiles[i,j].tileType&lt;3){
+                            //set the characters starting row and col to this position
+                            show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
+                            global.teamTwo[char].originRow = i;
+                            global.teamTwo[char].originCol = j;
+                            char++; //move to next character
+                        }
+                    }
+                }
+            }
+        }
+//----------------------------------------------------------------------------------------------
         
         //Make one copy
         var temp;
