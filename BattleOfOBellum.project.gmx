@@ -382,8 +382,8 @@
   </fonts>
   <objects name="objects">
     <object>objects\Tile</object>
-    <object>objects\PlayerOne</object>
     <object>objects\PlayerTwo</object>
+    <object>objects\PlayerOne</object>
     <object>objects\GameMaster</object>
     <object>objects\PlayerOneObjective</object>
     <object>objects\PlayerTwoObject</object>

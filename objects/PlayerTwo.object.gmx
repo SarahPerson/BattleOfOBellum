@@ -183,7 +183,7 @@ if(charToLevel.movement &lt; charToLevel.defence &amp;&amp; charToLevel.movement
         if(charToLevel.attack &lt; 9 &amp;&amp; lvPoints &gt; 0){charToLevel.attack += 1; lvPoints -= 1;}
         if(charToLevel.defence &lt; 9 &amp;&amp; lvPoints &gt; 0) {charToLevel.defence += 1; lvPoints -= 1; if(charToLevel.alarm[1] == -1) {charToLevel.alarm[1] = room_speed*0.05}}
     }
-} else if(charToLevel.defence &lt; charTolevel.attack) {
+} else if(charToLevel.defence &lt; charToLevel.attack) {
     if(charToLevel.defence &lt; 9 &amp;&amp; lvPoints &gt; 0) {charToLevel.defence += 1; lvPoints -= 1; if(charToLevel.alarm[1] == -1) {charToLevel.alarm[1] = room_speed*0.05}}
     if(charToLevel.attack &lt; charToLevel.movement){
          if(charToLevel.attack &lt; 9 &amp;&amp; lvPoints &gt; 0){charToLevel.attack += 1; lvPoints -= 1;}
