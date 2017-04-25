@@ -328,6 +328,7 @@
       <sprite>sprites\HLGrassTile</sprite>
       <sprite>sprites\HLTile</sprite>
       <sprite>sprites\playerTwoSelect</sprite>
+      <sprite>sprites\isSelectedSprite</sprite>
       <sprite>sprites\playerOneSelect</sprite>
       <sprite>sprites\waterTile</sprite>
       <sprite>sprites\HLBrushTile</sprite>

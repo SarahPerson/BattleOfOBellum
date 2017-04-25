@@ -36,6 +36,8 @@ canMove = false;
 depth = 1000;
 playerOneSelected=false;
 playerTwoSelected = false;
+isDestOne = false;
+isDestTwo = false;
 </string>
           </argument>
         </arguments>
@@ -98,7 +100,6 @@ else if(playerTwoSelected)
 {
     sprite_index = playerTwoSelect
 }
-
 
 
 

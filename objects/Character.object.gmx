@@ -288,9 +288,10 @@ if(room==SplitScreen || room== FullScreen){
         visible=false; //can't do this yet because for some reason it set an entire team to invisible 
     }
     else{
-        
+       
     }
 }
+if(room == SplitScreen){ if(destTile != 0) { destTile.sprite_index = isSelectedSprite; }}
 </string>
           </argument>
         </arguments>
