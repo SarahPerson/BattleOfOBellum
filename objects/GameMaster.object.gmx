@@ -85,7 +85,12 @@ instance_create(0,0, DrawTextObject);
           <argument>
             <kind>1</kind>
             <string>///intitial setup for maps
+//show_message("lol")
+//openFile = get_open_filename("text file|*.txt", "")
 
+//if(file!=""){
+//    file_text_close(openFile);
+//}
 
 //global.gameMapSize=1;
 //pick which size of maps you are using
@@ -1117,7 +1122,7 @@ switch(room){
         //set initial position of the players cursors - we no need cursors on this screen
         //global.roomTiles[PlayerOne.curCol,PlayerOne.curRow].playerOneSelected=true;
         //global.roomTiles[PlayerTwo.curCol,PlayerTwo.curRow].playerTwoSelected=true;
-                
+       
         break;     
         
     case SplitScreen:
@@ -1316,7 +1321,7 @@ switch(room){
                 
                 //set the hp of the copies?
                 copyTeamTwo[z].hp = global.teamTwo[z].hp;
-            }
+               }
         }
             //set objects Copies
             PlayerOneObjectiveCopy = instance_create(0,0, PlayerOneObjective);
@@ -1350,13 +1355,16 @@ switch(room){
                     global.gridTwo[i,global.mapSize-1].canMove = true;
                 }
             }
+
         break;  
 
     }        
 
-file_text_close(myFile);
 
 
+//if(room==SplitScreen||room==FullScreen){
+     file_text_close(myFile);
+//}
 
 
 </string>
@@ -2480,7 +2488,7 @@ if(global.currentMap&gt;1){
         global.setup=true;  //call setup for placing characters
         //global.teamOne[i].originRow=13 //hard coded for testing
         //global.teamOne[i].originCol = 5
-        show_message("current map: "+ string(global.currentMap));
+        //show_message("current map: "+ string(global.currentMap));
         
         //destroy both players so that they are recreated
         with(PlayerOne)
@@ -2524,7 +2532,7 @@ if(global.currentMap&gt;1){
             //global.teamTwo[i].moveArray = array(9);
             //global.teamTwo[i].originRow=13 //hard coded for testing
             //global.teamTwo[i].originCol = 5
-            show_message("current map: "+ string(global.currentMap));
+            //show_message("current map: "+ string(global.currentMap));
             
             //destroy both players so that they are recreated
             with(PlayerOne)

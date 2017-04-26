@@ -80,14 +80,15 @@ if(place_meeting(x,y, Character)){
                     instance_destroy();
                 }
                 
-                //show_message("moving to splash");
-                room_goto(MainMenu); //go to bonus screen after win condition met 
+
+                room_goto(EndSplashScreen); //go to bonus screen after win condition met 
                 
                 //destroy both players so that they are recreated
       
             }
             else 
             {
+
                 global.PlayerWon = 2;
                 //make characters invisible before going back to main menu
                 for(i=0; i&lt;global.teamSize;i+=1)
@@ -95,7 +96,9 @@ if(place_meeting(x,y, Character)){
                     global.teamOne[i].visible=false;
                     global.teamTwo[i].visible=false;
                 }
-                room_goto(EndSplashScreen);
+
+                room_goto(MainMenu);
+
             }
         }
     }

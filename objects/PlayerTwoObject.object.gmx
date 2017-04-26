@@ -88,7 +88,7 @@ if(place_meeting(x,y,Character)){
                     global.teamOne[i].visible=false;
                     global.teamTwo[i].visible=false;
                 }
-                room_goto(EndSplashScreen);
+                room_goto(MainMenu);
             }
         }
     }

@@ -112,7 +112,7 @@ if(global.currentMap==0||global.currentMap==global.gameSize){
     room_goto(MainMenu);
 }
 else{
-    room_goto(SplitScreen);
+    room_goto(BonusScreen);
 }
 </string>
           </argument>
