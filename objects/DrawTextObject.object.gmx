@@ -199,7 +199,7 @@ if(room==SplitScreen){
             <string>///determine controls text
 if(global.displayControls){
     pOne="Player One Controls: ";
-    pOneControls="Move Cursor - arrow keys #Select - 'Shift' #Enter - 'Enter' #Enter/Exit Menu - 'Page Up'  #Select Button In Menu - 'Enter'";
+    pOneControls="Move Cursor - 'Arrow Keys' #Select - 'Shift' #Enter - 'Enter' #Enter/Exit Menu - 'Page Up'  #Select Button In Menu - 'Enter'";
     
     pTwo="Player Two Controls: ";
     pTwoControls = "Move Cursor - 'W', 'A', 'S', and 'D' #Select - 'Alt' #Enter - 'Space' #Enter/Exit Menu - 'V' #Select Button In Menu - 'Space'";
