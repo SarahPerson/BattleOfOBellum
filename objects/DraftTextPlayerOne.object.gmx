@@ -28,6 +28,7 @@
             <string>///draw text to display player one drafting turns
 draw_set_color(c_black);
 draw_set_halign(fa_center);
+draw_set_font(standard);
 draw_text(1600-128,900-160,"Player One#Drafts Remain: "+string(global.teamSize-PlayerOne.draftCount));//subtract current count from total team size
 </string>
           </argument>

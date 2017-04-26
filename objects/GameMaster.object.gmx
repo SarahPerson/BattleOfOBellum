@@ -939,6 +939,7 @@ if(!instance_exists(PlayerTwo))
 pool = ds_grid_create(12,2);
 draftTurn = 0;
 
+var startingY = 100;
 var newX=50;
 var newY=50;
 var buttonSpacing = 100;
@@ -949,7 +950,7 @@ if(room==Drafting)
     {
         for(j=0; j&lt;12;j+=1)
         {
-            newButton = instance_create(newX,newY,CharacterButton);
+            newButton = instance_create(newX,newY+startingY,CharacterButton);
             pool[i,j]=newButton;
             newX+=buttonSpacing;      
         }

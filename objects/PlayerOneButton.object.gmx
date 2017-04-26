@@ -28,6 +28,7 @@
             <string>///variables that will be moved to the player
 currentIncrement = 0;
 inMenu = false;
+
 SplitScreenText="Player One Controls: # 
 Move Cursor - arrow keys #
 Select Character - shift #
@@ -161,7 +162,7 @@ if(room==LevelUpMenu){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///TEMP - set alarm to move to room
+            <string>///set alarm to move to room
 if(self.isSelected==true &amp;&amp; PlayerTwoButton.isSelected == true)
 {
     
@@ -233,7 +234,7 @@ draw_self();
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-
+draw_set_font(standard);
 draw_set_color(c_black);
 //draw_set_font(fontButton);
 draw_text(x,y,buttonText);
@@ -278,7 +279,8 @@ switch(currentIncrement)
             {
                 if(PlayerOne.draftCount&lt;global.teamSize)
                 {
-                    show_message("Player One: Select more characters#to fill out your team");
+                    //show_message("Player One: Select more characters#to fill out your team");
+                    //do something else here?
                 }
                 else
                 {

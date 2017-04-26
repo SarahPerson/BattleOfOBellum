@@ -58,7 +58,9 @@ if(room==BonusScreen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(currentIncrementOne == action &amp;&amp; player == 1)
+            <string>///set the image index of the button
+
+if(currentIncrementOne == action &amp;&amp; player == 1)
 {
     image_index = 1;
 }
@@ -74,6 +76,63 @@ if(currentIncrementTwo == action &amp;&amp; player == 2)
 else if(currentIncrementTwo != action &amp;&amp; player == 2)
 {
     image_index = 2;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///set the text for the button bonus description
+switch(currentIncrementOne)
+{
+    case 0:
+        DrawTextObject.pOneBonusDet = "Select to heal each # member on team# 10 HP. "
+        break;
+    case 1:
+        DrawTextObject.pOneBonusDet = "Select to heal one member# on team to full HP.#Character will be #selected from below."
+        break;
+    case 2:
+        DrawTextObject.pOneBonusDet = "Select to gain #3 addition level up points,#"
+        break;
+    case 3:
+        DrawTextObject.pOneBonusDet = "Select change the #placement of your teams flag# at the beginning #of the next round."
+        break;
+    case 4:
+        DrawTextObject.pOneBonusDet = "Select to place # up to 5 new walls# at any tile on the map."
+        break;
+}
+switch(currentIncrementTwo)
+{
+    case 0:
+        DrawTextObject.pTwoBonusDet = "Select to heal each # member on team# 10 HP. "
+        break;
+    case 1:
+        DrawTextObject.pTwoBonusDet = "Select to heal one member# on team to full HP.#Character will be #selected from below."
+        break;
+    case 2:
+        DrawTextObject.pTwoBonusDet = "Select to gain #3 addition level up points,#"
+        break;
+    case 3:
+        DrawTextObject.pTwoBonusDet = "Select change the #placement of your teams flag# at the beginning #of the next round."
+        break;
+    case 4:
+        DrawTextObject.pTwoBonusDet = "Select to place # up to 5 new walls# at any tile on the map."
+        break;
 }
 </string>
           </argument>
@@ -282,10 +341,6 @@ if(currentIncrementTwo = action &amp;&amp; player==2&amp;&amp; PlayerTwo.inMenu!
     }
     
 }
-//else if(PlayerTwo.selectedBonus == true)
-//{
-//    show_message("Bonus already selected. Please select ready.");
-//}
 </string>
           </argument>
         </arguments>
@@ -350,10 +405,7 @@ if(currentIncrementOne = action &amp;&amp; player==1 &amp;&amp; PlayerOne.inMenu
 
     }
 }
-//else if(PlayerOne.selectedBonus == true)
-//{
-//    show_message("Bonus already selected. Please select ready.");
-//}
+
 </string>
           </argument>
         </arguments>

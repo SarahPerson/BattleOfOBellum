@@ -379,6 +379,10 @@
     <font>fonts\standard</font>
     <font>fonts\headers</font>
     <font>fonts\titles</font>
+    <font>fonts\details</font>
+    <font>fonts\details_title</font>
+    <font>fonts\player_title</font>
+    <font>fonts\character_title</font>
   </fonts>
   <objects name="objects">
     <object>objects\Tile</object>

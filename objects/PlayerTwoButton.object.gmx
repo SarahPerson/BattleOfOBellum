@@ -136,7 +136,7 @@ draw_self();
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-
+draw_set_font(standard);
 draw_set_color(c_black);
 //draw_set_font(fontButton);
 draw_text(x,y,buttonText);
@@ -180,7 +180,8 @@ draw_text(x,y,buttonText);
             {
                 if(PlayerTwo.draftCount&lt;global.teamSize)
                 {
-                    show_message("Player Two: select more characters#to fill out your team");
+                    //show_message("Player Two: select more characters#to fill out your team");
+                    //do something else?
                 }
                 else
                 {

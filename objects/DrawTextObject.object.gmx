@@ -26,13 +26,22 @@
           <argument>
             <kind>1</kind>
             <string>///variables
-oneCharacterSelectText="";
-twoCharacterSelectText="";
+oneCharacterSelectText="Select the bonus you would like to accept";
+twoCharacterSelectText="Select the bonus you would like to accept";
 splitScreenTitle="";
 
 //level up menu
 pOneLv=""
 pTwoLv=""
+
+//bonus screen 
+pOneBonusDet = "Testing # testing # tEsTiNg ";
+pTwoBonusDet = "Testing # testing # tEsTiNg ";
+
+//split screen
+splitDetailsOne = "";
+splitDetailsTwo = "";
+splitDetails = "";
 </string>
           </argument>
         </arguments>
@@ -82,6 +91,83 @@ if(room==BonusScreen){
     else if(!PlayerTwo.selectedBonus &amp;&amp; !PlayerTwo.isSelectingCharacterForBonus)
         twoCharacterSelectText = "";
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///determine the details to go under split screen title
+if(room==SplitScreen){
+    if(global.setup){
+        splitDetails= " Select characters to place them within the highlighted region"
+    }
+    else
+    {
+        splitDetails = "Select each character and choose their destination#Select ready when character destinations are chosen."
+    }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///determine the details to go under split screen and players if bonus selected
+if(room==SplitScreen){
+    //if player one is getting the additions bonus
+    if(global.setup &amp;&amp; global.PlayerWon==2){
+        if(global.setFlag){
+            splitDetailsOne = "BONUS: Select a tile on map to place flag"
+        }
+        else if(global.setWall){
+            splitDetailsOne = "BONUS: Select a tile on map to place up to 5 walls"
+        }
+    }
+    else if(global.setup &amp;&amp; global.PlayerWon==1){
+        if(global.setFlag){
+            splitDetailsTwo = "BONUS: Select a tile on map to place flag"
+        }
+        else if(global.setWall){
+            splitDetailsTwo = "BONUS: Select a tile on map to place up to 5 walls"
+        }
+    }
+    else
+    {
+        splitDetailsOne="";
+        splitDetailsTwo="";
+    }
+
 }
 </string>
           </argument>
@@ -199,7 +285,22 @@ draw_set_color(c_black);
 if(room==SplitScreen){
     //create screen title
     draw_set_font(titles);
-    draw_text(800,  50, splitScreenTitle);
+    draw_text(800,  30, splitScreenTitle);
+    draw_set_valign(fa_top);
+    draw_set_font(details);
+    draw_text(800, 50, splitDetails);
+    
+    //draw players
+    draw_set_valign(fa_middle);
+    draw_set_font(player_title);
+    draw_text(400,50, "Player Two");
+    draw_text(1200,50, "Player One");
+    //draw player details
+    draw_set_valign(fa_top);
+    draw_set_font(details);
+    draw_text(400,65, splitDetailsTwo);
+    draw_text(1200,65, splitDetailsOne);
+    
 }
 </string>
           </argument>
@@ -238,6 +339,82 @@ if(room==LevelUpMenu){
     draw_text(400,  100, "Player Two");
     draw_text(1200, 200, "Level Up Points: "+pOneLv);
     draw_text(400, 200, "Level Up Points: "+pTwoLv);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw all info for bonus buttons
+if(room==BonusScreen){
+    draw_set_color(c_gray);
+    
+    //draw boxes to hold the bonus details
+    draw_rectangle( 500, 75, 750 ,445 , false);
+    draw_rectangle( 1300, 75, 1550 ,445 , false);
+    
+    //draw text for bonus details
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_top);
+    
+    draw_set_font(details_title);
+    draw_set_color(c_black);
+    draw_text(625, 90, "Bonus Details");
+    draw_text(1425, 90, "Bonus Details");
+    
+    //draw the bonus details
+    draw_set_font(details);
+    draw_set_valign(fa_middle);
+    draw_text(1425,260, pOneBonusDet);
+    draw_text(625,260, pTwoBonusDet);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw drafting title and details
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_color(c_black);
+
+if(room==Drafting){
+    //create screen title
+    draw_set_font(titles);
+    draw_text(800,  30, "Drafting");
+    draw_set_valign(fa_top);
+    draw_set_font(details);
+    draw_text(800, 50, "Take selecting character to be added to your team");
 }
 </string>
           </argument>

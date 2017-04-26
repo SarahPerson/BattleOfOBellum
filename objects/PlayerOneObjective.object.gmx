@@ -58,17 +58,17 @@ if(place_meeting(x,y, Character)){
     p = instance_nearest(x,y, Character);
     for(var i = 0; i &lt; global.teamSize; i++){
         if(p = global.teamTwo[i]){
-            show_message("Player Two Reached the Objective");
+
             global.PlayerWon = 2;
             
             //check if not at the end of the board and if not move to new map
             if(global.currentMap&lt;global.gameSize){
                 global.currentMap+=1; //increment current map
                 global.setup=true;  //call setup for placing characters
-                 global.teamTwo[i].moveArray = array(9);
+                global.teamTwo[i].moveArray = array(9);
                 global.teamTwo[i].x=0; //hard coded for testing
                 global.teamTwo[i].y = 0;
-                show_message("current map: "+ string(global.currentMap));
+
                 
                 //destroy both players so that they are recreated
                 with(PlayerOne)
@@ -87,7 +87,6 @@ if(place_meeting(x,y, Character)){
             }
             else 
             {
-                show_message("Player Two Won the Game!")
                 global.PlayerWon = 2;
                 //make characters invisible before going back to main menu
                 for(i=0; i&lt;global.teamSize;i+=1)

@@ -248,54 +248,24 @@ currentIncrement=currentIncrement-2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//what to do on click
-if(currentIncrement = action){
-    switch(currentIncrement)
-    {
-        case 0:
-            room_goto(Drafting);
-            break;
-        case 1:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[1]=true;
-            }
-            else if(background_visible[2])
-            {
-                background_visible[2]=false;
-                background_visible[1]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0] = true;
-            }
-            break;     
-        case 2:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[2]=true;
-            }
-            else if(background_visible[1])
-            {
-                background_visible[1]=false;
-                background_visible[2]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0]=true;
-                
-            }
-            break;
-        case 3:
-            room_goto(SettingsScreen);
-            break;
-        case 4: 
-            game_end();
-            break;
+            <string>//what to do on click if in Settings Screen
+if(room==SettingsScreen &amp;&amp; canSelect &amp;&amp; GameMaster.settingNumMaps){
+
+    //set map size and starting map
+    global.gameSize = currentIncrement
+    global.currentMap = (global.gameSize+1)/2
     
+    //set no longer setting value
+    GameMaster.settingNumMaps=false;
+    
+    //set alarm for other button selection
+    if(buttonObject.alarm[0]==-1)
+    {
+       buttonObject.alarm[0]= room_speed*(0.1);
     }
+    
+    //set self can select to false
+    buttonObjectSettingsNumberMaps.canSelect=false;
 }
 </string>
           </argument>

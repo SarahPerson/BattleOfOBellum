@@ -279,7 +279,6 @@ if(room==SplitScreen || room== FullScreen){
         for(var i = 0; i &lt; global.teamSize; i++){
             if(self == global.teamOne[i]){
                 if(room == SplitScreen){
-                    //show_message(visible);
                     y = global.startingY + (global.mapSize + 1)*global.spriteScaleSplit*16;
                     x = global.startingXTwo - global.teamSize/2*global.spriteScaleSplit*16 + i*global.spriteScaleSplit*16 + global.mapSize*global.spriteScaleSplit*16/2;
                 } else if (room == FullScreen){

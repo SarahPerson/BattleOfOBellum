@@ -96,7 +96,7 @@ selectedBonus=false;
 //set bonus varibles
 charToLevel = 0;
 lvPoints = 10;
-show_message(lvPoints);
+
 isSelectingCharacterForLevel=true
 
 </string>
@@ -318,7 +318,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
         GameMaster.copyTeamTwo[selectedCharacter].x = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamTwo[selectedCharacter].y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
-} else if(room == SplitScreen &amp;&amp; global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+} else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
    global.playerTwoOb.x = global.gridTwo[curCol, curRow].x;
    global.playerTwoOb.y = global.gridTwo[curCol, curRow].y;
    global.playerTwoOb.originRow = curRow;
@@ -328,7 +328,7 @@ if(keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter) &amp;&amp; room 
    GameMaster.PlayerTwoObjectiveCopy.y = global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
    
    global.setFlag = false;
-} else if (room == SplitScreen &amp;&amp; global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
+} else if (room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; (keyboard_check(key_enter)|| gamepad_button_check(0,gp_enter))){
     global.gridTwo[curCol, curRow].tileType = 5;
     global.roomTiles[global.mapSize - curCol - 1, global.mapSize - curRow - 1].tileType = 5;
     global.setWall -= 1;
@@ -364,16 +364,13 @@ for(i = 0; i&lt;global.teamSize;i++){
         curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
         curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
         
-        //show_message("selecting: "+" "+string(self.curCol)+" "+ string(self.curRow));
-        //show_message("character at: "+string(curX)+" " + string(curY));
         
         if(isHighlighted==false &amp;&amp; self.curCol == curX &amp;&amp; self.curRow == curY){
-        //show_message("detecting character selection");
+
             ds_queue_clear(highlightedTiles); //clear stored tiles for highlighting
             selectedCharacter = i;
             global.teamTwo[i].isSelected = true; //variable to hold if this is the current character being moved
-            //curX = self.curCol//selectedChar.xCord;
-            //curY = self.curRow//selectedChar.yCord;
+
             totMove = global.teamTwo[i].movement;
             maxSize = global.mapSize;
             toLook = ds_queue_create();
@@ -386,8 +383,7 @@ for(i = 0; i&lt;global.teamSize;i++){
                 curTile = ds_queue_dequeue(toLook);
                 curX = (curTile.x-global.startingXOne)/global.spriteScaleSplit/16;
                 curY = (curTile.y-global.startingY)/global.spriteScaleSplit/16;
-                //show_message(curX);
-                //show_message(curY);
+
                 if(curTile.color !=  2){
                     if(curTile.currentCost &lt;= totMove){
                         curTile.canMove = true;
@@ -438,17 +434,7 @@ for(i = 0; i&lt;global.teamSize;i++){
                     curTile.color=0;
                     curTile.currentCost = 10;
                 }
-                /*
-                var i;
-                var j;
-                for (i = 0; i &lt; maxSize; i += 1){
-                    for(j=0; j&lt;maxSize; j+=1){
-                        global.gridTwo[i,j].canMove=false;
-                        global.gridTwo[i,j].color=0;
-                        global.gridTwo[i,j].currentCost = 0;
-                    }
-                }
-                */
+
                 isHighlighted=false;
                 canSelect=false;
             
@@ -464,7 +450,7 @@ for(i = 0; i&lt;global.teamSize;i++){
     }
 }
 } else if(keyboard_check(key_select)|| gamepad_button_check(0,gp_padselect)&amp;&amp;room==SplitScreen){
-    //show_message("why does the world hate me");
+
     for(i = 0; i&lt;global.teamSize;i++){
         curX = (global.teamTwo[i].x-global.startingXOne)/(global.spriteScaleSplit)/16;
         curY = (global.teamTwo[i].y-global.startingY)/(global.spriteScaleSplit)/16;
@@ -771,7 +757,6 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
     
     if(keyboard_check(key_enter)&amp;&amp; bonusCanMove &amp;&amp; !PlayerTwo.inMenu )
     {
-            show_message("selecting character")
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoSelected=true;
             GameMaster.TeamTwo[bonusRow, bonusCol].playerTwoHighlighted=false;
 

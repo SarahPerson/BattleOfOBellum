@@ -355,54 +355,31 @@ currentIncrement--;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//what to do on click
-if(currentIncrement = action){
-    switch(currentIncrement)
-    {
-        case 0:
-            room_goto(Drafting);
-            break;
-        case 1:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[1]=true;
-            }
-            else if(background_visible[2])
-            {
-                background_visible[2]=false;
-                background_visible[1]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0] = true;
-            }
-            break;     
-        case 2:
-            if(background_visible[0]){
-                background_visible[0]=false;
-                background_visible[2]=true;
-            }
-            else if(background_visible[1])
-            {
-                background_visible[1]=false;
-                background_visible[2]=true;
-            }
-            else{
-                background_visible[1]=false;
-                background_visible[2] = false;
-                background_visible[0]=true;
-                
-            }
-            break;
-        case 3:
-            room_goto(SettingsScreen);
-            break;
-        case 4: 
-            game_end();
-            break;
+            <string>//what to do on click if in Settings Screen
+
+if(room==SettingsScreen &amp;&amp; canSelect &amp;&amp; GameMaster.settingNumCharacters){
+
+    if(currentIncrement == action){
+        
+        //set the new team size
+        global.teamSize=action;
+;
     
     }
+    //set the new team size
+    global.teamSize=currentIncrement;
+    
+    //set no longer setting value
+    GameMaster.settingNumCharacters = false;
+
+    //set alarm for other button selection
+    if(buttonObject.alarm[0]==-1)
+    {
+       buttonObject.alarm[0]= room_speed*(0.1);
+    }
+    
+    //set self can select to false
+    buttonObjectSettingsNumCharacters.canSelect=false;
 }
 </string>
           </argument>
@@ -429,19 +406,16 @@ if(currentIncrement = action){
             <string>//what to do on click if in Settings Screen
 
 if(room==SettingsScreen &amp;&amp; canSelect &amp;&amp; GameMaster.settingNumCharacters){
-show_message("num char button selected");
+
     if(currentIncrement == action){
-        show_message("current increment: " + string(currentIncrement));
-        
         
         //set the new team size
         global.teamSize=action;
-        show_message("team size: "+ string( global.teamSize));
+;
     
     }
     //set the new team size
     global.teamSize=currentIncrement;
-    show_message("team size: "+ string( global.teamSize));
     
     //set no longer setting value
     GameMaster.settingNumCharacters = false;

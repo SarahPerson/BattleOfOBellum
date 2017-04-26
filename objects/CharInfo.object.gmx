@@ -53,15 +53,22 @@ turn = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
+            <string>//drawing the 
+draw_set_color(c_black);
 draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
 draw_set_font(standard);
 if(global.teamSize-PlayerOne.draftCount != 0 || global.teamSize-PlayerTwo.draftCount != 0){
-    draw_text(1250, 100,"Name: " + string(name) + "#Attack: " + string(attack) + "#Defence: " + string(defence) + "#Movement: " + string(movement) + "# #" + string(turn));
+    draw_text(1250, 250,"Name: " + string(name) + "#Attack: " + string(attack) + "#Defence: " + string(defence) + "#Movement: " + string(movement) + "# #" + string(turn));
 }
 else {
-    draw_text(1250, 100, "Draft Complete");
+    draw_text(1250, 250, "Draft Complete");
 }
+
+//draw title thing
+draw_set_valign(fa_top);
+draw_set_font(character_title);
+draw_text(1250,150,"Character Details:");
 </string>
           </argument>
         </arguments>

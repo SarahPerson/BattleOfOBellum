@@ -12,7 +12,6 @@
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,GameMaster);
 if(global.setup) { 
-    show_message("select your units and move them anywhere in the highlighted area, then hit ready to start the game"); 
     for(var w = 0; w &lt; 6; w++){ global.walls[w,0] = 0;  global.walls[w,1] = -1; }
 }</code>
   <enableViews>0</enableViews>

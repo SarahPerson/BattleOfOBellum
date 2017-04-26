@@ -311,7 +311,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
         GameMaster.copyTeamOne[selectedCharacter].x = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].x;
         GameMaster.copyTeamOne[selectedCharacter].y = global.gridTwo[global.mapSize - curCol - 1, global.mapSize - curRow - 1].y;
     }  
-}else if(room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; keyboard_check(key_enter)){
+}else if(room == SplitScreen &amp;&amp; global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setFlag &amp;&amp; keyboard_check(key_enter)){
    global.playerOneOb.x = global.roomTiles[curCol, curRow].x;
    global.playerOneOb.y = global.roomTiles[curCol, curRow].y;
    global.playerOneOb.originRow = curRow;
@@ -322,7 +322,7 @@ if(keyboard_check(key_enter) &amp;&amp; room == SplitScreen){
    
    
    global.setFlag = false;
-}else if (room == SplitScreen &amp;&amp; global.PlayerWon == 1 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; keyboard_check(key_enter)){
+}else if (room == SplitScreen &amp;&amp; global.PlayerWon == 2 &amp;&amp; global.setup &amp;&amp; global.setWall &gt; 0 &amp;&amp; keyboard_check(key_enter)){
     if(alarm[4] == -1){
         alarm[4] = room_speed*0.1;
     }
@@ -771,7 +771,6 @@ if(room==BonusScreen &amp;&amp; isSelectingCharacterForBonus){
     
     if(keyboard_check(key_enter)&amp;&amp; bonusCanMove &amp;&amp; !PlayerOne.inMenu)
     {
-            show_message("selecting character")
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneSelected=true;
             GameMaster.TeamOne[bonusRow, bonusCol].playerOneHighlighted=false;
             
