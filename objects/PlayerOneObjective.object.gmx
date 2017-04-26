@@ -80,7 +80,7 @@ if(place_meeting(x,y, Character)){
                     instance_destroy();
                 }
                 
-                show_message("moving to splash");
+                //show_message("moving to splash");
                 room_goto(MainMenu); //go to bonus screen after win condition met 
                 
                 //destroy both players so that they are recreated
