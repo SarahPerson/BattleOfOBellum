@@ -1147,40 +1147,50 @@ switch(room){
 // ----------------------------------------------------------------------------------
         if(global.setup){
             //player one goes on the bottom - player two goes on the top
-             var char = 0;
-             
-             //set the positions of team one
-             for(i=global.mapSize-1; i&gt;global.mapSize-3; i--)
+            for(var char = 0; char&lt;global.teamSize; char++){
+              var bool = true;
+             for(var i=global.mapSize-1; i&lt;=global.mapSize-2; i++)
              {
-                 for(j = 0; j&lt;global.mapSize;j++){
+                 for(var j = global.mapSize-1; j&gt;=0;j--){
                      //show_message("tile type: "+string(global.roomTiles[i,j].tileType));
-                     if(char&lt;global.teamSize){
-                         if(global.roomTiles[i,j].tileType&lt;3){
+                         if(global.roomTiles[i,j].tileType&lt;3 ){
                              //set the characters starting row and col to this position
                              //show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
-                             global.teamOne[char].originRow = i;
-                             global.teamOne[char].originCol = j;
-                             char++; //move to next character
+                             for(var g = 0; g &lt; global.teamSize; g++){
+                                if(global.teamOne[g].originRow == i &amp;&amp; global.teamOne[g].originCol == j){
+                                    bool = false;
+                                }
+                             }
+                             if(bool){
+                                global.teamOne[char].originRow = i;
+                                global.teamOne[char].originCol = j;
+                             }
+      //move to next character
                          }
-                     }
+                    }
                  }
              }
+
              
-             //player one goes on the bottom - player two goes on the top
-             var char = 0;
-             
-             //set the positions of team two
-             for(i=0; i&lt;3; i++)
+             for(var char = 0; char&lt;global.teamSize; char++){
+              var bool = true;
+             for(var i=0; i&lt;2; i++)
              {
-                 for(j = global.mapSize-1; j&gt;=0;j--){
+                 for(var j = global.mapSize-1; j&gt;=0;j--){
                      //show_message("tile type: "+string(global.roomTiles[i,j].tileType));
-                     if(char&lt;global.teamSize){
-                         if(global.roomTiles[i,j].tileType&lt;3){
+                         if(global.roomTiles[i,j].tileType&lt;3 ){
                              //set the characters starting row and col to this position
                              //show_message ("placing character "+string(char)+" at: "+string(i)+" "+string(j));
-                             global.teamTwo[char].originRow = i;
-                             global.teamTwo[char].originCol = j;
-                             char++; //move to next character
+                             for(var g = 0; g &lt; global.teamSize; g++){
+                                if(global.teamTwo[g].originRow == i &amp;&amp; global.teamTwo[g].originCol == j){
+                                    bool = false;
+                                }
+                             }
+                             if(bool){
+                                global.teamTwo[char].originRow = i;
+                                global.teamTwo[char].originCol = j;
+                             }
+      //move to next character
                          }
                     }
                  }
