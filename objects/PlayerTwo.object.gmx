@@ -96,6 +96,7 @@ selectedBonus=false;
 //set bonus varibles
 charToLevel = 0;
 lvPoints = 10;
+show_message(lvPoints);
 isSelectingCharacterForLevel=true
 
 </string>
