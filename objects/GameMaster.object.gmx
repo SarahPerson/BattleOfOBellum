@@ -2358,6 +2358,60 @@ if(room == Drafting){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Live up date on lv screen
+if(room==LevelUpMenu){
+buttonCount =0; 
+    for(i=0; i&lt;2; i++){
+        for(j=0; j&lt;6; j++){
+            if(buttonCount&lt;global.teamSize){
+                // set player one's team buttons
+                //TeamOne[i,j]=instance_create(teamOneX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
+                TeamOne[i,j].spriteToDraw= global.teamOne[buttonCount].sprite_index;
+                TeamOne[i,j].hpVal = floor(global.teamOne[buttonCount].hp);
+                TeamOne[i,j].hpMax = global.teamOne[buttonCount].maxHp;
+                TeamOne[i,j].attackVal = global.teamOne[buttonCount].attack;
+                TeamOne[i,j].moveVal = global.teamOne[buttonCount].movement;
+                TeamOne[i,j].defVal = global.teamOne[buttonCount].defence;
+                
+                // set player two's team buttons
+                //TeamTwo[i,j]=instance_create(teamTwoX+(90+spacing)*j , teamY, BonusScreenCharacterButton);
+                TeamTwo[i,j].spriteToDraw= global.teamTwo[buttonCount].sprite_index;
+                TeamTwo[i,j].hpVal = floor(global.teamTwo[buttonCount].hp);
+                TeamTwo[i,j].hpMax = global.teamTwo[buttonCount].maxHp;
+                TeamTwo[i,j].attackVal = global.teamTwo[buttonCount].attack;
+                TeamTwo[i,j].moveVal = global.teamTwo[buttonCount].movement;
+                TeamTwo[i,j].defVal = global.teamTwo[buttonCount].defence;
+                
+                buttonCount++;
+            }
+            else{
+                TeamOne[i,j] = 0;
+                TeamTwo[i,j] = 0;
+            }
+        }
+        teamY+=spacing+130;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
