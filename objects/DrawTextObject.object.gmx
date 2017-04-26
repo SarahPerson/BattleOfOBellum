@@ -42,6 +42,13 @@ pTwoBonusDet = "Testing # testing # tEsTiNg ";
 splitDetailsOne = "";
 splitDetailsTwo = "";
 splitDetails = "";
+
+//controls
+pOne="";
+pTwo="";
+pOneControls="";
+pTwoControls="";
+
 </string>
           </argument>
         </arguments>
@@ -169,6 +176,41 @@ if(room==SplitScreen){
     }
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///determine controls text
+if(global.displayControls){
+    pOne="Player One Controls: ";
+    pOneControls="Move Cursor - arrow keys #Select - 'Shift' #Enter - 'Enter' #Enter/Exit Menu - 'Page Up'  #Select Button In Menu - 'Enter'";
+    
+    pTwo="Player Two Controls: ";
+    pTwoControls = "Move Cursor - 'W', 'A', 'S', and 'D' #Select - 'Alt' #Enter - 'Space' #Enter/Exit Menu - 'V' #Select Button In Menu - 'Space'";
+}
+else{
+    pOne = "";
+    pOneControls = "";
+    pTwo="";
+    pTwoControls = "";
+}
+
 </string>
           </argument>
         </arguments>
@@ -415,6 +457,41 @@ if(room==Drafting){
     draw_set_valign(fa_top);
     draw_set_font(details);
     draw_text(800, 50, "Take selecting character to be added to your team");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw controls
+if(room=MainMenu){
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_color(c_black);
+    
+    draw_set_font(player_title);
+    draw_text(785, 270, pOne);
+    draw_text(1085, 270, pTwo);
+    
+    draw_set_font(standard);
+    draw_text(785, 300, pOneControls);
+    draw_text(1085, 300, pTwoControls);
+
 }
 </string>
           </argument>

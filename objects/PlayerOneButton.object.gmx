@@ -344,7 +344,7 @@ switch(currentIncrement)
             <string>///decrement code when right selected
 //if still in range decrement
 if(currentIncrement&gt;0&amp;&amp;PlayerOne.inMenu){
-    currentIncrement=currentIncrement-1;
+    //currentIncrement=currentIncrement-1;
 }
 </string>
           </argument>
@@ -371,7 +371,7 @@ if(currentIncrement&gt;0&amp;&amp;PlayerOne.inMenu){
             <string>///increment button selected
 //if current increment still in range add to it
 if(currentIncrement&lt;1&amp;&amp; PlayerOne.inMenu){
-    currentIncrement+=1
+    //currentIncrement+=1
 }
 
 </string>

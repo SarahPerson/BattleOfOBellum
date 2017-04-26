@@ -80,7 +80,10 @@ global.playerOneOb.visible = false;
 global.playerTwoOb.visible = false;
 
 global.walls = ds_grid_create(6,2);
-for(var w = 0; w &lt; 6; w++){ global.walls[w,0] = 0;  global.walls[w,1] = -1; }</code>
+for(var w = 0; w &lt; 6; w++){ global.walls[w,0] = 0;  global.walls[w,1] = -1; }
+
+//main menu
+global.displayControls=true;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
