@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.teamSize = 4;
+  <code>audio_play_sound(Mars, 11, true);
+
+global.teamSize = 4;
 global.setup = true;
 
 
