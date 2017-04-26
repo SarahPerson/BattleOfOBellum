@@ -419,6 +419,7 @@
     <room>rooms\BonusScreen</room>
     <room>rooms\LevelUpMenu</room>
     <room>rooms\SettingsScreen</room>
+    <room>rooms\EndSplashScreen</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

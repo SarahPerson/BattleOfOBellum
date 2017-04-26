@@ -109,6 +109,11 @@ if(room==FullScreen){
 }
 if(room == SplitScreen)
 {
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].destTile = 0;
+        global.teamTwo[i].destTile = 0;
+    }
+    
     //for(var p = 0; p &lt; instance_number(Tile); p++) { with(instance_find(Tile,p)){ instance_destroy();}}
     if(!global.setup){ room_goto(FullScreen); }
     else {
@@ -119,6 +124,12 @@ if(room == SplitScreen)
 }
 if(room==Drafting)
 {
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].destTile = 0;
+        global.teamOne[i].moveArray = array(9);
+        global.teamTwo[i].destTile = 0;
+        global.teamTwo[i].moveArray = array(9)
+    }
     room_goto(SplitScreen);
 }
 
@@ -135,7 +146,12 @@ if(room==BonusScreen){
 
 //move from level up back to the game
 if(room==LevelUpMenu){
-
+    for(var i = 0; i &lt; global.teamSize; i++){
+        global.teamOne[i].destTile = 0;
+        global.teamOne[i].moveArray = array(9);
+        global.teamTwo[i].destTile = 0;
+        global.teamTwo[i].moveArray = array(9)
+    }
     room_goto(SplitScreen);
 }
 

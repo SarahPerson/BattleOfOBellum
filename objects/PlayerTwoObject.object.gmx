@@ -77,7 +77,7 @@ if(place_meeting(x,y,Character)){
                     instance_destroy();
                 }
                 
-                room_goto(BonusScreen); //go to bonus screen after win condition met 
+                room_goto(EndSplashScreen); //go to bonus screen after win condition met 
                 }
             else 
             {
@@ -88,7 +88,7 @@ if(place_meeting(x,y,Character)){
                     global.teamOne[i].visible=false;
                     global.teamTwo[i].visible=false;
                 }
-                room_goto(MainMenu);
+                room_goto(EndSplashScreen);
             }
         }
     }
